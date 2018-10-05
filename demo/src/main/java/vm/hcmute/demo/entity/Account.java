@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
 
-@Entity(name = "accounts")
+@Entity(name = "ne_accounts")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -31,10 +31,22 @@ public class Account {
 
     private Date dateUpdated;
 
-    private String UserUpdated;
+    private String userUpdated;
 
 
     @OneToOne(fetch = FetchType.LAZY)
     private User user;
+
+    @OneToMany(mappedBy = "account")
+    private Set<Comments> comments;
+
+    @OneToMany(mappedBy = "account")
+    private Set<Response_Comments> response_comments;
+
+    @OneToMany(mappedBy = "account")
+    private Set<Item_Access> item_accesses;
+
+    @OneToMany(mappedBy = "account")
+    private Set<Assign_Permission> assign_permissions;
 
 }

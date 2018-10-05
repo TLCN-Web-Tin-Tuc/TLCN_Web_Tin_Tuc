@@ -1,25 +1,29 @@
 package vm.hcmute.demo.entity;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
-import java.util.Set;
 
-@Entity(name = "ne_roles")
+@Entity(name = "ne_response_comments")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Role {
-    @javax.persistence.Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long Id;
+public class Response_Comments {
 
-    private String rname;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Account account;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Comments comments;
+
+    private String Content;
 
     private Date dateCreated;
 
@@ -28,8 +32,4 @@ public class Role {
     private Date dateUpdated;
 
     private String userUpdated;
-
-    @ManyToMany(mappedBy = "roles")
-    private Set<User> users;
 }
-

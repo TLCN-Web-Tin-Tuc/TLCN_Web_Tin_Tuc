@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
 
-@Entity(name = "users")
+@Entity(name = "ne_users")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -32,8 +32,16 @@ public class User {
 
     private int status;
 
+    private Date dateCreated;
+
+    private String userCreated;
+
+    private Date dateUpdated;
+
+    private String userUpdated;
+
     @OneToOne(mappedBy = "user",fetch = FetchType.LAZY)
-    private Account person;
+    private Account account;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -42,6 +50,8 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id",referencedColumnName = "id")
     )
     private Set<Role> roles;
+
+
 }
 
 

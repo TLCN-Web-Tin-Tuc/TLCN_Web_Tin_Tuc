@@ -1,25 +1,30 @@
 package vm.hcmute.demo.entity;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
-@Entity(name = "ne_roles")
+@Entity(name = "ne_item_access")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Role {
-    @javax.persistence.Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long Id;
+public class Item_Access {
 
-    private String rname;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Items item_ac;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Account account;
+
+    private Long action;
 
     private Date dateCreated;
 
@@ -29,7 +34,5 @@ public class Role {
 
     private String userUpdated;
 
-    @ManyToMany(mappedBy = "roles")
-    private Set<User> users;
-}
 
+}
