@@ -1,4 +1,4 @@
-package vn.hcmute.demo.entity;
+package hcmute.edu.vn.dbservice.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,26 +7,20 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity(name = "ne_attach_file")
+@Entity(name = "ne_assign_permission")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Attach_File {
-
+public class Assign_Permission {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Items item;
+    private Account account;
 
-    private String fileName;
-
-    private String fileExtension;
-
-    private byte[] fileContent;
-
-    private String link;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Permission permission;
 
     private Date dateCreated;
 
@@ -35,4 +29,5 @@ public class Attach_File {
     private Date dateUpdated;
 
     private String userUpdated;
+
 }

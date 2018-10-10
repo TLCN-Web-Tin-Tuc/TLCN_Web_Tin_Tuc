@@ -1,4 +1,4 @@
-package vn.hcmute.demo.entity;
+package hcmute.edu.vn.dbservice.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

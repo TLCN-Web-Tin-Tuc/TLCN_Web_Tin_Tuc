@@ -1,4 +1,4 @@
-package vn.hcmute.demo.entity;
+package hcmute.edu.vn.dbservice.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,26 +7,23 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity(name = "ne_attach_file")
+@Entity(name = "ne_response_comments")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Attach_File {
+public class Response_Comments {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Items item;
+    private Account account;
 
-    private String fileName;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Comments comments;
 
-    private String fileExtension;
-
-    private byte[] fileContent;
-
-    private String link;
+    private String Content;
 
     private Date dateCreated;
 
