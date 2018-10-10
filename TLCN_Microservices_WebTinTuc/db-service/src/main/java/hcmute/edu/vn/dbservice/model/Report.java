@@ -1,32 +1,28 @@
-package vn.hcmute.demo.entity;
+package hcmute.edu.vn.dbservice.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Date;
 
-@Entity(name = "ne_attach_file")
+@Entity(name = "ne_reports")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Attach_File {
+public class Report {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Items item;
+    private Integer type;
 
-    private String fileName;
-
-    private String fileExtension;
-
-    private byte[] fileContent;
-
-    private String link;
+    private String Content;
 
     private Date dateCreated;
 
@@ -35,4 +31,5 @@ public class Attach_File {
     private Date dateUpdated;
 
     private String userUpdated;
+
 }
