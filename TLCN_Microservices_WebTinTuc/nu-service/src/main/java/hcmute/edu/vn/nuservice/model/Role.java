@@ -1,4 +1,5 @@
-package hcmute.edu.vn.dbservice.model;
+package hcmute.edu.vn.nuservice.model;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,24 +8,20 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import java.util.Date;
+import java.util.Set;
 
-@Entity(name = "ne_reports")
+@Entity(name = "ne_roles")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Report {
-
-    @Id
+public class Role {
+    @javax.persistence.Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private long Id;
 
-    private Integer type;
-
-    private String header;
-
-    private String content;
+    private String rname;
 
     private Date dateCreated;
 
@@ -34,4 +31,7 @@ public class Report {
 
     private String userUpdated;
 
+    @ManyToMany(mappedBy = "roles")
+    private Set<User> users;
 }
+

@@ -1,30 +1,27 @@
-package hcmute.edu.vn.dbservice.model;
+package hcmute.edu.vn.nuservice.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
-@Entity(name = "ne_reports")
+@Entity(name = "ne_comments")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Report {
+public class Comments {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private Integer type;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Account account;
 
-    private String header;
-
-    private String content;
+    private String Content;
 
     private Date dateCreated;
 
@@ -34,4 +31,6 @@ public class Report {
 
     private String userUpdated;
 
+    @OneToMany(mappedBy = "comments")
+    private Set<Response_Comments> response_comments;
 }

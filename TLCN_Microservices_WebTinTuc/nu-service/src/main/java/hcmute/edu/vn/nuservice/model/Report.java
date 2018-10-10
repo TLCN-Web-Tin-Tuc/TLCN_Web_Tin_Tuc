@@ -1,4 +1,4 @@
-package hcmute.edu.vn.dbservice.model;
+package hcmute.edu.vn.nuservice.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
