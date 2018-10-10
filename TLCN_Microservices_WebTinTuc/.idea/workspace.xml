@@ -1,31 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f36aeaae-6f85-4f28-b973-96b8c44f901a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../Api/src/main/java/vn/hcmute/demo/service/AccountService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db-service/src/main/java/hcmute/edu/vn/dbservice/model/Account.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db-service/src/main/java/hcmute/edu/vn/dbservice/model/Assign_Permission.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db-service/src/main/java/hcmute/edu/vn/dbservice/model/Attach_File.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db-service/src/main/java/hcmute/edu/vn/dbservice/model/Cat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db-service/src/main/java/hcmute/edu/vn/dbservice/model/Comments.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db-service/src/main/java/hcmute/edu/vn/dbservice/model/Item_Access.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db-service/src/main/java/hcmute/edu/vn/dbservice/model/Items.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db-service/src/main/java/hcmute/edu/vn/dbservice/model/Permission.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db-service/src/main/java/hcmute/edu/vn/dbservice/model/Report.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db-service/src/main/java/hcmute/edu/vn/dbservice/model/Response_Comments.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db-service/src/main/java/hcmute/edu/vn/dbservice/model/Role.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db-service/src/main/java/hcmute/edu/vn/dbservice/model/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db-service/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eureka-service/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway-service/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Api/src/main/java/vn/hcmute/demo/entity/Attach_File.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Api/src/main/java/vn/hcmute/demo/entity/Attach_File.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Api/src/main/java/vn/hcmute/demo/entity/Cat.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Api/src/main/java/vn/hcmute/demo/entity/Cat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Api/src/main/java/vn/hcmute/demo/entity/Items.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Api/src/main/java/vn/hcmute/demo/entity/Items.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Api/src/main/java/vn/hcmute/demo/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Api/src/main/java/vn/hcmute/demo/entity/User.java" afterDir="false" />
-    </list>
+    <list default="true" id="f36aeaae-6f85-4f28-b973-96b8c44f901a" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/db-service/target/" />
     <ignored path="$PROJECT_DIR$/eureka-service/target/" />
@@ -166,41 +142,6 @@
               <item name="TLCN_Microservices_WebTinTuc" type="b2602c69:ProjectViewProjectNode" />
               <item name="TLCN_Microservices_WebTinTuc" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="TLCN_Microservices_WebTinTuc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TLCN_Microservices_WebTinTuc" type="462c0819:PsiDirectoryNode" />
-              <item name="eureka-service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TLCN_Microservices_WebTinTuc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TLCN_Microservices_WebTinTuc" type="462c0819:PsiDirectoryNode" />
-              <item name="eureka-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TLCN_Microservices_WebTinTuc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TLCN_Microservices_WebTinTuc" type="462c0819:PsiDirectoryNode" />
-              <item name="eureka-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TLCN_Microservices_WebTinTuc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TLCN_Microservices_WebTinTuc" type="462c0819:PsiDirectoryNode" />
-              <item name="eureka-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TLCN_Microservices_WebTinTuc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TLCN_Microservices_WebTinTuc" type="462c0819:PsiDirectoryNode" />
-              <item name="eureka-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="eurekaservice" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -214,7 +155,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539188836585" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539189635419" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -239,6 +180,7 @@
         </RuleState>
       </list>
     </option>
+    <option name="contentProportion" value="0.24567099" />
   </component>
   <component name="RunManager" selected="Spring Boot.DbServiceApplication">
     <configuration name="DbServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
@@ -282,12 +224,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1539186300158</updated>
-      <workItem from="1539186302774" duration="2517000" />
+      <workItem from="1539186302774" duration="3329000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2517000" />
+    <option name="totallyTimeSpent" value="3329000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -298,9 +240,9 @@
       <window_info id="Favorites" side_tool="true" />
       <window_info id="Capture Tool" />
       <window_info id="Web" sideWeight="0.50054765" side_tool="true" weight="0.20456906" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49945235" visible="true" weight="0.10501066" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49945235" visible="true" weight="0.10501066" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Run Dashboard" visible="true" weight="0.3264642" />
+      <window_info anchor="bottom" id="Run Dashboard" visible="true" weight="0.3264642" />
       <window_info anchor="bottom" id="Spring" weight="0.32968238" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
