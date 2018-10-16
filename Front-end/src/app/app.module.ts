@@ -7,6 +7,9 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { FramesComponent } from './frames/frames.component';
 import { MenuComponent } from './menu/menu.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +17,10 @@ import { MenuComponent } from './menu/menu.component';
     FooterComponent,
     HeaderComponent,
     FramesComponent,
-    MenuComponent
+    MenuComponent,
+    LoginComponent,
+    RegisterComponent,
+    ResetpasswordComponent
   ],
   imports: [
     BrowserModule,
