@@ -2,6 +2,7 @@ package hcmute.edu.vn.dbservice.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -19,11 +20,9 @@ public class Account {
 
     private String email;
 
-    private String firstName;
-
-    private String lastName;
-
     private String password;
+
+    private int status;
 
     private Date dateCreated;
 
@@ -48,5 +47,13 @@ public class Account {
 
     @OneToMany(mappedBy = "account")
     private Set<Assign_Permission> assign_permissions;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "ne_account_role",
+            joinColumns = @JoinColumn(name = "account_id",referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id",referencedColumnName = "id")
+    )
+    private Set<Role> roles;
 
 }

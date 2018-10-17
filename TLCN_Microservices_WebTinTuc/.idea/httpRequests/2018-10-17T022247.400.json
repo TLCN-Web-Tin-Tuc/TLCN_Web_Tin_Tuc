@@ -1,0 +1,7 @@
+{
+  "timestamp": "2018-10-16T19:22:47.723+0000",
+  "status": 400,
+  "error": "Bad Request",
+  "message": "Required request body is missing: public hcmute.edu.vn.nuservice.model.Account hcmute.edu.vn.nuservice.controller.NonUserController.register(hcmute.edu.vn.nuservice.model.RegisterModel)",
+  "path": "/api/v1/nuser/register"
+}

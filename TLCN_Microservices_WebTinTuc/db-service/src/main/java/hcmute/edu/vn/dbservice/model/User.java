@@ -2,6 +2,7 @@ package hcmute.edu.vn.dbservice.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -12,11 +13,16 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    private String firstName;
+
+    private String lastName;
 
     private Date dateOfBirth;
 
@@ -27,10 +33,6 @@ public class User {
     private String address;
 
     private String phone;
-
-    private String email;
-
-    private int status;
 
     private Date dateCreated;
 
@@ -43,15 +45,11 @@ public class User {
     @OneToOne(fetch = FetchType.LAZY)
     private Account account;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "ne_user_role",
-            joinColumns = @JoinColumn(name = "user_id",referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id",referencedColumnName = "id")
-    )
-    private Set<Role> roles;
+
 
 
 }
+
+
 
 
