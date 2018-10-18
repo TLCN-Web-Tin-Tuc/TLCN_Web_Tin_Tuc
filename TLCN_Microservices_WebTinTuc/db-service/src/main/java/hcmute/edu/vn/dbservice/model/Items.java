@@ -17,10 +17,6 @@ public class Items {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private Long cat;
-
-    private Long parent_id;
-
     private String fileName;
 
     private String fileExtension;
