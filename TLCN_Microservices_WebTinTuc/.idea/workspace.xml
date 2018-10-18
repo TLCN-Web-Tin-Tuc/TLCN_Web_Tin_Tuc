@@ -1,60 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f36aeaae-6f85-4f28-b973-96b8c44f901a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../Api/src/main/java/vn/hcmute/demo/entity/Person.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Api/src/main/java/vn/hcmute/demo/repository/PersonRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Api/src/main/java/vn/hcmute/demo/service/PersonService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Api/src/main/java/vn/hcmute/demo/service/RoleService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Api/src/main/java/vn/hcmute/demo/service/impl/PersonServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/api/v1/mapper/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Api/src/main/java/vn/hcmute/demo/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Api/src/main/java/vn/hcmute/demo/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Api/src/main/java/vn/hcmute/demo/entity/Account.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Api/src/main/java/vn/hcmute/demo/entity/Assign_Permission.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Api/src/main/java/vn/hcmute/demo/entity/Assign_Permission.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Api/src/main/java/vn/hcmute/demo/entity/Comments.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Api/src/main/java/vn/hcmute/demo/entity/Comments.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Api/src/main/java/vn/hcmute/demo/entity/Item_Access.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Api/src/main/java/vn/hcmute/demo/entity/Item_Access.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Api/src/main/java/vn/hcmute/demo/entity/Response_Comments.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Api/src/main/java/vn/hcmute/demo/entity/Response_Comments.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Api/src/main/java/vn/hcmute/demo/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Api/src/main/java/vn/hcmute/demo/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Api/src/main/java/vn/hcmute/demo/repository/AccountRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Api/src/main/java/vn/hcmute/demo/repository/RoleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Api/src/main/java/vn/hcmute/demo/repository/RoleRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Api/src/main/java/vn/hcmute/demo/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Api/src/main/java/vn/hcmute/demo/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Api/src/main/java/vn/hcmute/demo/service/AccountService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Api/src/main/java/vn/hcmute/demo/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Api/src/main/java/vn/hcmute/demo/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Api/src/main/java/vn/hcmute/demo/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Api/src/main/java/vn/hcmute/demo/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/db-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db-service/src/main/java/hcmute/edu/vn/dbservice/model/Account.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db-service/src/main/java/hcmute/edu/vn/dbservice/model/Assign_Permission.java" beforeDir="false" afterPath="$PROJECT_DIR$/db-service/src/main/java/hcmute/edu/vn/dbservice/model/Assign_Permission.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db-service/src/main/java/hcmute/edu/vn/dbservice/model/Comments.java" beforeDir="false" afterPath="$PROJECT_DIR$/db-service/src/main/java/hcmute/edu/vn/dbservice/model/Comments.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db-service/src/main/java/hcmute/edu/vn/dbservice/model/Item_Access.java" beforeDir="false" afterPath="$PROJECT_DIR$/db-service/src/main/java/hcmute/edu/vn/dbservice/model/Item_Access.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db-service/src/main/java/hcmute/edu/vn/dbservice/model/Response_Comments.java" beforeDir="false" afterPath="$PROJECT_DIR$/db-service/src/main/java/hcmute/edu/vn/dbservice/model/Response_Comments.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db-service/src/main/java/hcmute/edu/vn/dbservice/model/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/db-service/src/main/java/hcmute/edu/vn/dbservice/model/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db-service/src/main/java/hcmute/edu/vn/dbservice/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/db-service/src/main/java/hcmute/edu/vn/dbservice/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/api/v1/dto/AccountDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/api/v1/dto/UserDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/api/v1/mapper/AccountMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/controller/NonUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/controller/NonUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/model/Account.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/model/Assign_Permission.java" beforeDir="false" afterPath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/model/Assign_Permission.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/model/Attach_File.java" beforeDir="false" afterPath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/model/Attach_File.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/model/Cat.java" beforeDir="false" afterPath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/model/Cat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/model/Comments.java" beforeDir="false" afterPath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/model/Comments.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/model/Item_Access.java" beforeDir="false" afterPath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/model/Item_Access.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/model/Items.java" beforeDir="false" afterPath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/model/Items.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/model/Permission.java" beforeDir="false" afterPath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/model/Permission.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/model/RegisterModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Api/src/main/java/vn/hcmute/demo/entity/RegisterModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/model/Report.java" beforeDir="false" afterPath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/model/Report.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/model/Response_Comments.java" beforeDir="false" afterPath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/model/Response_Comments.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/model/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/model/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/repository/AccountRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/service/AccountService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/service/RoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/service/RoleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/service/impl/AccountServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/service/impl/RoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/service/impl/RoleServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/service/impl/UserServiceImpl.java" afterDir="false" />
-    </list>
+    <list default="true" id="f36aeaae-6f85-4f28-b973-96b8c44f901a" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/db-service/target/" />
     <ignored path="$PROJECT_DIR$/eureka-service/target/" />
@@ -165,8 +112,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/service/impl/UserServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="35" column="26" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
+            <state relative-caret-position="420">
+              <caret line="45" column="41" lean-forward="true" selection-start-line="45" selection-start-column="41" selection-end-line="45" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#865#866#0" expanded="true" />
@@ -318,7 +265,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-6" />
     <option name="width" value="925" />
     <option name="height" value="1047" />
@@ -612,12 +559,12 @@
       <workItem from="1539705803851" duration="14140000" />
       <workItem from="1539798418861" duration="2975000" />
       <workItem from="1539801661907" duration="720000" />
-      <workItem from="1539877003909" duration="498000" />
+      <workItem from="1539877003909" duration="1136000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31303000" />
+    <option name="totallyTimeSpent" value="31941000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -629,7 +576,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49945235" visible="true" weight="0.29850745" />
@@ -977,8 +924,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/service/impl/UserServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="35" column="26" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
+        <state relative-caret-position="420">
+          <caret line="45" column="41" lean-forward="true" selection-start-line="45" selection-start-column="41" selection-end-line="45" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#865#866#0" expanded="true" />
