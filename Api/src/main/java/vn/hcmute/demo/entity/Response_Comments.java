@@ -18,7 +18,7 @@ public class Response_Comments {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Account account;
+    private User userrcm;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Comments comments;

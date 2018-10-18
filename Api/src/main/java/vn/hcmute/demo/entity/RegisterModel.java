@@ -1,4 +1,4 @@
-package hcmute.edu.vn.nuservice.model;
+package vn.hcmute.demo.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,6 +16,6 @@ public class RegisterModel {
     private String lastName;
     private String phone;
     private int sex;
-    private Date dateOfBirth;
+    private Date dob;
     private String address;
 }

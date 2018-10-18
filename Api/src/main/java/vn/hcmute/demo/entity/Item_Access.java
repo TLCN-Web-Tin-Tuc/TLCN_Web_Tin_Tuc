@@ -22,7 +22,7 @@ public class Item_Access {
     private Items item_ac;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Account account;
+    private User useria;
 
     private Long action;
 

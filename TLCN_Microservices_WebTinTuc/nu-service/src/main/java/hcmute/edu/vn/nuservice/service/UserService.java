@@ -5,6 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface UserService {
     CrudRepository<User, Long> getRepo();
-    User createUser(User user, Long aid);
-    User findUserById(Long id);
+    User findByEmailAndPassWord(String userName, String passWord);
+    User registerUser(User user);
 }

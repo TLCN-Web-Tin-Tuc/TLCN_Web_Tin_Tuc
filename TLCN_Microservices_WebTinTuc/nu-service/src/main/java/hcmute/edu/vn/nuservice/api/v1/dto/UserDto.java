@@ -3,7 +3,7 @@ package hcmute.edu.vn.nuservice.api.v1.dto;
 import lombok.Data;
 
 @Data
-public class AccountDto {
+public class UserDto {
     private String email;
     private String password;
 }

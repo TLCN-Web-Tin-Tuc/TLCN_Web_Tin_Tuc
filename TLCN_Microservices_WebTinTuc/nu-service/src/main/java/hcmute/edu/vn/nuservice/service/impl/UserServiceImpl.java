@@ -1,8 +1,9 @@
 package hcmute.edu.vn.nuservice.service.impl;
 
-import hcmute.edu.vn.nuservice.model.Account;
+import hcmute.edu.vn.nuservice.exception.NotFoundException;
+import hcmute.edu.vn.nuservice.model.Role;
 import hcmute.edu.vn.nuservice.model.User;
-import hcmute.edu.vn.nuservice.repository.AccountRepository;
+import hcmute.edu.vn.nuservice.repository.RoleRepository;
 import hcmute.edu.vn.nuservice.repository.UserRepository;
 import hcmute.edu.vn.nuservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,33 +11,38 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
-   @Autowired
-    UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
-   @Autowired
-    AccountRepository accountRepository;
+    @Autowired
+    RoleRepository roleRepository;
+
     @Override
     public CrudRepository<User, Long> getRepo() {
         return userRepository;
     }
 
     @Override
-    public User createUser(User user, Long aid) {
-        user.setDateCreated(new Date());
-        user.setAccount(accountRepository.findById(aid).get());
-        user.setUserCreated(user.getAccount().getEmail());
-        return userRepository.save(user);
-    }
-
-    @Override
-    public User findUserById(Long id) {
-        Optional<User> user = userRepository.findById(id);
+    public User findByEmailAndPassWord(String email, String passWord) {
+        Optional<User> user = userRepository.findByEmailAndPassword(email, passWord);
+        if(!user.isPresent())
+            throw new NotFoundException("User Not Found!!!");
         return user.get();
     }
 
-
+    @Override
+    public User registerUser(User user) {
+        User userCreate =  userRepository.save(user);
+        Role role = roleRepository.findByRname("ROLE_USER").get();
+        Set<Role> roles=new HashSet<>();
+        roles.add(role);
+        userCreate.setRoles(roles);
+        return userRepository.save(userCreate);
+    }
 }

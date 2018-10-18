@@ -17,41 +17,32 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    private Date dateOfBirth;
-
-    private int sex;
-
-    private byte[] avatar;
-
-    private String address;
-
-    private String phone;
-
     private String email;
-
+    private String password;
     private int status;
 
-    private Date dateCreated;
+    @OneToOne(fetch = FetchType.LAZY)
+    private Person person;
 
-    private String userCreated;
+    @OneToMany(mappedBy = "usercm")
+    private Set<Comments> comments;
 
-    private Date dateUpdated;
+    @OneToMany(mappedBy = "userrcm")
+    private Set<Response_Comments> response_comments;
 
-    private String userUpdated;
+    @OneToMany(mappedBy = "useria")
+    private Set<Item_Access> item_accesses;
 
-    @OneToOne(mappedBy = "user",fetch = FetchType.LAZY)
-    private Account account;
+    @OneToMany(mappedBy = "userap")
+    private Set<Assign_Permission> assign_permissions;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-            name = "ne_user_role",
+            name = "user_role",
             joinColumns = @JoinColumn(name = "user_id",referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id",referencedColumnName = "id")
     )
     private Set<Role> roles;
-
-
 }
 
 

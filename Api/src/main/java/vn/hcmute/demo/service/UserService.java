@@ -1,10 +1,13 @@
 package vn.hcmute.demo.service;
 
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Service;
 import vn.hcmute.demo.entity.User;
 
-@Service
+import java.util.List;
+
 public interface UserService {
-    CrudRepository<User, Long> getRepo();
+    User retrieveById(long id);
+    List<User> retrieveAllUsers();
+    User registerUser(User user);
+    User updateRegisterUser(User user, long pid);
+
 }

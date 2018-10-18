@@ -17,7 +17,7 @@ public class Assign_Permission {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Account account;
+    private User user_ap;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Permission permission;

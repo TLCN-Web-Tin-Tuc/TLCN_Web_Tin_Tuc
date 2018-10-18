@@ -3,12 +3,13 @@ package hcmute.edu.vn.nuservice.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Date;
-import java.util.Set;
 
 @Entity(name = "ne_roles")
 @Data
@@ -31,7 +32,5 @@ public class Role {
 
     private String userUpdated;
 
-    @ManyToMany(mappedBy = "roles")
-    private Set<Account> accounts;
 }
 

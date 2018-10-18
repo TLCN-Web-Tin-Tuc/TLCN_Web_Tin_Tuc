@@ -2,7 +2,6 @@ package hcmute.edu.vn.nuservice.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -13,11 +12,18 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    private String email;
+
+    private String password;
+
+    private int status;
 
     private String firstName;
 
@@ -41,12 +47,30 @@ public class User {
 
     private String userUpdated;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    private Account account;
+    @OneToMany(mappedBy = "user_cm")
+    private Set<Comments> comments;
 
+    @OneToMany(mappedBy = "user_rcm")
+    private Set<Response_Comments> response_comments;
+
+    @OneToMany(mappedBy = "user_ia")
+    private Set<Item_Access> item_accesses;
+
+    @OneToMany(mappedBy = "user_ap")
+    private Set<Assign_Permission> assign_permissions;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "ne_user_role",
+            joinColumns = @JoinColumn(name = "user_id",referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id",referencedColumnName = "id")
+    )
+    private Set<Role> roles;
 
 
 
 }
+
+
 
 
