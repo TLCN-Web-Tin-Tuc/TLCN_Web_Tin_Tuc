@@ -52,7 +52,7 @@ public class NonUserController {
     @GetMapping("/get-all-cat")
     public List<CatDto> getAllCat()
     {
-        return catMapper.listcatTolistCatDto(catService.getRepo().findAll());
+                return catMapper.listcatTolistCatDto(catService.getRepo().findAll());
     }
 
     @GetMapping("/get-all-item")
