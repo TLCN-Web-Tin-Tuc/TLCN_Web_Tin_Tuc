@@ -10,6 +10,9 @@ import { MenuComponent } from './menu/menu.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ProfileEditComponent } from './profile-edit/profile-edit.component';
+import { PasswordEditComponent } from './password-edit/password-edit.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { ResetpasswordComponent } from './resetpassword/resetpassword.component'
     MenuComponent,
     LoginComponent,
     RegisterComponent,
-    ResetpasswordComponent
+    ResetpasswordComponent,
+    ProfileComponent,
+    ProfileEditComponent,
+    PasswordEditComponent
   ],
   imports: [
     BrowserModule,

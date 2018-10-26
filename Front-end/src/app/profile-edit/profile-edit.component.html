@@ -1,0 +1,143 @@
+<app-header></app-header>
+<app-menu></app-menu>
+<div class="app-content content">
+  <div class="content-wrapper">
+    <div class="content-body">
+      <div id="user-profile">
+        <div class="row">
+          <div class="col-12">
+            <div class="card profile-with-cover">
+              <div class="media profile-cover-details w-100">
+                <div class="media-left pl-2 pt-2">
+                  <a class="profile-image"> <img class="rounded-circle img-border height-100" src="/assets/robust-admin/profile.png"
+                      alt="Card image">
+                  </a>
+                </div>
+                <div class="media-body pt-3 px-2">
+                  <div class="row">
+                    <div class="col">
+                      <h3 class="card-title"> Mr Admin</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <nav class="navbar navbar-light navbar-profile align-self-end">
+                <button class="navbar-toggler d-sm-none" type="button" data-toggle="collapse" aria-expanded="false"
+                  aria-label="Toggle navigation"></button>
+              </nav>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="tab-content px-1 pt-1"></div>
+              <div class="tab-pane" id="link32" role="tabpanel" aria-labelledby="link-tab32" aria-expanded="false">
+                <!-- Profile -->
+                <form class="form" id="frmUser" action="" method="POST" enctype="multipart/form-data">
+                  <div class="form-body">
+                    <div class="row">
+                      <div class="form-group col-md-6 mb-2">
+                        <label>Ảnh đại diện</label>
+                        <label id="projectinput8" class="file center-block">
+                          <input type="file" id="file" name="avatar-upload" accept=".jpg, .jpeg, .png, .gif" style="margin-left: 5px;">
+                          <span class="file-custom"></span>
+                        </label>
+                      </div>
+                    </div>
+                    <h4 class="form-section">
+                      <a id="models-tab" class="nav-link active"><i class="ft-user"></i>Thông tin cá nhân</a>
+                    </h4>
+                    <div class="row">
+                      <div class="form-group col-md-4 mb-2">
+                        <label for="projectinput1">Họ</label>
+                        <div class="position-relative has-icon-left">
+                          <input type="text" id="firstname" class="form-control" placeholder="First Name" name="fname" value="Mr">
+                          <div class="form-control-position" style="margin-top: -2px;">
+                            <i class="ft-user"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group col-md-4 mb-2">
+                        <label for="projectinput2">Tên</label>
+                        <div class="position-relative has-icon-left">
+                          <input type="text" id="lastname" class="form-control" placeholder="Last Name" name="lname" value="Admin">
+                          <div class="form-control-position" style="margin-top: -2px;">
+                            <i class="ft-user"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group col-md-4 mb-2">
+                        <label for="projectinput3">E-mail</label>
+                        <div class="position-relative has-icon-left">
+                          <input type="text" id="email" class="form-control" placeholder="E-mail" name="email" value="admin@gmail.com">
+                          <div class="form-control-position" style="margin-top: -2px;">
+                            <i class="ft-mail"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="form-group col-md-4 mb-2">
+                        <label for="projectinput4">Số điện thoại</label>
+                        <div class="position-relative has-icon-left">
+                          <input type="text" id="contact_number" class="form-control" placeholder="Phone" name="phone" value="123456789">
+                          <div class="form-control-position" style="margin-top: -2px;">
+                            <i class="ft-smartphone"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group col-md-4 mb-2">
+                        <label for="timesheetinput">Ngày Sinh</label>
+                        <div class="position-relative has-icon-left">
+                          <input type="date" id="birthday" class="form-control" name="birthday" value="2018-08-02">
+                          <div class="form-control-position" style="margin-top: -1px;">
+                            <i class="ft-calendar"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group col-md-4 mb-2">
+                        <label for="gender">Giới tính</label>
+                        <div class="position-relative has-icon-left">
+                          <select name="gender" class="form-control" id="gender">                        
+                              <option value="1" selected="selected">Nam</option>
+                              <option value="0">Nữ</option>
+                          </select>
+                          <div class="form-control-position" style="margin-top: -2px;">
+                            <i class="fa fa-mars-double"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-md-4 mb-2">
+                        <label for="projectinput3"> Địa chỉ</label>
+                        <div class="position-relative has-icon-left">
+                          <input type="text" id="address" class="form-control" placeholder="Address" name="address" value="Ho Chi Minh">
+                          <div class="form-control-position" style="margin-top: -2px;">
+                            <i class="far fa-address-book"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                  </div>
+                  <div class="form-actions top" style="float: right;">
+                    <input class="btn btn-cancel" type="button" value="Quay lại">
+                    <button type="submit" class="btn btn-primary">
+                      <i class="far fa-check-square" style="margin-right: 5px;"></i>Lưu
+                    </button>
+                  </div>
+                </form>
+                <!-- End Profile -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
