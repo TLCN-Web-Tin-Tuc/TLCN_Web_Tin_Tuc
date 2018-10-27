@@ -1,7 +1,7 @@
 package hcmute.edu.vn.userservice.api.v1.mapper;
 
-import hcmute.edu.vn.nuservice.api.v1.dto.ItemDto;
-import hcmute.edu.vn.nuservice.model.Items;
+import hcmute.edu.vn.userservice.api.v1.dto.ItemDto;
+import hcmute.edu.vn.userservice.model.Items;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

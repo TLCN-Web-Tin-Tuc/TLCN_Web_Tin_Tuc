@@ -1,8 +1,8 @@
 package hcmute.edu.vn.userservice.api.v1.dto;
 
-import hcmute.edu.vn.nuservice.model.Attach_File;
-import hcmute.edu.vn.nuservice.model.Cat;
-import hcmute.edu.vn.nuservice.model.Item_Access;
+import hcmute.edu.vn.userservice.model.Attach_File;
+import hcmute.edu.vn.userservice.model.Cat;
+import hcmute.edu.vn.userservice.model.Item_Access;
 import lombok.Data;
 
 import java.util.Set;
