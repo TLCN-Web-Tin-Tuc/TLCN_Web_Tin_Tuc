@@ -5,7 +5,9 @@ import hcmute.edu.vn.adminservice.api.v1.data.DataReturnOne;
 import hcmute.edu.vn.adminservice.api.v1.dto.UserDto;
 import hcmute.edu.vn.adminservice.api.v1.mapper.UserMapper;
 import hcmute.edu.vn.adminservice.exception.NotFoundException;
+import hcmute.edu.vn.adminservice.model.Report;
 import hcmute.edu.vn.adminservice.model.User;
+import hcmute.edu.vn.adminservice.service.ReportService;
 import hcmute.edu.vn.adminservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,22 +15,21 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@RestController
+@RequestMapping("api/v1/admin/")
 public class AdminController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private ReportService reportService;
 
     @Autowired
     private UserMapper userMapper;
-    @RequestMapping(value = "", //
-            method = RequestMethod.GET)
-    public String admin(){
-        return "permit admin";
-    }
 
     // retrieve user by id //
     @GetMapping("/users/search")
-    public DataReturnOne<UserDto> retrieveUserById(@RequestParam(required = false) long id, @RequestParam(required = false) String email){
+    public DataReturnOne<UserDto> retrieveUserByIdOrEmail(@RequestParam(required = false) long id, @RequestParam(required = false) String email){
         DataReturnOne<UserDto> dataReturnOne=new DataReturnOne<>();
         dataReturnOne.setSuccess("true");
         dataReturnOne.setMessage("success");
@@ -68,5 +69,31 @@ public class AdminController {
         dataReturnOne.setData(userMapper.userToUserDto(userService.updateUserStatus(uid)));
         return dataReturnOne;
     }
+
+    @GetMapping("/reports")
+    public DataReturnList<Report> retrieveAllReport()
+    {
+        DataReturnList<Report> dataReturnList = new DataReturnList<>();
+        dataReturnList.setSuccess("success");
+        dataReturnList.setMessage("true");
+        dataReturnList.setData(reportService.retrieveAllReport());
+        return dataReturnList;
+    }
+
+    @DeleteMapping("/reports/delete")
+    public  DataReturnOne<Report> DeleteCategory(@RequestBody Report report){
+        DataReturnOne<Report> dataReturnOne = new DataReturnOne<>();
+        try{
+            reportService.deleteReport(report.getId());
+            dataReturnOne.setMessage("Delete Report Success");
+            dataReturnOne.setData(null);
+        }catch (Exception e){
+            dataReturnOne.setSuccess("false");
+            dataReturnOne.setMessage(e.getMessage());
+            dataReturnOne.setData(null);
+        }
+        return dataReturnOne;
+    }
+
 
 }

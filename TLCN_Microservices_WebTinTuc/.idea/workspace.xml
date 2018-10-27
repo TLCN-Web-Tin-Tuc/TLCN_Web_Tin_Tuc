@@ -2,60 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f36aeaae-6f85-4f28-b973-96b8c44f901a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/repository/Assign_Permission_Repository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/repository/PermissionRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/service/Assign_Permission_Service.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/service/PermissionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/service/impl/Assign_Permission_ServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/service/impl/PermissionServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/model/Cat.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/model/Cat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/controller/AdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/model/Permission.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/model/Permission.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/service/RoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/service/RoleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/service/impl/RoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/service/impl/RoleServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db-service/src/main/java/hcmute/edu/vn/dbservice/model/Cat.java" beforeDir="false" afterPath="$PROJECT_DIR$/db-service/src/main/java/hcmute/edu/vn/dbservice/model/Cat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/repository/ReportRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/repository/ReportRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/service/ReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/service/ReportService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/service/impl/ReportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/service/impl/ReportServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db-service/src/main/java/hcmute/edu/vn/dbservice/model/Permission.java" beforeDir="false" afterPath="$PROJECT_DIR$/db-service/src/main/java/hcmute/edu/vn/dbservice/model/Permission.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/api/v1/dto/ItemDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/api/v1/dto/ItemDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/api/v1/mapper/CatMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/api/v1/mapper/CatMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/api/v1/mapper/ItemMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/api/v1/mapper/ItemMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/api/v1/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/api/v1/mapper/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/controller/NonUserController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/model/Cat.java" beforeDir="false" afterPath="$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/model/Cat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/model/Permission.java" beforeDir="false" afterPath="$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/model/Permission.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/repository/CatRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/repository/ItemRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/repository/RoleRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/repository/UserRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/service/CatService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/service/ItemService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/service/RoleService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/service/UserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/service/impl/CatServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/service/impl/ItemServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/service/impl/RoleServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/service/impl/UserServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/controller/NonUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/controller/NonUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/model/Cat.java" beforeDir="false" afterPath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/model/Cat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/model/Permission.java" beforeDir="false" afterPath="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/model/Permission.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/hcmute/edu/vn/userservice/api/v1/dto/ItemDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/hcmute/edu/vn/userservice/api/v1/dto/ItemDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/hcmute/edu/vn/userservice/api/v1/mapper/CatMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/hcmute/edu/vn/userservice/api/v1/mapper/CatMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/hcmute/edu/vn/userservice/api/v1/mapper/ItemMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/hcmute/edu/vn/userservice/api/v1/mapper/ItemMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/hcmute/edu/vn/userservice/api/v1/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/hcmute/edu/vn/userservice/api/v1/mapper/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/hcmute/edu/vn/userservice/controller/NonUserController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/hcmute/edu/vn/userservice/model/Cat.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/hcmute/edu/vn/userservice/model/Cat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-service/src/main/java/hcmute/edu/vn/userservice/model/Permission.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/hcmute/edu/vn/userservice/model/Permission.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/hcmute/edu/vn/userservice/repository/CatRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/hcmute/edu/vn/userservice/repository/ItemRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/hcmute/edu/vn/userservice/repository/RoleRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/hcmute/edu/vn/userservice/repository/UserRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/hcmute/edu/vn/userservice/service/CatService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/hcmute/edu/vn/userservice/service/ItemService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/hcmute/edu/vn/userservice/service/RoleService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/hcmute/edu/vn/userservice/service/UserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/hcmute/edu/vn/userservice/service/impl/CatServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/hcmute/edu/vn/userservice/service/impl/ItemServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/hcmute/edu/vn/userservice/service/impl/RoleServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/hcmute/edu/vn/userservice/service/impl/UserServiceImpl.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/db-service/target/" />
@@ -79,21 +35,21 @@
     <session id="768992988">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="16" />
+          <entry key="project.closed" value="17" />
           <entry key="project.open.time.1" value="9" />
-          <entry key="project.open.time.10" value="1" />
+          <entry key="project.open.time.10" value="2" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.2" value="3" />
           <entry key="project.open.time.20" value="1" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="17" />
+          <entry key="project.opened" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="2" />
-          <entry key="java" value="410" />
+          <entry key="java" value="424" />
           <entry key="mvnw" value="1" />
           <entry key="properties" value="34" />
           <entry key="xml" value="37" />
@@ -103,7 +59,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="2" />
-          <entry key="JAVA" value="410" />
+          <entry key="JAVA" value="424" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="Properties" value="34" />
           <entry key="XML" value="37" />
@@ -112,7 +68,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="2487" />
+          <entry key="java" value="2753" />
           <entry key="properties" value="62" />
           <entry key="xml" value="15" />
           <entry key="yml" value="14" />
@@ -120,7 +76,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="2487" />
+          <entry key="JAVA" value="2753" />
           <entry key="Properties" value="62" />
           <entry key="XML" value="15" />
           <entry key="YAML" value="14" />
@@ -136,28 +92,92 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/api/v1/dto/ItemDto.java">
+        <entry file="file://$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/controller/AdminController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="25" column="21" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
+            <state relative-caret-position="440">
+              <caret line="96" selection-start-line="96" selection-end-line="96" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/api/v1/mapper/CatMapper.java">
+        <entry file="file://$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/model/Permission.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="14" column="48" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
+            <state relative-caret-position="323">
+              <caret line="25" column="20" lean-forward="true" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/api/v1/mapper/ItemMapper.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db-service/src/main/java/hcmute/edu/vn/dbservice/model/Permission.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="13" column="53" selection-start-line="13" selection-start-column="53" selection-end-line="13" selection-end-column="53" />
+            <state relative-caret-position="117">
+              <caret line="25" column="19" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/model/Permission.java">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/model/Permission.java">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/user-service/src/main/java/hcmute/edu/vn/userservice/model/Permission.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/controller/NonUserController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="19" selection-start-line="19" selection-end-line="19" selection-end-column="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/service/ReportService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="34" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/repository/ReportRepository.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/service/impl/ReportServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="31" selection-start-line="31" selection-end-line="31" />
+              <folding>
+                <element signature="e#697#698#0" expanded="true" />
+                <element signature="e#724#725#0" expanded="true" />
+                <element signature="e#801#802#0" expanded="true" />
+                <element signature="e#832#833#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -178,19 +198,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/mod-service/pom.xml" />
-        <option value="$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/model/Items.java" />
-        <option value="$PROJECT_DIR$/mod-service/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/user-service/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/admin-service/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/admin-service/pom.xml" />
         <option value="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/AdminServiceApplication.java" />
         <option value="$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/ModServiceApplication.java" />
         <option value="$PROJECT_DIR$/user-service/src/main/java/hcmute/edu/vn/userservice/UserServiceApplication.java" />
         <option value="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/api/v1/mapper/UserMapper.java" />
-        <option value="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/repository/ReportRepository.java" />
-        <option value="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/service/ReportService.java" />
-        <option value="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/service/impl/ReportServiceImpl.java" />
         <option value="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/api/v1/data/DataReturnOne.java" />
         <option value="$PROJECT_DIR$/user-service/src/main/java/hcmute/edu/vn/userservice/api/v1/data/DataReturnOne.java" />
         <option value="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/api/v1/data/DataReturnOne.java" />
@@ -214,12 +227,10 @@
         <option value="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/repository/Assign_Permission_Repository.java" />
         <option value="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/service/PermissionService.java" />
         <option value="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/service/Assign_Permission_Service.java" />
-        <option value="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/controller/AdminController.java" />
         <option value="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/service/impl/PermissionServiceImpl.java" />
         <option value="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/service/impl/Assign_Permission_ServiceImpl.java" />
         <option value="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/service/RoleService.java" />
         <option value="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/service/impl/RoleServiceImpl.java" />
-        <option value="$PROJECT_DIR$/db-service/src/main/java/hcmute/edu/vn/dbservice/model/Permission.java" />
         <option value="$PROJECT_DIR$/db-service/src/main/java/hcmute/edu/vn/dbservice/model/Cat.java" />
         <option value="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/model/Cat.java" />
         <option value="$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/model/Cat.java" />
@@ -229,6 +240,15 @@
         <option value="$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/api/v1/dto/ItemDto.java" />
         <option value="$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/api/v1/mapper/CatMapper.java" />
         <option value="$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/api/v1/mapper/ItemMapper.java" />
+        <option value="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/service/ReportService.java" />
+        <option value="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/service/impl/ReportServiceImpl.java" />
+        <option value="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/repository/ReportRepository.java" />
+        <option value="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/controller/AdminController.java" />
+        <option value="$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/model/Permission.java" />
+        <option value="$PROJECT_DIR$/db-service/src/main/java/hcmute/edu/vn/dbservice/model/Permission.java" />
+        <option value="$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/model/Permission.java" />
+        <option value="$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/model/Permission.java" />
+        <option value="$PROJECT_DIR$/user-service/src/main/java/hcmute/edu/vn/userservice/model/Permission.java" />
       </list>
     </option>
   </component>
@@ -274,6 +294,153 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="TLCN_Microservices_WebTinTuc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TLCN_Microservices_WebTinTuc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TLCN_Microservices_WebTinTuc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TLCN_Microservices_WebTinTuc" type="462c0819:PsiDirectoryNode" />
+              <item name="mod-service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TLCN_Microservices_WebTinTuc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TLCN_Microservices_WebTinTuc" type="462c0819:PsiDirectoryNode" />
+              <item name="mod-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TLCN_Microservices_WebTinTuc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TLCN_Microservices_WebTinTuc" type="462c0819:PsiDirectoryNode" />
+              <item name="mod-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TLCN_Microservices_WebTinTuc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TLCN_Microservices_WebTinTuc" type="462c0819:PsiDirectoryNode" />
+              <item name="mod-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TLCN_Microservices_WebTinTuc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TLCN_Microservices_WebTinTuc" type="462c0819:PsiDirectoryNode" />
+              <item name="mod-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="modservice" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TLCN_Microservices_WebTinTuc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TLCN_Microservices_WebTinTuc" type="462c0819:PsiDirectoryNode" />
+              <item name="nu-service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TLCN_Microservices_WebTinTuc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TLCN_Microservices_WebTinTuc" type="462c0819:PsiDirectoryNode" />
+              <item name="nu-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TLCN_Microservices_WebTinTuc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TLCN_Microservices_WebTinTuc" type="462c0819:PsiDirectoryNode" />
+              <item name="nu-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TLCN_Microservices_WebTinTuc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TLCN_Microservices_WebTinTuc" type="462c0819:PsiDirectoryNode" />
+              <item name="nu-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TLCN_Microservices_WebTinTuc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TLCN_Microservices_WebTinTuc" type="462c0819:PsiDirectoryNode" />
+              <item name="nu-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="nuservice" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TLCN_Microservices_WebTinTuc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TLCN_Microservices_WebTinTuc" type="462c0819:PsiDirectoryNode" />
+              <item name="nu-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="nuservice" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TLCN_Microservices_WebTinTuc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TLCN_Microservices_WebTinTuc" type="462c0819:PsiDirectoryNode" />
+              <item name="nu-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="nuservice" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TLCN_Microservices_WebTinTuc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TLCN_Microservices_WebTinTuc" type="462c0819:PsiDirectoryNode" />
+              <item name="user-service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TLCN_Microservices_WebTinTuc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TLCN_Microservices_WebTinTuc" type="462c0819:PsiDirectoryNode" />
+              <item name="user-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TLCN_Microservices_WebTinTuc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TLCN_Microservices_WebTinTuc" type="462c0819:PsiDirectoryNode" />
+              <item name="user-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TLCN_Microservices_WebTinTuc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TLCN_Microservices_WebTinTuc" type="462c0819:PsiDirectoryNode" />
+              <item name="user-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TLCN_Microservices_WebTinTuc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TLCN_Microservices_WebTinTuc" type="462c0819:PsiDirectoryNode" />
+              <item name="user-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="userservice" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TLCN_Microservices_WebTinTuc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TLCN_Microservices_WebTinTuc" type="462c0819:PsiDirectoryNode" />
+              <item name="user-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="userservice" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -366,85 +533,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="TLCN_Microservices_WebTinTuc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TLCN_Microservices_WebTinTuc" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TLCN_Microservices_WebTinTuc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TLCN_Microservices_WebTinTuc" type="462c0819:PsiDirectoryNode" />
-              <item name="mod-service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TLCN_Microservices_WebTinTuc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TLCN_Microservices_WebTinTuc" type="462c0819:PsiDirectoryNode" />
-              <item name="mod-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TLCN_Microservices_WebTinTuc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TLCN_Microservices_WebTinTuc" type="462c0819:PsiDirectoryNode" />
-              <item name="mod-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TLCN_Microservices_WebTinTuc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TLCN_Microservices_WebTinTuc" type="462c0819:PsiDirectoryNode" />
-              <item name="mod-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TLCN_Microservices_WebTinTuc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TLCN_Microservices_WebTinTuc" type="462c0819:PsiDirectoryNode" />
-              <item name="mod-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="modservice" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TLCN_Microservices_WebTinTuc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TLCN_Microservices_WebTinTuc" type="462c0819:PsiDirectoryNode" />
-              <item name="mod-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="modservice" type="462c0819:PsiDirectoryNode" />
-              <item name="v1" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TLCN_Microservices_WebTinTuc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TLCN_Microservices_WebTinTuc" type="462c0819:PsiDirectoryNode" />
-              <item name="mod-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="modservice" type="462c0819:PsiDirectoryNode" />
-              <item name="v1" type="462c0819:PsiDirectoryNode" />
-              <item name="dto" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TLCN_Microservices_WebTinTuc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TLCN_Microservices_WebTinTuc" type="462c0819:PsiDirectoryNode" />
-              <item name="mod-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="modservice" type="462c0819:PsiDirectoryNode" />
-              <item name="v1" type="462c0819:PsiDirectoryNode" />
-              <item name="mapper" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -454,7 +542,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540613308424" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540629017295" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../tlcn-microservices-master" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -465,6 +553,10 @@
       <recent name="hcmute.edu.vn.nuservice.api" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="hcmute.edu.vn.userservice.model" />
+      <recent name="hcmute.edu.vn.nuservice.model" />
+      <recent name="hcmute.edu.vn.modservice.model" />
+      <recent name="hcmute.edu.vn.dbservice.model" />
       <recent name="hcmute.edu.vn.nuservice.exception" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -596,12 +688,13 @@
       <workItem from="1540221826711" duration="6730000" />
       <workItem from="1540257295736" duration="2165000" />
       <workItem from="1540543996424" duration="345000" />
-      <workItem from="1540606043448" duration="6931000" />
+      <workItem from="1540606043448" duration="7057000" />
+      <workItem from="1540625105473" duration="3554000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64215000" />
+    <option name="totallyTimeSpent" value="67895000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -614,8 +707,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49945235" visible="true" weight="0.1684435" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49945235" visible="true" weight="0.17004265" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -696,13 +790,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/api/v1/data/DataReturnList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/api/v1/dto/UserDto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -728,30 +815,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/controller/NonUserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="46" column="45" selection-start-line="46" selection-start-column="45" selection-end-line="46" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/repository/UserRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="11" column="43" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/user-service/src/main/java/hcmute/edu/vn/userservice/api/v1/mapper/ItemMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" column="54" selection-start-line="13" selection-start-column="54" selection-end-line="13" selection-end-column="54" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -759,9 +826,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="27" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -769,9 +833,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="1" lean-forward="true" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -793,9 +854,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" column="29" lean-forward="true" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -806,20 +864,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/repository/ReportRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/repository/PermissionRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -827,9 +875,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="76" selection-start-line="8" selection-start-column="76" selection-end-line="8" selection-end-column="76" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -840,13 +885,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/controller/AdminController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="70" selection-start-line="70" selection-end-line="70" />
         </state>
       </provider>
     </entry>
@@ -874,41 +912,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/service/PermissionService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="46" lean-forward="true" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/service/ReportService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" column="42" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/service/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="14" column="48" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/repository/RoleRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/service/RoleService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -944,13 +951,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db-service/src/main/java/hcmute/edu/vn/dbservice/model/Permission.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="25" column="19" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db-service/src/main/java/hcmute/edu/vn/dbservice/model/Cat.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="253">
@@ -968,42 +968,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/model/Permission.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/model/Cat.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-257" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/model/Permission.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/model/Cat.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/model/Permission.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/model/Cat.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/user-service/src/main/java/hcmute/edu/vn/userservice/model/Permission.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/user-service/src/main/java/hcmute/edu/vn/userservice/model/Cat.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/user-service/src/main/java/hcmute/edu/vn/userservice/controller/NonUserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="14" lean-forward="true" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/user-service/src/main/java/hcmute/edu/vn/userservice/controller/NonUserController.java" />
     <entry file="file://$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/api/v1/dto/ItemDto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -1020,8 +999,113 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/api/v1/mapper/ItemMapper.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/service/PermissionService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="46" lean-forward="true" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/service/RoleService.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="13" column="53" selection-start-line="13" selection-start-column="53" selection-end-line="13" selection-end-column="53" />
+          <caret line="11" column="33" lean-forward="true" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/repository/UserRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="43" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/repository/RoleRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/controller/NonUserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="19" selection-start-line="19" selection-end-line="19" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/service/ReportService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="34" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/service/impl/ReportServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+          <folding>
+            <element signature="e#697#698#0" expanded="true" />
+            <element signature="e#724#725#0" expanded="true" />
+            <element signature="e#801#802#0" expanded="true" />
+            <element signature="e#832#833#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/repository/ReportRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/controller/AdminController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="96" selection-start-line="96" selection-end-line="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin-service/src/main/java/hcmute/edu/vn/adminservice/model/Permission.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="25" column="20" lean-forward="true" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db-service/src/main/java/hcmute/edu/vn/dbservice/model/Permission.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="25" column="19" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mod-service/src/main/java/hcmute/edu/vn/modservice/model/Permission.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nu-service/src/main/java/hcmute/edu/vn/nuservice/model/Permission.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user-service/src/main/java/hcmute/edu/vn/userservice/model/Permission.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
         </state>
       </provider>
     </entry>

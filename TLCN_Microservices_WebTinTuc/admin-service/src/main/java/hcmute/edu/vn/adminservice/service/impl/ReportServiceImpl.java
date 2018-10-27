@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ReportServiceImpl implements ReportService {
 
@@ -17,4 +19,16 @@ public class ReportServiceImpl implements ReportService {
     public CrudRepository<Report, Long> getRepo() {
         return reportRepository;
     }
+
+    @Override
+    public List<Report> retrieveAllReport() {
+        return reportRepository.findAll();
+    }
+
+    @Override
+    public void deleteReport(long id) {
+        reportRepository.deleteById(id);
+    }
+
+
 }

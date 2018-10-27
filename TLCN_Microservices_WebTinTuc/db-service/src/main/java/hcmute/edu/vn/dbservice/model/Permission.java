@@ -25,6 +25,8 @@ public class Permission {
     @ManyToOne(fetch = FetchType.LAZY)
     private Cat cat;
 
+    private Boolean status;
+
     private Boolean p_create;
 
     private Boolean p_update;
