@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -89,6 +88,23 @@ public class UserServiceImpl implements UserService {
         if(!userOptional.isPresent())
             throw new NotFoundException("User not found. Could not update role for this user");
         return userOptional.get();
+    }
+
+    @Override
+    public User updateProfile(User user) {
+        Optional<User> userOptional = userRepository.findById(user.getId());
+        userOptional.orElseThrow(()->new NotFoundException("Not Found User. Please check again!"));
+        User userUpdate = userOptional.get();
+        userUpdate.setAddress(user.getAddress());
+        userUpdate.setAssign_permissions(user.getAssign_permissions());
+        userUpdate.setAvatar(user.getAvatar());
+        userUpdate.setComments(user.getComments());
+        userUpdate.setFirstName(user.getFirstName());
+        userUpdate.setLastName(user.getLastName());
+        userUpdate.setPhone(user.getPhone());
+        userUpdate.setSex(user.getSex());
+        userUpdate.setPassword(user.getPassword());
+        return userRepository.save(userUpdate);
     }
 
 }

@@ -21,7 +21,7 @@ public class Cat {
 
     private Long parent_id;
 
-    private String checkCat;
+    private int checkCat;
 
     private String fileName;
 

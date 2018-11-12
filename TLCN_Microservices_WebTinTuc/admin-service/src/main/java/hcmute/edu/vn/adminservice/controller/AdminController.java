@@ -80,6 +80,22 @@ public class AdminController {
         return dataReturnOne;
     }
 
+    @PutMapping("/users/updateprofile")
+    public DataReturnOne<User> updateProfile(@RequestBody User user){
+        DataReturnOne<User> userDataReturnOne=new DataReturnOne<>();
+        try {
+            User userUpdate = userService.updateProfile(user);
+            userDataReturnOne.setSuccess("true");
+            userDataReturnOne.setMessage("success");
+            userDataReturnOne.setData(userUpdate);
+        }catch (NotFoundException ex){
+            userDataReturnOne.setSuccess("false");
+            userDataReturnOne.setMessage("error");
+            userDataReturnOne.setData(null);
+        }
+        return userDataReturnOne;
+    }
+
     @GetMapping("/reports")
     public DataReturnList<Report> retrieveAllReport()
     {
@@ -199,7 +215,7 @@ public class AdminController {
         return dataReturnOne;
     }
 
-    @PostMapping("/permission/create")
+    @PostMapping("/assign_permissions/create")
     public DataReturnOne<Assign_Permission> createAssignPermission(@RequestBody Assign_Permission assign_permission){
         DataReturnOne<Assign_Permission> dataReturnOne = new DataReturnOne<>();
         try{

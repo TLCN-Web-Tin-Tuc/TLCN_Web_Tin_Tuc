@@ -25,19 +25,21 @@ public class Items {
 
     private String title;
 
-    private String ShortDesc;
+    private int status;
 
-    private String FullDesc;
+    private String shortDesc;
 
-    private String Author;
+    private String fullDesc;
 
-    private Long Views;
+    private String author;
 
-    private Long Likes;
+    private Long views;
 
-    private Long Download;
+    private Long likes;
 
-    private Long Comment;
+    private Long download;
+
+    private Long comment;
 
     private Date dateCreated;
 
