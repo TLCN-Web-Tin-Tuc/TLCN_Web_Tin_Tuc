@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class RoleServiceImpl implements RoleService {
 
@@ -17,5 +20,16 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public CrudRepository<Role, Long> getRepo() {
         return roleRepository;
+    }
+
+    @Override
+    public Role retrieveRoleByRName(String rname) {
+        Optional<Role> role = roleRepository.findByRname(rname);
+        return role.get();
+    }
+
+    @Override
+    public List<Role> retrieveAllRole() {
+        return roleRepository.findAll();
     }
 }

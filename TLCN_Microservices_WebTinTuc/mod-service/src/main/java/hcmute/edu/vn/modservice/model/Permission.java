@@ -22,7 +22,10 @@ public class Permission {
 
     private String name;
 
-    private Long cat;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Cat cat;
+
+    private Boolean status;
 
     private Boolean p_create;
 

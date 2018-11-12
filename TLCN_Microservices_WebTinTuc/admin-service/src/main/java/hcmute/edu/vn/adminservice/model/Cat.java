@@ -44,4 +44,7 @@ public class Cat {
             inverseJoinColumns = @JoinColumn(name = "itemId", referencedColumnName = "id")
     )
     private Set<Items> items;
+
+    @OneToMany(mappedBy = "cat")
+    private Set<Permission> permissions;
 }

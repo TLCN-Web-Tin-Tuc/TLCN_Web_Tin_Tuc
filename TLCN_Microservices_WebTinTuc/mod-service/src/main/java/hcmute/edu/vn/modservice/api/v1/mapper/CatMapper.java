@@ -1,7 +1,7 @@
 package hcmute.edu.vn.modservice.api.v1.mapper;
 
-import hcmute.edu.vn.nuservice.api.v1.dto.CatDto;
-import hcmute.edu.vn.nuservice.model.Cat;
+import hcmute.edu.vn.modservice.api.v1.dto.CatDto;
+import hcmute.edu.vn.modservice.model.Cat;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

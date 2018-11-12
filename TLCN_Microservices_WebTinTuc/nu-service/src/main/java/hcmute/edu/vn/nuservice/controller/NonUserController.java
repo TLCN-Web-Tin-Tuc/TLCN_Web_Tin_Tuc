@@ -44,9 +44,9 @@ public class NonUserController {
         return userMapper.userToUserDto(userServie.registerUser(user));
     }
 
-    @PostMapping("/login/{userName}/{passWord}")
-    public UserDto login(@PathVariable String userName, @PathVariable String passWord){
-        return userMapper.userToUserDto(userServie.findByEmailAndPassWord(userName, passWord));
+    @PostMapping("/login/{email}/{passWord}")
+    public UserDto login(@PathVariable String email, @PathVariable String passWord){
+        return userMapper.userToUserDto(userServie.findByEmailAndPassWord(email, passWord));
     }
 
     @GetMapping("/get-all-cat")
