@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +14,8 @@ import { ResetpasswordComponent } from './resetpassword/resetpassword.component'
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { PasswordEditComponent } from './password-edit/password-edit.component';
+import { NewsManagementComponent } from './news-management/news-management.component';
+import { NewsTypingComponent } from './news-typing/news-typing.component';
 
 @NgModule({
   declarations: [
@@ -26,11 +29,14 @@ import { PasswordEditComponent } from './password-edit/password-edit.component';
     ResetpasswordComponent,
     ProfileComponent,
     ProfileEditComponent,
-    PasswordEditComponent
+    PasswordEditComponent,
+    NewsManagementComponent,
+    NewsTypingComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

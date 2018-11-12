@@ -8,6 +8,8 @@ import { ResetpasswordComponent } from './resetpassword/resetpassword.component'
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { PasswordEditComponent } from './password-edit/password-edit.component';
+import { NewsManagementComponent } from './news-management/news-management.component';
+import { NewsTypingComponent } from './news-typing/news-typing.component';
 
 const routes: Routes = [
   { path: '', component: FramesComponent },
@@ -15,8 +17,10 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'recoverypassword', component: ResetpasswordComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'editprofile', component: ProfileEditComponent},
-  { path: 'editpassword', component: PasswordEditComponent}
+  { path: 'editprofile', component: ProfileEditComponent },
+  { path: 'editpassword', component: PasswordEditComponent },
+  { path: 'newsmanagement', component: NewsManagementComponent },
+  { path: 'newstyping', component: NewsTypingComponent }
 ];
 
 @NgModule({
