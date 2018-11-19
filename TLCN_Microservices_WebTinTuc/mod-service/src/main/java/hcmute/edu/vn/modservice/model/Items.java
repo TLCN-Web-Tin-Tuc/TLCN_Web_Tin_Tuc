@@ -49,8 +49,8 @@ public class Items {
 
     private String userUpdated;
 
-    @ManyToMany(mappedBy = "items")
-    private Set<Cat> cats;
+    @OneToMany(mappedBy = "id.item")
+    private Set<Cat_Item> cat_items;
 
     @OneToMany(mappedBy = "item_ac")
     private Set<Item_Access> item_accesses;

@@ -37,13 +37,8 @@ public class Cat {
 
     private String userUpdated;
 
-    @ManyToMany
-    @JoinTable(
-            name = "ne_cat_item",
-            joinColumns = @JoinColumn(name = "catId", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "itemId", referencedColumnName = "id")
-    )
-    private Set<Items> items;
+    @OneToMany(mappedBy = "id.cat")
+    private Set<Cat_Item> cat_items;
 
     @OneToMany(mappedBy = "cat")
     private Set<Permission> permissions;

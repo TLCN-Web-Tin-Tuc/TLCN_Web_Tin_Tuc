@@ -9,9 +9,8 @@ import hcmute.edu.vn.modservice.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequestMapping("api/v1/mod/")
@@ -56,7 +55,7 @@ public class ModController {
         return dataReturnOne;
     }
 
-    @PutMapping("/cat/update")
+    @PostMapping("/cat/update")
     public DataReturnOne<Cat> UpdateCategory(@RequestBody Cat cat){
         DataReturnOne<Cat> dataReturnOne = new DataReturnOne<>();
         Cat category1 = catService.UpdateCategory(cat);
@@ -87,8 +86,18 @@ public class ModController {
 
     @GetMapping("/items/{categoryid}")
     public DataReturnList<Items> Items(@PathVariable("categoryid") long id){
-        List<Items> items = itemService.getAllItemByCategory(id);
+        Cat cat  = catService.retrieveCatById(id);
+        List<Items> items = new ArrayList<>();
+       // items.addAll(cat.getItems());
+        DataReturnList<Items> dataReturnList = new DataReturnList<>();
+        dataReturnList.setData(items);
+        dataReturnList.setMessage("Get list item success");
+        return dataReturnList;
+    }
 
+    @GetMapping("/items/")
+    public DataReturnList<Items> retrieveAllItems(){
+        List<Items> items = itemService.getAllItem();
         DataReturnList<Items> dataReturnList = new DataReturnList<>();
         dataReturnList.setData(items);
         dataReturnList.setMessage("Get list item success");
@@ -96,13 +105,8 @@ public class ModController {
     }
 
     @PostMapping("/items/create/{categoryid}")
-    public DataReturnOne<Items> Create(@RequestBody Items items, @PathVariable("categoryid") long id){
-        Cat categories = catService.retrieveCatById(id);
-        Items items1 = itemService.InsertItem(items);
-        Set<Cat> cats = new HashSet<>();
-        cats.add(categories);
-        items1.setCats(cats);
-        itemService.getRepo().save(items1);
+    public DataReturnOne<Items> Create(@RequestBody Items items, @PathVariable("categoryid") long categoryid){
+        Items items1 = itemService.InsertItem(items, categoryid);
         DataReturnOne<Items> dataReturnOne = new DataReturnOne<>();
         if(items1!=null){
             dataReturnOne.setData(items1);
@@ -114,21 +118,50 @@ public class ModController {
         }
         return dataReturnOne;
     }
-
-//    @PutMapping("/items/update")
-//    public DataReturnOne<Items> UpdateItems(@RequestBody Items items){
-//        Items items1 = itemService.InsertItem(items);
+//    @PostMapping("/items/addCatOnItem/{itemid}/{categoryid}")
+//    public DataReturnOne<Items> addCatOnItem(@PathVariable("itemid") long itemid, @PathVariable("categoryid") long categoryid){
+//        Items items1 = itemService.addCatOnItem(itemid, categoryid);
 //        DataReturnOne<Items> dataReturnOne = new DataReturnOne<>();
 //        if(items1!=null){
 //            dataReturnOne.setData(items1);
-//            dataReturnOne.setMessage("Update item success");
+//            dataReturnOne.setMessage("Update cat on item success");
 //        }else{
 //            dataReturnOne.setSuccess("false");
 //            dataReturnOne.setData(null);
-//            dataReturnOne.setMessage("Update item fail");
+//            dataReturnOne.setMessage("Update cat on item fail");
 //        }
 //        return dataReturnOne;
 //    }
+//
+//    @PostMapping("/items/deleteCatOnItem/{itemid}/{categoryid}")
+//    public DataReturnOne<Items> deleteCatOnItem(@PathVariable("itemid") long itemid, @PathVariable("categoryid") long categoryid){
+//        Items items1 = itemService.removeCatOnItem(itemid, categoryid);
+//        DataReturnOne<Items> dataReturnOne = new DataReturnOne<>();
+//        if(items1!=null){
+//            dataReturnOne.setData(items1);
+//            dataReturnOne.setMessage("Delete cat on item success");
+//        }else{
+//            dataReturnOne.setSuccess("false");
+//            dataReturnOne.setData(null);
+//            dataReturnOne.setMessage("Delete cat on item fail");
+//        }
+//        return dataReturnOne;
+//    }
+
+    @PostMapping("/items/update")
+    public DataReturnOne<Items> UpdateItems(@RequestBody Items items){
+        Items items1 = itemService.getRepo().save(items);
+        DataReturnOne<Items> dataReturnOne = new DataReturnOne<>();
+        if(items1!=null){
+            dataReturnOne.setData(items1);
+            dataReturnOne.setMessage("Update item success");
+        }else{
+            dataReturnOne.setSuccess("false");
+            dataReturnOne.setData(null);
+            dataReturnOne.setMessage("Update item fail");
+        }
+        return dataReturnOne;
+    }
 
     @DeleteMapping("/items/delete")
     public DataReturnOne<Items> DeleteItems(@RequestBody Items items){
