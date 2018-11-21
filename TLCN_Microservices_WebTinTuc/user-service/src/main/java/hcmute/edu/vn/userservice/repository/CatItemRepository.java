@@ -1,6 +1,6 @@
-package hcmute.edu.vn.modservice.repository;
+package hcmute.edu.vn.userservice.repository;
 
-import hcmute.edu.vn.modservice.model.Cat_Item;
+import hcmute.edu.vn.userservice.model.Cat_Item;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

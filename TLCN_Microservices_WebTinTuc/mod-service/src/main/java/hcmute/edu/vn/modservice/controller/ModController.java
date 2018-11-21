@@ -3,6 +3,7 @@ package hcmute.edu.vn.modservice.controller;
 import hcmute.edu.vn.modservice.api.v1.data.DataReturnList;
 import hcmute.edu.vn.modservice.api.v1.data.DataReturnOne;
 import hcmute.edu.vn.modservice.model.Cat;
+import hcmute.edu.vn.modservice.model.Cat_Item;
 import hcmute.edu.vn.modservice.model.Items;
 import hcmute.edu.vn.modservice.service.CatService;
 import hcmute.edu.vn.modservice.service.ItemService;
@@ -118,35 +119,35 @@ public class ModController {
         }
         return dataReturnOne;
     }
-//    @PostMapping("/items/addCatOnItem/{itemid}/{categoryid}")
-//    public DataReturnOne<Items> addCatOnItem(@PathVariable("itemid") long itemid, @PathVariable("categoryid") long categoryid){
-//        Items items1 = itemService.addCatOnItem(itemid, categoryid);
-//        DataReturnOne<Items> dataReturnOne = new DataReturnOne<>();
-//        if(items1!=null){
-//            dataReturnOne.setData(items1);
-//            dataReturnOne.setMessage("Update cat on item success");
-//        }else{
-//            dataReturnOne.setSuccess("false");
-//            dataReturnOne.setData(null);
-//            dataReturnOne.setMessage("Update cat on item fail");
-//        }
-//        return dataReturnOne;
-//    }
-//
-//    @PostMapping("/items/deleteCatOnItem/{itemid}/{categoryid}")
-//    public DataReturnOne<Items> deleteCatOnItem(@PathVariable("itemid") long itemid, @PathVariable("categoryid") long categoryid){
-//        Items items1 = itemService.removeCatOnItem(itemid, categoryid);
-//        DataReturnOne<Items> dataReturnOne = new DataReturnOne<>();
-//        if(items1!=null){
-//            dataReturnOne.setData(items1);
-//            dataReturnOne.setMessage("Delete cat on item success");
-//        }else{
-//            dataReturnOne.setSuccess("false");
-//            dataReturnOne.setData(null);
-//            dataReturnOne.setMessage("Delete cat on item fail");
-//        }
-//        return dataReturnOne;
-//    }
+    @PostMapping("/items/addCatOnItem/{itemid}/{categoryid}")
+    public DataReturnOne<Cat_Item> addCatOnItem(@PathVariable("itemid") long itemid, @PathVariable("categoryid") long categoryid){
+        Cat_Item cat_item = itemService.addCatOnItem(itemid, categoryid);
+        DataReturnOne<Cat_Item> dataReturnOne = new DataReturnOne<>();
+        if(cat_item!=null){
+            dataReturnOne.setData(null);
+            dataReturnOne.setMessage("Update cat on item success");
+        }else{
+            dataReturnOne.setSuccess("false");
+            dataReturnOne.setData(null);
+            dataReturnOne.setMessage("Update cat on item fail");
+        }
+        return dataReturnOne;
+    }
+
+    @PostMapping("/items/deleteCatOnItem/{itemid}/{categoryid}")
+    public DataReturnOne<Items> deleteCatOnItem(@PathVariable("itemid") long itemid, @PathVariable("categoryid") long categoryid){
+        boolean flag = itemService.removeCatOnItem(itemid, categoryid);
+        DataReturnOne<Items> dataReturnOne = new DataReturnOne<>();
+        if(flag==true){
+            dataReturnOne.setData(null);
+            dataReturnOne.setMessage("Delete cat on item success");
+        }else{
+            dataReturnOne.setSuccess("false");
+            dataReturnOne.setData(null);
+            dataReturnOne.setMessage("Delete cat on item fail");
+        }
+        return dataReturnOne;
+    }
 
     @PostMapping("/items/update")
     public DataReturnOne<Items> UpdateItems(@RequestBody Items items){

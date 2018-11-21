@@ -64,22 +64,25 @@ public class ItemServiceImpl implements ItemService {
         catItemRepository.save(cat_item);
         return itemsCreate;
     }
-//
-//    @Override
-//    public Items addCatOnItem(long itemid, long catid) {
-//       Items items = itemRepository.findById(itemid).get();
-//       Cat cat = catRepository.findById(catid).get();
-//       items.getCats().add(cat);
-//        return itemRepository.save(items);
-//    }
-//
-//    @Override
-//    public Items removeCatOnItem(long itemid, long catid) {
-//        Items items = itemRepository.findById(itemid).get();
-//        Cat cat = catRepository.findById(catid).get();
-//        items.getCats().remove(cat);
-//        return itemRepository.save(items);
-//    }
+
+    @Override
+    public Cat_Item addCatOnItem(long itemid, long catid) {
+       Items items = itemRepository.findById(itemid).get();
+       Cat cat = catRepository.findById(catid).get();
+        Cat_Item cat_item = new Cat_Item();
+        Cat_Item_Id cat_item_id = new Cat_Item_Id();
+        cat_item_id.setCat(cat);
+        cat_item_id.setItem(items);
+        cat_item.setId(cat_item_id);
+        return  catItemRepository.save(cat_item);
+    }
+
+    @Override
+    public boolean removeCatOnItem(long itemid, long catid) {
+        Cat_Item cat_item = catItemRepository.findById_Cat_IdAndId_Item_Id(catid,itemid).get();
+        catItemRepository.delete(cat_item);
+        return true;
+    }
 
     @Override
     public void DeleteItem(long id) {
