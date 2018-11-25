@@ -16,6 +16,8 @@ import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { PasswordEditComponent } from './password-edit/password-edit.component';
 import { NewsManagementComponent } from './news-management/news-management.component';
 import { NewsTypingComponent } from './news-typing/news-typing.component';
+import { NewsDetailComponent } from './news-detail/news-detail.component';
+import { NewsIndexComponent } from './news-index/news-index.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { NewsTypingComponent } from './news-typing/news-typing.component';
     ProfileEditComponent,
     PasswordEditComponent,
     NewsManagementComponent,
-    NewsTypingComponent
+    NewsTypingComponent,
+    NewsDetailComponent,
+    NewsIndexComponent
   ],
   imports: [
     BrowserModule,

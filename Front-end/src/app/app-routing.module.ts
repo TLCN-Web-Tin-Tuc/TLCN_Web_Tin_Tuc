@@ -10,6 +10,9 @@ import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { PasswordEditComponent } from './password-edit/password-edit.component';
 import { NewsManagementComponent } from './news-management/news-management.component';
 import { NewsTypingComponent } from './news-typing/news-typing.component';
+import { NewsDetailComponent } from './news-detail/news-detail.component';
+import { NewsIndexComponent } from './news-index/news-index.component';
+import { from } from 'rxjs';
 
 const routes: Routes = [
   { path: '', component: FramesComponent },
@@ -20,7 +23,9 @@ const routes: Routes = [
   { path: 'editprofile', component: ProfileEditComponent },
   { path: 'editpassword', component: PasswordEditComponent },
   { path: 'newsmanagement', component: NewsManagementComponent },
-  { path: 'newstyping', component: NewsTypingComponent }
+  { path: 'newstyping', component: NewsTypingComponent },
+  { path: 'newsdetail', component: NewsDetailComponent },
+  { path: 'news', component: NewsIndexComponent }
 ];
 
 @NgModule({
