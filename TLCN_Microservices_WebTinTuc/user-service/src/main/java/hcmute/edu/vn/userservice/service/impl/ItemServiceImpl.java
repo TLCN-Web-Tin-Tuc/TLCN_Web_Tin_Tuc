@@ -17,4 +17,26 @@ public class ItemServiceImpl implements ItemService {
     public CrudRepository<Items, Long> getRepo() {
         return itemRepository;
     }
+
+    @Override
+    public Items itemDetail(long id) {
+        Items items = itemRepository.findById(id).get();
+        items.setViews(items.getViews()+1);
+        return itemRepository.save(items);
+    }
+
+    @Override
+    public Items likeItem(long id) {
+        Items items = itemRepository.findById(id).get();
+        items.setLikes(items.getLikes()+1);
+        return itemRepository.save(items);
+    }
+
+    @Override
+    public Items unlikeItem(long id) {
+        Items items = itemRepository.findById(id).get();
+        items.setLikes(items.getLikes()- 1);
+        return itemRepository.save(items);
+    }
+
 }

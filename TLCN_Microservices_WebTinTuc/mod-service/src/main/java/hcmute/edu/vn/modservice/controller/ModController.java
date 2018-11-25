@@ -107,6 +107,10 @@ public class ModController {
 
     @PostMapping("/items/create/{categoryid}")
     public DataReturnOne<Items> Create(@RequestBody Items items, @PathVariable("categoryid") long categoryid){
+        items.setDownload((long) 0);
+        items.setComment((long) 0);
+        items.setLikes((long) 0);
+        items.setViews((long) 0);
         Items items1 = itemService.InsertItem(items, categoryid);
         DataReturnOne<Items> dataReturnOne = new DataReturnOne<>();
         if(items1!=null){
