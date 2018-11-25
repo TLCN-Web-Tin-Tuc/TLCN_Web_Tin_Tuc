@@ -13,5 +13,5 @@ public interface UserService {
     User updateUserStatus(long id);
     User retrieveUserByEmail(String email);
     User retrieveUserByIdOrEmail(long id, String email);
-
+    User updateProfile(User user);
 }
