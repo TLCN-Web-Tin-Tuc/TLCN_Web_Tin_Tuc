@@ -8,6 +8,7 @@ import hcmute.edu.vn.nuservice.api.v1.dto.UserDto;
 import hcmute.edu.vn.nuservice.api.v1.mapper.CatMapper;
 import hcmute.edu.vn.nuservice.api.v1.mapper.ItemMapper;
 import hcmute.edu.vn.nuservice.api.v1.mapper.UserMapper;
+import hcmute.edu.vn.nuservice.exception.NotFoundException;
 import hcmute.edu.vn.nuservice.model.Report;
 import hcmute.edu.vn.nuservice.model.User;
 import hcmute.edu.vn.nuservice.service.CatService;
@@ -21,6 +22,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/nuser/")
+@CrossOrigin
 public class NonUserController {
     @Autowired
     private UserService userServie;
@@ -50,8 +52,22 @@ public class NonUserController {
     }
 
     @PostMapping("/login/{email}/{passWord}")
-    public UserDto login(@PathVariable String email, @PathVariable String passWord){
-        return userMapper.userToUserDto(userServie.findByEmailAndPassWord(email, passWord));
+    public DataReturnOne<UserDto> login(@PathVariable String email, @PathVariable String passWord){
+        DataReturnOne<UserDto> dataReturnOne = new DataReturnOne<>();
+        User user = new User();
+        try {
+            user = userServie.findByEmailAndPassWord(email, passWord);
+            dataReturnOne.setMessage("Đang nhập thành công");
+            dataReturnOne.setData(userMapper.userToUserDto(userServie.findByEmailAndPassWord(email, passWord)));
+        }
+        catch (NotFoundException ex) {
+            dataReturnOne.setSuccess("false");
+            dataReturnOne.setMessage("Sai Email hoặc mật khẩu");
+
+        }
+
+
+        return dataReturnOne;
     }
 
     @GetMapping("/get-all-cat")

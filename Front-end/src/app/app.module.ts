@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
 
 import { AppComponent } from './app.component';
@@ -18,6 +19,7 @@ import { NewsManagementComponent } from './news-management/news-management.compo
 import { NewsTypingComponent } from './news-typing/news-typing.component';
 import { NewsDetailComponent } from './news-detail/news-detail.component';
 import { NewsIndexComponent } from './news-index/news-index.component';
+import { LoginService } from './_service/login.service';
 
 @NgModule({
   declarations: [
@@ -40,9 +42,10 @@ import { NewsIndexComponent } from './news-index/news-index.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

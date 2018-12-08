@@ -59,23 +59,32 @@
                   <span>Hoặc sử dụng tài khoản đã đăng ký</span>
                 </p>
                 <div class="card-body pt-0">
-                  <form class="form-horizontal" action="" novalidate>
+                  <form class="form-horizontal" method = "POST" (ngSubmit) = "f.form.valid && login()" #f = "ngForm" action="" novalidate>
                     <fieldset class="form-group position-relative has-icon-left">
-                      <input type="text" class="form-control input-lg" id="user-name" placeholder="Email"
+                      <input type="text" class="form-control input-lg" id="user-name" [(ngModel)]="guest.email" name = "email" #email = "ngModel" [ngClass]="{'is-invalid': f.submitted && email.invalid}" placeholder="Email"
                         required>
                       <div class="form-control-position" style="margin-top: -3px;">
                         <i class="fa fa-user"></i>
                       </div>
+                      <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+                        <div *ngIf="email.errors.required" style="color: red">Email khong duoc trong</div>
+                      </div>
                     </fieldset>
                     <fieldset class="form-group position-relative has-icon-left">
-                      <input type="password" class="form-control input-lg" id="user-password" placeholder="Mật khẩu"
+                      <input type="password" class="form-control input-lg" id="user-password" [(ngModel)]="guest.password" name = "password" #password = "ngModel" [ngClass]="{'is-invalid': f.submitted && password.invalid}" placeholder="Mật khẩu"
                         required>
                       <div class="form-control-position" style="margin-top: -3px;">
                         <i class="fa fa-key"></i>
                       </div>
+                      <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
+                        <div *ngIf="password.errors.required" style="color: red">Password khong duoc trong</div>
+                      </div>
                     </fieldset>
                     <button type="submit" class="btn btn-info btn-lg btn-block"><i class="ft-unlock"></i>Đăng nhập</button>
                   </form>
+                  <div *ngIf="error" class="alert alert-danger">
+                    <span>{{error}}</span>
+                  </div>
                 </div>
                 <div class="card-body pb-0">
                   <p class="text-center"><a href="" class="card-link">Khôi phục mật khẩu</a></p>
