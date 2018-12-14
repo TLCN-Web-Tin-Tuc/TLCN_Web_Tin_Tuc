@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  base_url:'http://localhost:8082'
+  base_url:'http://localhost:8082',
+  base_mod_url:'http://localhost:8084'
 };
 
 /*
