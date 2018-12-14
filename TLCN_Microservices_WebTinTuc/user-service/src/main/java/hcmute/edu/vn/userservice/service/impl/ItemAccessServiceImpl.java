@@ -49,7 +49,10 @@ public class ItemAccessServiceImpl implements ItemAccessService {
         Optional<User> user = userRepository.findByEmail(email);
         if(!user.isPresent())
             throw new NotFoundException("User Not Found!!!");
-        Item_Access item_access = itemAccessRepository.findByItem_acAndUser_ia(itemid,user.get().getId()).get();
+        Optional<Items> items = itemRepository.findById(itemid);
+        if(!items.isPresent())
+            throw new NotFoundException("Item Not Found!!!");
+        Item_Access item_access = itemAccessRepository.findByItem_acAndUser_ia(items.get(),user.get()).get();
         itemAccessRepository.delete(item_access);
     }
 

@@ -18,6 +18,7 @@ import hcmute.edu.vn.nuservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -46,7 +47,7 @@ public class NonUserController {
     private ReportService reportService;
 
     @PostMapping("/register")
-    public UserDto register(@RequestBody User user){
+    public UserDto register(@Valid @RequestBody User user){
         user.setStatus(1);
         return userMapper.userToUserDto(userServie.registerUser(user));
     }
@@ -57,19 +58,34 @@ public class NonUserController {
         User user = new User();
         try {
             user = userServie.findByEmailAndPassWord(email, passWord);
-            dataReturnOne.setMessage("Đang nhập thành công");
+            dataReturnOne.setMessage("Đăng nhập thành công");
             dataReturnOne.setData(userMapper.userToUserDto(userServie.findByEmailAndPassWord(email, passWord)));
         }
         catch (NotFoundException ex) {
             dataReturnOne.setSuccess("false");
-            dataReturnOne.setMessage("Sai Email hoặc mật khẩu");
+            dataReturnOne.setMessage("Sai Email hoặc Mật khẩu");
 
         }
 
 
         return dataReturnOne;
     }
+    @GetMapping("/check-user/{email}")
+    public DataReturnOne<User> checkUser(@PathVariable String email)
+    {
+        DataReturnOne<User> dataReturnOne = new DataReturnOne<>();
+        User user = new User();
+        try {
+            user = userServie.findByEmail(email);
+            dataReturnOne.setMessage("Email đã tồn tại");
+        }
+        catch (NotFoundException ex) {
+            dataReturnOne.setSuccess("false");
+            dataReturnOne.setMessage("Email chưa tồn tại");
 
+        }
+        return dataReturnOne;
+    }
     @GetMapping("/get-all-cat")
     public List<CatDto> getAllCat()
     {

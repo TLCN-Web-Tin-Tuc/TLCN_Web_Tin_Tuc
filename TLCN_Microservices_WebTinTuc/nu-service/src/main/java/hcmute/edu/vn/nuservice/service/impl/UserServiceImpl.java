@@ -35,6 +35,8 @@ public class  UserServiceImpl implements UserService {
         return user.get();
     }
 
+
+
     @Override
     public User registerUser(User user) {
         User userCreate =  userRepository.save(user);
@@ -43,5 +45,13 @@ public class  UserServiceImpl implements UserService {
         roles.add(role);
         userCreate.setRoles(roles);
         return userRepository.save(userCreate);
+    }
+
+    @Override
+    public User findByEmail(String email) {
+        Optional<User> user = userRepository.findByEmail(email);
+        if(!user.isPresent())
+            throw new NotFoundException("User Not Found!!!");
+        return user.get();
     }
 }
