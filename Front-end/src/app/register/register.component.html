@@ -35,7 +35,7 @@
     <div class="content-body">
       <section class="col-md-4 offset-md-4 col-8 offset-2 box-shadow-2 p-0">
         <div class="card border-grey border-lighten-3 px-2 py-2 row mb-0">
-          <div class="card-header no-border pb-0">
+          <div class="card-header no-border pb-0" style="padding: 0rem">
             <div class="card-title text-center">
               <img class="brand-logo" alt="the news logo" src="/assets/robust-admin/app-assets/images/logo/logo-dark-sm.png">
             </div>
@@ -76,8 +76,16 @@
                     <i class="fas fa-envelope"></i>
                   </div>
                 </fieldset>
+                <button class="btn btn-info btn-block" style="width: 28%; margin-bottom: 1.5rem;">Kiểm tra</button>
                 <fieldset class="form-group position-relative has-icon-left">
                   <input type="password" class="form-control" id="user-password" placeholder="Mật khẩu"
+                  required>
+                  <div class="form-control-position" style="margin-top: -3px;">
+                    <i class="fa fa-key"></i>
+                  </div>
+                </fieldset>
+                <fieldset class="form-group position-relative has-icon-left">
+                  <input type="password" class="form-control" id="user-passwordagain" placeholder="Nhập lại mật khẩu"
                   required>
                   <div class="form-control-position" style="margin-top: -3px;">
                     <i class="fa fa-key"></i>
@@ -89,7 +97,7 @@
           </div>
           <div class="card-footer pb-0">
             <p class="text-center"><a href="" class="card-link">Khôi phục mật khẩu</a></p>
-            <p class="text-center">Đã có tài khoản của The News?<a href="" class="card-link">Đăng nhập</a></p>
+            <p class="text-center">Đã có tài khoản của The News? <a href="" class="card-link"> Đăng nhập</a></p>
           </div>
         </div>
       </section>
