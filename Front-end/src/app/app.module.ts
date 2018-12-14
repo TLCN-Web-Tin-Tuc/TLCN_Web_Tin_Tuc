@@ -20,6 +20,7 @@ import { NewsTypingComponent } from './news-typing/news-typing.component';
 import { NewsDetailComponent } from './news-detail/news-detail.component';
 import { NewsIndexComponent } from './news-index/news-index.component';
 import { LoginService } from './_service/login.service';
+import { NuServiceService } from './_service/nu_service/nu-service.service';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { LoginService } from './_service/login.service';
     FormsModule,
     HttpClientModule
   ],
-  providers: [LoginService],
+  providers: [LoginService,
+    NuServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -47,9 +47,20 @@ public class NonUserController {
     private ReportService reportService;
 
     @PostMapping("/register")
-    public UserDto register(@Valid @RequestBody User user){
-        user.setStatus(1);
-        return userMapper.userToUserDto(userServie.registerUser(user));
+    public  DataReturnOne<UserDto> register(@Valid @RequestBody User user){
+        DataReturnOne<UserDto> dataReturnOne = new DataReturnOne<>();
+
+        try {
+            User user1 = userServie.registerUser(user);
+            dataReturnOne.setMessage("Tạo thành công tài khoản");
+            dataReturnOne.setData(userMapper.userToUserDto(user1));
+        }
+        catch (NotFoundException ex) {
+            dataReturnOne.setSuccess("false");
+            dataReturnOne.setMessage("Email đã có người sử dụng");
+
+        }
+        return dataReturnOne;
     }
 
     @PostMapping("/login/{email}/{passWord}")

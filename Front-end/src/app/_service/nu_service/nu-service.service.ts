@@ -10,7 +10,10 @@ export class NuServiceService {
   context = environment.base_url
   constructor(private http: HttpClient) { }
 
-  //register(user: User) : Observable<any>{    
-  //  return this.http.post(`${this.context}/api/v1/nuser/login/${guest.email}/${guest.password}`,{observe:`response`});
-  //}
+  register(user: User) : Observable<any>{    
+    return this.http.post(`${this.context}/api/v1/nuser/register/`,user,{observe:`response`});
+  }
+  checkEmail(email : string) : Observable<any> {
+    return this.http.get(`${this.context}/api/v1/nuser/check-user/${email}`,{observe:`response`});
+  }
 }
