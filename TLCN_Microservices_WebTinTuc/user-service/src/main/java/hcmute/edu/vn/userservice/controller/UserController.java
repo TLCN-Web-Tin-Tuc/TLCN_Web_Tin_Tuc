@@ -1,15 +1,21 @@
 package hcmute.edu.vn.userservice.controller;
 
 import hcmute.edu.vn.userservice.api.v1.data.DataReturnOne;
+import hcmute.edu.vn.userservice.api.v1.dto.UserDto;
+import hcmute.edu.vn.userservice.api.v1.mapper.UserMapper;
+import hcmute.edu.vn.userservice.exception.NotFoundException;
 import hcmute.edu.vn.userservice.model.Item_Access;
 import hcmute.edu.vn.userservice.model.Items;
+import hcmute.edu.vn.userservice.model.User;
 import hcmute.edu.vn.userservice.service.ItemAccessService;
 import hcmute.edu.vn.userservice.service.ItemService;
+import hcmute.edu.vn.userservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/v1/user/")
+@CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
 
     @Autowired
@@ -17,6 +23,12 @@ public class UserController {
 
     @Autowired
     ItemService itemService;
+
+    @Autowired
+    UserService userService;
+
+    @Autowired
+    UserMapper userMapper;
 
     @GetMapping("/items/detail/{itemid}")
     public DataReturnOne<Items> Detail(@PathVariable("itemid") long itemid){
@@ -51,21 +63,73 @@ public class UserController {
         return dataReturnOne;
     }
 
-    @PostMapping("/items/dislike/{itemid}/{email}")
-    public DataReturnOne<Items> DisLikeItem(@PathVariable("itemid") long itemid,@PathVariable("email") String email){
-
-        Items items1 = itemService.unlikeItem(itemid);
-        itemAccessService.userDisLike(itemid,email);
-        DataReturnOne<Items> dataReturnOne = new DataReturnOne<>();
-        if(items1!=null ){
-            dataReturnOne.setData(items1);
-            dataReturnOne.setMessage("DisLike Item success");
-        }else{
-            dataReturnOne.setSuccess("false");
-            dataReturnOne.setData(null);
-            dataReturnOne.setMessage("DisLike item fail");
+    @PostMapping("/users/updateprofile")
+    public DataReturnOne<User> updateProfile(@RequestBody User user){
+        DataReturnOne<User> userDataReturnOne=new DataReturnOne<>();
+        try {
+            User userUpdate = userService.updateProfile(user);
+            userDataReturnOne.setSuccess("true");
+            userDataReturnOne.setMessage("success");
+            userDataReturnOne.setData(userUpdate);
+        }catch (NotFoundException ex){
+            userDataReturnOne.setSuccess("false");
+            userDataReturnOne.setMessage("error");
+            userDataReturnOne.setData(null);
         }
-        return dataReturnOne;
+        return userDataReturnOne;
     }
+
+    @GetMapping("/users/profile/{email}")
+    public DataReturnOne<User> Profile(@PathVariable("email") String email){
+        DataReturnOne<User> userDataReturnOne=new DataReturnOne<>();
+        try {
+            User userUpdate = userService.findByEmail(email);
+            userDataReturnOne.setSuccess("true");
+            userDataReturnOne.setMessage("success");
+            userDataReturnOne.setData(userUpdate);
+        }catch (NotFoundException ex){
+            userDataReturnOne.setSuccess("false");
+            userDataReturnOne.setMessage("error");
+            userDataReturnOne.setData(null);
+        }
+        return userDataReturnOne;
+    }
+
+    @PostMapping("/doimatkhau/{email}/{oldPassword}/{newPassword}")
+    public DataReturnOne<UserDto> doiMatKhau(@PathVariable String email,
+                                                @PathVariable String oldPassword, @PathVariable String newPassword){
+        DataReturnOne<UserDto> dataReturnOne = new DataReturnOne<>();
+        User user;
+        try {
+            user = userService.findByEmailAndPassWord(email, oldPassword);
+            dataReturnOne.setMessage("Đổi mật khẩu thành công !!!");
+            user.setPassword(newPassword);
+            dataReturnOne.setData(userMapper.userToUserDto(userService.getRepo().save(user)));
+        }
+        catch (NotFoundException ex) {
+            dataReturnOne.setSuccess("false");
+            dataReturnOne.setMessage("Nhập sai Mật khẩu");
+
+        }
+
+        return dataReturnOne;
+
+    }
+//    @PostMapping("/items/dislike/{itemid}/{email}")
+//    public DataReturnOne<Items> DisLikeItem(@PathVariable("itemid") long itemid,@PathVariable("email") String email){
+//
+//        Items items1 = itemService.unlikeItem(itemid);
+//        itemAccessService.userDisLike(itemid,email);
+//        DataReturnOne<Items> dataReturnOne = new DataReturnOne<>();
+//        if(items1!=null ){
+//            dataReturnOne.setData(items1);
+//            dataReturnOne.setMessage("DisLike Item success");
+//        }else{
+//            dataReturnOne.setSuccess("false");
+//            dataReturnOne.setData(null);
+//            dataReturnOne.setMessage("DisLike item fail");
+//        }
+//        return dataReturnOne;
+//    }
 
 }

@@ -81,18 +81,19 @@ public class NonUserController {
 
         return dataReturnOne;
     }
-    @GetMapping("/check-user/{email}")
+    @GetMapping("/find-user/{email}")
     public DataReturnOne<User> checkUser(@PathVariable String email)
     {
         DataReturnOne<User> dataReturnOne = new DataReturnOne<>();
         User user = new User();
         try {
             user = userServie.findByEmail(email);
-            dataReturnOne.setMessage("Email đã tồn tại");
+            dataReturnOne.setMessage("Đã tìm thấy thành công");
+            dataReturnOne.setData(user);
         }
         catch (NotFoundException ex) {
             dataReturnOne.setSuccess("false");
-            dataReturnOne.setMessage("Email chưa tồn tại");
+            dataReturnOne.setMessage("Không tồn tại");
 
         }
         return dataReturnOne;

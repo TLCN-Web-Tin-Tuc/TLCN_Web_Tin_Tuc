@@ -58,13 +58,13 @@
             <div class="card-body pt-0">
               <form class="form-horizontal" method = "POST" (ngSubmit) = "f.form.valid && register()" #f = "ngForm" action="" novalidate>
                 <fieldset class="form-group position-relative has-icon-left">
-                  <input type="text" class="form-control" id="first-name" [(ngModel)]="user.firstName" placeholder="Họ">
+                  <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="user.firstName" placeholder="Họ">
                   <div class="form-control-position" style="margin-top: -3px;">
                     <i class="fa fa-user"></i>
                   </div>
                 </fieldset>
                 <fieldset class="form-group position-relative has-icon-left">
-                  <input type="text" class="form-control" id="last-name" [(ngModel)]="user.lastName" placeholder="Tên">
+                  <input type="text" class="form-control" id="lastName" [(ngModel)]="user.lastName" name = "lastName" placeholder="Tên">
                   <div class="form-control-position" style="margin-top: -3px;">
                     <i class="fa fa-user"></i>
                   </div>
@@ -95,8 +95,8 @@
                   <div class="form-control-position" style="margin-top: -3px;">
                     <i class="fa fa-key"></i>
                   </div>
-                  <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
-                    <div *ngIf="password.errors.required" style="color: red">Confirm Password không được trống</div>
+                  <div *ngIf="f.submitted && confirmPassword.invalid" class="invalid-feedback">
+                    <div *ngIf="confirmPassword.errors.required" style="color: red">Confirm Password không được trống</div>
                   </div>
                 </fieldset>
                 <button type="submit" class="btn btn-info btn-block">Đăng ký</button>

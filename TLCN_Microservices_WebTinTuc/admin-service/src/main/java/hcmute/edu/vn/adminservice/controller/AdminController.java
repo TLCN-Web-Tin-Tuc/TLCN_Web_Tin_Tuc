@@ -80,21 +80,6 @@ public class AdminController {
         return dataReturnOne;
     }
 
-    @PutMapping("/users/updateprofile")
-    public DataReturnOne<User> updateProfile(@RequestBody User user){
-        DataReturnOne<User> userDataReturnOne=new DataReturnOne<>();
-        try {
-            User userUpdate = userService.updateProfile(user);
-            userDataReturnOne.setSuccess("true");
-            userDataReturnOne.setMessage("success");
-            userDataReturnOne.setData(userUpdate);
-        }catch (NotFoundException ex){
-            userDataReturnOne.setSuccess("false");
-            userDataReturnOne.setMessage("error");
-            userDataReturnOne.setData(null);
-        }
-        return userDataReturnOne;
-    }
 
     @GetMapping("/reports")
     public DataReturnList<Report> retrieveAllReport()
