@@ -44,16 +44,16 @@ public class ItemAccessServiceImpl implements ItemAccessService {
         return item_access;
     }
 
-    @Override
-    public void userDisLike(long itemid, String email) {
-        Optional<User> user = userRepository.findByEmail(email);
-        if(!user.isPresent())
-            throw new NotFoundException("User Not Found!!!");
-        Optional<Items> items = itemRepository.findById(itemid);
-        if(!items.isPresent())
-            throw new NotFoundException("Item Not Found!!!");
-        Item_Access item_access = itemAccessRepository.findByItem_acAndUser_ia(items.get(),user.get()).get();
-        itemAccessRepository.delete(item_access);
-    }
+//    @Override
+//    public void userDisLike(long itemid, String email) {
+//        Optional<User> user = userRepository.findByEmail(email);
+//        if(!user.isPresent())
+//            throw new NotFoundException("User Not Found!!!");
+//        Optional<Items> items = itemRepository.findById(itemid);
+//        if(!items.isPresent())
+//            throw new NotFoundException("Item Not Found!!!");
+//        Item_Access item_access = itemAccessRepository.findByItem_acAndUser_ia(items.get(),user.get()).get();
+//        itemAccessRepository.delete(item_access);
+//    }
 
 }

@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   base_url:'http://localhost:8082',
+  base_user_url:'http://localhost:8083',
   base_mod_url:'http://localhost:8084'
 };
 

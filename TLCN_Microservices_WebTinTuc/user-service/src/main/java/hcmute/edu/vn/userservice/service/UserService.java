@@ -1,16 +1,13 @@
-package hcmute.edu.vn.adminservice.service;
+package hcmute.edu.vn.userservice.service;
 
-import hcmute.edu.vn.adminservice.model.User;
+import hcmute.edu.vn.userservice.model.User;
 import org.springframework.data.repository.CrudRepository;
-
-import java.util.List;
 
 public interface UserService {
     CrudRepository<User, Long> getRepo();
     User findByEmailAndPassWord(String userName, String passWord);
-    List<User> retrieveAllUsers();
-    User updateRoleForUser(long uid, long rid);
-    User updateUserStatus(long id);
+    User findByEmail(String email);
     User retrieveUserByEmail(String email);
     User retrieveUserByIdOrEmail(long id, String email);
+    User updateProfile(User user);
 }
