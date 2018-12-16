@@ -58,13 +58,13 @@
             <div class="card-body pt-0">
               <form class="form-horizontal" method = "POST" (ngSubmit) = "f.form.valid && register()" #f = "ngForm" action="" novalidate>
                 <fieldset class="form-group position-relative has-icon-left">
-                  <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="user.firstName" placeholder="Họ">
+                  <input type="text" class="form-control input-lg" id="firstName" name="firstName" [(ngModel)]="user.firstName" placeholder="Họ">
                   <div class="form-control-position" style="margin-top: -3px;">
                     <i class="fa fa-user"></i>
                   </div>
                 </fieldset>
                 <fieldset class="form-group position-relative has-icon-left">
-                  <input type="text" class="form-control" id="lastName" [(ngModel)]="user.lastName" name = "lastName" placeholder="Tên">
+                  <input type="text" class="form-control input-lg" id="lastName" [(ngModel)]="user.lastName" name = "lastName" placeholder="Tên">
                   <div class="form-control-position" style="margin-top: -3px;">
                     <i class="fa fa-user"></i>
                   </div>

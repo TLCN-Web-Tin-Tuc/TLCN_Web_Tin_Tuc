@@ -37,24 +37,35 @@
                         <div class="form-group row">
                           <label class="col-md-2 label-control" for="eventRegInput2">Danh mục</label>
                           <div class="col-md-9">
-                            <select field="" id="news" name="news" class="form-control" style="height: calc(2.675rem + 2px);">
-                              <option each="" value="" text=""></option>
-                            </select>
-                          </div>
-                          <div class="col-md-1" style="border-left: none;">
-                            <a th:href=""> <button type="button" class="form-group btn btn-default"> <i class="ft ft-settings"></i> </button></a>
+                            <div class="custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input" id="checkbox1">
+                              <label class="custom-control-label" for="checkbox1">Danh mục 1</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input" id="checkbox2">
+                              <label class="custom-control-label" for="checkbox2">Danh mục 2</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input" id="checkbox3">
+                              <label class="custom-control-label" for="checkbox3">Danh mục 3</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input" id="checkbox4">
+                              <label class="custom-control-label" for="checkbox4">Danh mục 4</label>
+                            </div>
                           </div>
                         </div>
 
                         <div class="form-group row">
                           <label class="col-md-2 label-control" for="eventRegInput1">Tiêu đề</label>
                           <div class="col-md-9">
-                            <input field="" type="text" id="title" class="form-control" placeholder="Nhậ­p tiêu đề tin tức" name="title">
+                            <input field="" type="text" id="title" class="form-control" placeholder="Nhậ­p tiêu đề tin tức"
+                              name="title">
                           </div>
                         </div>
 
                         <div class="form-group row">
-                          <label class="col-md-2 label-control">Ảnh đại diện</label>
+                          <label class="col-md-2 label-control" style="padding-top: 18px;">Ảnh đại diện</label>
                           <div class="col-md-9" id="uploadFile">
                             <label id="projectinput8" class="file center-block">
                               <input type="file" name="main-image" id="file" accept="image/*"> <span class="file-custom"></span>
@@ -64,7 +75,8 @@
                         <div class="form-group row">
                           <label class="col-md-2 label-control" for="eventRegInput3">Mô tả vắn tắt</label>
                           <div class="col-md-9">
-                            <input field="" type="text" id="shortDesc" class="form-control" placeholder="Nhậ­p mô tả vắn tắt" name="shortDesc">
+                            <input field="" type="text" id="shortDesc" class="form-control" placeholder="Nhậ­p mô tả vắn tắt"
+                              name="shortDesc">
                           </div>
                         </div>
                         <div class="form-group row">
