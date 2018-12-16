@@ -34,7 +34,7 @@
               <div class="tab-content px-1 pt-1"></div>
               <div class="tab-pane" id="link32" role="tabpanel" aria-labelledby="link-tab32" aria-expanded="false">
                 <!-- Profile -->
-                <form class="form" id="frmUser" action="" method="POST" enctype="multipart/form-data">
+                <form class="form" id="frmUser" (ngSubmit) = "register()" action="" method="POST" #f = "ngForm" enctype="multipart/form-data" novalidate>
                   <div class="form-body">
                     <div class="row">
                       <div class="form-group col-md-6 mb-2">
@@ -52,7 +52,7 @@
                       <div class="form-group col-md-4 mb-2">
                         <label for="projectinput1">Họ</label>
                         <div class="position-relative has-icon-left">
-                          <input type="text" id="firstname" class="form-control" placeholder="First Name" name="fname" value="Mr">
+                          <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="user.firstName" placeholder="Họ">
                           <div class="form-control-position" style="margin-top: -3px;">
                             <i class="ft-user"></i>
                           </div>
@@ -61,7 +61,7 @@
                       <div class="form-group col-md-4 mb-2">
                         <label for="projectinput2">Tên</label>
                         <div class="position-relative has-icon-left">
-                          <input type="text" id="lastname" class="form-control" placeholder="Last Name" name="lname" value="Admin">
+                          <input type="text" class="form-control" id="lastName" [(ngModel)]="user.lastName" name = "lastName" placeholder="Tên">
                           <div class="form-control-position" style="margin-top: -3px;">
                             <i class="ft-user"></i>
                           </div>
@@ -70,7 +70,7 @@
                       <div class="form-group col-md-4 mb-2">
                         <label for="projectinput3">E-mail</label>
                         <div class="position-relative has-icon-left">
-                          <input type="text" id="email" class="form-control" placeholder="E-mail" name="email" value="admin@gmail.com">
+                        <input type="text" class="form-control input-lg" id="user-name" [(ngModel)]="user.email" name = "email" #email = "ngModel"  placeholder="Email">
                           <div class="form-control-position" style="margin-top: -2px;">
                             <i class="ft-mail"></i>
                           </div>
@@ -82,7 +82,7 @@
                       <div class="form-group col-md-4 mb-2">
                         <label for="projectinput4">Số điện thoại</label>
                         <div class="position-relative has-icon-left">
-                          <input type="text" id="contact_number" class="form-control" placeholder="Phone" name="phone" value="123456789">
+                          <input type="text" id="contact_number" class="form-control" [(ngModel)]="user.phone" name = "phone" #phone = "ngModel" placeholder="Phone"  value="123456789">
                           <div class="form-control-position" style="margin-top: -3px;">
                             <i class="ft-smartphone"></i>
                           </div>
@@ -91,7 +91,7 @@
                       <div class="form-group col-md-4 mb-2">
                         <label for="timesheetinput">Ngày Sinh</label>
                         <div class="position-relative has-icon-left" style="height: 39.800px;">
-                          <input type="date" id="birthday" class="form-control" name="birthday" value="2018-08-02" style="height: 39px;">
+                          <input type="date" id="birthday" class="form-control" [(ngModel)]="user.date" name = "date" #date = "ngModel" value="2018-08-02" style="height: 39px;">
                           <div class="form-control-position" style="margin-top: -4px;">
                             <i class="ft-calendar"></i>
                           </div>
@@ -114,7 +114,7 @@
                       <div class="form-group col-md-4 mb-2">
                         <label for="projectinput3"> Địa chỉ</label>
                         <div class="position-relative has-icon-left">
-                          <input type="text" id="address" class="form-control" placeholder="Address" name="address" value="Ho Chi Minh">
+                          <input type="text" id="address" class="form-control" placeholder="Address" [(ngModel)]="user.address" name = "address" #address = "ngModel" value="Ho Chi Minh">
                           <div class="form-control-position" style="margin-top: -3px;">
                             <i class="far fa-address-book"></i>
                           </div>

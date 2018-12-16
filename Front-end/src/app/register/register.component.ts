@@ -27,16 +27,24 @@ export class RegisterComponent implements OnInit {
     if(this.user.password == this.user.confirmPassword)
     {
       this.nuService.register(this.user).pipe(first()).subscribe(res => {
-        alert("Tạo tài khoản thành công !!");
-        this.user.email = "";
-        this.user.firstName = "";
-        this.user.lastName = "";
-        this.user.password = "";
-        this.user.confirmPassword = "";
-        this.error = "";
+        console.log(res.message)
+        if(res.success == "true"){
+          alert("Tạo tài khoản thành công !!");
+          this.user.email = "";
+          this.user.firstName = "";
+          this.user.lastName = "";
+          this.user.password = "";
+          this.user.confirmPassword = "";
+          this.error = "";
+        }
+        else{
+          alert("Email đã tồn tại !!!");
+        }
+        
+       
     },
     err => {
-        this.error = "Email đã có người sử dụng";
+        this.error = err.message
     })
     }
     else{
