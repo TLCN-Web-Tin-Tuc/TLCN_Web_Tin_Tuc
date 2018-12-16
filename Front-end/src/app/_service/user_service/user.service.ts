@@ -13,4 +13,8 @@ export class UserService {
   doiMatKhau(email:string, oldPassword:string, newPassword:string) : Observable<any>{
     return this.http.post(`${this.context}/api/v1/user/doimatkhau/${email}/${oldPassword}/${newPassword}`,"");
   }
+
+  getProfile(email:string) : Observable<any>{
+    return this.http.get(`${this.context}/api/v1/user/profile/${email}`);
+  }
 }

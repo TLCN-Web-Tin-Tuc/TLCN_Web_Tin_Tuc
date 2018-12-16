@@ -41,7 +41,7 @@
                     <div class="card-content">
                       <div class="card-body">
                         <h4 class="card-title text-uppercase" style="margin-bottom: 0.7rem;">Họ</h4>
-                        <p class="card-text">Mr</p>
+                        <p class="card-text">{{user.firstName}}</p>
                       </div>
                     </div>
                   </div>
@@ -50,7 +50,7 @@
                     <div class="card-content">
                       <div class="card-body">
                         <h4 class="card-title text-uppercase" style="margin-bottom: 0.7rem;">Tên</h4>
-                        <p class="card-text">Admin</p>
+                        <p class="card-text">{{user.lastName}}</p>
                       </div>
                     </div>
                   </div>
@@ -59,7 +59,7 @@
                     <div class="card-content">
                       <div class="card-body">
                         <h4 class="card-title text-uppercase" style="margin-bottom: 0.7rem;">E-mail</h4>
-                        <p class="card-text">admin@gmail.com</p>
+                        <p class="card-text">{{user.email}}</p>
                       </div>
                     </div>
                   </div>
@@ -68,7 +68,7 @@
                     <div class="card-content">
                       <div class="card-body">
                         <h4 class="card-title text-uppercase" style="margin-bottom: 0.7rem;">Số điện thoại</h4>
-                        <p class="card-text">123456789</p>
+                        <p class="card-text">{{user.phone}}</p>
                       </div>
                     </div>
                   </div>
@@ -77,7 +77,7 @@
                     <div class="card-content">
                       <div class="card-body">
                         <h4 class="card-title text-uppercase" style="margin-bottom: 0.7rem;"> Ngày sinh</h4>
-                        <p class="card-text">2018-08-02</p>
+                        <p class="card-text">{{user.dateOfBirth | date : "dd/MM/yyyy"}}</p>
                       </div>
                     </div>
                   </div>
@@ -86,7 +86,13 @@
                     <div class="card-content">
                       <div class="card-body">
                         <h4 class="card-title text-uppercase" style="margin-bottom: 0.7rem;">Giới tính</h4>
-                        <p class="card-text">Nam</p>
+                        <ng-container *ngIf="user.sex == 1; else Nu">
+                          <p class="card-text">Nam</p>
+                        </ng-container>
+                        <ng-template #Nu>
+                          <p class="card-text">Nữ</p>
+                        </ng-template>
+                        
                       </div>
                     </div>
                   </div>
@@ -95,7 +101,7 @@
                     <div class="card-content">
                       <div class="card-body">
                         <h4 class="card-title text-uppercase" style="margin-bottom: 0.7rem;"> Địa chỉ</h4>
-                        <p class="card-text">Ho Chi Minh</p>
+                        <p class="card-text">{{user.address}}</p>
                       </div>
                     </div>
                   </div>

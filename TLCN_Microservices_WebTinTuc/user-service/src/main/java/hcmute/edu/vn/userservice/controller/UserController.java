@@ -63,7 +63,7 @@ public class UserController {
         return dataReturnOne;
     }
 
-    @PostMapping("/users/updateprofile")
+    @PostMapping("/updateprofile")
     public DataReturnOne<User> updateProfile(@RequestBody User user){
         DataReturnOne<User> userDataReturnOne=new DataReturnOne<>();
         try {
@@ -79,7 +79,7 @@ public class UserController {
         return userDataReturnOne;
     }
 
-    @GetMapping("/users/profile/{email}")
+    @GetMapping("/profile/{email}")
     public DataReturnOne<User> Profile(@PathVariable("email") String email){
         DataReturnOne<User> userDataReturnOne=new DataReturnOne<>();
         try {
