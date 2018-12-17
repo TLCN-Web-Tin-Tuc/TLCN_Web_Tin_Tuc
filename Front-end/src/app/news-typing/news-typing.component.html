@@ -31,7 +31,7 @@
                     <div class="card-text">
                       <p>Điền đầy đủ các trường sau để đăng tin tức mới</p>
                     </div>
-                    <form object="" id="frmNews" enctype="multipart/form-data" action="" method="post" class="form form-horizontal striped-rows form-bordered">
+                    <form method = "POST" (ngSubmit) = "createItem()" #f = "ngForm" action="" novalidate class="form form-horizontal striped-rows form-bordered">
                       <div class="form-body">
 
                         <div class="form-group row">
@@ -60,7 +60,7 @@
                           <label class="col-md-2 label-control" for="eventRegInput1">Tiêu đề</label>
                           <div class="col-md-9">
                             <input field="" type="text" id="title" class="form-control" placeholder="Nhậ­p tiêu đề tin tức"
-                              name="title">
+                              name="title" [(ngModel)]="title">
                           </div>
                         </div>
 
@@ -68,21 +68,20 @@
                           <label class="col-md-2 label-control" style="padding-top: 18px;">Ảnh đại diện</label>
                           <div class="col-md-9" id="uploadFile">
                             <label id="projectinput8" class="file center-block">
-                              <input type="file" name="main-image" id="file" accept="image/*"> <span class="file-custom"></span>
+                              <input type="file" (change)="selectFile($event)" name="file" id="file" accept="image/*"> <span class="file-custom"></span>
                             </label>
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-2 label-control" for="eventRegInput3">Mô tả vắn tắt</label>
                           <div class="col-md-9">
-                            <input field="" type="text" id="shortDesc" class="form-control" placeholder="Nhậ­p mô tả vắn tắt"
-                              name="shortDesc">
+                            <input field="" type="text" id="shortDesc" [(ngModel)]="shortDesc" class="form-control" placeholder="Nhậ­p mô tả vắn tắt" name="shortDesc">
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-2 label-control" for="eventRegInput4">Nội dung</label>
                           <div class="col-md-9">
-                            <textarea field="" rows="12" class="form-control ckeditor" name="content"></textarea>
+                            <textarea field="" rows="12" class="form-control ckeditor" [(ngModel)]="fullDesc" name="fullDesc"></textarea>
                           </div>
                         </div>
 

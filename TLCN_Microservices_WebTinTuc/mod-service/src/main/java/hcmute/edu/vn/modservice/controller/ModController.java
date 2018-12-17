@@ -9,11 +9,15 @@ import hcmute.edu.vn.modservice.service.CatService;
 import hcmute.edu.vn.modservice.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("api/v1/mod/")
 public class ModController {
 
@@ -105,15 +109,62 @@ public class ModController {
         return dataReturnList;
     }
 
-    @PostMapping("/items/create/{categoryid}")
-    public DataReturnOne<Items> Create(@RequestBody Items items, @PathVariable("categoryid") long categoryid){
-        items.setDownload((long) 0);
-        items.setComment((long) 0);
-        items.setLikes((long) 0);
-        items.setViews((long) 0);
-        Items items1 = itemService.InsertItem(items, categoryid);
+//    @PostMapping("/items/create/{categoryid}")
+//    public DataReturnOne<Items> Create(@RequestBody Items items, @PathVariable("categoryid") long categoryid){
+//        items.setDownload((long) 0);
+//        items.setComment((long) 0);
+//        items.setLikes((long) 0);
+//        items.setViews((long) 0);
+//        Items items1 = itemService.InsertItem(items, categoryid);
+//        DataReturnOne<Items> dataReturnOne = new DataReturnOne<>();
+//        if(items1 != null){
+//            dataReturnOne.setData(items1);
+//            dataReturnOne.setMessage("Create item success");
+//        }else{
+//            dataReturnOne.setSuccess("false");
+//            dataReturnOne.setData(null);
+//            dataReturnOne.setMessage("Create item fail");
+//        }
+//        return dataReturnOne;
+//    }
+
+    @PostMapping("/items/create")
+    public DataReturnOne<Items> CreateItem(@RequestParam("title") String title, @RequestParam("shortDesc") String shortDesc, @RequestParam("fullDesc") String fullDesc, @RequestParam("file") MultipartFile image ){
+        Items items = new Items();
+        items.setStatus(0);
+        items.setViews(Long.valueOf(0));
+        items.setLikes(Long.valueOf(0));
+        items.setComment(Long.valueOf(0));
+        items.setDownload(Long.valueOf(0));
+        items.setComment(Long.valueOf(0));
+        items.setDateCreated(new Date());
+        items.setUserCreated("KangTooooo");
+        items.setTitle(title);
+        items.setShortDesc(shortDesc);
+        items.setFullDesc(fullDesc);
+
+
+        // If update main image
+        if (!image.isEmpty()) {
+            // save main image
+            String fileName = image.getOriginalFilename().substring(image.getOriginalFilename().lastIndexOf('\\') + 1);
+            // LOG.info("File name : " + fileName);
+            String fileExtension = fileName.substring(fileName.lastIndexOf('.'));
+            // LOG.info("File content after : " + fileExtension);
+            String name = fileName.substring(0, fileName.lastIndexOf('.'));
+            // LOG.info("File name after : " + name);
+            items.setFileName(name);
+            items.setFileExtension(fileExtension);
+            try {
+                items.setImage(image.getBytes());
+            } catch (IOException e1) {
+
+            }
+        }
+
+        Items items1 = itemService.getRepo().save(items);
         DataReturnOne<Items> dataReturnOne = new DataReturnOne<>();
-        if(items1!=null){
+        if(items1 != null){
             dataReturnOne.setData(items1);
             dataReturnOne.setMessage("Create item success");
         }else{
@@ -123,6 +174,7 @@ public class ModController {
         }
         return dataReturnOne;
     }
+
     @PostMapping("/items/addCatOnItem/{itemid}/{categoryid}")
     public DataReturnOne<Cat_Item> addCatOnItem(@PathVariable("itemid") long itemid, @PathVariable("categoryid") long categoryid){
         Cat_Item cat_item = itemService.addCatOnItem(itemid, categoryid);

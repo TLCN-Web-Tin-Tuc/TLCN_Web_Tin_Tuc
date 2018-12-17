@@ -15,5 +15,4 @@ export class Item {
     userCreated : String
     dateUpdated : Date
     userUpdated : String
-
 }
