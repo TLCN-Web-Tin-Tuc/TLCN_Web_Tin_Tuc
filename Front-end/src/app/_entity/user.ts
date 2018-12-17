@@ -6,6 +6,7 @@ export class User {
     firstName : string
     lastName : string
     dateOfBirth : Date
+    dateTemp : string
     sex : number    
     address : string
     phone :  string 

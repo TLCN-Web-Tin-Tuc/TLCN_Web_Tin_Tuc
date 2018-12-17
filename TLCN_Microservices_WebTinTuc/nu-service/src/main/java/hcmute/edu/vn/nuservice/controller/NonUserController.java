@@ -18,7 +18,7 @@ import hcmute.edu.vn.nuservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -47,18 +47,25 @@ public class NonUserController {
     private ReportService reportService;
 
     @PostMapping("/register")
-    public  DataReturnOne<UserDto> register(@Valid @RequestBody User user){
+    public  DataReturnOne<UserDto> register(@RequestBody User user){
+        User testUser = userServie.checkUser(user.getEmail());
+
         DataReturnOne<UserDto> dataReturnOne = new DataReturnOne<>();
 
-        try {
-            User user1 = userServie.registerUser(user);
-            dataReturnOne.setMessage("Tạo thành công tài khoản");
-            dataReturnOne.setData(userMapper.userToUserDto(user1));
-        }
-        catch (NotFoundException ex) {
+        if(testUser != null){
+            dataReturnOne.setMessage("Tai khoan da ton tai !!!");
             dataReturnOne.setSuccess("false");
-            dataReturnOne.setMessage("Email đã có người sử dụng");
+        }
+        else {
+            Date date = new Date();
+            user.setDateCreated(date);
+            user.setUserCreated(user.getEmail());
 
+            user.setStatus(1);
+
+            dataReturnOne.setMessage("Tao tai khoan thanh cong !!!");
+            dataReturnOne.setSuccess("true");
+            dataReturnOne.setData(userMapper.userToUserDto(userServie.registerUser(user)));
         }
         return dataReturnOne;
     }

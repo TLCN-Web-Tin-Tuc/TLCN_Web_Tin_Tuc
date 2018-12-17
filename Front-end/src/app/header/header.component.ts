@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
 
 
   ngOnInit() {
-    this.username = localStorage.getItem("firstname");
+    this.username = localStorage.getItem("lastName");
    
   }
   findUser()  {
@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit {
       .subscribe(res => {
         if(res.success == "true")
         {
-          this.username = res.data.firstName
+          this.username = res.data.lastName
         }
         else
         {
