@@ -8,6 +8,7 @@ export class User {
     dateOfBirth : Date
     dateTemp : string
     sex : number    
+    avatar : string
     address : string
     phone :  string 
     dateCreated : Date 

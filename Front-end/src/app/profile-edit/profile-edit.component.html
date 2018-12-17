@@ -9,7 +9,7 @@
             <div class="card profile-with-cover">
               <div class="media profile-cover-details w-100">
                 <div class="media-left pl-2 pt-2">
-                  <a class="profile-image"> <img class="rounded-circle img-border height-100" src="/assets/robust-admin/profile.png"
+                  <a class="profile-image"> <img class="rounded-circle img-border height-100" [(ngModel)]="user.avatar" name="avatar" src="/assets/robust-admin/profile.png"
                       alt="Card image">
                   </a>
                 </div>
@@ -36,21 +36,19 @@
                 <!-- Profile -->
 
                 <div class="form-body">
-                  <form class="form" enctype="multipart/form-data" novalidate>
+                  <form class="form" [formGroup]="formImage" method="POST" (ngSubmit)="onSaveImage()"
+                  novalidate>
                     <div class="row">
                       <div class="form-group col-md-6 mb-2">
                         <label>Ảnh đại diện</label>
                         <label id="projectinput8" class="file center-block">
-                          <input type="file" id="file" name="avatar-upload" accept=".jpg, .jpeg, .png, .gif" style="margin-left: 5px;">
-                          <span class="file-custom"></span>
+                          <input type="file" id="file" name="avatar" (change)="onChangedImage($event)" #fileInput accept=".jpg, .jpeg, .png, .gif" style="margin-left: 5px;">
+                          <span class="file-custom" (click)="fileInput.click()"></span>
                         </label>
+                        <button type="submit" class="btn btn-primary">
+                          <i class="far fa-check-square" style="margin-right: 5px;" (click)="fileInput.click()"></i>Lưu
+                        </button>
                       </div>
-                      <div class="form-actions top">
-                          <input class="btn btn-cancel" type="button" value="Quay lại">
-                          <button type="submit" class="btn btn-primary">
-                            <i class="far fa-check-square" style="margin-right: 5px;"></i>Lưu
-                          </button>
-                        </div>
                     </div>
                   </form>
                   <form class="form" id="frmUser" (ngSubmit)="updateProfile()" action="" method="POST" #f="ngForm"

@@ -19,7 +19,11 @@ export class UserService {
     return this.http.get(`${this.context}/api/v1/user/profile/${email}`);
   }
 
-  updateProfile(user : User): Observable<any>{
-    return this.http.post(`${this.context}/api/v1/user/updateprofile`,user);
+  updateProfile(user: User): Observable<any>{
+    return this.http.post(`${this.context}/api/v1/user/updateprofile`, user);
+  }
+
+  changeAvatar(user: User): Observable<any>{
+    return this.http.post(`${this.context}/api/v1/user/doiavatar`, user);
   }
 }
