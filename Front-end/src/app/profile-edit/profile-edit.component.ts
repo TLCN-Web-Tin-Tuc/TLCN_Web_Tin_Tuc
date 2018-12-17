@@ -49,7 +49,7 @@ export class ProfileEditComponent implements OnInit {
       if(res.success == "true")
       {
         alert("Cập nhật thông tin cá nhân thành công !!")
-       localStorage.setItem("lastName",this.user.lastName)
+        localStorage.setItem("lastName",this.user.lastName)
            
       }
       else
