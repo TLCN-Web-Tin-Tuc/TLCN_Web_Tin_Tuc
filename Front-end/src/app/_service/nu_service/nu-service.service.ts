@@ -11,11 +11,7 @@ export class NuServiceService {
   constructor(private http: HttpClient) { }
 
   register(user: User) : Observable<any>{    
-<<<<<<< HEAD
-    return this.http.post(`${this.context}/api/v1/nuser/register`,user,{observe:`response`});
-=======
     return this.http.post(`${this.context}/api/v1/nuser/register/`,user);
->>>>>>> ba9bc73c79c0564b823e5856e143150dce86e3a0
   }
   checkEmail(email : string) : Observable<any> {
     return this.http.get(`${this.context}/api/v1/nuser/check-user/${email}`,{observe:`response`});
