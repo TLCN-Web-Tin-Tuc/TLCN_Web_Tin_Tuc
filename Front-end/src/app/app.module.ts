@@ -21,6 +21,7 @@ import { NewsDetailComponent } from './news-detail/news-detail.component';
 import { NewsIndexComponent } from './news-index/news-index.component';
 import { LoginService } from './_service/login.service';
 import { NuServiceService } from './_service/nu_service/nu-service.service';
+import { UserManagementComponent } from './user-management/user-management.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { NuServiceService } from './_service/nu_service/nu-service.service';
     NewsManagementComponent,
     NewsTypingComponent,
     NewsDetailComponent,
-    NewsIndexComponent
+    NewsIndexComponent,
+    UserManagementComponent
   ],
   imports: [
     BrowserModule,
