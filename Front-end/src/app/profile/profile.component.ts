@@ -27,7 +27,7 @@ export class ProfileComponent implements OnInit {
       if(res.success == "true")
       {
         this.user = res.data;
-        localStorage.setItem("lastName",this.user.dateOfBirth.toString());
+        localStorage.setItem("lastName",this.user.lastName.toString());
       }
       else
       {
