@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.Optional;
 
 @Service
@@ -66,6 +67,9 @@ public class UserServiceImpl implements UserService {
         userUpdate.setLastName(user.getLastName());
         userUpdate.setPhone(user.getPhone());
         userUpdate.setSex(user.getSex());
+        userUpdate.setDateOfBirth(user.getDateOfBirth());
+        userUpdate.setDateUpdated(new Date());
+        userUpdate.setUserUpdated(user.getEmail());
         //userUpdate.setPassword(user.getPassword());
         return userRepository.save(userUpdate);
     }

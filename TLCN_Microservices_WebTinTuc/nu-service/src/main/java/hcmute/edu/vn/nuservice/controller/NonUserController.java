@@ -59,10 +59,7 @@ public class NonUserController {
         else {
             Date date = new Date();
             user.setDateCreated(date);
-            user.setDateUpdated(date);
-
             user.setUserCreated(user.getEmail());
-            user.setUserUpdated(user.getEmail());
 
             user.setStatus(1);
 
