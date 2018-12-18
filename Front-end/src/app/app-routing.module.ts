@@ -13,6 +13,7 @@ import { NewsTypingComponent } from './news-typing/news-typing.component';
 import { NewsDetailComponent } from './news-detail/news-detail.component';
 import { NewsIndexComponent } from './news-index/news-index.component';
 import { from } from 'rxjs';
+import { UserManagementComponent } from './user-management/user-management.component';
 
 const routes: Routes = [
   { path: '', component: FramesComponent },
@@ -25,7 +26,8 @@ const routes: Routes = [
   { path: 'newsmanagement', component: NewsManagementComponent },
   { path: 'newstyping', component: NewsTypingComponent },
   { path: 'newsdetail', component: NewsDetailComponent },
-  { path: 'news', component: NewsIndexComponent }
+  { path: 'news', component: NewsIndexComponent },
+  { path: 'usersmanagement', component: UserManagementComponent }
 ];
 
 @NgModule({
