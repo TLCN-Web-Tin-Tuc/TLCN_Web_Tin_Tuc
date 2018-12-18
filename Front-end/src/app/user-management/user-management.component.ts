@@ -23,13 +23,11 @@ constructor(private router : Router,private adminService : AdminService , privat
  }
 
 ngOnInit(){
-  alert("Có vào trongnày")
   this.adminService.getListUser()
     .subscribe(res => {
-      alert("Có vào hàm này")
       if(res.success == "true")
       {
-        alert("Lấy dữ liệu thành công")
+        
         this.users = res.data;
         
       }

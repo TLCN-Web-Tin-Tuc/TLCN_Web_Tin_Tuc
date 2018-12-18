@@ -13,6 +13,7 @@ import * as moment from 'moment';
 })
 export class ProfileEditComponent implements OnInit {
 
+  selectedImg : string = ""
   user: User;
   error: string;
   email: string;
@@ -37,7 +38,7 @@ export class ProfileEditComponent implements OnInit {
       {
         this.user = res.data;    
         this.user.dateTemp = moment(res.data.dateOfBirth).format("YYYY-MM-DD").toString();
-           
+        this.selectedImg = this.user.avatar
       }
       else
       {
@@ -71,6 +72,7 @@ export class ProfileEditComponent implements OnInit {
   onSaveImage(){
     this.imageUploaded = this.formImage.get('avatar').value.value;
     this.user.avatar = this.imageUploaded;
+    this.user.email = localStorage.getItem("email")
     this.userService.changeAvatar(this.user).pipe(first())
     .subscribe(res=>{
       if(res.success == "true")
@@ -91,6 +93,7 @@ export class ProfileEditComponent implements OnInit {
       reader.readAsDataURL(file);
        reader.onload = () => {
         this.image = "data:" + file.type + ";base64," + reader.result.split(',')[1];
+        this.selectedImg = this.image
         this.formImage.get('avatar').setValue({
           filename: file.name,
           filetype: file.type,

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HeaderService } from '../_service/header/header.service';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
+import { NuServiceService } from '../_service/nu_service/nu-service.service';
+import { UserService } from '../_service/user_service/user.service';
 
 @Component({
   selector: 'app-header',
@@ -11,23 +13,27 @@ import { first } from 'rxjs/operators';
 export class HeaderComponent implements OnInit {
   username : string
   email : string
+  avatar : string
   error : String
-  constructor(private headerService : HeaderService, private route : Router) { 
+  constructor(private userService  : UserService, private route : Router) { 
    
   }
 
 
   ngOnInit() {
     this.username = localStorage.getItem("lastName");
-   
+    this.email = localStorage.getItem("email")
+    this.findUser();
+
   }
   findUser()  {
-    this.headerService.findUser(this.email)
+    this.userService.getProfile(this.email)
       .pipe(first())
       .subscribe(res => {
         if(res.success == "true")
         {
           this.username = res.data.lastName
+          this.avatar = res.data.avatar
         }
         else
         {
