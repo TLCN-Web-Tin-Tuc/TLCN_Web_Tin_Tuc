@@ -3,7 +3,7 @@ import { User } from '../_entity/user';
 import { Router } from '@angular/router';
 import { UserService } from '../_service/user_service/user.service';
 import { first } from 'rxjs/operators';
-
+import { FormBuilder ,FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
 
 @Component({
@@ -13,12 +13,19 @@ import * as moment from 'moment';
 })
 export class ProfileEditComponent implements OnInit {
 
-  user : User
-  error : string
-  email : string
+  user: User;
+  error: string;
+  email: string;
+  formImage: FormGroup;
+  image: string = "";
+  imageUploaded: string = "";
 
-  constructor(private userService : UserService, private route : Router) {
+  constructor(private userService : UserService, private fb: FormBuilder) {
     this.user = new User();
+    this.formImage = this.fb.group({
+      name: ['', Validators.required],
+      avatar: null
+    });
    }
 
   ngOnInit() {
@@ -48,17 +55,49 @@ export class ProfileEditComponent implements OnInit {
     .subscribe(res => {
       if(res.success == "true")
       {
-        alert("Cập nhật thông tin cá nhân thành công !!")
+        alert("Cập nhật thông tin cá nhân thành công !!!")
         localStorage.setItem("lastName",this.user.lastName)
            
       }
       else
       {
-        alert("Cập nhật thông tin cá nhân không thành công ??")
+        alert("Cập nhật thông tin cá nhân không thành công !!!")
       }
     }, err => {
-      alert("Cập nhật thông tin cá nhân không thành công ??")
+      alert("Cập nhật thông tin cá nhân không thành công !!!")
     })    
+  }
+
+  onSaveImage(){
+    this.imageUploaded = this.formImage.get('avatar').value.value;
+    this.user.avatar = this.imageUploaded;
+    this.userService.changeAvatar(this.user).pipe(first())
+    .subscribe(res=>{
+      if(res.success == "true")
+        alert("Cập nhật ảnh đại diện thành công !!!");
+      else
+        alert("Cập nhật ảnh đại diện không thành công !!!");
+    },
+    err=>{
+        alert("Không cập nhật được ảnh đại diện !!!");
+    });
+  }
+
+  onChangedImage(event){
+    let reader = new FileReader();
+    if(event.target.files && event.target.files.length > 0) {
+      let file = event.target.files[0];
+    
+      reader.readAsDataURL(file);
+       reader.onload = () => {
+        this.image = "data:" + file.type + ";base64," + reader.result.split(',')[1];
+        this.formImage.get('avatar').setValue({
+          filename: file.name,
+          filetype: file.type,
+          value: "data:" + file.type + ";base64," + reader.result.split(',')[1]
+        })
+      };
+    }
   }
 
 }

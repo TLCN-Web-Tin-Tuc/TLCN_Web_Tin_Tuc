@@ -113,23 +113,17 @@ public class UserController {
         }
 
         return dataReturnOne;
-
     }
-//    @PostMapping("/items/dislike/{itemid}/{email}")
-//    public DataReturnOne<Items> DisLikeItem(@PathVariable("itemid") long itemid,@PathVariable("email") String email){
-//
-//        Items items1 = itemService.unlikeItem(itemid);
-//        itemAccessService.userDisLike(itemid,email);
-//        DataReturnOne<Items> dataReturnOne = new DataReturnOne<>();
-//        if(items1!=null ){
-//            dataReturnOne.setData(items1);
-//            dataReturnOne.setMessage("DisLike Item success");
-//        }else{
-//            dataReturnOne.setSuccess("false");
-//            dataReturnOne.setData(null);
-//            dataReturnOne.setMessage("DisLike item fail");
-//        }
-//        return dataReturnOne;
-//    }
 
+    @PostMapping("/doiavatar")
+    public DataReturnOne<UserDto> changeAvatar(@RequestBody User user){
+        DataReturnOne<UserDto> dataReturnOne = new DataReturnOne<>();
+        User userTemp = userService.findByEmail(user.getEmail());
+        dataReturnOne.setMessage("Đổi avatar thành công !!!");
+        userTemp.setAvatar(user.getAvatar());
+        dataReturnOne.setSuccess("true");
+        dataReturnOne.setData(userMapper.userToUserDto(userService.getRepo().save(userTemp)));
+
+        return dataReturnOne;
+    }
 }

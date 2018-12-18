@@ -34,7 +34,7 @@ public class User {
 
     private int sex;
 
-    private byte[] avatar;
+    private String avatar;
 
     private String address;
 
