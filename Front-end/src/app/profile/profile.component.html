@@ -9,7 +9,7 @@
             <div class="card profile-with-cover">
               <div class="media profile-cover-details w-100">
                 <div class="media-left pl-2 pt-2">
-                  <a class="profile-image"> <img class="rounded-circle img-border height-100" src="/assets/robust-admin/profile.png"
+                  <a class="profile-image"> <img class="rounded-circle img-border height-100" [src]="selectedImg"
                       alt="Card image">
                   </a>
                 </div>
@@ -121,13 +121,39 @@
                   <div class="card col-md-4">
                     <div class="card-content">
                       <div class="card-body">
-                        <a class="btn btn-outline-primary pull-left" href="">Chỉnh sửa thông tin</a>
+                        <ng-container *ngIf="admin == 'true'; else notadmin">
+                            <button class="btn btn-outline-primary pull-left" (click)="onSetStatus()" href="">{{kichhoat}}</button>                                                              
+                        </ng-container>
+                        <ng-template #notadmin>
+                          <a class="btn btn-outline-primary pull-left" href="">Chỉnh sửa thông tin</a>
+                        </ng-template>                        
+                        
                       </div>
                     </div>
                   </div>
 
                 </div>
                 <!-- End Profile -->
+                <ng-container *ngIf="admin == 'true'; else notadmin">
+                    <table class="table table-striped table-bordered table-hover" id="sample_1">
+                        <thead>
+                          <tr>
+                            <th *ngFor="let role of roles"> {{role.rname}}
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="odd gradeX">
+                            <td *ngFor="let role of roles">
+                              <input  type="checkbox" [(ngModel)]="role.isOfUser" ng-init="checked = role.isOfUser" class="checkboxes" value={{role.id}} />
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>                                                             
+                </ng-container>
+                <ng-template #notadmin>
+                  
+                </ng-template>  
               </div>
             </div>
           </div>

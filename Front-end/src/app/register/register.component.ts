@@ -30,11 +30,9 @@ export class RegisterComponent implements OnInit {
         console.log(res.message)
         if(res.success == "true"){
           alert("Tạo tài khoản thành công !!");
-          this.user.email = "";
-          this.user.firstName = "";
-          this.user.lastName = "";
-          this.user.password = "";
-          this.user.confirmPassword = "";
+          localStorage.setItem("email", res.data.email)
+          localStorage.setItem("lastName", res.data.lastName)
+          this.router.navigate(["/"]);         
           this.error = "";
         }
         else{

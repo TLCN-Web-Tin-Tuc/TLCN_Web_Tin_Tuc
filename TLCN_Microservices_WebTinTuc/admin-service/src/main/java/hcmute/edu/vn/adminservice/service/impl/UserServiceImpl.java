@@ -66,7 +66,7 @@ public class UserServiceImpl implements UserService {
     public User updateUserStatus(long uid){
         Optional<User> userOptional=userRepository.findById(uid);
         if(!userOptional.isPresent())
-            throw new NotFoundException("User not found. Could not update role for this user");
+            throw new NotFoundException("User not found. Could not update status for this user");
         User user=userOptional.get();
         if(user.getStatus()==0)
             user.setStatus(1);

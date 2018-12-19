@@ -5,6 +5,7 @@ import { UserService } from '../_service/user_service/user.service';
 import { first } from 'rxjs/operators';
 import { FormBuilder ,FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
+import { Role } from '../_entity/role';
 
 @Component({
   selector: 'app-profile-edit',
@@ -108,4 +109,5 @@ export class ProfileEditComponent implements OnInit {
     }
   }
 
+  
 }
