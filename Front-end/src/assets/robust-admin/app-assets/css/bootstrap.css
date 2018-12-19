@@ -3482,7 +3482,7 @@ tbody.collapse.show {
   animation: progress-bar-stripes 1s linear infinite; }
 
 .media {
-  display: flex;
+  /* display: flex; */
   align-items: flex-start; }
 
 .media-body {
