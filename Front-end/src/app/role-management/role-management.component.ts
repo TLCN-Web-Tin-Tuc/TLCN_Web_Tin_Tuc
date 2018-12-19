@@ -28,6 +28,16 @@ export class RoleManagementComponent implements OnInit {
         {
           
           this.roles = res.data;
+          for(let role of this.roles)
+          {
+            if(role.status == 1){
+              role.isCheck = true
+            }
+            else{
+              role.isCheck = false
+            }
+
+          }
           console.log(this.roles)
           
         }
@@ -45,9 +55,84 @@ export class RoleManagementComponent implements OnInit {
     });
     }
   
-    onGotoUserDetail(id) {
-      this.router.navigate(["/profile"], { queryParams: { id: id } });
+    onGotoRoleEdit(id) {
+      this.router.navigate(["/editrole"], { queryParams: { id: id } });
     }
+
+    toggleRoleCreate(e){
+      this.adminService.updateRoleCreate(e.target.value)
+      .subscribe(res => {
+      if(res.success == "true")
+      {
+        console.log("update thành công")
+      }
+      else{
+        console.log("update không thành công")
+      }
+    }, err => {
+      console.log(err);
+    });
+    }
+
+    toggleRoleUpdate(e){
+      this.adminService.updateRoleUpdate(e.target.value)
+      .subscribe(res => {
+      if(res.success == "true")
+      {
+        console.log("update thành công")
+      }
+      else{
+        console.log("update không thành công")
+      }
+    }, err => {
+      console.log(err);
+    });
+    }
+
+    toggleRoleDelete(e){
+      this.adminService.updateRoleDelete(e.target.value)
+      .subscribe(res => {
+      if(res.success == "true")
+      {
+        console.log("update thành công")
+      }
+      else{
+        console.log("update không thành công")
+      }
+    }, err => {
+      console.log(err);
+    });
+    }
+
+    toggleRoleApprove(e){
+      this.adminService.updateRoleApprove(e.target.value)
+      .subscribe(res => {
+      if(res.success == "true")
+      {
+        console.log("update thành công")
+      }
+      else{
+        console.log("update không thành công")
+      }
+    }, err => {
+      console.log(err);
+    });
+    }
+    toggleRoleStatus(e){
+      this.adminService.updateStatusRole(e.target.value)
+      .subscribe(res => {
+      if(res.success == "true")
+      {
+        console.log("update thành công")
+      }
+      else{
+        console.log("update không thành công")
+      }
+    }, err => {
+      console.log(err);
+    });
+    }
+
   
   }
   

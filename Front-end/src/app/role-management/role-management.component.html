@@ -34,16 +34,18 @@
                           <th>Tạo</th>
                           <th>Cập nhật</th>    
                           <th>Xóa </th>
-                          <th>Duyệt</th>                         
+                          <th>Duyệt</th>        
+                          <th>Trạng thái</th>                 
                         </tr>
                       </thead>
                       <tbody>
                         <tr *ngFor="let role of roles">
-                          <td (click)="onGotoUserDetail(role.id)">{{role.rname}}</td>
-                          <td><input  type="checkbox" [(ngModel)]="role.p_create"  name ="p_create" ng-init="checked = role.p_create" class="checkboxes" value={{role.id}} (change)="toggleRoleCreate($event)" /></td>
-                          <td><input  type="checkbox" [(ngModel)]="role.p_update"  name ="p_update" ng-init="checked = role.p_update" class="checkboxes" value={{role.id}} (change)="toggleRoleUpdate($event)" /></td>  
-                          <td><input  type="checkbox" [(ngModel)]="role.p_delete"  name ="p_delete" ng-init="checked = role.p_delete" class="checkboxes" value={{role.id}} (change)="toggleRoleDelete($event)" /></td>
-                          <td><input  type="checkbox" [(ngModel)]="role.p_approve" name ="p_approve" ng-init="checked = role.p_approve" class="checkboxes" value={{role.id}} (change)="toggleRoleApprove($event)" /></td>                        
+                          <td (click)="onGotoRoleEdit(role.id)">{{role.rname}}</td>
+                          <td><input  type="checkbox" [(ngModel)]="role.p_create" [ngModelOptions]="{standalone: true}" class="checkboxes" value={{role.id}} (change)="toggleRoleCreate($event)" /></td>
+                          <td><input  type="checkbox" [(ngModel)]="role.p_update" [ngModelOptions]="{standalone: true}" class="checkboxes" value={{role.id}} (change)="toggleRoleUpdate($event)" /></td>  
+                          <td><input  type="checkbox" [(ngModel)]="role.p_delete" [ngModelOptions]="{standalone: true}" class="checkboxes" value={{role.id}} (change)="toggleRoleDelete($event)" /></td>
+                          <td><input  type="checkbox" [(ngModel)]="role.p_approve" [ngModelOptions]="{standalone: true}" class="checkboxes" value={{role.id}} (change)="toggleRoleApprove($event)" /></td>  
+                          <td><input  type="checkbox" [(ngModel)]="role.isCheck" [ngModelOptions]="{standalone: true}" class="checkboxes" value={{role.id}} (change)="toggleRoleStatus($event)" /></td>                      
                         </tr>
                       </tbody>
                     </table>

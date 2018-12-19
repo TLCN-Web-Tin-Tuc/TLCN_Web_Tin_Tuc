@@ -14,8 +14,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/admin/")
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 public class AdminController {
+
     @Autowired
     private UserService userService;
 
@@ -84,6 +85,8 @@ public class AdminController {
         return dataReturnList;
     }
 
+
+
     @DeleteMapping("/reports/delete")
     public  DataReturnOne<Report> DeleteReport(@RequestBody Report report){
         DataReturnOne<Report> dataReturnOne = new DataReturnOne<>();
@@ -143,6 +146,22 @@ public class AdminController {
         return dataReturnOne;
     }
 
+    @GetMapping("/roles/{rid}")
+    public DataReturnOne<Role> FindRole(@PathVariable("rid") long id){
+        DataReturnOne<Role> roleDataReturnOne=new DataReturnOne<>();
+        try {
+            Role role = roleService.retrieveRoleByRId(id);
+            roleDataReturnOne.setSuccess("true");
+            roleDataReturnOne.setMessage("success");
+            roleDataReturnOne.setData(role);
+        }catch (NotFoundException ex){
+            roleDataReturnOne.setSuccess("false");
+            roleDataReturnOne.setMessage("error");
+            roleDataReturnOne.setData(null);
+        }
+        return roleDataReturnOne;
+    }
+
     @PutMapping("/roles/updatestatus/{rid}")
     public DataReturnOne<Role> UpdateStatusRole(@PathVariable long rid)
     {
@@ -159,7 +178,7 @@ public class AdminController {
             }
             dataReturnOne.setData(roleService.getRepo().save(role1));
             dataReturnOne.setSuccess("true");
-            dataReturnOne.setMessage("Set status Role success");
+            dataReturnOne.setMessage("Set status Role Success");
         }else{
             dataReturnOne.setSuccess("false");
             dataReturnOne.setData(null);
@@ -168,6 +187,105 @@ public class AdminController {
         return dataReturnOne;
     }
 
+    @PutMapping("/roles/updaterolecreate/{rid}")
+    public DataReturnOne<Role> UpdateRoleCreate(@PathVariable long rid)
+    {
+        Role role1 = roleService.retrieveRoleByRId(rid);
+        DataReturnOne<Role> dataReturnOne = new DataReturnOne<>();
+        if(role1!=null){
+            if(role1.getP_create() == true)
+            {
+                role1.setP_create(false);
+            }
+            else
+            {
+                role1.setP_create(true);
+            }
+            dataReturnOne.setData(roleService.getRepo().save(role1));
+            dataReturnOne.setSuccess("true");
+            dataReturnOne.setMessage("Set create for Role success");
+        }else{
+            dataReturnOne.setSuccess("false");
+            dataReturnOne.setData(null);
+            dataReturnOne.setMessage("Set create for Role Fail");
+        }
+        return dataReturnOne;
+    }
+
+    @PutMapping("/roles/updateroleapprove/{rid}")
+    public DataReturnOne<Role> UpdateRoleApprove(@PathVariable long rid)
+    {
+        Role role1 = roleService.retrieveRoleByRId(rid);
+        DataReturnOne<Role> dataReturnOne = new DataReturnOne<>();
+        if(role1!=null){
+            if(role1.getP_approve() == true)
+            {
+                role1.setP_approve(false);
+            }
+            else
+            {
+                role1.setP_approve(true);
+            }
+            dataReturnOne.setData(roleService.getRepo().save(role1));
+            dataReturnOne.setSuccess("true");
+            dataReturnOne.setMessage("Set approve for Role success");
+        }else{
+            dataReturnOne.setSuccess("false");
+            dataReturnOne.setData(null);
+            dataReturnOne.setMessage("Set approve for Role Fail");
+        }
+        return dataReturnOne;
+    }
+
+    @PutMapping("/roles/updateroleupdate/{rid}")
+    public DataReturnOne<Role> UpdateRoleUpdate(@PathVariable long rid)
+    {
+        Role role1 = roleService.retrieveRoleByRId(rid);
+        DataReturnOne<Role> dataReturnOne = new DataReturnOne<>();
+        if(role1!=null){
+            if(role1.getP_update() == true)
+            {
+                role1.setP_update(false);
+            }
+            else
+            {
+                role1.setP_update(true);
+            }
+            dataReturnOne.setData(roleService.getRepo().save(role1));
+            dataReturnOne.setSuccess("true");
+            dataReturnOne.setMessage("Set update for Role success");
+        }else{
+            dataReturnOne.setSuccess("false");
+            dataReturnOne.setData(null);
+            dataReturnOne.setMessage("Set update for Role Fail");
+        }
+        return dataReturnOne;
+    }
+
+    @PutMapping("/roles/updateroledelete/{rid}")
+    public DataReturnOne<Role> UpdateRoleDelete(@PathVariable long rid)
+    {
+        Role role1 = roleService.retrieveRoleByRId(rid);
+        DataReturnOne<Role> dataReturnOne = new DataReturnOne<>();
+        if(role1!=null){
+            if(role1.getP_delete() == true)
+            {
+                role1.setP_delete(false);
+            }
+            else
+            {
+                role1.setP_delete(true);
+            }
+            dataReturnOne.setData(roleService.getRepo().save(role1));
+            dataReturnOne.setSuccess("true");
+            dataReturnOne.setMessage("Set delete for Role success");
+        }else{
+            dataReturnOne.setSuccess("false");
+            dataReturnOne.setData(null);
+            dataReturnOne.setMessage("Set delete for Role Fail");
+        }
+        return dataReturnOne;
+    }
 
 
 

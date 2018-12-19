@@ -28,6 +28,7 @@ import { RoleManagementComponent } from './role-management/role-management.compo
 import { AdminService } from './_service/admin_service/admin.service';
 import { UserService } from './_service/user_service/user.service';
 import { HeaderService } from './_service/header/header.service';
+import { RoleEditComponent } from './role-edit/role-edit.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { HeaderService } from './_service/header/header.service';
     NewsIndexComponent,
     UserManagementComponent,
     RoleCreateComponent,
-    RoleManagementComponent
+    RoleManagementComponent,
+    RoleEditComponent
   ],
   imports: [
     BrowserModule,
