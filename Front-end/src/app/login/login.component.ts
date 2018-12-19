@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
         if(res.success == "true")
         {
           localStorage.setItem("email", res.data.email)
-          localStorage.setItem("lastName", res.data.lastName)
+          localStorage.setItem("lastName", res.data.lastName)          
           this.route.navigate(["/"]);
         }
         else

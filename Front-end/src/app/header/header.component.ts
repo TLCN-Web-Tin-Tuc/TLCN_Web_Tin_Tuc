@@ -21,23 +21,26 @@ export class HeaderComponent implements OnInit {
 
 
   ngOnInit() {
-    this.username = localStorage.getItem("lastName");
-    this.email = localStorage.getItem("email")
-    this.avatar = localStorage.getItem("avatar");
+    //this.username = localStorage.getItem("lastName");
+    //this.email = localStorage.getItem("email")
     this.findUser();
 
   }
   findUser()  {
-    this.userService.getProfile(this.email)
+    this.email = localStorage.getItem("email")    
+    if(this.email !=null)
+    {
+      this.userService.getProfile(this.email)
       .pipe(first())
       .subscribe(res => {
         if(res.success == "true")
         {
           this.username = res.data.lastName
-          if(this.avatar != null)
           this.avatar = res.data.avatar
-          else
-          this.avatar = "/assets/robust-admin/profile.png"
+          if(this.avatar == null){                   
+            this.avatar = "/assets/robust-admin/profile.png"
+          }
+          
         }
         else
         {
@@ -45,7 +48,14 @@ export class HeaderComponent implements OnInit {
         }
       }, err => {
         // console.log(err)
-      })      
+      })     
+    }
+    
+     
+  }
+  onLogout(){
+    localStorage.clear()
+    this.route.navigate(["/login"]);
   }
 
 }
