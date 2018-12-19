@@ -25,6 +25,9 @@ import { UserManagementComponent } from './user-management/user-management.compo
 import { CKEditorModule } from '../ckeditor/ckeditor.module';
 import { RoleCreateComponent } from './role-create/role-create.component';
 import { RoleManagementComponent } from './role-management/role-management.component';
+import { AdminService } from './_service/admin_service/admin.service';
+import { UserService } from './_service/user_service/user.service';
+import { HeaderService } from './_service/header/header.service';
 
 @NgModule({
   declarations: [
@@ -56,7 +59,10 @@ import { RoleManagementComponent } from './role-management/role-management.compo
     CKEditorModule
   ],
   providers: [LoginService,
-    NuServiceService],
+    NuServiceService,
+  AdminService,
+UserService,
+HeaderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
