@@ -24,6 +24,7 @@ import { NuServiceService } from './_service/nu_service/nu-service.service';
 import { UserManagementComponent } from './user-management/user-management.component';
 import { CKEditorModule } from '../ckeditor/ckeditor.module';
 import { RoleCreateComponent } from './role-create/role-create.component';
+import { RoleManagementComponent } from './role-management/role-management.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { RoleCreateComponent } from './role-create/role-create.component';
     NewsDetailComponent,
     NewsIndexComponent,
     UserManagementComponent,
-    RoleCreateComponent
+    RoleCreateComponent,
+    RoleManagementComponent
   ],
   imports: [
     BrowserModule,

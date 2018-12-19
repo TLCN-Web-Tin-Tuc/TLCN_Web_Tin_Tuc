@@ -1,0 +1,82 @@
+<app-header></app-header>
+<app-menu></app-menu>
+<div class="app-content content">
+  <div class="content-wrapper">
+    <div class="content-body">
+      <div id="user-profile">
+        
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="tab-content px-1 pt-1"></div>
+              <div class="tab-pane" id="link32" role="tabpanel" aria-labelledby="link-tab32" aria-expanded="false">
+                <!-- Profile -->
+
+                <div class="form-body">
+                 
+                  <form class="form" id="frmUser" (ngSubmit)="createRole()" action="" method="POST" #f="ngForm"
+                    enctype="multipart/form-data" novalidate>
+                    <h4 class="form-section">
+                      <a id="models-tab" class="nav-link active"><i class="ft-user"></i>Thông tin Role</a>
+                    </h4>
+                    <div class="row">
+                      <div class="form-group col-md-4 mb-2">
+                        <label for="projectinput1">Tên Role</label>
+                        <div class="position-relative has-icon-left">
+                          <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="role.rname"
+                            placeholder="Tên Role">
+                          <div class="form-control-position" style="margin-top: -3px;">
+                            <i class="ft-user"></i>
+                          </div>
+                        </div>
+                      </div>                     
+                    </div>
+                    <h6 class="form-section">
+                      <a id="models-tab" class="nav-link active"><i class="ft-user"></i>Danh sách các quyền</a>
+                    </h6>
+                    <div class="row skin skin-square">                      
+                        <div class="col-md-6 col-sm-12">
+                          <fieldset>
+                            <div class="custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input" name="customCheck1" [(ngModel)]="role.p_create" id="customCheck1">
+                              <label class="custom-control-label" for="customCheck1">Quyền tạo bài viết</label>
+                            </div>
+                          </fieldset>
+                          <fieldset>
+                            <div class="custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input" name="customCheck2" id="customCheck2" [(ngModel)]="role.p_update">
+                              <label class="custom-control-label" for="customCheck2">Quyền cập nhật bài viết</label>
+                            </div>
+                          </fieldset>
+                          <fieldset>
+                            <div class="custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input" name="customCheck3" id="customCheck3" [(ngModel)]="role.p_delete">
+                              <label class="custom-control-label" for="customCheck3">Quyền xóa bài viết</label>
+                            </div>
+                          </fieldset>
+                          <fieldset>
+                            <div class="custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input" name="customCheck4" id="customCheck4" [(ngModel)]="role.p_approve">
+                              <label class="custom-control-label" for="customCheck4">Quyền duyệt bài viết</label>
+                            </div>
+                          </fieldset>
+                        </div>                      
+                    </div>                    
+                    <div class="form-actions top" style="float: right;">
+                      <input class="btn btn-cancel" type="button" value="Quay lại">
+                      <button type="submit" class="btn btn-primary">
+                        <i class="far fa-check-square" style="margin-right: 5px;"></i>Lưu
+                      </button>
+                    </div>
+                  </form>
+                </div>
+                <!-- End Profile -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
