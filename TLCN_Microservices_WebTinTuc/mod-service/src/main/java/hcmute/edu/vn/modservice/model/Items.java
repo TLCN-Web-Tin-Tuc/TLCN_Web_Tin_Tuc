@@ -58,6 +58,4 @@ public class Items {
     @OneToMany(mappedBy = "item_ac")
     private Set<Item_Access> item_accesses;
 
-    @OneToMany(mappedBy = "item")
-    private Set<Attach_File> attach_files;
 }

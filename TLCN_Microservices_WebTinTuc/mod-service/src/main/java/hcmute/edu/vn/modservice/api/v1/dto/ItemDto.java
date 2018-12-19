@@ -1,6 +1,5 @@
 package hcmute.edu.vn.modservice.api.v1.dto;
 
-import hcmute.edu.vn.modservice.model.Attach_File;
 import hcmute.edu.vn.modservice.model.Cat;
 import hcmute.edu.vn.modservice.model.Item_Access;
 import lombok.Data;
@@ -23,5 +22,4 @@ public class ItemDto {
     private Long Comment;
     private Set<Cat> cats;
     private Set<Item_Access> item_accesses;
-    private Set<Attach_File> attach_files;
 }

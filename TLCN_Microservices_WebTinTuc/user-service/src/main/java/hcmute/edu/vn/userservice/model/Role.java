@@ -24,6 +24,14 @@ public class Role {
 
     private String rname;
 
+    private Boolean p_create;
+
+    private Boolean p_update;
+
+    private Boolean p_delete;
+
+    private Boolean p_approve;
+
     private Date dateCreated;
 
     private String userCreated;

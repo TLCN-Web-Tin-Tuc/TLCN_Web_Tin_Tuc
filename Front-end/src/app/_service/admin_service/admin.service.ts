@@ -25,4 +25,8 @@ export class AdminService {
   getAllRole() :Observable<any>{
     return this.http.get(`${this.context}/api/v1/admin/roles`);
   }
+
+  updateUserRole(uid,rid) :Observable<any>{
+    return this.http.put(`${this.context}/api/v1/admin/users/role/${uid}/${rid}`,"");
+  }
 }

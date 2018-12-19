@@ -2,7 +2,6 @@ package hcmute.edu.vn.adminservice.controller;
 
 import hcmute.edu.vn.adminservice.api.v1.data.DataReturnList;
 import hcmute.edu.vn.adminservice.api.v1.data.DataReturnOne;
-import hcmute.edu.vn.adminservice.api.v1.dto.UserDto;
 import hcmute.edu.vn.adminservice.api.v1.mapper.UserMapper;
 import hcmute.edu.vn.adminservice.exception.NotFoundException;
 import hcmute.edu.vn.adminservice.model.*;
@@ -26,11 +25,7 @@ public class AdminController {
     @Autowired
     private RoleService roleService;
 
-    @Autowired
-    private PermissionService permissionService;
 
-    @Autowired
-    private Assign_Permission_Service assign_permission_service;
 
     @Autowired
     private UserMapper userMapper;
@@ -60,11 +55,11 @@ public class AdminController {
     }
     // update role for user
     @PutMapping("/users/role/{uid}/{rid}")
-    public DataReturnOne<UserDto> updateUserRole(@PathVariable long uid, @PathVariable long rid){
-        DataReturnOne<UserDto> dataReturnOne=new DataReturnOne<>();
+    public DataReturnOne<User> updateUserRole(@PathVariable long uid, @PathVariable long rid){
+        DataReturnOne<User> dataReturnOne=new DataReturnOne<>();
         dataReturnOne.setMessage("success");
         dataReturnOne.setSuccess("true");
-        dataReturnOne.setData(userMapper.userToUserDto(userService.updateRoleForUser(uid,rid)));
+        dataReturnOne.setData(userService.updateRoleForUser(uid,rid));
         return dataReturnOne;
     }
 
@@ -103,70 +98,6 @@ public class AdminController {
         }
         return dataReturnOne;
     }
-    @GetMapping("/permissions")
-    public DataReturnList<Permission> retrieveAllPermission()
-    {
-        DataReturnList<Permission> dataReturnList = new DataReturnList<>();
-        dataReturnList.setSuccess("success");
-        dataReturnList.setMessage("true");
-        dataReturnList.setData(permissionService.retrieveAllPermission());
-        return dataReturnList;
-    }
-
-    @DeleteMapping("/permission/delete")
-    public  DataReturnOne<Permission> DeletePermission(@RequestBody Permission permission){
-        DataReturnOne<Permission> dataReturnOne = new DataReturnOne<>();
-        try{
-            Permission permissionUpdate = permissionService.deletePermission(permission);
-            dataReturnOne.setMessage("Delete Permission Success");
-            dataReturnOne.setData(permissionUpdate);
-        }catch (Exception e){
-            dataReturnOne.setSuccess("false");
-            dataReturnOne.setMessage(e.getMessage());
-            dataReturnOne.setData(null);
-        }
-        return dataReturnOne;
-    }
-
-    @PutMapping("/permission/update")
-    public  DataReturnOne<Permission> UpdatePermission(@RequestBody Permission permission){
-        DataReturnOne<Permission> dataReturnOne = new DataReturnOne<>();
-        try{
-            Permission permissionUpdate = permissionService.updatePermission(permission);
-            dataReturnOne.setMessage("Update Permission Success");
-            dataReturnOne.setData(permissionUpdate);
-        }catch (Exception e){
-            dataReturnOne.setSuccess("false");
-            dataReturnOne.setMessage(e.getMessage());
-            dataReturnOne.setData(null);
-        }
-        return dataReturnOne;
-    }
-
-    @PostMapping("/permission/create")
-    public DataReturnOne<Permission> createPermission(@RequestBody Permission permission){
-        DataReturnOne<Permission> dataReturnOne = new DataReturnOne<>();
-        try{
-            Permission permissionCreate = permissionService.createPermission(permission);
-            dataReturnOne.setMessage("Create Permission Success");
-            dataReturnOne.setData(permissionCreate);
-        }catch (Exception e){
-            dataReturnOne.setSuccess("false");
-            dataReturnOne.setMessage(e.getMessage());
-            dataReturnOne.setData(null);
-        }
-        return dataReturnOne;
-    }
-
-    @GetMapping("/assign_permissions")
-    public DataReturnList<Assign_Permission> retrieveAllAssignPermission()
-    {
-        DataReturnList<Assign_Permission> dataReturnList = new DataReturnList<>();
-        dataReturnList.setSuccess("true");
-        dataReturnList.setMessage("success");
-        dataReturnList.setData(assign_permission_service.retrieveAllAssignPermission());
-        return dataReturnList;
-    }
 
     @GetMapping("/roles")
     public DataReturnList<Role> retrieveAllRole()
@@ -178,49 +109,6 @@ public class AdminController {
         return dataReturnList;
     }
 
-    @DeleteMapping("/assign_permissions/delete")
-    public  DataReturnOne<Assign_Permission> DeleteAssignPermission(@RequestBody Assign_Permission assign_permission){
-        DataReturnOne<Assign_Permission> dataReturnOne = new DataReturnOne<>();
-        try{
-            assign_permission_service.deleteAssignPermission(assign_permission);
-            dataReturnOne.setMessage("Delete Assign Permission Success");
-            dataReturnOne.setData(null);
-        }catch (Exception e){
-            dataReturnOne.setSuccess("false");
-            dataReturnOne.setMessage(e.getMessage());
-            dataReturnOne.setData(null);
-        }
-        return dataReturnOne;
-    }
-
-    @PutMapping("/assign_permissions/update")
-    public  DataReturnOne<Assign_Permission> UpdateAssignPermission(@RequestBody Assign_Permission assign_permission){
-        DataReturnOne<Assign_Permission> dataReturnOne = new DataReturnOne<>();
-        try{
-            Assign_Permission assignPermissionUpdate = assign_permission_service.updateAssignPermission(assign_permission);
-            dataReturnOne.setMessage("Update Assign Permission Success");
-            dataReturnOne.setData(assignPermissionUpdate);
-        }catch (Exception e){
-            dataReturnOne.setSuccess("false");
-            dataReturnOne.setMessage(e.getMessage());
-            dataReturnOne.setData(null);
-        }
-        return dataReturnOne;
-    }
-
-    @PostMapping("/assign_permissions/create")
-    public DataReturnOne<Assign_Permission> createAssignPermission(@RequestBody Assign_Permission assign_permission){
-        DataReturnOne<Assign_Permission> dataReturnOne = new DataReturnOne<>();
-        try{
-            Assign_Permission assignPermissionCreate = assign_permission_service.createAssignPermission(assign_permission);
-            dataReturnOne.setMessage("Create Permission Success");
-            dataReturnOne.setData(assignPermissionCreate);
-        }catch (Exception e){
-            dataReturnOne.setSuccess("false");
-            dataReturnOne.setMessage(e.getMessage());
-            dataReturnOne.setData(null);
-        }
-        return dataReturnOne;
-    }
+   
 
 }

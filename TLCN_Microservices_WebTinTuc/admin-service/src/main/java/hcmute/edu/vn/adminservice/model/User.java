@@ -59,9 +59,6 @@ public class User {
     @OneToMany(mappedBy = "user_ia")
     private Set<Item_Access> item_accesses;
 
-    @OneToMany(mappedBy = "user_ap")
-    private Set<Assign_Permission> assign_permissions;
-
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "ne_user_role",

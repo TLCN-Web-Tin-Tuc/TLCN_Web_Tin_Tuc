@@ -121,13 +121,13 @@
                   <div class="card col-md-4">
                     <div class="card-content">
                       <div class="card-body">
-                        <ng-container *ngIf="admin == 'true'; else notadmin">
-                            <button class="btn btn-outline-primary pull-left" (click)="onSetStatus()" href="">{{kichhoat}}</button>                                                              
-                        </ng-container>
-                        <ng-template #notadmin>
-                          <a class="btn btn-outline-primary pull-left" href="">Chỉnh sửa thông tin</a>
-                        </ng-template>                        
-                        
+                        <ng-container *ngIf="admin == 'true'; else isnotadmin">
+                          <button class="btn btn-outline-primary pull-left" (click)="onSetStatus()" href="">{{kichhoat}}</button>                                                              
+                      </ng-container>
+                      <ng-template #isnotadmin>
+                       <a class="btn btn-outline-primary pull-left" href="">Chỉnh sửa thông tin</a> 
+                      </ng-template>                     
+                      
                       </div>
                     </div>
                   </div>
@@ -145,7 +145,7 @@
                         <tbody>
                           <tr class="odd gradeX">
                             <td *ngFor="let role of roles">
-                              <input  type="checkbox" [(ngModel)]="role.isOfUser" ng-init="checked = role.isOfUser" class="checkboxes" value={{role.id}} />
+                              <input  type="checkbox" [(ngModel)]="role.isOfUser" ng-init="checked = role.isOfUser" class="checkboxes" value={{role.id}} (change)="toggleRoleOfUser($event)" />
                             </td>
                           </tr>
                         </tbody>
