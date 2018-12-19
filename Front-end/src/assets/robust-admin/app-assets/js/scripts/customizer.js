@@ -345,13 +345,6 @@
     *           Color Options        *
     *********************************/
 
-    var el = $('nav.header-navbar'),
-    nav_type = 'navbar-semi-light',
-    bgClass = '';
-    if(el.attr('class').match(/\bbg-\S+/g)){
-        bgClass = el.attr('class').match(/\bbg-\S+/g)[0];
-    }
-
     // Nav Semi Light
     $('.nav-semi-light').on('click',function(){
         chkBgClass(el);

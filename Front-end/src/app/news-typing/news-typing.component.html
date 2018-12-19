@@ -31,36 +31,13 @@
                     <div class="card-text">
                       <p>Điền đầy đủ các trường sau để đăng tin tức mới</p>
                     </div>
-                    <form method = "POST" (ngSubmit) = "createItem()" #f = "ngForm" action="" novalidate class="form form-horizontal striped-rows form-bordered">
+                    <form method="POST" (ngSubmit)="onSaveImage()" novalidate class="form form-horizontal striped-rows form-bordered">
                       <div class="form-body">
-
-                        <div class="form-group row">
-                          <label class="col-md-2 label-control" for="eventRegInput2">Danh mục</label>
-                          <div class="col-md-9">
-                            <div class="custom-control custom-checkbox">
-                              <input type="checkbox" class="custom-control-input" id="checkbox1">
-                              <label class="custom-control-label" for="checkbox1">Danh mục 1</label>
-                            </div>
-                            <div class="custom-control custom-checkbox">
-                              <input type="checkbox" class="custom-control-input" id="checkbox2">
-                              <label class="custom-control-label" for="checkbox2">Danh mục 2</label>
-                            </div>
-                            <div class="custom-control custom-checkbox">
-                              <input type="checkbox" class="custom-control-input" id="checkbox3">
-                              <label class="custom-control-label" for="checkbox3">Danh mục 3</label>
-                            </div>
-                            <div class="custom-control custom-checkbox">
-                              <input type="checkbox" class="custom-control-input" id="checkbox4">
-                              <label class="custom-control-label" for="checkbox4">Danh mục 4</label>
-                            </div>
-                          </div>
-                        </div>
-
                         <div class="form-group row">
                           <label class="col-md-2 label-control" for="eventRegInput1">Tiêu đề</label>
                           <div class="col-md-9">
                             <input field="" type="text" id="title" class="form-control" placeholder="Nhậ­p tiêu đề tin tức"
-                              name="title" [(ngModel)]="title">
+                              name="title" [(ngModel)]="item.title">
                           </div>
                         </div>
 
@@ -68,20 +45,25 @@
                           <label class="col-md-2 label-control" style="padding-top: 18px;">Ảnh đại diện</label>
                           <div class="col-md-9" id="uploadFile">
                             <label id="projectinput8" class="file center-block">
-                              <input type="file" (change)="selectFile($event)" name="file" id="file" accept="image/*"> <span class="file-custom"></span>
+                              <input type="file" id="file" name="avatar" (change)="onChangedImage($event)" #fileInput
+                                accept="image/*">
+                              <span class="file-custom"></span>
                             </label>
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-2 label-control" for="eventRegInput3">Mô tả vắn tắt</label>
                           <div class="col-md-9">
-                            <input field="" type="text" id="shortDesc" [(ngModel)]="shortDesc" class="form-control" placeholder="Nhậ­p mô tả vắn tắt" name="shortDesc">
+                            <input field="" type="text" id="shortDesc" [(ngModel)]="item.shortDesc" class="form-control"
+                              placeholder="Nhậ­p mô tả vắn tắt" name="shortDesc">
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-2 label-control" for="eventRegInput4">Nội dung</label>
                           <div class="col-md-9">
-                            <textarea field="" rows="12" class="form-control ckeditor" [(ngModel)]="fullDesc" name="fullDesc"></textarea>
+                            <ckeditor name="fullDesc" [(ngModel)]="item.fullDesc" [editor]="Editor" id="fullDesc" name="fullDesc">
+                            </ckeditor>
+                            <!-- <textarea field="" rows="12" class="form-control ckeditor"  name="fullDesc"></textarea> -->
                           </div>
                         </div>
 

@@ -37,6 +37,10 @@ export class ProfileEditComponent implements OnInit {
       if(res.success == "true")
       {
         this.user = res.data;    
+        if(this.user.avatar != null)
+          this.user.avatar = res.data.avatar
+        else
+          this.user.avatar = "/assets/robust-admin/profile.png"
         this.user.dateTemp = moment(res.data.dateOfBirth).format("YYYY-MM-DD").toString();
         this.selectedImg = this.user.avatar
       }
@@ -73,6 +77,7 @@ export class ProfileEditComponent implements OnInit {
     this.imageUploaded = this.formImage.get('avatar').value.value;
     this.user.avatar = this.imageUploaded;
     this.user.email = localStorage.getItem("email")
+    localStorage.setItem("avatar",this.user.avatar)
     this.userService.changeAvatar(this.user).pipe(first())
     .subscribe(res=>{
       if(res.success == "true")

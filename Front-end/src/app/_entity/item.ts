@@ -1,7 +1,7 @@
 export class Item {
     fileName : String
     fileExtension : String
-    image : File
+    image : String
     title : String
     status : String
     shortDesc : String

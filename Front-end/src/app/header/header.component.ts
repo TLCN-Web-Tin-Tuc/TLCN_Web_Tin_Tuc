@@ -23,6 +23,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.username = localStorage.getItem("lastName");
     this.email = localStorage.getItem("email")
+    this.avatar = localStorage.getItem("avatar");
     this.findUser();
 
   }
@@ -33,14 +34,17 @@ export class HeaderComponent implements OnInit {
         if(res.success == "true")
         {
           this.username = res.data.lastName
+          if(this.avatar != null)
           this.avatar = res.data.avatar
+          else
+          this.avatar = "/assets/robust-admin/profile.png"
         }
         else
         {
             this.error = res.message
         }
       }, err => {
-        console.log(err)
+        // console.log(err)
       })      
   }
 

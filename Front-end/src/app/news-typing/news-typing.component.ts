@@ -3,7 +3,8 @@ import { ModServiceService } from '../_service/mod_service/mod-service.service';
 import { Item } from '../_entity/item';
 import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { Title } from '@angular/platform-browser';
+import { FormBuilder ,FormGroup, Validators } from '@angular/forms';
+import * as ClassicEditorBuild from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
   selector: 'app-news-typing',
@@ -12,35 +13,68 @@ import { Title } from '@angular/platform-browser';
 })
 export class NewsTypingComponent implements OnInit {
 
-  selectedFiles: FileList;
-  currentFileUpload: File;
-  title: string;
-  shortDesc: string;
-  fullDesc: string; 
+  public Editor = ClassicEditorBuild;
+  item: Item;
+  error: string;
+  formImage: FormGroup;
+  image: string = "";
+  imageUploaded: string = "";
   
-  constructor(private modService : ModServiceService, private route : Router) { 
+  constructor(private modService : ModServiceService, private fb: FormBuilder) { 
+    this.item = new Item();
+    this.formImage = this.fb.group({
+      name: ['', Validators.required],
+      avatar: null
+    });
   }
 
   ngOnInit() {
   }
 
-  selectFile(event) {
-    this.selectedFiles = event.target.files;
+  onChangedImage(event){
+    let reader = new FileReader();
+    if(event.target.files && event.target.files.length > 0) {
+      let file = event.target.files[0];
+      reader.readAsDataURL(file);
+       reader.onload = () => {
+        this.image = "data:" + file.type + ";base64," + reader.result.split(',')[1];
+        this.formImage.get('avatar').setValue({
+          filename: file.name,
+          filetype: file.type,
+          value: "data:" + file.type + ";base64," + reader.result.split(',')[1]
+        })
+      };
+    }
+  }
+  
+  onSaveImage(){
+    this.imageUploaded = this.formImage.get('avatar').value.value;
+    this.item.image = this.imageUploaded;
+    this.modService.createItem(this.item).pipe(first())
+    .subscribe(res=>{
+      if(res.success == "true")
+        alert("Thêm bài viết thành công !!!");
+      else
+        alert("Thêm bài viết không thành công !!!");
+    },
+    err=>{
+        alert("Không Thêm được bài viết !!!");
+    });
   }
 
-  createItem(){
-    this.currentFileUpload = this.selectedFiles.item(0);
-    this.title = this.title;
-    this.shortDesc = this.shortDesc;
-    this.fullDesc = this.fullDesc;
-    this.modService.createItem(this.title, this.shortDesc, this.fullDesc, this.currentFileUpload).pipe(first()).subscribe(res => {
-      alert("Tạo bài viết thành công !!!");
-      this.title = "";
-      this.shortDesc = "";
-      this.fullDesc = "";
-    },
-    err => {
-      console.log(err);
-    })
-  }
+  // createItem(){
+  //   this.currentFileUpload = this.selectedFiles.item(0);
+  //   this.title = this.title;
+  //   this.shortDesc = this.shortDesc;
+  //   this.fullDesc = this.fullDesc;
+  //   this.modService.createItem(this.title, this.shortDesc, this.fullDesc, this.currentFileUpload).pipe(first()).subscribe(res => {
+  //     alert("Tạo bài viết thành công !!!");
+  //     this.title = "";
+  //     this.shortDesc = "";
+  //     this.fullDesc = "";
+  //   },
+  //   err => {
+  //     console.log(err);
+  //   })
+  // }
 }

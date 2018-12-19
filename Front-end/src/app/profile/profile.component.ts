@@ -27,6 +27,10 @@ export class ProfileComponent implements OnInit {
       if(res.success == "true")
       {
         this.user = res.data;
+        if(this.user.avatar != null)
+          this.user.avatar = res.data.avatar
+        else
+          this.user.avatar = "/assets/robust-admin/profile.png"
         localStorage.setItem("lastName",this.user.lastName.toString());
       }
       else

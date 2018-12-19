@@ -12,14 +12,18 @@ export class ModServiceService {
   
   constructor(private http: HttpClient) { }
 
-  createItem(title: string, shortDesc: string, fullDesc: string, file: File): Observable<HttpEvent<{}>> {
-    const formdata: FormData = new FormData();
+  // createItem(title: string, shortDesc: string, fullDesc: string, file: File): Observable<HttpEvent<{}>> {
+  //   const formdata: FormData = new FormData();
 
-    formdata.append('title', title);
-    formdata.append('shortDesc', shortDesc);
-    formdata.append('fullDesc', fullDesc);
-    formdata.append('file', file);
+  //   formdata.append('title', title);
+  //   formdata.append('shortDesc', shortDesc);
+  //   formdata.append('fullDesc', fullDesc);
+  //   formdata.append('file', file);
 
-    return this.http.post(`${this.context}/api/v1/mod/items/create`, formdata, {observe:`response`});
+  //   return this.http.post(`${this.context}/api/v1/mod/items/create`, formdata, {observe:`response`});
+  // }
+  
+  createItem(item: Item): Observable<any>{
+    return this.http.post(`${this.context}/api/v1/mod/items/create`, item);
   }
 }

@@ -22,6 +22,7 @@ import { NewsIndexComponent } from './news-index/news-index.component';
 import { LoginService } from './_service/login.service';
 import { NuServiceService } from './_service/nu_service/nu-service.service';
 import { UserManagementComponent } from './user-management/user-management.component';
+import { CKEditorModule } from '../ckeditor/ckeditor.module';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { UserManagementComponent } from './user-management/user-management.compo
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CKEditorModule
   ],
   providers: [LoginService,
     NuServiceService],

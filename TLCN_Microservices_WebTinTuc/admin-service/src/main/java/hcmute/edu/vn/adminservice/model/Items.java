@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.Set;
 
@@ -21,7 +22,8 @@ public class Items {
 
     private String fileExtension;
 
-    private byte[] image;
+    @Size(max=2000000)
+    private String image;
 
     private String title;
 
@@ -29,6 +31,7 @@ public class Items {
 
     private String shortDesc;
 
+    @Size(max=2000000)
     private String fullDesc;
 
     private String author;
