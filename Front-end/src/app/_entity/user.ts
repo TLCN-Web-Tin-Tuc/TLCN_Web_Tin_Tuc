@@ -1,4 +1,7 @@
+import { Role } from "./role";
+
 export class User {
+    id : number
     email : string;
     password : string
     confirmPassword : string
@@ -15,4 +18,5 @@ export class User {
     userCreated : string
     dateUpdated : Date 
     userUpdated : string
+    roles: Role[];
 }

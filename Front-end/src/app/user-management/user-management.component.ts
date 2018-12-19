@@ -45,4 +45,8 @@ ngOnInit(){
   });
   }
 
+  onGotoUserDetail(id) {
+    this.router.navigate(["/profile"], { queryParams: { id: id } });
+  }
+
 }

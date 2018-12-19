@@ -60,9 +60,7 @@ public class NonUserController {
             Date date = new Date();
             user.setDateCreated(date);
             user.setUserCreated(user.getEmail());
-
             user.setStatus(1);
-
             dataReturnOne.setMessage("Tao tai khoan thanh cong !!!");
             dataReturnOne.setSuccess("true");
             dataReturnOne.setData(userMapper.userToUserDto(userServie.registerUser(user)));

@@ -5,14 +5,8 @@ import hcmute.edu.vn.adminservice.api.v1.data.DataReturnOne;
 import hcmute.edu.vn.adminservice.api.v1.dto.UserDto;
 import hcmute.edu.vn.adminservice.api.v1.mapper.UserMapper;
 import hcmute.edu.vn.adminservice.exception.NotFoundException;
-import hcmute.edu.vn.adminservice.model.Assign_Permission;
-import hcmute.edu.vn.adminservice.model.Permission;
-import hcmute.edu.vn.adminservice.model.Report;
-import hcmute.edu.vn.adminservice.model.User;
-import hcmute.edu.vn.adminservice.service.Assign_Permission_Service;
-import hcmute.edu.vn.adminservice.service.PermissionService;
-import hcmute.edu.vn.adminservice.service.ReportService;
-import hcmute.edu.vn.adminservice.service.UserService;
+import hcmute.edu.vn.adminservice.model.*;
+import hcmute.edu.vn.adminservice.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,6 +24,9 @@ public class AdminController {
     private ReportService reportService;
 
     @Autowired
+    private RoleService roleService;
+
+    @Autowired
     private PermissionService permissionService;
 
     @Autowired
@@ -40,11 +37,11 @@ public class AdminController {
 
     // retrieve user by id //
     @GetMapping("/users/search")
-    public DataReturnOne<UserDto> retrieveUserByIdOrEmail(@RequestParam(required = false) long id, @RequestParam(required = false) String email){
-        DataReturnOne<UserDto> dataReturnOne=new DataReturnOne<>();
+    public DataReturnOne<User> retrieveUserByIdOrEmail(@RequestParam(required = false) long id, @RequestParam(required = false) String email){
+        DataReturnOne<User> dataReturnOne=new DataReturnOne<>();
         dataReturnOne.setSuccess("true");
         dataReturnOne.setMessage("success");
-        dataReturnOne.setData(userMapper.userToUserDto(userService.retrieveUserByIdOrEmail(id,email)));
+        dataReturnOne.setData(userService.retrieveUserByIdOrEmail(id,email));
         return dataReturnOne;
     }
 
@@ -72,12 +69,12 @@ public class AdminController {
     }
 
     // update status for user
-    @PutMapping("/users/status/{uid}")
-    public DataReturnOne<UserDto> updateUserStatus(@PathVariable long uid){
-        DataReturnOne<UserDto> dataReturnOne=new DataReturnOne<>();
+    @GetMapping("/users/status/{uid}")
+    public DataReturnOne<User> updateUserStatus(@PathVariable long uid){
+        DataReturnOne<User> dataReturnOne=new DataReturnOne<>();
         dataReturnOne.setSuccess("true");
         dataReturnOne.setMessage("success");
-        dataReturnOne.setData(userMapper.userToUserDto(userService.updateUserStatus(uid)));
+        dataReturnOne.setData(userService.updateUserStatus(uid));
         return dataReturnOne;
     }
 
@@ -165,9 +162,19 @@ public class AdminController {
     public DataReturnList<Assign_Permission> retrieveAllAssignPermission()
     {
         DataReturnList<Assign_Permission> dataReturnList = new DataReturnList<>();
-        dataReturnList.setSuccess("success");
-        dataReturnList.setMessage("true");
+        dataReturnList.setSuccess("true");
+        dataReturnList.setMessage("success");
         dataReturnList.setData(assign_permission_service.retrieveAllAssignPermission());
+        return dataReturnList;
+    }
+
+    @GetMapping("/roles")
+    public DataReturnList<Role> retrieveAllRole()
+    {
+        DataReturnList<Role> dataReturnList = new DataReturnList<>();
+        dataReturnList.setSuccess("true");
+        dataReturnList.setMessage("success");
+        dataReturnList.setData(roleService.retrieveAllRole());
         return dataReturnList;
     }
 
