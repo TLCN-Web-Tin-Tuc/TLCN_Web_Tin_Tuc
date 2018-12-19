@@ -10,4 +10,5 @@ public interface RoleService {
     CrudRepository<Role,Long> getRepo();
     Role retrieveRoleByRName(String rname);
     List<Role> retrieveAllRole();
+    Role retrieveRoleByRId(long rid);
 }

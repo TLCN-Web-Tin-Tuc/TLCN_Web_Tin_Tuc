@@ -32,6 +32,8 @@ public class Role {
 
     private Boolean p_approve;
 
+    private int status;
+
     private Date dateCreated;
 
     private String userCreated;

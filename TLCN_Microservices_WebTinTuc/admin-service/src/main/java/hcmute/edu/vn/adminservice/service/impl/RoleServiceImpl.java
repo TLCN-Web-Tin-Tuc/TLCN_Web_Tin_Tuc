@@ -32,4 +32,10 @@ public class RoleServiceImpl implements RoleService {
     public List<Role> retrieveAllRole() {
         return roleRepository.findAll();
     }
+
+    @Override
+    public Role retrieveRoleByRId(long rid) {
+        Optional<Role> role = roleRepository.findById(rid);
+        return role.get();
+    }
 }

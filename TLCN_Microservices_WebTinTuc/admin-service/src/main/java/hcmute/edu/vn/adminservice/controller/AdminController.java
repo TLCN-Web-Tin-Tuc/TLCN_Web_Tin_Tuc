@@ -109,6 +109,67 @@ public class AdminController {
         return dataReturnList;
     }
 
-   
+    @PostMapping("/roles/createrole")
+    public DataReturnOne<Role> CreateRole(@RequestBody Role role)
+    {
+        Role role1 = roleService.getRepo().save(role);
+        DataReturnOne<Role> dataReturnOne = new DataReturnOne<>();
+        if(role1!=null){
+            dataReturnOne.setData(role1);
+            dataReturnOne.setSuccess("true");
+            dataReturnOne.setMessage("Create Role success");
+        }else{
+            dataReturnOne.setSuccess("false");
+            dataReturnOne.setData(null);
+            dataReturnOne.setMessage("Create Role Fail");
+        }
+        return dataReturnOne;
+    }
+
+    @PostMapping("/roles/updaterole")
+    public DataReturnOne<Role> UpdateRole(@RequestBody Role role)
+    {
+        Role role1 = roleService.getRepo().save(role);
+        DataReturnOne<Role> dataReturnOne = new DataReturnOne<>();
+        if(role1!=null){
+            dataReturnOne.setData(role1);
+            dataReturnOne.setSuccess("true");
+            dataReturnOne.setMessage("Update Role success");
+        }else{
+            dataReturnOne.setSuccess("false");
+            dataReturnOne.setData(null);
+            dataReturnOne.setMessage("Update Role Fail");
+        }
+        return dataReturnOne;
+    }
+
+    @PutMapping("/roles/updatestatus/{rid}")
+    public DataReturnOne<Role> UpdateStatusRole(@PathVariable long rid)
+    {
+        Role role1 = roleService.retrieveRoleByRId(rid);
+        DataReturnOne<Role> dataReturnOne = new DataReturnOne<>();
+        if(role1!=null){
+            if(role1.getStatus() == 1)
+            {
+                role1.setStatus(0);
+            }
+            else
+            {
+                role1.setStatus(1);
+            }
+            dataReturnOne.setData(roleService.getRepo().save(role1));
+            dataReturnOne.setSuccess("true");
+            dataReturnOne.setMessage("Set status Role success");
+        }else{
+            dataReturnOne.setSuccess("false");
+            dataReturnOne.setData(null);
+            dataReturnOne.setMessage("Set status Role Fail");
+        }
+        return dataReturnOne;
+    }
+
+
+
+
 
 }
