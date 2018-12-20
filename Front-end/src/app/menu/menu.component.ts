@@ -59,23 +59,5 @@ export class MenuComponent implements OnInit {
 
   }  
 
-  onGoToUserDetail(){
-    this.router.navigate(["/profile"])
-  }
 
-  onGoToUserManagement(){
-    this.router.navigate(["/usersmanagement"])
-  }
-
-  onGoToRoleManagement(){
-    this.router.navigate(["/rolesmanagement"])
-  }
-
-  onGoToNewsManagement(){
-    this.router.navigate(["/newsmanagement"])
-  }
-
-  onGoToCreateNew(){
-    this.router.navigate(["/newstyping"])
-  }
 }
