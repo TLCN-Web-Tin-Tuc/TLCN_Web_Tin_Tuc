@@ -11,6 +11,7 @@ import { User } from '../_entity/user';
 import { UserService } from '../_service/user_service/user.service';
 import { Role } from '../_entity/role';
 import { first } from 'rxjs/operators';
+import { NuServiceService } from '../_service/nu_service/nu-service.service';
 @Component({
   selector: 'app-user-management',
   templateUrl: './user-management.component.html',
@@ -20,11 +21,13 @@ export class UserManagementComponent implements OnInit {
   // Our array of clients
   users : User[];
   dataTable: any;
+  pass : string
   rolesofUser : Role[]
   email : string
   error : string;
   isAdmin : boolean = false
-constructor(private router : Router,private adminService : AdminService , private chRef: ChangeDetectorRef, private userService : UserService) {
+constructor(private router : Router,private adminService : AdminService , 
+  private chRef: ChangeDetectorRef, private userService : UserService, private nuService : NuServiceService) {
   
  }
 
@@ -56,7 +59,8 @@ ngOnInit(){
   });
   }
 
-  checkEmail(){    
+  async checkEmail(){    
+    await this.checkUserAndPassWord()
     this.email = localStorage.getItem("email")
     if(this.email == null)
     {
@@ -70,7 +74,7 @@ ngOnInit(){
         this.rolesofUser = res.data.roles
         for(let role of this.rolesofUser)
         {
-          if(role.rname == "ROLE_ADMIN")
+          if(role.rname == "ROLE_ADMIN" && role.status == 1)
           {
             this.isAdmin = true;
             return
@@ -89,6 +93,23 @@ ngOnInit(){
       console.log(err)
     })  
 
+  }
+
+  checkUserAndPassWord(){
+    this.email = localStorage.getItem("email")
+    this.pass = localStorage.getItem("password")
+    this.nuService.checkEmailPass(this.email, this.pass)
+    .pipe(first())
+    .subscribe(res => {
+      if(res.success == "false")
+      {            
+        localStorage.clear()
+        this.router.navigate(["/"]);
+      }
+      
+    }, err => {
+      console.log(err)
+    })      
   }
 
   onGotoUserDetail(id) {

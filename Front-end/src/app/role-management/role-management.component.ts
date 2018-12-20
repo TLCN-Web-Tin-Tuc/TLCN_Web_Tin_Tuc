@@ -11,6 +11,7 @@ import { User } from '../_entity/user';
 import { Role } from '../_entity/role';
 import { UserService } from '../_service/user_service/user.service';
 import { first } from 'rxjs/operators';
+import { NuServiceService } from '../_service/nu_service/nu-service.service';
 
 @Component({
   selector: 'app-role-management',
@@ -24,9 +25,11 @@ export class RoleManagementComponent implements OnInit {
   dataTable: any;
   email : string
   error : string;
-  
+  pass : string
+
   isAdmin : boolean = false
-  constructor(private userService : UserService, private router : Router,private adminService : AdminService , private chRef: ChangeDetectorRef) { }
+  constructor(private userService : UserService, private router : Router,private adminService : AdminService , 
+    private chRef: ChangeDetectorRef, private nuService : NuServiceService) { }
   ngOnInit(){
     this.getAllRole()
     }
@@ -64,7 +67,8 @@ export class RoleManagementComponent implements OnInit {
         console.log(err.message)
     });
     }
-    checkEmail(){
+    async checkEmail(){
+      await this.checkUserAndPassWord()
       this.email = localStorage.getItem("email")
       if(this.email == null)
       {
@@ -78,7 +82,7 @@ export class RoleManagementComponent implements OnInit {
           this.rolesofUser = res.data.roles
           for(let role of this.rolesofUser)
           {
-            if(role.rname == "ROLE_ADMIN")
+            if(role.rname == "ROLE_ADMIN" && role.status == 1)
             {
               this.isAdmin = true;
               return
@@ -98,6 +102,24 @@ export class RoleManagementComponent implements OnInit {
       })  
 
     }
+
+    checkUserAndPassWord(){
+      this.email = localStorage.getItem("email")
+      this.pass = localStorage.getItem("password")
+      this.nuService.checkEmailPass(this.email, this.pass)
+      .pipe(first())
+      .subscribe(res => {
+        if(res.success == "false")
+        {            
+          localStorage.clear()
+          this.router.navigate(["/"]);
+        }
+        
+      }, err => {
+        console.log(err)
+      })      
+    }
+
     onGotoRoleEdit(id) {
       this.router.navigate(["/editrole"], { queryParams: { id: id } });
     }

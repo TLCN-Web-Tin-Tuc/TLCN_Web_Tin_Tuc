@@ -74,8 +74,15 @@ public class NonUserController {
         User user = new User();
         try {
             user = userServie.findByEmailAndPassWord(email, passWord);
-            dataReturnOne.setMessage("Đăng nhập thành công");
-            dataReturnOne.setData(userMapper.userToUserDto(userServie.findByEmailAndPassWord(email, passWord)));
+            if(user.getStatus() == 0)
+            {
+                dataReturnOne.setSuccess("false");
+                dataReturnOne.setMessage("Tài khoản đã hủy kích hoạt");
+            } else {
+                dataReturnOne.setMessage("Đăng nhập thành công");
+                dataReturnOne.setData(userMapper.userToUserDto(userServie.findByEmailAndPassWord(email, passWord)));
+            }
+
         }
         catch (NotFoundException ex) {
             dataReturnOne.setSuccess("false");

@@ -3,6 +3,7 @@ import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../../_entity/user';
+import { Guest } from 'src/app/_entity/guest';
 @Injectable({
   providedIn: 'root'
 })
@@ -16,4 +17,13 @@ export class NuServiceService {
   checkEmail(email : string) : Observable<any> {
     return this.http.get(`${this.context}/api/v1/nuser/check-user/${email}`,{observe:`response`});
   }
+
+  checkEmailPass(email : string, pass : string) : Observable<any> {
+    return this.http.post(`${this.context}/api/v1/nuser/login/${email}/${pass}`,"");
+  }
+
+  login(guest: Guest) : Observable<any>{    
+    return this.http.post(`${this.context}/api/v1/nuser/login/${guest.email}/${guest.password}`,{observe:`response`});
+  }
+
 }

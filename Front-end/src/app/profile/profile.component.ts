@@ -5,6 +5,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { Role } from '../_entity/role';
 import { AdminService } from '../_service/admin_service/admin.service';
+import { LoginService } from '../_service/login.service';
+import { NuServiceService } from '../_service/nu_service/nu-service.service';
 
 @Component({
   selector: 'app-profile',
@@ -16,7 +18,7 @@ export class ProfileComponent implements OnInit {
   user : User
   error : string
   email : string
-
+  pass : string
   id : string
   selectedImg : string = ""
   admin : string = "false"
@@ -26,11 +28,13 @@ export class ProfileComponent implements OnInit {
   roles: Role[];
   rolesUser : Role[];
   isAdmin: boolean = false
-  constructor(private userService : UserService, private activatedRoute: ActivatedRoute, private route : Router, private adminService : AdminService) { 
+  constructor(private userService : UserService, private activatedRoute: ActivatedRoute, 
+    private route : Router, private adminService : AdminService, private nuService : NuServiceService) { 
     this.user = new User();
   }
 
   ngOnInit() {
+    this.checkUserAndPassWord()
     this.activatedRoute.queryParamMap.subscribe(queryParams => {
       this.id = queryParams.get("id");      
     });
@@ -120,7 +124,24 @@ export class ProfileComponent implements OnInit {
 
   }
 
-  checkEmail(){
+  checkUserAndPassWord(){
+    this.email = localStorage.getItem("email")
+    this.pass = localStorage.getItem("password")
+    this.nuService.checkEmailPass(this.email, this.pass)
+    .pipe(first())
+    .subscribe(res => {
+      if(res.success == "false")
+      {            
+        localStorage.clear()
+        this.route.navigate(["/"]);
+      }
+      
+    }, err => {
+      console.log(err)
+    })      
+  }
+
+  checkEmail(){   
     this.email = localStorage.getItem("email")
     if(this.email == null)
     {
@@ -134,10 +155,10 @@ export class ProfileComponent implements OnInit {
         this.rolesUser = res.data.roles
         for(let role of this.rolesUser)
         {
-          if(role.rname == "ROLE_ADMIN")
+          if(role.rname == "ROLE_ADMIN" && role.status == 1)
           {
             this.isAdmin = true;
-            return
+            return  
           }           
         }
         if(this.isAdmin == false){         

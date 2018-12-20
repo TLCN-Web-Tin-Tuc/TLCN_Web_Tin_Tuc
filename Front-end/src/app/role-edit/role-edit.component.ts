@@ -86,7 +86,7 @@ export class RoleEditComponent implements OnInit {
         this.rolesofUser = res.data.roles
         for(let role of this.rolesofUser)
         {
-          if(role.rname == "ROLE_ADMIN")
+          if(role.rname == "ROLE_ADMIN" && role.status == 1)
           {
             this.isAdmin = true;
             return
