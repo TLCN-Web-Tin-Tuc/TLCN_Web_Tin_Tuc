@@ -45,8 +45,8 @@ public class AdminController {
     // retrieve all users
     @GetMapping("/users")
     public DataReturnList<User> retrieveAllUsers(){
-        DataReturnList<User> dataReturnList=new DataReturnList<>();
-        List<User> users=new ArrayList<User>();
+        DataReturnList<User> dataReturnList = new DataReturnList<>();
+        List<User> users = new ArrayList<User>();
         users = userService.retrieveAllUsers();
         if(users.isEmpty()){
             throw new NotFoundException("User not found!");

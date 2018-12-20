@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { first } from 'rxjs/operators';
+import { ModServiceService } from '../_service/mod_service/mod-service.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Item } from '../_entity/item';
+import { Role } from '../_entity/role';
 
 @Component({
   selector: 'app-news-detail',
@@ -16,9 +21,100 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewsDetailComponent implements OnInit {
 
-  constructor() { }
+  item: Item
+  error : string
+
+  id : string
+  selectedImg : string = ""
+  mod : string = "false"
+  kichhoat : string
+  isChecked: boolean = false;
+  rolesOfUser: Role[];
+  roles: Role[];
+
+  constructor(private modService : ModServiceService, private activatedRoute: ActivatedRoute, private route : Router) {
+    this.item = new Item();
+   }
 
   ngOnInit() {
+    this.activatedRoute.queryParamMap.subscribe(queryParams => {
+      this.id = queryParams.get("id");      
+    });
+    this.retrieveItemById(this.id);
+    console.log(this.id)
   }
 
+  retrieveItemById(id) {
+    if(this.id)
+    {
+      this.modService.findItemById(this.id)
+      .pipe(first())
+      .subscribe(res => {
+        if(res.success == "true")
+        {
+          this.item = res.data;   
+          this.selectedImg = this.item.image        
+
+          // this.adminService.getAllRole()
+          // .subscribe(res => {
+          //   this.roles = res.data;  
+          //   for(let role of this.roles){
+          //     role.isOfUser = false
+          //   }
+
+          //   if (this.rolesOfUser) {
+          //     for (let role of this.roles) {            
+          //       if (this.rolesOfUser.find(x => x.rname == role.rname)) {
+          //         role.isOfUser = true;
+          //       }
+          //     }
+          //   }
+          //  // console.log(this.rolesOfUser);    
+          //  //console.log(this.roles); 
+          // }, err => {
+          //   console.log(err);
+          // });
+
+
+          // if(this.user.status == 1)
+          // {
+          //   this.kichhoat = "Hủy kích hoạt"
+          // } 
+          // else{
+          //   this.kichhoat = "Kích hoạt"
+          // } 
+        }
+        else
+        {
+            this.error = res.message
+        }
+      }, err => {
+        console.log(err)
+      })  
+
+    }
+    // else{
+    //   this.email = localStorage.getItem("email")
+    //   this.userService.getProfile(this.email)
+    //   .pipe(first())
+    //   .subscribe(res => {
+    //     if(res.success == "true")
+    //     {
+    //       this.user = res.data;
+    //       this.selectedImg = this.user.avatar
+    //       localStorage.setItem("lastName",this.user.lastName.toString());
+    //       this.admin = "false"
+    //       this.rolesOfUser = res.data.roles
+          
+    //     }
+    //     else
+    //     {
+    //         this.error = res.message
+    //     }
+    //   }, err => {
+    //     console.log(err)
+    //   })  
+    // }
+
+  }
 }

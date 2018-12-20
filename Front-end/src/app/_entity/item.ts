@@ -1,18 +1,19 @@
 export class Item {
-    fileName : String
-    fileExtension : String
-    image : String
-    title : String
-    status : String
-    shortDesc : String
-    fullDesc : String
-    author : String
-    views : Number
-    likes : Number
-    download : Number
-    comment : Number
+    id : number
+    fileName : string
+    fileExtension : string
+    image : string
+    title : string
+    status : string
+    shortDesc : string
+    fullDesc : string
+    author : string
+    views : number
+    likes : number
+    download : number
+    comment : number
     dateCreated : Date
-    userCreated : String
+    userCreated : string
     dateUpdated : Date
-    userUpdated : String
+    userUpdated : string
 }

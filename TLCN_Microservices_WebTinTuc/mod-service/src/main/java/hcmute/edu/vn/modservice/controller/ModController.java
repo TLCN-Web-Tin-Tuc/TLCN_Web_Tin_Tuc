@@ -97,33 +97,24 @@ public class ModController {
         return dataReturnList;
     }
 
-    @GetMapping("/items/")
+    @GetMapping("/items/search")
+    public DataReturnOne<Items> retrieveItemsById(@RequestParam(required = false) long id){
+        DataReturnOne<Items> dataReturnOne = new DataReturnOne<>();
+        dataReturnOne.setSuccess("true");
+        dataReturnOne.setMessage("success");
+        dataReturnOne.setData(itemService.retrieveItemsById(id));
+        return dataReturnOne;
+    }
+
+    @GetMapping("/items")
     public DataReturnList<Items> retrieveAllItems(){
-        List<Items> items = itemService.getAllItem();
         DataReturnList<Items> dataReturnList = new DataReturnList<>();
+        List<Items> items = new ArrayList<Items>();
+        items = itemService.retrieveAllItems();
         dataReturnList.setData(items);
         dataReturnList.setMessage("Get list item success");
         return dataReturnList;
     }
-
-//    @PostMapping("/items/create/{categoryid}")
-//    public DataReturnOne<Items> Create(@RequestBody Items items, @PathVariable("categoryid") long categoryid){
-//        items.setDownload((long) 0);
-//        items.setComment((long) 0);
-//        items.setLikes((long) 0);
-//        items.setViews((long) 0);
-//        Items items1 = itemService.InsertItem(items, categoryid);
-//        DataReturnOne<Items> dataReturnOne = new DataReturnOne<>();
-//        if(items1 != null){
-//            dataReturnOne.setData(items1);
-//            dataReturnOne.setMessage("Create item success");
-//        }else{
-//            dataReturnOne.setSuccess("false");
-//            dataReturnOne.setData(null);
-//            dataReturnOne.setMessage("Create item fail");
-//        }
-//        return dataReturnOne;
-//    }
 
     @PostMapping("/items/create")
     public DataReturnOne<Items> CreateItem(@RequestBody Items items ){

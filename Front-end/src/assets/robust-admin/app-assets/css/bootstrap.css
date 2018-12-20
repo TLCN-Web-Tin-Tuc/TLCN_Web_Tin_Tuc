@@ -2547,12 +2547,12 @@ tbody.collapse.show {
 .custom-select {
   display: inline-block;
   width: 100%;
-  height: calc(2.75rem + 2px);
+  height: calc(2.75rem + 2px + 5);
   padding: 0.375rem 1.75rem 0.375rem 0.75rem;
   line-height: 1.25;
   color: #4E5154;
   vertical-align: middle;
-  background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23373a3c' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right 0.75rem center;
+  /* background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23373a3c' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right 0.75rem center; */
   background-size: 8px 10px;
   border: 1px solid #ADB5BD;
   border-radius: 0.21rem;
@@ -2578,7 +2578,7 @@ tbody.collapse.show {
   height: calc(1.875rem + 2px + 10);
   padding-top: 0.375rem;
   padding-bottom: 0.375rem;
-  font-size: 75%; }
+  font-size: 100%; }
 
 .custom-select-lg {
   height: calc(3.375rem + 2px);
