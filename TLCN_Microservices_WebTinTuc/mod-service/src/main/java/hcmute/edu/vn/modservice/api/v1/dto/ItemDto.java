@@ -1,7 +1,7 @@
 package hcmute.edu.vn.modservice.api.v1.dto;
 
 import hcmute.edu.vn.modservice.model.Cat;
-import hcmute.edu.vn.modservice.model.Item_Access;
+import hcmute.edu.vn.modservice.model.ItemAccess;
 import lombok.Data;
 
 import java.util.Set;
@@ -21,5 +21,5 @@ public class ItemDto {
     private Long Download;
     private Long Comment;
     private Set<Cat> cats;
-    private Set<Item_Access> item_accesses;
+    private Set<ItemAccess> itemAccesses;
 }

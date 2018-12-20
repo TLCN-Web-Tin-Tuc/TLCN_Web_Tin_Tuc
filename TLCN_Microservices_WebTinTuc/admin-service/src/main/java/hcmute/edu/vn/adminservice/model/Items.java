@@ -55,7 +55,7 @@ public class Items {
     @OneToMany(mappedBy = "id.item")
     private Set<Cat_Item> cat_items;
 
-    @OneToMany(mappedBy = "item_ac")
-    private Set<Item_Access> item_accesses;
+    @OneToMany(mappedBy = "item")
+    private Set<ItemAccess> itemAccesses;
 
 }

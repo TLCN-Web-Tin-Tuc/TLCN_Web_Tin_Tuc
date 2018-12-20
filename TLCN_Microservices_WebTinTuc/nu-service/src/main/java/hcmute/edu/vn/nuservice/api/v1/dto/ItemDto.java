@@ -1,8 +1,9 @@
 package hcmute.edu.vn.nuservice.api.v1.dto;
 
 import hcmute.edu.vn.nuservice.model.Cat;
-import hcmute.edu.vn.nuservice.model.Item_Access;
+import hcmute.edu.vn.nuservice.model.ItemAccess;
 import lombok.Data;
+
 import java.util.Set;
 
 @Data
@@ -20,5 +21,5 @@ public class ItemDto {
     private Long Download;
     private Long Comment;
     private Set<Cat> cats;
-    private Set<Item_Access> item_accesses;
+    private Set<ItemAccess> itemAccesses;
 }
