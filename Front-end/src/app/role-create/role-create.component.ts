@@ -18,14 +18,16 @@ export class RoleCreateComponent implements OnInit {
   error: string;
   email: string;   
   role : Role;
+  rolesofUser : Role[]
+  isAdmin : boolean = false
 
-  constructor(private adminService : AdminService, private fb: FormBuilder,private router : Router) {
+  constructor(private adminService : AdminService, private fb: FormBuilder,private router : Router, private userService : UserService) {
     this.role = new Role();
    
    }
 
   ngOnInit() {
-    
+    this.checkEmail()
   }
   createRole(){   
       this.role.status = 1
@@ -45,6 +47,41 @@ export class RoleCreateComponent implements OnInit {
     err => {
         this.error = err.message
     })
+  }
+
+  checkEmail(){
+    this.email = localStorage.getItem("email")
+    if(this.email == null)
+    {
+      this.router.navigate(["/"])
+    }
+    this.userService.getProfile(this.email)
+    .pipe(first())
+    .subscribe(res => {
+      if(res.success == "true")
+      {                     
+        this.rolesofUser = res.data.roles
+        for(let role of this.rolesofUser)
+        {
+          if(role.rname == "ROLE_ADMIN")
+          {
+            this.isAdmin = true;
+            return
+          }           
+        }
+        if(this.isAdmin == false){
+          alert("Bạn không được truy cập vào trang này")
+          this.router.navigate(["/"])
+        } 
+      }
+      else
+      {
+          this.error = res.message
+      }
+    }, err => {
+      console.log(err)
+    })  
+
   }
     
    

@@ -9,6 +9,8 @@ import { AdminService } from '../_service/admin_service/admin.service';
 import { Router } from '@angular/router';
 import { User } from '../_entity/user';
 import { Role } from '../_entity/role';
+import { UserService } from '../_service/user_service/user.service';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-role-management',
@@ -18,12 +20,19 @@ import { Role } from '../_entity/role';
 export class RoleManagementComponent implements OnInit {
 
   roles : Role[];
+  rolesofUser : Role[]
   dataTable: any;
   email : string
-
-  constructor(private router : Router,private adminService : AdminService , private chRef: ChangeDetectorRef) { }
+  error : string;
+  
+  isAdmin : boolean = false
+  constructor(private userService : UserService, private router : Router,private adminService : AdminService , private chRef: ChangeDetectorRef) { }
   ngOnInit(){
-    this.adminService.getAllRole()
+    this.getAllRole()
+    }
+    async getAllRole(){
+      await this.checkEmail()
+      this.adminService.getAllRole()
       .subscribe(res => {
         if(res.success == "true")
         {
@@ -39,7 +48,7 @@ export class RoleManagementComponent implements OnInit {
             }
 
           }
-          console.log(this.roles)
+          
           
         }
        
@@ -55,7 +64,40 @@ export class RoleManagementComponent implements OnInit {
         console.log(err.message)
     });
     }
-  
+    checkEmail(){
+      this.email = localStorage.getItem("email")
+      if(this.email == null)
+      {
+        this.router.navigate(["/"])
+      }
+      this.userService.getProfile(this.email)
+      .pipe(first())
+      .subscribe(res => {
+        if(res.success == "true")
+        {                     
+          this.rolesofUser = res.data.roles
+          for(let role of this.rolesofUser)
+          {
+            if(role.rname == "ROLE_ADMIN")
+            {
+              this.isAdmin = true;
+              return
+            }           
+          }
+          if(this.isAdmin == false){
+            alert("Bạn không được truy cập vào trang này")
+            this.router.navigate(["/"])
+          } 
+        }
+        else
+        {
+            this.error = res.message
+        }
+      }, err => {
+        console.log(err)
+      })  
+
+    }
     onGotoRoleEdit(id) {
       this.router.navigate(["/editrole"], { queryParams: { id: id } });
     }

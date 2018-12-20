@@ -24,7 +24,8 @@ export class ProfileComponent implements OnInit {
   isChecked: boolean = false;
   rolesOfUser: Role[];
   roles: Role[];
-
+  rolesUser : Role[];
+  isAdmin: boolean = false
   constructor(private userService : UserService, private activatedRoute: ActivatedRoute, private route : Router, private adminService : AdminService) { 
     this.user = new User();
   }
@@ -40,9 +41,11 @@ export class ProfileComponent implements OnInit {
 
   }
 
-   retrieveUserById(id) {
+    retrieveUserById(id) {
+      
     if(this.id)
     {
+      this.checkEmail()
       this.adminService.findUserById(this.id)
       .pipe(first())
       .subscribe(res => {
@@ -114,6 +117,40 @@ export class ProfileComponent implements OnInit {
         console.log(err)
       })  
     }
+
+  }
+
+  checkEmail(){
+    this.email = localStorage.getItem("email")
+    if(this.email == null)
+    {
+      this.route.navigate(["/"])
+    }
+    this.userService.getProfile(this.email)
+    .pipe(first())
+    .subscribe(res => {
+      if(res.success == "true")
+      {                     
+        this.rolesUser = res.data.roles
+        for(let role of this.rolesUser)
+        {
+          if(role.rname == "ROLE_ADMIN")
+          {
+            this.isAdmin = true;
+            return
+          }           
+        }
+        if(this.isAdmin == false){         
+          this.route.navigate(["/"])
+        } 
+      }
+      else
+      {
+          this.error = res.message
+      }
+    }, err => {
+      console.log(err)
+    })  
 
   }
 

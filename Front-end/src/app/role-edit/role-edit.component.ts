@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../_service/admin_service/admin.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Role } from '../_entity/role';
+import { UserService } from '../_service/user_service/user.service';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-role-edit',
@@ -14,7 +16,10 @@ export class RoleEditComponent implements OnInit {
   id : string
   ischeck : boolean
   email : string
-  constructor( private activatedRoute: ActivatedRoute, private route : Router, private adminService : AdminService) { 
+  rolesofUser : Role[]
+  error : string
+  isAdmin : boolean = false
+  constructor( private activatedRoute: ActivatedRoute, private route : Router, private adminService : AdminService, private userService : UserService) { 
     this.role = new Role()
   }
 
@@ -25,7 +30,8 @@ export class RoleEditComponent implements OnInit {
     this.retrieveRoleById(this.id)
   }
 
-  retrieveRoleById(id){
+  async retrieveRoleById(id){
+    await this.checkEmail()
     this.adminService.findRoleById(this.id)    
           .subscribe(res => {
             this.role = res.data;             
@@ -66,6 +72,40 @@ export class RoleEditComponent implements OnInit {
             console.log(err);
           });
   }
+  checkEmail(){
+    this.email = localStorage.getItem("email")
+    if(this.email == null)
+    {
+      this.route.navigate(["/"])
+    }
+    this.userService.getProfile(this.email)
+    .pipe(first())
+    .subscribe(res => {
+      if(res.success == "true")
+      {                     
+        this.rolesofUser = res.data.roles
+        for(let role of this.rolesofUser)
+        {
+          if(role.rname == "ROLE_ADMIN")
+          {
+            this.isAdmin = true;
+            return
+          }           
+        }
+        if(this.isAdmin == false){
+          alert("Bạn không được truy cập vào trang này")
+          this.route.navigate(["/"])
+        } 
+      }
+      else
+      {
+          this.error = res.message
+      }
+    }, err => {
+      console.log(err)
+    })  
 
+  }
+    
 
 }
