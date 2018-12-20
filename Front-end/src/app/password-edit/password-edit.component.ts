@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../_service/user_service/user.service';
 import { first } from 'rxjs/operators';
+import { User } from '../_entity/user';
+import { NuServiceService } from '../_service/nu_service/nu-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-password-edit',
@@ -13,11 +16,56 @@ export class PasswordEditComponent implements OnInit {
   oldPassword: string = "";
   newPassword: string = "";
   conFirmNewPassword: string = "";
+  pass : string = ""
+  selectedImg : string = ""
+  user : User
+
   error : string = ""
-  constructor(private userService : UserService) { }
+  constructor(private userService : UserService, private nuService : NuServiceService, private route :Router) { }
 
   ngOnInit() {
+    this.getProfile()
   }
+
+  async getProfile(){
+    await this.checkUserAndPassWord()
+    this.email = localStorage.getItem("email")
+    this.userService.getProfile(this.email)
+    .pipe(first())
+    .subscribe(res => {
+      if(res.success == "true")
+      {
+        this.user = res.data;
+        this.selectedImg = this.user.avatar                    
+      }
+      else
+      {
+          this.error = res.message
+      }
+    }, err => {
+      console.log(err)
+    })  
+  }
+
+  
+  checkUserAndPassWord(){
+    this.email = localStorage.getItem("email")
+    this.pass = localStorage.getItem("password")
+    this.nuService.checkEmailPass(this.email, this.pass)
+    .pipe(first())
+    .subscribe(res => {
+      if(res.success == "false")
+      {            
+        localStorage.clear()
+        this.route.navigate(["/"]);
+      }
+      
+    }, err => {
+      console.log(err)
+    })      
+  }
+
+
   doiMatKhau(){
     this.email = localStorage.getItem("email");
     if(this.newPassword == this.conFirmNewPassword)

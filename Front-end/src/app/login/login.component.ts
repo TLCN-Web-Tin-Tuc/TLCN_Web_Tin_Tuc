@@ -3,6 +3,7 @@ import { LoginService } from '../_service/login.service';
 import { Guest } from '../_entity/guest';
 import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { NuServiceService } from '../_service/nu_service/nu-service.service';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   guest : Guest  
   error : String
   
-  constructor(private loginService : LoginService, private route : Router) { 
+  constructor(private nuService : NuServiceService, private route : Router) { 
     this.guest = new Guest();
   }
 
@@ -26,13 +27,14 @@ export class LoginComponent implements OnInit {
   }
 
   login()  {
-    this.loginService.login(this.guest)
+    this.nuService.login(this.guest)
       .pipe(first())
       .subscribe(res => {
         if(res.success == "true")
         {
           localStorage.setItem("email", res.data.email)
-          localStorage.setItem("lastName", res.data.lastName)          
+          localStorage.setItem("lastName", res.data.lastName)       
+          localStorage.setItem("password", res.data.password)       
           this.route.navigate(["/"]);
         }
         else

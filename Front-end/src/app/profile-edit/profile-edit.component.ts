@@ -6,6 +6,7 @@ import { first } from 'rxjs/operators';
 import { FormBuilder ,FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
 import { Role } from '../_entity/role';
+import { NuServiceService } from '../_service/nu_service/nu-service.service';
 
 @Component({
   selector: 'app-profile-edit',
@@ -20,9 +21,10 @@ export class ProfileEditComponent implements OnInit {
   email: string;
   formImage: FormGroup;
   image: string = "";
+  pass : string
   imageUploaded: string = "";
 
-  constructor(private userService : UserService, private fb: FormBuilder) {
+  constructor(private userService : UserService, private fb: FormBuilder, private nuService :NuServiceService, private route : Router) {
     this.user = new User();
     this.formImage = this.fb.group({
       name: ['', Validators.required],
@@ -31,6 +33,7 @@ export class ProfileEditComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.checkUserAndPassWord()
     this.email = localStorage.getItem("email")
     this.userService.getProfile(this.email)
     .pipe(first())
@@ -52,6 +55,22 @@ export class ProfileEditComponent implements OnInit {
     }, err => {
       console.log(err)
     })    
+  }
+  checkUserAndPassWord(){
+    this.email = localStorage.getItem("email")
+    this.pass = localStorage.getItem("password")
+    this.nuService.checkEmailPass(this.email, this.pass)
+    .pipe(first())
+    .subscribe(res => {
+      if(res.success == "false")
+      {            
+        localStorage.clear()
+        this.route.navigate(["/"]);
+      }
+      
+    }, err => {
+      console.log(err)
+    })      
   }
 
   updateProfile(){

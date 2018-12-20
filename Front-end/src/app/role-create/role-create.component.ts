@@ -7,6 +7,7 @@ import { FormBuilder ,FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
 import { Role } from '../_entity/role';
 import { AdminService } from '../_service/admin_service/admin.service';
+import { NuServiceService } from '../_service/nu_service/nu-service.service';
 
 @Component({
   selector: 'app-role-create',
@@ -17,11 +18,12 @@ export class RoleCreateComponent implements OnInit {
    user: User;
   error: string;
   email: string;   
+  pass : string
   role : Role;
   rolesofUser : Role[]
   isAdmin : boolean = false
 
-  constructor(private adminService : AdminService, private fb: FormBuilder,private router : Router, private userService : UserService) {
+  constructor(private adminService : AdminService, private fb: FormBuilder,private router : Router, private userService : UserService, private nuService :NuServiceService) {
     this.role = new Role();
    
    }
@@ -49,7 +51,8 @@ export class RoleCreateComponent implements OnInit {
     })
   }
 
-  checkEmail(){
+  async checkEmail(){
+    await this.checkUserAndPassWord()
     this.email = localStorage.getItem("email")
     if(this.email == null)
     {
@@ -63,7 +66,7 @@ export class RoleCreateComponent implements OnInit {
         this.rolesofUser = res.data.roles
         for(let role of this.rolesofUser)
         {
-          if(role.rname == "ROLE_ADMIN")
+          if(role.rname == "ROLE_ADMIN" && role.status == 1)
           {
             this.isAdmin = true;
             return
@@ -82,9 +85,26 @@ export class RoleCreateComponent implements OnInit {
       console.log(err)
     })  
 
+    
+
   }
     
-   
+  checkUserAndPassWord(){
+    this.email = localStorage.getItem("email")
+    this.pass = localStorage.getItem("password")
+    this.nuService.checkEmailPass(this.email, this.pass)
+    .pipe(first())
+    .subscribe(res => {
+      if(res.success == "false")
+      {            
+        localStorage.clear()
+        this.router.navigate(["/"]);
+      }
+      
+    }, err => {
+      console.log(err)
+    })      
+  }
   
   
 }
