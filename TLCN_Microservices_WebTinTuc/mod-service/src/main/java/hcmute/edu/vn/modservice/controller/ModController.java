@@ -26,10 +26,12 @@ public class ModController {
 
     @GetMapping("/cat")
     public DataReturnList<Cat> Category(){
+
         List<Cat> categories = catService.retrieveAllCat();
         DataReturnList<Cat> dataReturnList = new DataReturnList<>();
         dataReturnList.setData(categories);
-        dataReturnList.setMessage("Get list categry success");
+        dataReturnList.setSuccess("true");
+        dataReturnList.setMessage("success");
         return dataReturnList;
     }
 
@@ -42,20 +44,40 @@ public class ModController {
         return dataReturnOne;
     }
 
-    @PostMapping("/cat/create")
+    @PostMapping("/cat/createcat")
     public DataReturnOne<Cat> CreateCategory(@RequestBody Cat cat){
         DataReturnOne<Cat> dataReturnOne = new DataReturnOne<>();
-        Cat cat1 = catService.InsertCategory( cat);
+        Cat cat1 = catService.getRepo().save(cat);
         if(cat != null){
             dataReturnOne.setMessage("Insert Category Success");
+            dataReturnOne.setSuccess("true");
             dataReturnOne.setData(cat1);
-        }else{
+        }else {
             dataReturnOne.setSuccess("false");
             dataReturnOne.setMessage("Insert Category Fail");
             dataReturnOne.setData(null);
         }
         return dataReturnOne;
     }
+
+    //    @PostMapping("/roles/createrole/{userCreate}")
+//    public DataReturnOne<Role> CreateRole(@RequestBody Role role, @PathVariable String userCreate)
+//    {
+//        role.setDateCreated(new Date());
+//        role.setUserCreated(userCreate);
+//        Role role1 = roleService.getRepo().save(role);
+//        DataReturnOne<Role> dataReturnOne = new DataReturnOne<>();
+//        if(role1!=null){
+//            dataReturnOne.setData(role1);
+//            dataReturnOne.setSuccess("true");
+//            dataReturnOne.setMessage("Create Role success");
+//        }else{
+//            dataReturnOne.setSuccess("false");
+//            dataReturnOne.setData(null);
+//            dataReturnOne.setMessage("Create Role Fail");
+//        }
+//        return dataReturnOne;
+//    }
 
     @PostMapping("/cat/update")
     public DataReturnOne<Cat> UpdateCategory(@RequestBody Cat cat){

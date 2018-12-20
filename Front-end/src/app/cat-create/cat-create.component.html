@@ -4,7 +4,6 @@
   <div class="content-wrapper">
     <div class="content-body">
       <div id="user-profile">
-
         <div class="card">
           <div class="card-content">
             <div class="card-body">
@@ -12,7 +11,7 @@
               <div class="tab-pane" id="link32" role="tabpanel" aria-labelledby="link-tab32" aria-expanded="false">
                 <!-- Start -->
                 <div class="form-body">
-                  <form class="form" id="frmUser" (ngSubmit)="createRole()" action="" method="POST" #f="ngForm" enctype="multipart/form-data"
+                  <form class="form" id="frm" (ngSubmit)="createCat()" action="" method="POST" #f="ngForm" enctype="multipart/form-data"
                     novalidate>
                     <h4 class="form-section">
                       <a id="models-tab" class="nav-link active"><i class="ft-user"></i>Thông tin danh mục</a>
@@ -21,15 +20,15 @@
                       <div class="form-group col-md-4 mb-2">
                         <label for="projectinput1">Tên Danh Mục</label>
                         <div class="position-relative has-icon-left">
-                          <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="role.rname"
-                            placeholder="Tên Role">
+                          <input type="text" class="form-control" id="name" name="name" [(ngModel)]="cat.name"
+                            placeholder="Tên danh mục">
                           <div class="form-control-position" style="margin-top: -3px;">
                             <i class="ft-user"></i>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="form-actions top" style="float: right;">
+                    <div class="form-actions" style="float: right;">
                       <input class="btn btn-cancel" type="button" value="Quay lại">
                       <button type="submit" class="btn btn-primary">
                         <i class="far fa-check-square" style="margin-right: 5px;"></i>Lưu
@@ -39,26 +38,25 @@
                 </div>
                 <!-- End -->
                 <div class="form-body">
-                  <form class="form" id="frmUser" (ngSubmit)="createRole()" action="" method="POST" #f="ngForm" enctype="multipart/form-data"
-                    novalidate>
+                  <form class="form">
                     <h4 class="form-section">
                       <a id="models-tab" class="nav-link active"><i class="ft-user"></i>Thông tin danh mục con</a>
                     </h4>
+                  </form>
+                  <div class="form" id="frmUser">
                     <div class="row">
-                      <div class="form-group col-md-12 mb-2">
-                        <label for="projectinput1">Danh Mục Cha</label>
-                        <select class="form-control input-lg" id="LargeSelect" style="font-size: 1rem;">
-                          <option selected="">Large select options</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
+                      <div class="form-group col-md-4 mb-2">
+                        <label for="projectinput1">Tên Danh Mục Cha</label>
+                        <select class="form-control input-lg" id="LargeSelect" [(ngModel)]="selectedOption" (change)="changeSelected($event)"
+                          style="font-size: 1rem; height: 2.85rem;">
+                          <option *ngFor="let catt of catList" [value]="catt.id">{{ catt.name }}</option>
                         </select>
                       </div>
-                      <div class="form-group col-md-12 mb-2">
+                      <div class="form-group col-md-4 mb-2">
                         <label for="projectinput1">Tên Danh Mục Con</label>
                         <div class="position-relative has-icon-left">
-                          <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="role.rname"
-                            placeholder="Tên Role">
+                          <input type="text" class="form-control" id="sCatname" name="sCatname" placeholder="Tên danh mục"
+                            [(ngModel)]="sCatname">
                           <div class="form-control-position" style="margin-top: -3px;">
                             <i class="ft-user"></i>
                           </div>
@@ -67,12 +65,13 @@
                     </div>
                     <div class="form-actions top" style="float: right;">
                       <input class="btn btn-cancel" type="button" value="Quay lại">
-                      <button type="submit" class="btn btn-primary">
+                      <button type="submit" (click)="createSCat()" class="btn btn-primary">
                         <i class="far fa-check-square" style="margin-right: 5px;"></i>Lưu
                       </button>
                     </div>
-                  </form>
+                  </div>
                 </div>
+                <div class="form-body"></div>
               </div>
             </div>
           </div>

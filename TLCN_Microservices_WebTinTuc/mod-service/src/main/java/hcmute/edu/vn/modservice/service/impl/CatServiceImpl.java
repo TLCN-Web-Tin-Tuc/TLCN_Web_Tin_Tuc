@@ -33,18 +33,10 @@ public class CatServiceImpl implements CatService {
     @Override
     public Cat UpdateCategory(Cat cat) {
         Cat catUpdate = catRepository.findById(cat.getId()).get();
-        catUpdate.setImage(cat.getImage());
-        catUpdate.setFileExtension(cat.getFileExtension());
         catUpdate.setName(cat.getName());
-        catUpdate.setFileName(cat.getFileName());
         return catRepository.save(catUpdate);
     }
-
-//    @Override
-//    public List<Cat> retrieveAllByParent_id(long id) {
-//        return catRepository.findCatByParent_id(id);
-//    }
-
+    
     @Override
     public Cat InsertCategory(Cat cat) {
         return catRepository.save(cat);
