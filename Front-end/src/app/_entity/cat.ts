@@ -7,4 +7,5 @@ export class Cat {
     userCreated : string
     dateUpdated : Date
     userUpdated : string
+    isCheck : boolean = false
 }

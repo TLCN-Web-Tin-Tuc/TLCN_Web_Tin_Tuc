@@ -31,4 +31,8 @@ export class ModServiceService {
   getAllCat() :Observable<any>{
     return this.http.get(`${this.context}/api/v1/mod/cat`);
   }
+
+  updateStatusCat(id, userUpdate): Observable<any>{    
+    return this.http.put(`${this.context}/api/v1/mod/cat/updatestatus/${id}/${userUpdate}`,"");
+  }
 }

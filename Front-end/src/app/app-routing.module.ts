@@ -18,6 +18,7 @@ import { RoleCreateComponent } from './role-create/role-create.component';
 import { RoleManagementComponent } from './role-management/role-management.component';
 import { RoleEditComponent } from './role-edit/role-edit.component';
 import { CatCreateComponent } from './cat-create/cat-create.component';
+import { CatManagementComponent } from './cat-management/cat-management.component';
 
 const routes: Routes = [
   { path: '', component: FramesComponent },
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'rolecreate', component: RoleCreateComponent },
   { path: 'rolesmanagement', component: RoleManagementComponent },
   { path: 'catcreate', component: CatCreateComponent },
+  { path: 'catmanagement', component: CatManagementComponent },
   { path: 'editrole', component: RoleEditComponent }
 ];
 

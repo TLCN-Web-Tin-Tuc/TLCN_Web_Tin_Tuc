@@ -167,32 +167,32 @@ public class AdminController {
         return roleDataReturnOne;
     }
 
-    @PutMapping("/roles/updatestatus/{rid}/{userUpdate}")
-    public DataReturnOne<Role> UpdateStatusRole(@PathVariable long rid, @PathVariable String userUpdate)
-    {
-        Role role1 = roleService.retrieveRoleByRId(rid);
-        DataReturnOne<Role> dataReturnOne = new DataReturnOne<>();
-        if(role1!=null){
-            if(role1.getStatus() == 1)
-            {
-                role1.setStatus(0);
-            }
-            else
-            {
-                role1.setStatus(1);
-            }
-            role1.setDateUpdated(new Date());
-            role1.setUserUpdated(userUpdate);
-            dataReturnOne.setData(roleService.getRepo().save(role1));
-            dataReturnOne.setSuccess("true");
-            dataReturnOne.setMessage("Set status Role Success");
-        }else{
-            dataReturnOne.setSuccess("false");
-            dataReturnOne.setData(null);
-            dataReturnOne.setMessage("Set status Role Fail");
-        }
-        return dataReturnOne;
-    }
+//    @PutMapping("/roles/updatestatus/{rid}/{userUpdate}")
+//    public DataReturnOne<Role> UpdateStatusRole(@PathVariable long rid, @PathVariable String userUpdate)
+//    {
+//        Role role1 = roleService.retrieveRoleByRId(rid);
+//        DataReturnOne<Role> dataReturnOne = new DataReturnOne<>();
+//        if(role1!=null){
+//            if(role1.getStatus() == 1)
+//            {
+//                role1.setStatus(0);
+//            }
+//            else
+//            {
+//                role1.setStatus(1);
+//            }
+//            role1.setDateUpdated(new Date());
+//            role1.setUserUpdated(userUpdate);
+//            dataReturnOne.setData(roleService.getRepo().save(role1));
+//            dataReturnOne.setSuccess("true");
+//            dataReturnOne.setMessage("Set status Role Success");
+//        }else{
+//            dataReturnOne.setSuccess("false");
+//            dataReturnOne.setData(null);
+//            dataReturnOne.setMessage("Set status Role Fail");
+//        }
+//        return dataReturnOne;
+//    }
 
     @PutMapping("/roles/updaterolecreate/{rid}/{userUpdate}")
     public DataReturnOne<Role> UpdateRoleCreate(@PathVariable long rid, @PathVariable String userUpdate)

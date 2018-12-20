@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -60,24 +61,32 @@ public class ModController {
         return dataReturnOne;
     }
 
-    //    @PostMapping("/roles/createrole/{userCreate}")
-//    public DataReturnOne<Role> CreateRole(@RequestBody Role role, @PathVariable String userCreate)
-//    {
-//        role.setDateCreated(new Date());
-//        role.setUserCreated(userCreate);
-//        Role role1 = roleService.getRepo().save(role);
-//        DataReturnOne<Role> dataReturnOne = new DataReturnOne<>();
-//        if(role1!=null){
-//            dataReturnOne.setData(role1);
-//            dataReturnOne.setSuccess("true");
-//            dataReturnOne.setMessage("Create Role success");
-//        }else{
-//            dataReturnOne.setSuccess("false");
-//            dataReturnOne.setData(null);
-//            dataReturnOne.setMessage("Create Role Fail");
-//        }
-//        return dataReturnOne;
-//    }
+        @PutMapping("/cat/updatestatus/{id}/{userUpdate}")
+    public DataReturnOne<Cat> UpdateStatusRole(@PathVariable long id, @PathVariable String userUpdate)
+    {
+        Cat cat1 = catService.retrieveCatById(id);
+        DataReturnOne<Cat> dataReturnOne = new DataReturnOne<>();
+        if(cat1 != null){
+            if(cat1.getCheckCat() == 1)
+            {
+                cat1.setCheckCat(0);
+            }
+            else
+            {
+                cat1.setCheckCat(1);
+            }
+            cat1.setDateUpdated(new Date());
+            cat1.setUserUpdated(userUpdate);
+            dataReturnOne.setData(catService.getRepo().save(cat1));
+            dataReturnOne.setSuccess("true");
+            dataReturnOne.setMessage("Set status Role Success");
+        }else{
+            dataReturnOne.setSuccess("false");
+            dataReturnOne.setData(null);
+            dataReturnOne.setMessage("Set status Role Fail");
+        }
+        return dataReturnOne;
+    }
 
     @PostMapping("/cat/update")
     public DataReturnOne<Cat> UpdateCategory(@RequestBody Cat cat){
