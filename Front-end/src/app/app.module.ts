@@ -29,6 +29,7 @@ import { AdminService } from './_service/admin_service/admin.service';
 import { UserService } from './_service/user_service/user.service';
 import { HeaderService } from './_service/header/header.service';
 import { RoleEditComponent } from './role-edit/role-edit.component';
+import { CatCreateComponent } from './cat-create/cat-create.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { RoleEditComponent } from './role-edit/role-edit.component';
     UserManagementComponent,
     RoleCreateComponent,
     RoleManagementComponent,
-    RoleEditComponent
+    RoleEditComponent,
+    CatCreateComponent
   ],
   imports: [
     BrowserModule,

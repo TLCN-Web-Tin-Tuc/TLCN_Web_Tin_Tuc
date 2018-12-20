@@ -40,7 +40,7 @@
                       </thead>
                       <tbody>
                         <tr *ngFor="let item of items">
-                          <td (click)="onGotoItemDetail(item.id)">{{item.email}}</td>
+                          <td (click)="onGotoItemDetail(item.id)">{{item.userCreated}}</td>
                           <td (click)="onGotoItemDetail(item.id)">{{item.title}}</td>
                           <td (click)="onGotoItemDetail(item.id)">{{item.shortDesc}}</td>    
                         </tr>
