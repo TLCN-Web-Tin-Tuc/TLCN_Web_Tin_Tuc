@@ -29,10 +29,11 @@ export class RoleCreateComponent implements OnInit {
   }
   createRole(){   
       this.role.status = 1
-      this.adminService.createRole(this.role).pipe(first()).subscribe(res => {       
+      this.email = localStorage.getItem("email")
+      this.adminService.createRole(this.role, this.email).pipe(first()).subscribe(res => {       
         if(res.success == "true"){
           alert("Tạo quyền thành công !!");         
-          this.router.navigate(["/usersmanagement"]);         
+          this.router.navigate(["/rolesmanagement"]);         
           this.error = "";
         }
         else{

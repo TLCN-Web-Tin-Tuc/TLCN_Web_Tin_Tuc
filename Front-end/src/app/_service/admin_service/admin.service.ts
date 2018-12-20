@@ -19,8 +19,8 @@ export class AdminService {
     return this.http.get(`${this.context}/api/v1/admin/users/search?id=${id}`);
   }
 
-  setStatus(id) : Observable<any>{
-    return this.http.get(`${this.context}/api/v1/admin/users/status/${id}`);
+  setStatus(id,userUpdate) : Observable<any>{
+    return this.http.get(`${this.context}/api/v1/admin/users/status/${id}/${userUpdate}`);
   }
 
   findRoleById(id) : Observable<any>{
@@ -35,32 +35,32 @@ export class AdminService {
     return this.http.put(`${this.context}/api/v1/admin/users/role/${uid}/${rid}`,"");
   }
 
-  createRole(role : Role): Observable<any>{    
-    return this.http.post(`${this.context}/api/v1/admin/roles/createrole`,role);
+  createRole(role : Role, userCreate): Observable<any>{    
+    return this.http.post(`${this.context}/api/v1/admin/roles/createrole/${userCreate}`,role);
   }
 
-  updateRole(role : Role): Observable<any>{    
-    return this.http.post(`${this.context}/api/v1/admin/roles/updaterole`,role);
+  updateRole(role : Role, userUpdate): Observable<any>{    
+    return this.http.post(`${this.context}/api/v1/admin/roles/updaterole/${userUpdate}`,role);
   }
 
-  updateStatusRole(rid): Observable<any>{    
-    return this.http.put(`${this.context}/api/v1/admin/roles/updatestatus/${rid}`,"");
+  updateStatusRole(rid,userUpdate): Observable<any>{    
+    return this.http.put(`${this.context}/api/v1/admin/roles/updatestatus/${rid}/${userUpdate}`,"");
   }
 
-  updateRoleCreate(rid) :Observable<any>{
-    return this.http.put(`${this.context}/api/v1/admin/roles/updaterolecreate/${rid}`,"");
+  updateRoleCreate(rid, userUpdate) :Observable<any>{
+    return this.http.put(`${this.context}/api/v1/admin/roles/updaterolecreate/${rid}/${userUpdate}`,"");
   }
 
-  updateRoleUpdate(rid) :Observable<any>{
-    return this.http.put(`${this.context}/api/v1/admin/roles/updateroleupdate/${rid}`,"");
+  updateRoleUpdate(rid, userUpdate) :Observable<any>{
+    return this.http.put(`${this.context}/api/v1/admin/roles/updateroleupdate/${rid}/${userUpdate}`,"");
   }
 
-  updateRoleDelete(rid) :Observable<any>{
-    return this.http.put(`${this.context}/api/v1/admin/roles/updateroledelete/${rid}`,"");
+  updateRoleDelete(rid, userUpdate) :Observable<any>{
+    return this.http.put(`${this.context}/api/v1/admin/roles/updateroledelete/${rid}/${userUpdate}`,"");
   }
 
-  updateRoleApprove(rid) :Observable<any>{
-    return this.http.put(`${this.context}/api/v1/admin/roles/updateroleapprove/${rid}`,"");
+  updateRoleApprove(rid, userUpdate) :Observable<any>{
+    return this.http.put(`${this.context}/api/v1/admin/roles/updateroleapprove/${rid}/${userUpdate}`,"");
   }
 
 }

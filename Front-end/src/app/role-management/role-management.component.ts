@@ -19,6 +19,7 @@ export class RoleManagementComponent implements OnInit {
 
   roles : Role[];
   dataTable: any;
+  email : string
 
   constructor(private router : Router,private adminService : AdminService , private chRef: ChangeDetectorRef) { }
   ngOnInit(){
@@ -60,7 +61,8 @@ export class RoleManagementComponent implements OnInit {
     }
 
     toggleRoleCreate(e){
-      this.adminService.updateRoleCreate(e.target.value)
+      this.email = localStorage.getItem("email")
+      this.adminService.updateRoleCreate(e.target.value, this.email)
       .subscribe(res => {
       if(res.success == "true")
       {
@@ -75,7 +77,8 @@ export class RoleManagementComponent implements OnInit {
     }
 
     toggleRoleUpdate(e){
-      this.adminService.updateRoleUpdate(e.target.value)
+      this.email = localStorage.getItem("email")
+      this.adminService.updateRoleUpdate(e.target.value, this.email)
       .subscribe(res => {
       if(res.success == "true")
       {
@@ -90,7 +93,8 @@ export class RoleManagementComponent implements OnInit {
     }
 
     toggleRoleDelete(e){
-      this.adminService.updateRoleDelete(e.target.value)
+      this.email = localStorage.getItem("email")
+      this.adminService.updateRoleDelete(e.target.value, this.email)
       .subscribe(res => {
       if(res.success == "true")
       {
@@ -105,7 +109,8 @@ export class RoleManagementComponent implements OnInit {
     }
 
     toggleRoleApprove(e){
-      this.adminService.updateRoleApprove(e.target.value)
+      this.email = localStorage.getItem("email")
+      this.adminService.updateRoleApprove(e.target.value, this.email)
       .subscribe(res => {
       if(res.success == "true")
       {
@@ -119,7 +124,8 @@ export class RoleManagementComponent implements OnInit {
     });
     }
     toggleRoleStatus(e){
-      this.adminService.updateStatusRole(e.target.value)
+      this.email = localStorage.getItem("email")
+      this.adminService.updateStatusRole(e.target.value, this.email)
       .subscribe(res => {
       if(res.success == "true")
       {
