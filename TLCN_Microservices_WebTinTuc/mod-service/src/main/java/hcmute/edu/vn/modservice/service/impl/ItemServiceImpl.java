@@ -1,6 +1,7 @@
 package hcmute.edu.vn.modservice.service.impl;
 
 import hcmute.edu.vn.modservice.exception.Error404;
+import hcmute.edu.vn.modservice.exception.NotFoundException;
 import hcmute.edu.vn.modservice.model.Cat;
 import hcmute.edu.vn.modservice.model.Cat_Item;
 import hcmute.edu.vn.modservice.model.Cat_Item_Id;
@@ -43,14 +44,20 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public List<Items> getAllItem() {
-        return itemRepository.findAll();
+    public List<Items> retrieveAllItems() {
+        List<Items> items = itemRepository.findAll();
+        if(items.isEmpty())
+            throw new NotFoundException("item not found");
+        return items;
     }
 
-//    @Override
-//    public List<Items> getAllItemByCategory(long id) {
-//        return itemRepository.findByCats(catRepository.findById(id).get());
-//    }
+        @Override
+    public Items retrieveItemsById(long id){
+        Optional<Items> itemOptional = itemRepository.findById(id);
+        if(!itemOptional.isPresent())
+            throw new NotFoundException("Item not found.");
+        return itemOptional.get();
+    }
 
     @Override
     public Items InsertItem(Items items, long catid) {

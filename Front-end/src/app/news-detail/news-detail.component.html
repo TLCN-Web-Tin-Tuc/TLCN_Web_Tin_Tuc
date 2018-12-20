@@ -120,38 +120,41 @@
                     <div class="card-header" style="padding-top: 0px;">
                       <div class="media">
                         <div class="media-left mr-1">
-                          <h2 class="text-uppercase" text="">Tiêu đề bài viết</h2>
+                          <h2 class="text-uppercase" text="">{{item.title}}</h2>
                         </div>
                       </div>
                       <div class="media">
                         <div class="media-left mr-1">
                           <a href="#"> <span class="avatar avatar-md avatar-busy"><img src="assets/robust-admin/app-assets/images/portrait/small/avatar-s-18.png"
-                                alt="avatar"></span> <i></i></a>
+                                alt="avatar"><a href="" text=""> {{item.userCreated}}</a></span><i></i></a>
                         </div>
                         <div class="media-body">
-                          <h4 class="card-title">
-                            <a href="#" text="">To Hoai Bao</a>
-                          </h4>
                           <div class="detail">
-                            <div class="time">December 26, 2016</div>
-                            <div class="category"><a href="">Lifestyle</a></div>
+                            <div class="time">Ngày đăng: {{item.dateCreated  | date : "dd/MM/yyyy"}}</div>
+                            <div class="category"><a href="">Danh Mục</a></div>
                           </div>
                         </div>
                         <div class="media-body">
                           <div class="col-sm-10 text-right pull-right">
                             <ul class="list-inline">
                               <li class="pr-1"><a href="#" class=""><span class="fa fa-eye"></span> Views <span class="badge badge-pill badge-info float-right"
-                                    text="">123</span></a></li>
+                                    text="">{{item.views}}</span></a></li>
                               <li class="pr-1"><a href="#" class=""><span class="fa fa-thumbs-up"></span> Likes <span
-                                    class="badge badge-pill badge-info float-right" text="">123</span></a></li>
+                                    class="badge badge-pill badge-info float-right" text="">{{item.likes}}</span></a></li>
                               <li class="pr-1"><a href="#" class=""><span class="far fa-comment-dots"></span> Comments
-                                  <span class="badge badge-pill badge-info float-right" text="">123</span></a></li>
+                                  <span class="badge badge-pill badge-info float-right" text="">{{item.comment}}</span></a></li>
                             </ul>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="card-body" text="">Nội dung bài viết</div>
+                    <div class="card-body" text="">
+                      <h5 class="text-uppercase" text="">{{item.shortDesc}}</h5> 
+                        <figure class="image"> <img [src]="selectedImg" style="width: 65%;height: 65%;margin-left: 140px;"></figure>
+                    </div>
+                    <div class="card-body" >
+                        <div [innerHTML]="item.fullDesc"></div>
+                      </div>
 
                     <div class="col-lg-3">
                       <div class="row">
