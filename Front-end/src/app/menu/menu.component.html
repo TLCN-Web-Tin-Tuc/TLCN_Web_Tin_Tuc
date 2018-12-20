@@ -1,13 +1,27 @@
 <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow menu-border" data-scroll-to-active="true">
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class=" nav-item"><a href="index.html"><i class="icon-home"></i><span class="menu-title" data-i18n="nav.dash.main">Dashboard</span><span
+            <li class=" nav-item"><a><i class="icon-home"></i><span class="menu-title" data-i18n="nav.dash.main">Dashboard</span><span
                         class="badge badge badge-info badge-pill float-right mr-2">5</span></a>
                 <ul class="menu-content">
-                    <li class="active"><a class="menu-item" href="dashboard-project.html" data-i18n="nav.dash.project">Project</a>
-                    </li>
-                    <li><a class="menu-item" href="dashboard-ecommerce.html" data-i18n="nav.dash.ecommerce">eCommerce</a>
-                    </li>
+                        <li ><a class="menu-item" (click)="onGoToUserDetail()" data-i18n="nav.dash.project">Thông tin cá nhân</a>
+                        </li>
+                        <div *ngIf="isAdmin == true">
+                                <li ><a class="menu-item" (click)="onGoToUserManagement()" data-i18n="nav.dash.project">Quản lý người dùng</a>
+                                 </li>
+                                <li><a class="menu-item" (click)="onGoToRoleManagement()" data-i18n="nav.dash.ecommerce">Quản lý quyền</a>
+                                </li>    
+                        </div>
+                        <div *ngIf="isMod == true">                                
+                                <li><a class="menu-item" (click)="onGoToNewsManagement()" data-i18n="nav.dash.ecommerce">Quản lý tin tức</a>
+                                 </li>    
+                        </div>
+                        <div *ngIf="isCreate == true">                                
+                                <li><a class="menu-item" (click)="onGoToCreateNew()" data-i18n="nav.dash.ecommerce">Tạo tin tức</a>
+                                 </li>    
+                        </div>
+                   
+                    
                     <li><a class="menu-item" href="dashboard-analytics.html" data-i18n="nav.dash.analytics">Analytics</a>
                     </li>
                     <li><a class="menu-item" href="dashboard-crm.html" data-i18n="nav.dash.crm">CRM</a>
