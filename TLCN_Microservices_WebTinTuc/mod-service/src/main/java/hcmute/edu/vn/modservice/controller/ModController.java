@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -26,10 +27,12 @@ public class ModController {
 
     @GetMapping("/cat")
     public DataReturnList<Cat> Category(){
+
         List<Cat> categories = catService.retrieveAllCat();
         DataReturnList<Cat> dataReturnList = new DataReturnList<>();
         dataReturnList.setData(categories);
-        dataReturnList.setMessage("Get list categry success");
+        dataReturnList.setSuccess("true");
+        dataReturnList.setMessage("success");
         return dataReturnList;
     }
 
@@ -42,17 +45,45 @@ public class ModController {
         return dataReturnOne;
     }
 
-    @PostMapping("/cat/create")
+    @PostMapping("/cat/createcat")
     public DataReturnOne<Cat> CreateCategory(@RequestBody Cat cat){
         DataReturnOne<Cat> dataReturnOne = new DataReturnOne<>();
-        Cat cat1 = catService.InsertCategory( cat);
+        Cat cat1 = catService.getRepo().save(cat);
         if(cat != null){
             dataReturnOne.setMessage("Insert Category Success");
+            dataReturnOne.setSuccess("true");
             dataReturnOne.setData(cat1);
-        }else{
+        }else {
             dataReturnOne.setSuccess("false");
             dataReturnOne.setMessage("Insert Category Fail");
             dataReturnOne.setData(null);
+        }
+        return dataReturnOne;
+    }
+
+        @PutMapping("/cat/updatestatus/{id}/{userUpdate}")
+    public DataReturnOne<Cat> UpdateStatusRole(@PathVariable long id, @PathVariable String userUpdate)
+    {
+        Cat cat1 = catService.retrieveCatById(id);
+        DataReturnOne<Cat> dataReturnOne = new DataReturnOne<>();
+        if(cat1 != null){
+            if(cat1.getCheckCat() == 1)
+            {
+                cat1.setCheckCat(0);
+            }
+            else
+            {
+                cat1.setCheckCat(1);
+            }
+            cat1.setDateUpdated(new Date());
+            cat1.setUserUpdated(userUpdate);
+            dataReturnOne.setData(catService.getRepo().save(cat1));
+            dataReturnOne.setSuccess("true");
+            dataReturnOne.setMessage("Set status Role Success");
+        }else{
+            dataReturnOne.setSuccess("false");
+            dataReturnOne.setData(null);
+            dataReturnOne.setMessage("Set status Role Fail");
         }
         return dataReturnOne;
     }

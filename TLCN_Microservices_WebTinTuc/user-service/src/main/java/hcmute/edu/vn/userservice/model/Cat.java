@@ -23,12 +23,6 @@ public class Cat {
 
     private int checkCat;
 
-    private String fileName;
-
-    private String fileExtension;
-
-    private byte[] image;
-
     private Date dateCreated;
 
     private String userCreated;

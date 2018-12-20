@@ -29,6 +29,7 @@ export class NewsTypingComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.item.fullDesc = "";
   }
 
   onChangedImage(event){
@@ -62,19 +63,4 @@ export class NewsTypingComponent implements OnInit {
     });
   }
 
-  // createItem(){
-  //   this.currentFileUpload = this.selectedFiles.item(0);
-  //   this.title = this.title;
-  //   this.shortDesc = this.shortDesc;
-  //   this.fullDesc = this.fullDesc;
-  //   this.modService.createItem(this.title, this.shortDesc, this.fullDesc, this.currentFileUpload).pipe(first()).subscribe(res => {
-  //     alert("Tạo bài viết thành công !!!");
-  //     this.title = "";
-  //     this.shortDesc = "";
-  //     this.fullDesc = "";
-  //   },
-  //   err => {
-  //     console.log(err);
-  //   })
-  // }
 }

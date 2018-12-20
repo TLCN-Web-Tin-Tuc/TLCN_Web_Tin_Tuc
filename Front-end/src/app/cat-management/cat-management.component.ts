@@ -9,14 +9,12 @@ import { Role } from '../_entity/role';
 import { UserService } from '../_service/user_service/user.service';
 
 @Component({
-  selector: 'app-cat-create',
-  templateUrl: './cat-create.component.html',
-  styleUrls: ['./cat-create.component.css']
+  selector: 'app-cat-management',
+  templateUrl: './cat-management.component.html',
+  styleUrls: ['./cat-management.component.css']
 })
-export class CatCreateComponent implements OnInit {
+export class CatManagementComponent implements OnInit {
   cat: Cat;
-  sCat: Cat;
-  sCatname: string;
   catList: Cat[];
   error: string;
   email: string;
@@ -24,11 +22,9 @@ export class CatCreateComponent implements OnInit {
   rolesofUser: Role[];
   isMod: boolean = false;
   isCreate: boolean = false;
-  selectedOption: number;
 
   constructor(private fb: FormBuilder, private router: Router, private modService: ModServiceService, private userService: UserService) {
-    this.cat = new Cat();
-    this.sCat = new Cat();
+
   }
 
   ngOnInit() {
@@ -36,52 +32,23 @@ export class CatCreateComponent implements OnInit {
     this.getCatList();
   }
 
-  createSCat() {
-    this.sCat.name = this.sCatname;
-    this.sCat.parent_id = this.selectedOption;
-    this.sCat.dateCreated = new Date();
-    this.sCat.userCreated = localStorage.getItem("email");
-    this.email = localStorage.getItem("email")
-    this.modService.createCat(this.sCat).pipe(first()).subscribe(res => {
-      if (res.success == "true") {
-        alert("Tạo danh mục thành công !!!");       
-        this.error = "";
-      }
-      else {
-        alert("Tạo danh mục không thành công !!!");
-      }
-      this.getCatList();
-    },
-      err => {
-        this.error = err.message
-      })
-  }
-
-  createCat() {
-    this.email = localStorage.getItem("email")
-    this.cat.dateCreated = new Date();
-    this.cat.userCreated = localStorage.getItem("email");
-    this.email = localStorage.getItem("email")
-    this.modService.createCat(this.cat).pipe(first()).subscribe(res => {
-      if (res.success == "true") {
-        alert("Tạo danh mục thành công !!!");        
-        this.error = "";
-      }
-      else {
-        alert("Tạo danh mục không thành công !!!");
-      }
-      this.getCatList();
-    },
-      err => {
-        this.error = err.message
-      })
-  }
-
   getCatList() {
     this.modService.getAllCat()
       .subscribe(res => {
         this.catList = res.data;
-        console.log(this.catList)
+        if (res.success == "true") {
+
+          this.catList = res.data;
+          for (let cat of this.catList) {
+            if (cat.checkCat == 1) {
+              cat.isCheck = true
+            }
+            else {
+              cat.isCheck = false
+            }
+          }
+
+        }
       }, err => {
         console.log(err.message)
       });
@@ -118,7 +85,19 @@ export class CatCreateComponent implements OnInit {
       })
   }
 
-  changeSelected(){
-    alert(this.selectedOption)
+  toggleCatStatus(e) {
+    this.email = localStorage.getItem("email")
+    this.modService.updateStatusCat(e.target.value, this.email)
+      .subscribe(res => {
+        if (res.success == "true") {
+          console.log("Update thành công")
+        }
+        else {
+          console.log("Update không thành công")
+        }
+      }, err => {
+        console.log(err);
+      });
   }
+
 }
