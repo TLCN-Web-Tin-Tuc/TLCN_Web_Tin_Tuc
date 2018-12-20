@@ -118,7 +118,8 @@ export class ProfileComponent implements OnInit {
   }
 
   onSetStatus(){
-    this.adminService.setStatus(this.id)
+    this.email = localStorage.getItem("email")
+    this.adminService.setStatus(this.id, this.email)
       .pipe(first())
       .subscribe(res => {
         if(res.success == "true")

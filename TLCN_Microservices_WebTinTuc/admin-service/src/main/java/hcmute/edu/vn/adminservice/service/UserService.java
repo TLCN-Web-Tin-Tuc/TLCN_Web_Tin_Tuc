@@ -10,7 +10,7 @@ public interface UserService {
     User findByEmailAndPassWord(String userName, String passWord);
     List<User> retrieveAllUsers();
     User updateRoleForUser(long uid, long rid);
-    User updateUserStatus(long id);
+    User updateUserStatus(long id, String userUpdate);
     User retrieveUserByEmail(String email);
     User retrieveUserByIdOrEmail(long id, String email);
 }

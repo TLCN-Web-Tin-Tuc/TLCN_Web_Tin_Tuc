@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -65,12 +66,12 @@ public class AdminController {
     }
 
     // update status for user
-    @GetMapping("/users/status/{uid}")
-    public DataReturnOne<User> updateUserStatus(@PathVariable long uid){
+    @GetMapping("/users/status/{uid}/{userUpdate}")
+    public DataReturnOne<User> updateUserStatus(@PathVariable long uid, @PathVariable String userUpdate){
         DataReturnOne<User> dataReturnOne=new DataReturnOne<>();
         dataReturnOne.setSuccess("true");
         dataReturnOne.setMessage("success");
-        dataReturnOne.setData(userService.updateUserStatus(uid));
+        dataReturnOne.setData(userService.updateUserStatus(uid, userUpdate));
         return dataReturnOne;
     }
 
@@ -112,9 +113,11 @@ public class AdminController {
         return dataReturnList;
     }
 
-    @PostMapping("/roles/createrole")
-    public DataReturnOne<Role> CreateRole(@RequestBody Role role)
+    @PostMapping("/roles/createrole/{userCreate}")
+    public DataReturnOne<Role> CreateRole(@RequestBody Role role, @PathVariable String userCreate)
     {
+        role.setDateCreated(new Date());
+        role.setUserCreated(userCreate);
         Role role1 = roleService.getRepo().save(role);
         DataReturnOne<Role> dataReturnOne = new DataReturnOne<>();
         if(role1!=null){
@@ -129,9 +132,11 @@ public class AdminController {
         return dataReturnOne;
     }
 
-    @PostMapping("/roles/updaterole")
-    public DataReturnOne<Role> UpdateRole(@RequestBody Role role)
+    @PostMapping("/roles/updaterole/{userUpdate}")
+    public DataReturnOne<Role> UpdateRole(@RequestBody Role role, @PathVariable String userUpdate)
     {
+        role.setUserUpdated(userUpdate);
+        role.setDateUpdated(new Date());
         Role role1 = roleService.getRepo().save(role);
         DataReturnOne<Role> dataReturnOne = new DataReturnOne<>();
         if(role1!=null){
@@ -162,8 +167,8 @@ public class AdminController {
         return roleDataReturnOne;
     }
 
-    @PutMapping("/roles/updatestatus/{rid}")
-    public DataReturnOne<Role> UpdateStatusRole(@PathVariable long rid)
+    @PutMapping("/roles/updatestatus/{rid}/{userUpdate}")
+    public DataReturnOne<Role> UpdateStatusRole(@PathVariable long rid, @PathVariable String userUpdate)
     {
         Role role1 = roleService.retrieveRoleByRId(rid);
         DataReturnOne<Role> dataReturnOne = new DataReturnOne<>();
@@ -176,6 +181,8 @@ public class AdminController {
             {
                 role1.setStatus(1);
             }
+            role1.setDateUpdated(new Date());
+            role1.setUserUpdated(userUpdate);
             dataReturnOne.setData(roleService.getRepo().save(role1));
             dataReturnOne.setSuccess("true");
             dataReturnOne.setMessage("Set status Role Success");
@@ -187,8 +194,8 @@ public class AdminController {
         return dataReturnOne;
     }
 
-    @PutMapping("/roles/updaterolecreate/{rid}")
-    public DataReturnOne<Role> UpdateRoleCreate(@PathVariable long rid)
+    @PutMapping("/roles/updaterolecreate/{rid}/{userUpdate}")
+    public DataReturnOne<Role> UpdateRoleCreate(@PathVariable long rid, @PathVariable String userUpdate)
     {
         Role role1 = roleService.retrieveRoleByRId(rid);
         DataReturnOne<Role> dataReturnOne = new DataReturnOne<>();
@@ -201,6 +208,8 @@ public class AdminController {
             {
                 role1.setP_create(true);
             }
+            role1.setDateUpdated(new Date());
+            role1.setUserUpdated(userUpdate);
             dataReturnOne.setData(roleService.getRepo().save(role1));
             dataReturnOne.setSuccess("true");
             dataReturnOne.setMessage("Set create for Role success");
@@ -212,8 +221,8 @@ public class AdminController {
         return dataReturnOne;
     }
 
-    @PutMapping("/roles/updateroleapprove/{rid}")
-    public DataReturnOne<Role> UpdateRoleApprove(@PathVariable long rid)
+    @PutMapping("/roles/updateroleapprove/{rid}/{userUpdate}")
+    public DataReturnOne<Role> UpdateRoleApprove(@PathVariable long rid, @PathVariable String userUpdate)
     {
         Role role1 = roleService.retrieveRoleByRId(rid);
         DataReturnOne<Role> dataReturnOne = new DataReturnOne<>();
@@ -226,6 +235,8 @@ public class AdminController {
             {
                 role1.setP_approve(true);
             }
+            role1.setDateUpdated(new Date());
+            role1.setUserUpdated(userUpdate);
             dataReturnOne.setData(roleService.getRepo().save(role1));
             dataReturnOne.setSuccess("true");
             dataReturnOne.setMessage("Set approve for Role success");
@@ -237,8 +248,8 @@ public class AdminController {
         return dataReturnOne;
     }
 
-    @PutMapping("/roles/updateroleupdate/{rid}")
-    public DataReturnOne<Role> UpdateRoleUpdate(@PathVariable long rid)
+    @PutMapping("/roles/updateroleupdate/{rid}/{userUpdate}")
+    public DataReturnOne<Role> UpdateRoleUpdate(@PathVariable long rid,  @PathVariable String userUpdate)
     {
         Role role1 = roleService.retrieveRoleByRId(rid);
         DataReturnOne<Role> dataReturnOne = new DataReturnOne<>();
@@ -251,6 +262,8 @@ public class AdminController {
             {
                 role1.setP_update(true);
             }
+            role1.setDateUpdated(new Date());
+            role1.setUserUpdated(userUpdate);
             dataReturnOne.setData(roleService.getRepo().save(role1));
             dataReturnOne.setSuccess("true");
             dataReturnOne.setMessage("Set update for Role success");
@@ -262,8 +275,8 @@ public class AdminController {
         return dataReturnOne;
     }
 
-    @PutMapping("/roles/updateroledelete/{rid}")
-    public DataReturnOne<Role> UpdateRoleDelete(@PathVariable long rid)
+    @PutMapping("/roles/updateroledelete/{rid}/{userUpdate}")
+    public DataReturnOne<Role> UpdateRoleDelete(@PathVariable long rid, @PathVariable String userUpdate)
     {
         Role role1 = roleService.retrieveRoleByRId(rid);
         DataReturnOne<Role> dataReturnOne = new DataReturnOne<>();
@@ -276,6 +289,8 @@ public class AdminController {
             {
                 role1.setP_delete(true);
             }
+            role1.setDateUpdated(new Date());
+            role1.setUserUpdated(userUpdate);
             dataReturnOne.setData(roleService.getRepo().save(role1));
             dataReturnOne.setSuccess("true");
             dataReturnOne.setMessage("Set delete for Role success");

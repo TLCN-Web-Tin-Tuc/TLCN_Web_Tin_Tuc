@@ -13,6 +13,7 @@ export class RoleEditComponent implements OnInit {
   role : Role
   id : string
   ischeck : boolean
+  email : string
   constructor( private activatedRoute: ActivatedRoute, private route : Router, private adminService : AdminService) { 
     this.role = new Role()
   }
@@ -48,7 +49,8 @@ export class RoleEditComponent implements OnInit {
     else{
       this.role.status = 1
     }
-    this.adminService.updateRole(this.role)    
+    this.email = localStorage.getItem("email")
+    this.adminService.updateRole(this.role, this.email)    
           .subscribe(res => {
             if(res.success == "true"){
               alert("Update thành công")

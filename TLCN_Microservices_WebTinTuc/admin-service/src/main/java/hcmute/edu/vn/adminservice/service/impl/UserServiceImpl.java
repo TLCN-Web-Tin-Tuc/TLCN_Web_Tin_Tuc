@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -63,7 +64,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User updateUserStatus(long uid){
+    public User updateUserStatus(long uid, String userUpdate){
         Optional<User> userOptional=userRepository.findById(uid);
         if(!userOptional.isPresent())
             throw new NotFoundException("User not found. Could not update status for this user");
@@ -71,6 +72,8 @@ public class UserServiceImpl implements UserService {
         if(user.getStatus()==0)
             user.setStatus(1);
         else user.setStatus(0);
+        user.setUserUpdated(userUpdate);
+        user.setDateUpdated(new Date());
         return userRepository.save(user);
     }
 
