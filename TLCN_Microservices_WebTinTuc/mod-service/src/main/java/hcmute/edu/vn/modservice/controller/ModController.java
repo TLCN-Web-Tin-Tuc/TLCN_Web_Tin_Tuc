@@ -214,18 +214,18 @@ public class ModController {
     }
 
     @GetMapping("/items/delete/{id}/{userUpdate}")
-    public DataReturnOne<Items> DeleteItems(@RequestBody Items items){
-        Items items1 = itemService.updateItemStatus(id, userUpdate);
+    public DataReturnOne<Items> DeleteItems(@PathVariable long id, @PathVariable String userUpdate){
+        Items items2 = itemService.deleteItemStatus(id, userUpdate);
         DataReturnOne<Items> dataReturnOne = new DataReturnOne<>();
-        if(items1 != null){
-            dataReturnOne.setData(items1);
-            dataReturnOne.setMessage("Update item success");
+        if(items2 != null){
+            dataReturnOne.setData(items2);
+            dataReturnOne.setMessage("Delete item success");
             dataReturnOne.setSuccess("true");
         }else
         {
             dataReturnOne.setSuccess("false");
             dataReturnOne.setData(null);
-            dataReturnOne.setMessage("Update item fail");
+            dataReturnOne.setMessage("Delete item fail");
         }
         return dataReturnOne;
     }

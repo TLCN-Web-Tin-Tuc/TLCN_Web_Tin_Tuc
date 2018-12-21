@@ -86,9 +86,9 @@ export class NewsDetailComponent implements OnInit {
 
                   this.chRef.detectChanges();
 
-                  // Now you can use jQuery DataTables :
-                  const table: any = $('table');
-                  this.dataTable = table.DataTable();
+                  // // Now you can use jQuery DataTables :
+                  // const table: any = $('table');
+                  // this.dataTable = table.DataTable();
 
                   for (let cat of this.catList) {
                     cat.isOfItem = false;
@@ -157,7 +157,7 @@ export class NewsDetailComponent implements OnInit {
     this.modService.deleteItem(this.id, this.email)
       .pipe(first())
       .subscribe(res => {
-        this.retrieveItemById(this.id);
+        this.route.navigate(["/newsmanagement"])
       }, err => {
         console.log(err)
       })  

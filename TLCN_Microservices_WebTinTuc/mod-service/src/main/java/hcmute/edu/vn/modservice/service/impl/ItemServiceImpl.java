@@ -75,6 +75,18 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
+    public Items deleteItemStatus(long id, String userUpdate){
+        Optional<Items> itemOptional = itemRepository.findById(id);
+        if(!itemOptional.isPresent())
+            throw new NotFoundException("Item not found. Could not delete this item");
+        Items item = itemOptional.get();
+            item.setStatus(2);
+        item.setUserUpdated(userUpdate);
+        item.setDateUpdated(new Date());
+        return itemRepository.save(item);
+    }
+
+    @Override
     public Items InsertItem(Items items, long catid) {
         Items itemsCreate = itemRepository.save(items);
         Cat cat = catRepository.findById(catid).get();
