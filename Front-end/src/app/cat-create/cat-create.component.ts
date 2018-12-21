@@ -61,7 +61,6 @@ export class CatCreateComponent implements OnInit {
     this.email = localStorage.getItem("email")
     this.cat.dateCreated = new Date();
     this.cat.userCreated = localStorage.getItem("email");
-    this.email = localStorage.getItem("email")
     this.modService.createCat(this.cat).pipe(first()).subscribe(res => {
       if (res.success == "true") {
         alert("Tạo danh mục thành công !!!");        

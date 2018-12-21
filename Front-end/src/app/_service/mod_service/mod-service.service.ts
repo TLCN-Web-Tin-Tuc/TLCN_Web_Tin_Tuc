@@ -28,6 +28,10 @@ export class ModServiceService {
     return this.http.post(`${this.context}/api/v1/mod/cat/createcat`, cat);
   }
 
+  updateCat(cat : Cat): Observable<any>{    
+    return this.http.post(`${this.context}/api/v1/mod//cat/update`, cat);
+  }
+
   getAllCat() :Observable<any>{
     return this.http.get(`${this.context}/api/v1/mod/cat`);
   }

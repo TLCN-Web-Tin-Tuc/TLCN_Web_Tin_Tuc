@@ -4,7 +4,7 @@ export class Item {
     fileExtension : string
     image : string
     title : string
-    status : string
+    status : number
     shortDesc : string
     fullDesc : string
     author : string

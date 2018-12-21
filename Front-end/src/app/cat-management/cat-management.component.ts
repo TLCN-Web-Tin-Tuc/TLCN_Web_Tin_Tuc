@@ -22,6 +22,7 @@ export class CatManagementComponent implements OnInit {
   rolesofUser: Role[];
   isMod: boolean = false;
   isCreate: boolean = false;
+  sCatname: string;
 
   constructor(private fb: FormBuilder, private router: Router, private modService: ModServiceService, private userService: UserService) {
 
@@ -52,6 +53,36 @@ export class CatManagementComponent implements OnInit {
       }, err => {
         console.log(err.message)
       });
+  }
+
+  onGotoCatEdit(id) {
+    for (let cat1 of this.catList) {
+      if(cat1.id == id){
+        this.cat = cat1;
+        this.sCatname = cat1.name;
+      }
+    }
+    
+  }
+
+  updateCat() {
+    this.email = localStorage.getItem("email")
+    this.cat.dateUpdated = new Date();
+    this.cat.userUpdated = this.email;
+    this.cat.name = this.sCatname;
+    this.modService.updateCat(this.cat).pipe(first()).subscribe(res => {
+      if (res.success == "true") {
+        alert("Cập nhật danh mục thành công !!!");        
+        this.error = "";
+      }
+      else {
+        alert("Cập nhật danh mục không thành công !!!");
+      }
+      this.getCatList();
+    },
+      err => {
+        this.error = err.message
+      })
   }
 
   checkEmail() {

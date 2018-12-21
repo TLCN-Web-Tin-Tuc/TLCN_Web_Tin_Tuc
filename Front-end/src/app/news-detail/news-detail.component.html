@@ -130,7 +130,7 @@
                         </div>
                         <div class="media-body">
                           <div class="detail">
-                            <div class="time">Ngày đăng: {{item.dateCreated  | date : "dd/MM/yyyy"}}</div>
+                            <div class="time">Ngày đăng: {{item.dateCreated | date : "dd/MM/yyyy"}}</div>
                             <div class="category"><a href="">Danh Mục</a></div>
                           </div>
                         </div>
@@ -149,12 +149,12 @@
                       </div>
                     </div>
                     <div class="card-body" text="">
-                      <h5 class="text-uppercase" text="">{{item.shortDesc}}</h5> 
-                        <figure class="image"> <img [src]="selectedImg" style="width: 65%;height: 65%;margin-left: 140px;"></figure>
+                      <h5 class="text-uppercase" text="">{{item.shortDesc}}</h5>
+                      <figure class="image"> <img [src]="selectedImg" style="width: 65%;height: 65%;margin-left: 140px;"></figure>
                     </div>
-                    <div class="card-body" >
-                        <div [innerHTML]="item.fullDesc"></div>
-                      </div>
+                    <div class="card-body">
+                      <div [innerHTML]="item.fullDesc"></div>
+                    </div>
 
                     <div class="col-lg-3">
                       <div class="row">
@@ -216,6 +216,41 @@
                     </div>
                   </div>
                 </section>
+              </div>
+              <div class="content-wrapper" style="padding-top: 0px;">
+                <div class="col-md-4">
+                  <div class="card-content">
+                    <div>
+                      <ng-container *ngIf="mod == 'true'; else notmod">
+                        <button class="btn btn-outline-primary pull-left" (click)="onSetStatus()" href="">{{kichhoat}}</button>
+                      </ng-container>
+                      <ng-template #notmod>
+
+                      </ng-template>
+                    </div>
+                  </div>
+                </div>
+                <!-- <ng-container *ngIf="admin == 'true'; else notadmin">
+                  <table class="table table-striped table-bordered table-hover" id="sample_1">
+                    <thead>
+                      <tr>
+                        <th *ngFor="let role of roles"> {{role.rname}}
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="odd gradeX">
+                        <td *ngFor="let role of roles">
+                          <input type="checkbox" [(ngModel)]="role.isOfUser" ng-init="checked = role.isOfUser" class="checkboxes"
+                            value={{role.id}} (change)="toggleRoleOfUser($event)" />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </ng-container>
+                <ng-template #notadmin>
+
+                </ng-template> -->
               </div>
             </div>
           </div>
