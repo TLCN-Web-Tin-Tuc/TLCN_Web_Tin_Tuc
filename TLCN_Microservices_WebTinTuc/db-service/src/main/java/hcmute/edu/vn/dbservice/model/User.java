@@ -56,8 +56,8 @@ public class User {
     @OneToMany(mappedBy = "user_rcm")
     private Set<Response_Comments> response_comments;
 
-    @OneToMany(mappedBy = "user_ia")
-    private Set<Item_Access> item_accesses;
+    @OneToMany(mappedBy = "user")
+    private Set<ItemAccess> itemAccesses;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(

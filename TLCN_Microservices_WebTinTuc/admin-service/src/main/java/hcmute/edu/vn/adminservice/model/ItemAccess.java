@@ -11,17 +11,16 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Item_Access {
-
+public class ItemAccess {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Items item_ac;
+    private Items item;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private User user_ia;
+    private User user;
 
     private Long action;
 
@@ -32,6 +31,4 @@ public class Item_Access {
     private Date dateUpdated;
 
     private String userUpdated;
-
-
 }
