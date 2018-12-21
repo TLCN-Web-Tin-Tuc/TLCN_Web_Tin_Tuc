@@ -39,4 +39,8 @@ export class ModServiceService {
   updateStatusCat(id, userUpdate): Observable<any>{    
     return this.http.put(`${this.context}/api/v1/mod/cat/updatestatus/${id}/${userUpdate}`,"");
   }
+
+  updateItem(id, userUpdate) : Observable<any>{
+    return this.http.get(`${this.context}/api/v1/mod/items/update/${id}/${userUpdate}`);
+  }
 }

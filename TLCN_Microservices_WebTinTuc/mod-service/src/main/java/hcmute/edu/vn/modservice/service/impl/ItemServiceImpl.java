@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -51,12 +52,26 @@ public class ItemServiceImpl implements ItemService {
         return items;
     }
 
-        @Override
+    @Override
     public Items retrieveItemsById(long id){
         Optional<Items> itemOptional = itemRepository.findById(id);
         if(!itemOptional.isPresent())
             throw new NotFoundException("Item not found.");
         return itemOptional.get();
+    }
+
+    @Override
+    public Items updateItemStatus(long id, String userUpdate){
+        Optional<Items> itemOptional = itemRepository.findById(id);
+        if(!itemOptional.isPresent())
+            throw new NotFoundException("Item not found. Could not update status for this item");
+        Items item = itemOptional.get();
+        if(item.getStatus() == 0)
+            item.setStatus(1);
+        else item.setStatus(0);
+        item.setUserUpdated(userUpdate);
+        item.setDateUpdated(new Date());
+        return itemRepository.save(item);
     }
 
     @Override

@@ -221,8 +221,18 @@
                 <div class="col-md-4">
                   <div class="card-content">
                     <div>
-                      <ng-container *ngIf="mod == 'true'; else notmod">
-                        <button class="btn btn-outline-primary pull-left" (click)="onSetStatus()" href="">{{kichhoat}}</button>
+                      <ng-container *ngIf="mod == 'true'; else isnotmod">
+                        <button class="btn btn-outline-primary pull-left" (click)="onSetStatus()" href="" style="margin-right: 10px;">{{kichhoat}}</button>
+                      </ng-container>
+                      <ng-template #isnotmod>
+
+                      </ng-template>
+                    </div>
+                  </div>
+                  <div class="card-content">
+                    <div>
+                      <ng-container *ngIf="isDelete == 'true'; else notmod">
+                        <button class="btn btn-outline-primary pull-left" (click)="onSetDelete()" href="">Xóa bài</button>
                       </ng-container>
                       <ng-template #notmod>
 
@@ -230,28 +240,36 @@
                     </div>
                   </div>
                 </div>
-                <!-- <ng-container *ngIf="mod == 'true'; else notmod">
-                  <table class="table table-striped table-bordered table-hover" id="sample_1">
-                    <thead>
-                      <tr>
-                        <th *ngFor="let cat of catList"> {{cat.rname}}
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="odd gradeX">
-                        <td *ngFor="let cat of catList">
-                          <input type="checkbox" [(ngModel)]="cat.isOfItem" ng-init="checked = cat.isOfItem" class="checkboxes"
-                            value={{cat.id}} (change)="toggleRoleOfUser($event)" />
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </ng-container>
-                <ng-template #notmod>
-
-                </ng-template> -->
               </div>
+            </div>
+          </div>
+          <div class="content-wrapper" style="padding-top: 15px;">
+            <div class="col-md-12">
+              <div class="card-header" style="padding-left: 0px;">
+                <h4 class="card-title">Quản lý danh mục của tin tức</h4>
+                <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+              </div>
+              <ng-container *ngIf="mod == 'true'; else nnotmod">
+                <table class="table table-striped table-bordered table-hover" id="sample_1">
+                  <thead>
+                    <tr>
+                      <th *ngFor="let cat of catList"> {{cat.name}}
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="odd gradeX">
+                      <td *ngFor="let cat of catList">
+                        <input type="checkbox" [(ngModel)]="cat.isOfItem" ng-init="checked = cat.isOfItem" class="checkboxes"
+                          value={{cat.id}} (change)="toggleRoleOfUser($event)" />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </ng-container>
+              <ng-template #nnotmod>
+
+              </ng-template>
             </div>
           </div>
         </div>

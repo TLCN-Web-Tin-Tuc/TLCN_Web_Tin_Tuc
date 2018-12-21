@@ -61,7 +61,7 @@ public class ModController {
         return dataReturnOne;
     }
 
-        @PutMapping("/cat/updatestatus/{id}/{userUpdate}")
+    @PutMapping("/cat/updatestatus/{id}/{userUpdate}")
     public DataReturnOne<Cat> UpdateStatusRole(@PathVariable long id, @PathVariable String userUpdate)
     {
         Cat cat1 = catService.retrieveCatById(id);
@@ -197,13 +197,14 @@ public class ModController {
         return dataReturnOne;
     }
 
-    @PostMapping("/items/update")
-    public DataReturnOne<Items> UpdateItems(@RequestBody Items items){
-        Items items1 = itemService.getRepo().save(items);
+    @GetMapping("/items/update/{id}/{userUpdate}")
+    public DataReturnOne<Items> UpdateItems(@PathVariable long id, @PathVariable String userUpdate){
+        Items items1 = itemService.updateItemStatus(id, userUpdate);
         DataReturnOne<Items> dataReturnOne = new DataReturnOne<>();
         if(items1!=null){
             dataReturnOne.setData(items1);
             dataReturnOne.setMessage("Update item success");
+            dataReturnOne.setSuccess("true");
         }else{
             dataReturnOne.setSuccess("false");
             dataReturnOne.setData(null);
@@ -211,6 +212,8 @@ public class ModController {
         }
         return dataReturnOne;
     }
+
+
 
     @DeleteMapping("/items/delete")
     public DataReturnOne<Items> DeleteItems(@RequestBody Items items){

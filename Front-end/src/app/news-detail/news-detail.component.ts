@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { first } from 'rxjs/operators';
 import { ModServiceService } from '../_service/mod_service/mod-service.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -6,6 +6,7 @@ import { Item } from '../_entity/item';
 import { Role } from '../_entity/role';
 import { User } from '../_entity/user';
 import { UserService } from '../_service/user_service/user.service';
+import { Cat } from '../_entity/cat';
 
 @Component({
   selector: 'app-news-detail',
@@ -35,8 +36,12 @@ export class NewsDetailComponent implements OnInit {
   rolesofUser: Role[];
   isMod: boolean = false;
   isCreate: boolean = false;
+  isDelete: string = "false";
+  cat: Cat;
+  catList: Cat[];
+  dataTable: any;
 
-  constructor(private modService: ModServiceService, private activatedRoute: ActivatedRoute, private route: Router, private userService: UserService) {
+  constructor(private modService: ModServiceService, private activatedRoute: ActivatedRoute, private route: Router, private userService: UserService, private chRef: ChangeDetectorRef) {
     this.item = new Item();
   }
 
@@ -55,9 +60,10 @@ export class NewsDetailComponent implements OnInit {
         .pipe(first())
         .subscribe(res => {
           if (res.success == "true") {
+
             this.item = res.data;
-            this.selectedImg = this.item.image;
             this.mod = "true"
+            this.selectedImg = this.item.image;
 
             if (this.item.status == 1) {
               this.kichhoat = "Bỏ duyệt bài";
@@ -65,6 +71,32 @@ export class NewsDetailComponent implements OnInit {
             else {
               this.kichhoat = "Duyệt bài";
             }
+
+            if (this.item.status != 3) {
+              this.isDelete = "true";
+            }
+
+            this.modService.getAllCat()
+              .subscribe(res => {
+                this.catList = res.data;
+                if (res.success == "true") {
+
+                  this.catList = res.data;
+
+                  this.chRef.detectChanges();
+
+                  // Now you can use jQuery DataTables :
+                  const table: any = $('table');
+                  this.dataTable = table.DataTable();
+
+                  for (let cat of this.catList) {
+                    cat.isOfItem = false;
+                  }
+
+                }
+              }, err => {
+                console.log(err.message)
+              });
           }
           else {
             this.error = res.message;
@@ -106,5 +138,17 @@ export class NewsDetailComponent implements OnInit {
         console.log(err)
       })
   }
-  
+
+  onSetStatus(){
+    this.email = localStorage.getItem("email")
+    this.item.userUpdated = this.email;
+    this.modService.updateItem(this.id, this.email)
+      .pipe(first())
+      .subscribe(res => {
+        this.retrieveItemById(this.id);
+      }, err => {
+        console.log(err)
+      })  
+  }
+
 }
