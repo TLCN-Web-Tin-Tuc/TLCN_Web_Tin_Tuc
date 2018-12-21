@@ -8,4 +8,5 @@ export class Cat {
     dateUpdated : Date
     userUpdated : string
     isCheck : boolean = false
+    isOfItem: boolean = false;
 }

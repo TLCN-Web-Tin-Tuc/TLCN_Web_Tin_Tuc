@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Cat } from '../_entity/cat';
 import { Router } from '@angular/router';
 import { ModServiceService } from '../_service/mod_service/mod-service.service';
@@ -7,6 +7,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
 import { Role } from '../_entity/role';
 import { UserService } from '../_service/user_service/user.service';
+
+import * as $ from 'jquery';
+import 'datatables.net';
+import 'datatables.net-bs4';
 
 @Component({
   selector: 'app-cat-management',
@@ -21,10 +25,12 @@ export class CatManagementComponent implements OnInit {
   role: Role;
   rolesofUser: Role[];
   isMod: boolean = false;
+  isClick: boolean = false;
   isCreate: boolean = false;
-  sCatname: string;
+  sCatname: string = "";
+  dataTable: any;
 
-  constructor(private fb: FormBuilder, private router: Router, private modService: ModServiceService, private userService: UserService) {
+  constructor(private fb: FormBuilder, private router: Router, private modService: ModServiceService, private userService: UserService, private chRef: ChangeDetectorRef) {
 
   }
 
@@ -40,6 +46,13 @@ export class CatManagementComponent implements OnInit {
         if (res.success == "true") {
 
           this.catList = res.data;
+
+          this.chRef.detectChanges();
+
+          // Now you can use jQuery DataTables :
+          const table: any = $('table');
+          this.dataTable = table.DataTable();
+
           for (let cat of this.catList) {
             if (cat.checkCat == 1) {
               cat.isCheck = true
@@ -56,33 +69,39 @@ export class CatManagementComponent implements OnInit {
   }
 
   onGotoCatEdit(id) {
+    this.isClick = true;
     for (let cat1 of this.catList) {
-      if(cat1.id == id){
+      if (cat1.id == id) {
         this.cat = cat1;
         this.sCatname = cat1.name;
       }
     }
-    
+
   }
 
   updateCat() {
-    this.email = localStorage.getItem("email")
-    this.cat.dateUpdated = new Date();
-    this.cat.userUpdated = this.email;
-    this.cat.name = this.sCatname;
-    this.modService.updateCat(this.cat).pipe(first()).subscribe(res => {
-      if (res.success == "true") {
-        alert("Cập nhật danh mục thành công !!!");        
-        this.error = "";
-      }
-      else {
-        alert("Cập nhật danh mục không thành công !!!");
-      }
-      this.getCatList();
-    },
-      err => {
-        this.error = err.message
-      })
+    if (this.isClick == false) {
+      alert("Chưa chọn danh mục cần cập nhật !!!");
+    }
+    else {
+      this.email = localStorage.getItem("email")
+      this.cat.dateUpdated = new Date();
+      this.cat.userUpdated = this.email;
+      this.cat.name = this.sCatname;
+      this.modService.updateCat(this.cat).pipe(first()).subscribe(res => {
+        if (res.success == "true") {
+          alert("Cập nhật danh mục thành công !!!");
+          this.error = "";
+        }
+        else {
+          alert("Cập nhật danh mục không thành công !!!");
+        }
+        this.getCatList();
+      },
+        err => {
+          this.error = err.message
+        })
+    }
   }
 
   checkEmail() {
