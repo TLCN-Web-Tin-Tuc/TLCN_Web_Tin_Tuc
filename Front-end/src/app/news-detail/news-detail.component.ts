@@ -73,8 +73,13 @@ export class NewsDetailComponent implements OnInit {
               this.kichhoat = "Duyệt bài";
             }
 
-            if (this.item.status != 3) {
+            if (this.item.status != 2) {
               this.isDelete = "true";
+            }
+
+            
+            if (this.item.status == 2) {
+              this.isDelete = "false";
             }
 
             this.modService.getAllCat()
