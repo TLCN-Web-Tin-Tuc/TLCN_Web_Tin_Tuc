@@ -43,4 +43,8 @@ export class ModServiceService {
   updateItem(id, userUpdate) : Observable<any>{
     return this.http.get(`${this.context}/api/v1/mod/items/update/${id}/${userUpdate}`);
   }
+
+  deleteItem(id, userUpdate) : Observable<any>{
+    return this.http.get(`${this.context}/api/v1/mod/items/delete/${id}/${userUpdate}`);
+  }
 }

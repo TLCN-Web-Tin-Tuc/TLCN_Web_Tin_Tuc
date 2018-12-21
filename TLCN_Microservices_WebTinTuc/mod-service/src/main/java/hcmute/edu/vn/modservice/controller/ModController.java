@@ -213,19 +213,19 @@ public class ModController {
         return dataReturnOne;
     }
 
-
-
-    @DeleteMapping("/items/delete")
+    @GetMapping("/items/delete/{id}/{userUpdate}")
     public DataReturnOne<Items> DeleteItems(@RequestBody Items items){
+        Items items1 = itemService.updateItemStatus(id, userUpdate);
         DataReturnOne<Items> dataReturnOne = new DataReturnOne<>();
-        try {
-            itemService.DeleteItem(items.getId());
-            dataReturnOne.setData(null);
-            dataReturnOne.setMessage("Delete item success");
-        }catch (Exception e){
+        if(items1 != null){
+            dataReturnOne.setData(items1);
+            dataReturnOne.setMessage("Update item success");
+            dataReturnOne.setSuccess("true");
+        }else
+        {
             dataReturnOne.setSuccess("false");
             dataReturnOne.setData(null);
-            dataReturnOne.setMessage("Delete item fail" + e.getMessage());
+            dataReturnOne.setMessage("Update item fail");
         }
         return dataReturnOne;
     }

@@ -7,6 +7,7 @@ import { Role } from '../_entity/role';
 import { User } from '../_entity/user';
 import { UserService } from '../_service/user_service/user.service';
 import { Cat } from '../_entity/cat';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-news-detail',
@@ -150,5 +151,15 @@ export class NewsDetailComponent implements OnInit {
         console.log(err)
       })  
   }
-
+  onSetDelete(){
+    this.email = localStorage.getItem("email")
+    this.item.userUpdated = this.email;
+    this.modService.deleteItem(this.id, this.email)
+      .pipe(first())
+      .subscribe(res => {
+        this.retrieveItemById(this.id);
+      }, err => {
+        console.log(err)
+      })  
+  }
 }
