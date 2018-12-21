@@ -5,6 +5,9 @@ import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { FormBuilder ,FormGroup, Validators } from '@angular/forms';
 import * as ClassicEditorBuild from '@ckeditor/ckeditor5-build-classic';
+import { UserService } from '../_service/user_service/user.service';
+import { Role } from '../_entity/role';
+import { NuServiceService } from '../_service/nu_service/nu-service.service';
 
 @Component({
   selector: 'app-news-typing',
@@ -19,8 +22,13 @@ export class NewsTypingComponent implements OnInit {
   formImage: FormGroup;
   image: string = "";
   imageUploaded: string = "";
+  email : string
+  isCreate : boolean = false
+  rolesofUser : Role[]
+  pass : string
   
-  constructor(private modService : ModServiceService, private fb: FormBuilder) { 
+  constructor(private modService : ModServiceService, private router : Router, private fb: FormBuilder,
+     private userService : UserService, private nuService : NuServiceService) { 
     this.item = new Item();
     this.formImage = this.fb.group({
       name: ['', Validators.required],
@@ -30,6 +38,7 @@ export class NewsTypingComponent implements OnInit {
 
   ngOnInit() {
     this.item.fullDesc = "";
+    this.checkEmail()
   }
 
   onChangedImage(event){
@@ -63,4 +72,57 @@ export class NewsTypingComponent implements OnInit {
     });
   }
 
+
+  async checkEmail(){
+    await this.checkUserAndPassWord()
+    this.email = localStorage.getItem("email")
+    if(this.email == null)
+    {
+      this.router.navigate(["/"])
+    }
+    this.userService.getProfile(this.email)
+    .pipe(first())
+    .subscribe(res => {
+      if(res.success == "true")
+      {                     
+        this.rolesofUser = res.data.roles
+        for(let role of this.rolesofUser)
+        {
+          if(role.p_create == true && role.status == 1)
+          {            
+            this.isCreate = true;
+            return
+          }           
+        }
+        if(this.isCreate == false){
+          alert("Bạn không được truy cập vào trang này")
+          this.router.navigate(["/"])
+        } 
+      }
+      else
+      {
+          this.error = res.message
+      }
+    }, err => {
+      console.log(err)
+    })  
+
+  }
+
+  checkUserAndPassWord(){
+    this.email = localStorage.getItem("email")
+    this.pass = localStorage.getItem("password")
+    this.nuService.checkEmailPass(this.email, this.pass)
+    .pipe(first())
+    .subscribe(res => {
+      if(res.success == "false")
+      {            
+        localStorage.clear()
+        this.router.navigate(["/"]);
+      }
+      
+    }, err => {
+      console.log(err)
+    })      
+  }
 }
