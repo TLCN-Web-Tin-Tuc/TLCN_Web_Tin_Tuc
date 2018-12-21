@@ -106,4 +106,5 @@ export class NewsDetailComponent implements OnInit {
         console.log(err)
       })
   }
+  
 }

@@ -230,25 +230,25 @@
                     </div>
                   </div>
                 </div>
-                <!-- <ng-container *ngIf="admin == 'true'; else notadmin">
+                <!-- <ng-container *ngIf="mod == 'true'; else notmod">
                   <table class="table table-striped table-bordered table-hover" id="sample_1">
                     <thead>
                       <tr>
-                        <th *ngFor="let role of roles"> {{role.rname}}
+                        <th *ngFor="let cat of catList"> {{cat.rname}}
                         </th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr class="odd gradeX">
-                        <td *ngFor="let role of roles">
-                          <input type="checkbox" [(ngModel)]="role.isOfUser" ng-init="checked = role.isOfUser" class="checkboxes"
-                            value={{role.id}} (change)="toggleRoleOfUser($event)" />
+                        <td *ngFor="let cat of catList">
+                          <input type="checkbox" [(ngModel)]="cat.isOfItem" ng-init="checked = cat.isOfItem" class="checkboxes"
+                            value={{cat.id}} (change)="toggleRoleOfUser($event)" />
                         </td>
                       </tr>
                     </tbody>
                   </table>
                 </ng-container>
-                <ng-template #notadmin>
+                <ng-template #notmod>
 
                 </ng-template> -->
               </div>

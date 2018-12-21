@@ -46,6 +46,7 @@ export class CatCreateComponent implements OnInit {
       if (res.success == "true") {
         alert("Tạo danh mục thành công !!!");       
         this.error = "";
+        this.sCatname = "";
       }
       else {
         alert("Tạo danh mục không thành công !!!");
@@ -63,7 +64,8 @@ export class CatCreateComponent implements OnInit {
     this.cat.userCreated = localStorage.getItem("email");
     this.modService.createCat(this.cat).pipe(first()).subscribe(res => {
       if (res.success == "true") {
-        alert("Tạo danh mục thành công !!!");        
+        alert("Tạo danh mục thành công !!!");
+        this.cat = new Cat();        
         this.error = "";
       }
       else {
