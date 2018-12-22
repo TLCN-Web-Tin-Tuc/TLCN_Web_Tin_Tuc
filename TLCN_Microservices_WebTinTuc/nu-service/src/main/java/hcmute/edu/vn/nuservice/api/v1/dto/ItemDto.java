@@ -2,6 +2,8 @@ package hcmute.edu.vn.nuservice.api.v1.dto;
 
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 public class ItemDto {
     private Long id;
@@ -17,5 +19,9 @@ public class ItemDto {
     private Long likes;
     private Long download;
     private Long comment;
+    private Date dateCreated;
+    private String userCreated;
+    private Date dateUpdated;
+    private String userUpdated;
 
 }

@@ -147,11 +147,37 @@ public class NonUserController {
         return catMapper.listcatTolistCatDto(catService.getRepo().findAll());
     }
 
-    @GetMapping("/get-all-item")
-    public List<ItemDto> getAllItem()
+    @GetMapping("/get-item-desc-day")
+    public DataReturnList<ItemDto> getAllItemDescDay()
     {
-        return itemMapper.listitemTolistItemDto(itemService.getRepo().findAll());
+        DataReturnList<ItemDto> itemDtoDataReturnList = new DataReturnList<>();
+        itemDtoDataReturnList.setMessage("Lấy dữ liệu thành công");
+        itemDtoDataReturnList.setData(itemService.retrieveItemsDescDay().stream().map(itemMapper::listitemTolistItemDto)
+                .collect(Collectors.toList()));
+        return itemDtoDataReturnList;
     }
+
+    @GetMapping("/get-item-desc-like")
+    public DataReturnList<ItemDto> getAllItemDescLike()
+    {
+        DataReturnList<ItemDto> itemDtoDataReturnList = new DataReturnList<>();
+        itemDtoDataReturnList.setMessage("Lấy dữ liệu thành công");
+        itemDtoDataReturnList.setData(itemService.retrieveItemsDescLike().stream().map(itemMapper::listitemTolistItemDto)
+                .collect(Collectors.toList()));
+        return itemDtoDataReturnList;
+    }
+
+    @GetMapping("/get-item-desc-day-by-cat/{catId}")
+    public DataReturnList<CatOfItemDto> getAllItemDescDay(@PathVariable Long catId)
+    {
+        DataReturnList<CatOfItemDto> itemDtoDataReturnList = new DataReturnList<>();
+        itemDtoDataReturnList.setMessage("Lấy dữ liệu thành công");
+        itemDtoDataReturnList.setData(catItemService.retrieveAllByCatId(catId).stream().map(catOfItemMapper::listcatitemTolistCatItemDto)
+                                                                                        .collect(Collectors.toList()));
+
+        return itemDtoDataReturnList;
+    }
+
 
     @PostMapping("/send-report")
     public DataReturnOne<Report> SendReport(@RequestBody Report report)
