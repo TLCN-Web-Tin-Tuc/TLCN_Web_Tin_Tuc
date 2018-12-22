@@ -16,4 +16,9 @@ public interface CatItemRepository extends JpaRepository<Cat_Item,Long> {
             "WHERE p.id.cat.id = :catid AND p.id.item.status = 1 " +
             "ORDER BY p.id.item.dateUpdated DESC")
     List<Cat_Item> findItemByCatId(@Param("catid") Long catid);
+
+    @Query("SELECT p FROM ne_cat_item p  " +
+            "WHERE  p.id.item.status = 1 " +
+            "ORDER BY p.id.item.dateUpdated DESC")
+    List<Cat_Item> findItemDescDay();
 }

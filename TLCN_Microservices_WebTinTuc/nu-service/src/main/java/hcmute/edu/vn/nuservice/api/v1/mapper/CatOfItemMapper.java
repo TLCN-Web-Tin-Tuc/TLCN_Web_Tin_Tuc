@@ -16,6 +16,7 @@ public interface CatOfItemMapper {
     @Mappings({
             @Mapping(source = "id.cat.id", target = "catId"),
             @Mapping(source = "id.cat.name", target = "catName"),
+            @Mapping(source = "id.item.id", target = "itemId"),
             @Mapping(source = "id.item.image", target = "image"),
             @Mapping(source = "id.item.title", target = "title"),
             @Mapping(source = "id.item.status", target = "status"),

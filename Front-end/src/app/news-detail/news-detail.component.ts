@@ -38,8 +38,11 @@ export class NewsDetailComponent implements OnInit {
   role: Role;
   rolesofUser: Role[];
   isMod: boolean = false;
-  isCreate: boolean = false;
-  isDelete: string = "false";
+  isUpdate: boolean = false;
+  isDelete: boolean = false;
+  isModDelete : boolean = false
+  isApprove : boolean = false
+  
   cat: Cat;
   catOfItem : Cat[]
   catList: Cat[];
@@ -67,8 +70,7 @@ export class NewsDetailComponent implements OnInit {
         .subscribe(res => {
           if (res.success == "true") {
 
-            this.item = res.data;
-            this.mod = "true"
+            this.item = res.data;            
             this.selectedImg = this.item.image;
 
             if (this.item.status == 1) {
@@ -79,12 +81,12 @@ export class NewsDetailComponent implements OnInit {
             }
 
             if (this.item.status != 2) {
-              this.isDelete = "true";
+              this.isDelete = true;
             }
 
             
             if (this.item.status == 2) {
-              this.isDelete = "false";
+              this.isDelete = false;
             }
 
             this.modService.getAllCat()
@@ -135,27 +137,23 @@ export class NewsDetailComponent implements OnInit {
 
   checkEmail() {
     this.email = localStorage.getItem("email");
-    if (this.email == null) {
-      this.route.navigate(["/"])
-    }
+    
     this.userService.getProfile(this.email)
       .pipe(first())
       .subscribe(res => {
         if (res.success == "true") {
           this.rolesofUser = res.data.roles
           for (let role of this.rolesofUser) {
-            if ((role.p_delete == true || role.p_update == true || role.p_approve == true) && (role.status == 1)) {
-              this.isMod = true
+            if ((role.p_delete == true) && (role.status == 1)) {
+              this.isModDelete = true
             }
-            if (role.p_create == true && (role.status == 1)) {
-              this.isCreate = true
-              return
+            if (role.p_approve == true && (role.status == 1)) {
+              this.isApprove = true              
             }
-          }
-          if (this.isMod == false) {
-            alert("Bạn không được truy cập vào trang này")
-            this.route.navigate(["/"])
-          }
+            if (role.p_update == true && (role.status == 1)) {
+              this.isUpdate = true              
+            }
+          }         
         }
         else {
           this.error = res.message

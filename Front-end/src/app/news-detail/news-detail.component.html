@@ -144,6 +144,7 @@
                               <li class="pr-1"><a href="#" class=""><span class="far fa-comment-dots"></span> Comments
                                   <span class="badge badge-pill badge-info float-right" text="">{{item.comment}}</span></a></li>
                             </ul>
+                           
                           </div>
                         </div>
                       </div>
@@ -221,7 +222,7 @@
                 <div class="col-md-4">
                   <div class="card-content">
                     <div>
-                      <ng-container *ngIf="mod == 'true'; else isnotmod">
+                      <ng-container *ngIf="isApprove == true; else isnotmod">
                         <button class="btn btn-outline-primary pull-left" (click)="onSetStatus()" href="" style="margin-right: 10px;">{{kichhoat}}</button>
                       </ng-container>
                       <ng-template #isnotmod>
@@ -231,25 +232,25 @@
                   </div>
                   <div class="card-content">
                     <div>
-                      <ng-container *ngIf="isDelete == 'true'; else notmod">
-                        <button class="btn btn-outline-primary pull-left" (click)="onSetDelete()" href="">Xóa bài</button>
-                      </ng-container>
-                      <ng-template #notmod>
-
-                      </ng-template>
+                      <div *ngIf="isModDelete == true">
+                        <div *ngIf="isDelete == true">
+                            <button class="btn btn-outline-primary pull-left" (click)="onSetDelete()" href="">Xóa bài</button>
+                        </div>                        
+                      </div>                                           
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
+          <ng-container *ngIf="isUpdate == true; else nnotmod">
           <div class="content-wrapper" style="padding-top: 15px;">
             <div class="col-md-12">
               <div class="card-header" style="padding-left: 0px;">
                 <h4 class="card-title">Quản lý danh mục của tin tức</h4>
                 <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
-              </div>
-              <ng-container *ngIf="mod == 'true'; else nnotmod">
+              </div>             
                 <table class="table table-striped table-bordered table-hover" id="sample_1">
                   <thead>
                     <tr>
@@ -266,12 +267,15 @@
                     </tr>
                   </tbody>
                 </table>
-              </ng-container>
-              <ng-template #nnotmod>
-                  
-              </ng-template>
+              
+             
             </div>
           </div>
+        </ng-container>
+          <ng-template #nnotmod>
+                  
+            </ng-template>
+
         </div>
       </div>
     </div>

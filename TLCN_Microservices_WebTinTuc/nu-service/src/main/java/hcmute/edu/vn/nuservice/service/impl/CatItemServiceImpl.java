@@ -39,4 +39,12 @@ public class CatItemServiceImpl implements CatItemService {
             throw new NotFoundException("Not Found Product in Your Cart");
         return cat_items;
     }
+
+    @Override
+    public List<Cat_Item> retrieveAllItemDescDay() {
+        List<Cat_Item> cat_items = catItemRepository.findItemDescDay();
+        if(cat_items.isEmpty())
+            throw new NotFoundException("Not Found Product in Your Cart");
+        return cat_items;
+    }
 }

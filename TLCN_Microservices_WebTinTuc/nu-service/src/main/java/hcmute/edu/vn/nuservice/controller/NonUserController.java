@@ -150,11 +150,11 @@ public class NonUserController {
     @GetMapping("/get-item-desc-day")
     public DataReturnList<ItemDto> getAllItemDescDay()
     {
-        DataReturnList<ItemDto> itemDtoDataReturnList = new DataReturnList<>();
-        itemDtoDataReturnList.setMessage("Lấy dữ liệu thành công");
-        itemDtoDataReturnList.setData(itemService.retrieveItemsDescDay().stream().map(itemMapper::listitemTolistItemDto)
+        DataReturnList<ItemDto> catOfItemDtoDataReturnList = new DataReturnList<>();
+        catOfItemDtoDataReturnList.setMessage("Lấy dữ liệu thành công");
+        catOfItemDtoDataReturnList.setData(itemService.retrieveItemsDescDay().stream().map(itemMapper::listitemTolistItemDto)
                 .collect(Collectors.toList()));
-        return itemDtoDataReturnList;
+        return catOfItemDtoDataReturnList;
     }
 
     @GetMapping("/get-item-desc-like")

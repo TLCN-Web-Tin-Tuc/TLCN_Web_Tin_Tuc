@@ -29,4 +29,8 @@ export class NuServiceService {
   getCatItem(itemid : string) :Observable<any> {
     return this.http.get(`${this.context}/api/v1/nuser/getcatofitem/${itemid}`);
   }
+
+  getItemDescDay() :Observable<any> {
+    return this.http.get(`${this.context}/api/v1/nuser/get-item-desc-day`);
+  }
 }

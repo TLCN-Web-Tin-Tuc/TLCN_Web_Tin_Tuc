@@ -24,4 +24,5 @@ public class ItemDto {
     private Date dateUpdated;
     private String userUpdated;
 
+
 }
