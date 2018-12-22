@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-// import { CommonModule } from '@angular/common';
 import {RouterModule, Routes } from '@angular/router';
 import { FramesComponent } from './frames/frames.component';
 import { LoginComponent } from './login/login.component';
@@ -12,7 +11,6 @@ import { NewsManagementComponent } from './news-management/news-management.compo
 import { NewsTypingComponent } from './news-typing/news-typing.component';
 import { NewsDetailComponent } from './news-detail/news-detail.component';
 import { NewsIndexComponent } from './news-index/news-index.component';
-import { from } from 'rxjs';
 import { UserManagementComponent } from './user-management/user-management.component';
 import { RoleCreateComponent } from './role-create/role-create.component';
 import { RoleManagementComponent } from './role-management/role-management.component';
