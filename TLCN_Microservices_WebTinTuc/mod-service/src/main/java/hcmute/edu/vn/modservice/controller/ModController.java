@@ -3,7 +3,9 @@ package hcmute.edu.vn.modservice.controller;
 import hcmute.edu.vn.modservice.api.v1.data.DataReturnList;
 import hcmute.edu.vn.modservice.api.v1.data.DataReturnOne;
 import hcmute.edu.vn.modservice.api.v1.dto.CatDto;
+import hcmute.edu.vn.modservice.api.v1.dto.ItemDto;
 import hcmute.edu.vn.modservice.api.v1.mapper.CatMapper;
+import hcmute.edu.vn.modservice.api.v1.mapper.ItemMapper;
 import hcmute.edu.vn.modservice.model.Cat;
 import hcmute.edu.vn.modservice.model.Cat_Item;
 import hcmute.edu.vn.modservice.model.Items;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @CrossOrigin
@@ -28,14 +31,19 @@ public class ModController {
     ItemService itemService;
 
     @Autowired
+    ItemMapper itemMapper;
+
+    @Autowired
     CatMapper catMapper;
 
     @GetMapping("/cat")
-    public DataReturnList<Cat> Category(){
+    public DataReturnList<CatDto> Category(){
 
         List<Cat> categories = catService.retrieveAllCat();
-        DataReturnList<Cat> dataReturnList = new DataReturnList<>();
-        dataReturnList.setData(categories);
+        DataReturnList<CatDto> dataReturnList = new DataReturnList<>();
+        dataReturnList.setData(catService.retrieveAllCat().stream()
+                                                .map(catMapper::catToCatDto)
+                                                .collect(Collectors.toList()));
         dataReturnList.setSuccess("true");
         dataReturnList.setMessage("success");
         return dataReturnList;
@@ -45,7 +53,8 @@ public class ModController {
     public DataReturnList<CatDto> CategoryChecked(){
         List<Cat> categoriesChecked = catService.retrieveAllCatChecked();
         DataReturnList<CatDto> dtrList = new DataReturnList<>();
-        dtrList.setData(catMapper.listcatTolistCatDto(categoriesChecked));
+        dtrList.setData(catService.retrieveAllCatChecked().stream().map(catMapper::catToCatDto)
+                                                                    .collect(Collectors.toList()));
         dtrList.setSuccess("true");
         dtrList.setMessage("success");
         return dtrList;
@@ -144,34 +153,36 @@ public class ModController {
     }
 
     @GetMapping("/items/search")
-    public DataReturnOne<Items> retrieveItemsById(@RequestParam(required = false) long id){
-        DataReturnOne<Items> dataReturnOne = new DataReturnOne<>();
+    public DataReturnOne<ItemDto> retrieveItemsById(@RequestParam(required = false) long id){
+        DataReturnOne<ItemDto> dataReturnOne = new DataReturnOne<>();
         dataReturnOne.setSuccess("true");
         dataReturnOne.setMessage("success");
-        dataReturnOne.setData(itemService.retrieveItemsById(id));
+        dataReturnOne.setData(itemMapper.itemToItemDto(itemService.retrieveItemsById(id)));
         return dataReturnOne;
     }
 
     @GetMapping("/items")
-    public DataReturnList<Items> retrieveAllItems(){
-        DataReturnList<Items> dataReturnList = new DataReturnList<>();
+    public DataReturnList<ItemDto> retrieveAllItems(){
+        DataReturnList<ItemDto> dataReturnList = new DataReturnList<>();
         List<Items> items = new ArrayList<Items>();
         items = itemService.retrieveAllItems();
-        dataReturnList.setData(items);
+        dataReturnList.setData(itemService.retrieveAllItems().stream()
+                                            .map(itemMapper::itemToItemDto)
+                                            .collect(Collectors.toList()));
         dataReturnList.setMessage("Get list item success");
         return dataReturnList;
     }
 
     @PostMapping("/items/create")
-    public DataReturnOne<Items> CreateItem(@RequestBody Items items ){
+    public DataReturnOne<ItemDto> CreateItem(@RequestBody Items items ){
         items.setDownload((long) 0);
         items.setComment((long) 0);
         items.setLikes((long) 0);
         items.setViews((long) 0);
         Items items1 = itemService.getRepo().save(items);
-        DataReturnOne<Items> dataReturnOne = new DataReturnOne<>();
+        DataReturnOne<ItemDto> dataReturnOne = new DataReturnOne<>();
         if(items1 != null){
-            dataReturnOne.setData(items1);
+            dataReturnOne.setData(itemMapper.itemToItemDto(items1));
             dataReturnOne.setSuccess("true");
             dataReturnOne.setMessage("Create item success");
         }else{
@@ -213,11 +224,11 @@ public class ModController {
     }
 
     @GetMapping("/items/update/{id}/{userUpdate}")
-    public DataReturnOne<Items> UpdateItems(@PathVariable long id, @PathVariable String userUpdate){
+    public DataReturnOne<ItemDto> UpdateItems(@PathVariable long id, @PathVariable String userUpdate){
         Items items1 = itemService.updateItemStatus(id, userUpdate);
-        DataReturnOne<Items> dataReturnOne = new DataReturnOne<>();
+        DataReturnOne<ItemDto> dataReturnOne = new DataReturnOne<>();
         if(items1!=null){
-            dataReturnOne.setData(items1);
+            dataReturnOne.setData(itemMapper.itemToItemDto(items1));
             dataReturnOne.setMessage("Update item success");
             dataReturnOne.setSuccess("true");
         }else{
@@ -229,11 +240,11 @@ public class ModController {
     }
 
     @GetMapping("/items/delete/{id}/{userUpdate}")
-    public DataReturnOne<Items> DeleteItems(@PathVariable long id, @PathVariable String userUpdate){
+    public DataReturnOne<ItemDto> DeleteItems(@PathVariable long id, @PathVariable String userUpdate){
         Items items2 = itemService.deleteItemStatus(id, userUpdate);
-        DataReturnOne<Items> dataReturnOne = new DataReturnOne<>();
+        DataReturnOne<ItemDto> dataReturnOne = new DataReturnOne<>();
         if(items2 != null){
-            dataReturnOne.setData(items2);
+            dataReturnOne.setData(itemMapper.itemToItemDto(items2));
             dataReturnOne.setMessage("Delete item success");
             dataReturnOne.setSuccess("true");
         }else

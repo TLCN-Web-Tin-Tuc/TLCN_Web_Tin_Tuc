@@ -88,6 +88,7 @@ public class UserController {
             user.setUserUpdated(user.getEmail());
             user.setDateUpdated(new Date());
             User userUpdate = userService.updateProfile(user);
+            userUpdate.setItemAccesses(null);
             userDataReturnOne.setSuccess("true");
             userDataReturnOne.setMessage("success");
             userDataReturnOne.setData(userUpdate);
@@ -104,6 +105,7 @@ public class UserController {
         DataReturnOne<User> userDataReturnOne=new DataReturnOne<>();
         try {
             User userUpdate = userService.findByEmail(email);
+            userUpdate.setItemAccesses(null);
             userDataReturnOne.setSuccess("true");
             userDataReturnOne.setMessage("success");
             userDataReturnOne.setData(userUpdate);

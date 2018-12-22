@@ -261,7 +261,7 @@
                     <tr class="odd gradeX">
                       <td *ngFor="let cat of catList">
                         <input type="checkbox" [(ngModel)]="cat.isOfItem" ng-init="checked = cat.isOfItem" class="checkboxes"
-                          value={{cat.id}} (change)="toggleRoleOfUser($event)" />
+                          value={{cat.id}} (change)="togglecat($event)" />
                       </td>
                     </tr>
                   </tbody>

@@ -5,12 +5,10 @@ import hcmute.edu.vn.modservice.model.Cat;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-import java.util.List;
-
 @Mapper
 public interface CatMapper {
 
     CatMapper INSTANCE = Mappers.getMapper(CatMapper.class);
 
-    List<CatDto> listcatTolistCatDto(Iterable<Cat> listcat);
+    CatDto catToCatDto(Cat listcat);
 }

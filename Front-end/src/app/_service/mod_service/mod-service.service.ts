@@ -51,4 +51,12 @@ export class ModServiceService {
   getAllCatChecked() :Observable<any>{
     return this.http.get(`${this.context}/api/v1/mod/cat/checked`);
   }
+
+  addCatOnItem(itemId, catId):Observable<any>{
+    return this.http.post(`${this.context}/api/v1/mod/items/addCatOnItem/${itemId}/${catId}`,"");
+  }
+
+  DeleteCatOnItem(itemId, catId):Observable<any>{
+    return this.http.post(`${this.context}/api/v1/mod/items/deleteCatOnItem/${itemId}/${catId}`,"");
+  }
 }

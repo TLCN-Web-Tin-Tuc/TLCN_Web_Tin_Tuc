@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HeaderService } from '../_service/header/header.service';
-import { Router } from '@angular/router';
+import { Router } from '@angular/router'
 import { first } from 'rxjs/operators';
 import { NuServiceService } from '../_service/nu_service/nu-service.service';
 import { UserService } from '../_service/user_service/user.service';

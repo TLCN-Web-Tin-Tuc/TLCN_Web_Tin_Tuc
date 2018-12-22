@@ -61,7 +61,7 @@ export class NewsDetailComponent implements OnInit {
 
   retrieveItemById(id) {
     if (this.id) {
-      this.checkEmail();
+       this.checkEmail();
       this.modService.findItemById(this.id)
         .pipe(first())
         .subscribe(res => {
@@ -92,8 +92,7 @@ export class NewsDetailComponent implements OnInit {
                 this.catList = res.data;
                 if (res.success == "true") {
 
-                  this.catList = res.data;
-                  
+                  this.catList = res.data;                  
                   this.chRef.detectChanges();
                   
                   // // Now you can use jQuery DataTables :
@@ -101,15 +100,14 @@ export class NewsDetailComponent implements OnInit {
                   // this.dataTable = table.DataTable();
                   this.nuService.getCatItem(this.id)
                   .subscribe(res => {
-                    if(res.success == "true"){
-
+                    if(res.success == "true"){                      
                       for (let cat of this.catList) {
                         cat.isOfItem = false;
                       }
-                      this.catItem = res.data
+                      this.catItem = res.data                     
                       if (this.catList) {
                         for (let cat of this.catList) {            
-                          if (this.catItem.find(x => x.cat.name == cat.name)) {
+                          if (this.catItem.find(x => x.catName  == cat.name)) {
                             cat.isOfItem = true;
                           }
                         }
@@ -117,7 +115,7 @@ export class NewsDetailComponent implements OnInit {
 
                     }
                   },err =>{
-
+                      console.log("Loi cmnr")
                   })
                   
 
@@ -189,4 +187,29 @@ export class NewsDetailComponent implements OnInit {
         console.log(err)
       })  
   }
+
+  togglecat(e){
+    if(e.target.checked == true){
+      this.modService.addCatOnItem(this.id, e.target.value)
+      .pipe(first())
+      .subscribe(res => {
+        if(res.success == "true"){
+          console.log("Update thanh cong")
+        }        
+      }, err => {
+        console.log(err)
+      })  
+    }else{
+      this.modService.DeleteCatOnItem(this.id, e.target.value)
+      .pipe(first())
+      .subscribe(res => {
+        if(res.success == "true"){
+          console.log("Delete thanh cong")
+        }        
+      }, err => {
+        console.log(err)
+      })  
+    }
+  }
+
 }

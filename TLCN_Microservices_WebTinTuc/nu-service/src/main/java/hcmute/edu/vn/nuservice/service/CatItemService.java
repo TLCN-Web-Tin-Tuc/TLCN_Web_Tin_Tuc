@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface CatItemService {
     CrudRepository<Cat_Item,Long> getRepo();
-    List<Cat_Item> retrieveAllCartProduct(Long id);
+    List<Cat_Item> retrieveAllCatItem(Long id);
 }

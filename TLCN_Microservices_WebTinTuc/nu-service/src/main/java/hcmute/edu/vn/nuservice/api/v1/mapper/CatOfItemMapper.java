@@ -7,8 +7,6 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;
 
-import java.util.List;
-
 @Mapper
 public interface CatOfItemMapper {
     CatOfItemMapper INSTANCE = Mappers.getMapper(CatOfItemMapper.class);
@@ -22,6 +20,6 @@ public interface CatOfItemMapper {
 
     })
 
-    List<CatOfItemDto> listcatitemTolistCatItemDto(Iterable<Cat_Item> listCatItem);
+    CatOfItemDto listcatitemTolistCatItemDto(Cat_Item listCatItem);
 
 }

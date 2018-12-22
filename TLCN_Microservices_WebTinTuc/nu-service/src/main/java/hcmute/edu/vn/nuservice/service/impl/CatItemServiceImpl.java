@@ -2,7 +2,6 @@ package hcmute.edu.vn.nuservice.service.impl;
 
 import hcmute.edu.vn.nuservice.exception.NotFoundException;
 import hcmute.edu.vn.nuservice.model.Cat_Item;
-import hcmute.edu.vn.nuservice.model.Items;
 import hcmute.edu.vn.nuservice.repository.CatItemRepository;
 import hcmute.edu.vn.nuservice.service.CatItemService;
 import hcmute.edu.vn.nuservice.service.ItemService;
@@ -26,9 +25,8 @@ public class CatItemServiceImpl implements CatItemService {
     }
 
     @Override
-    public List<Cat_Item> retrieveAllCartProduct(Long itemId) {
-        Items items = itemService.retrieveItemsById(itemId);
-        List<Cat_Item> cat_items = catItemRepository.findById_Item(items);
+    public List<Cat_Item> retrieveAllCatItem(Long itemId) {
+        List<Cat_Item> cat_items = catItemRepository.findCat_ItemById_Item_Id(itemId);
         if(cat_items.isEmpty())
             throw new NotFoundException("Not Found Product in Your Cart");
         return cat_items;

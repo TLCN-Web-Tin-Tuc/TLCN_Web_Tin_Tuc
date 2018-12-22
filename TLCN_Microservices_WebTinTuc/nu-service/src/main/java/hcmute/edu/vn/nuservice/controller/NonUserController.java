@@ -4,9 +4,11 @@ package hcmute.edu.vn.nuservice.controller;
 import hcmute.edu.vn.nuservice.api.v1.data.DataReturnList;
 import hcmute.edu.vn.nuservice.api.v1.data.DataReturnOne;
 import hcmute.edu.vn.nuservice.api.v1.dto.CatDto;
+import hcmute.edu.vn.nuservice.api.v1.dto.CatOfItemDto;
 import hcmute.edu.vn.nuservice.api.v1.dto.ItemDto;
 import hcmute.edu.vn.nuservice.api.v1.dto.UserDto;
 import hcmute.edu.vn.nuservice.api.v1.mapper.CatMapper;
+import hcmute.edu.vn.nuservice.api.v1.mapper.CatOfItemMapper;
 import hcmute.edu.vn.nuservice.api.v1.mapper.ItemMapper;
 import hcmute.edu.vn.nuservice.api.v1.mapper.UserMapper;
 import hcmute.edu.vn.nuservice.exception.NotFoundException;
@@ -20,10 +22,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("api/v1/nuser/")
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 public class NonUserController {
     @Autowired
     private UserService userServie;
@@ -39,6 +42,9 @@ public class NonUserController {
 
     @Autowired
     private CatItemService catItemService;
+
+    @Autowired
+    private CatOfItemMapper catOfItemMapper;
 
     @Autowired
     private ItemMapper itemMapper;
@@ -103,6 +109,7 @@ public class NonUserController {
         User user = new User();
         try {
             user = userServie.findByEmail(email);
+            user.setItemAccesses(null);
             dataReturnOne.setMessage("Đã tìm thấy thành công");
             dataReturnOne.setData(user);
         }
@@ -114,14 +121,17 @@ public class NonUserController {
         return dataReturnOne;
     }
     @GetMapping("/getcatofitem/{itemid}")
-    public DataReturnList<Cat_Item> getAllCatOfItem(@PathVariable Long itemid)
+    public DataReturnList<CatOfItemDto> getAllCatOfItem(@PathVariable Long itemid)
     {
-        DataReturnList<Cat_Item> dataReturnList = new DataReturnList<>();
+        DataReturnList<CatOfItemDto> dataReturnList = new DataReturnList<>();
         List<Cat_Item> cat_items = new ArrayList<Cat_Item>();
         try {
-            cat_items = catItemService.retrieveAllCartProduct(itemid);
+
             dataReturnList.setMessage("Đã tìm thấy thành công");
-            dataReturnList.setData(cat_items);
+            dataReturnList.setData(catItemService.retrieveAllCatItem(itemid)
+                    .stream()
+                    .map(catOfItemMapper::listcatitemTolistCatItemDto)
+                    .collect(Collectors.toList()));
         }
         catch (NotFoundException ex) {
             dataReturnList.setSuccess("false");
