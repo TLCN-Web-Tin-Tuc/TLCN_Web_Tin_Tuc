@@ -36,6 +36,7 @@
                           <th>Người Viết</th>
                           <th>Tiêu Đề</th>
                           <th>Nội Dung Vắn Tắt</th>
+                          <th>Trạng thái</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -43,6 +44,18 @@
                           <td (click)="onGotoItemDetail(item.id)">{{item.userCreated}}</td>
                           <td (click)="onGotoItemDetail(item.id)">{{item.title}}</td>
                           <td (click)="onGotoItemDetail(item.id)">{{item.shortDesc}}</td>    
+                         <ng-container *ngIf="item.status == 0 ; else itemApprove">
+                          <td (click)="onGotoItemDetail(item.id)">Chưa được duyệt</td>
+                         </ng-container>
+                         <ng-template #itemApprove>
+                           <ng-container *ngIf="item.status == 1; else elseDelete">
+                            <td (click)="onGotoItemDetail(item.id)">Đang sử dụng</td>
+                           </ng-container>
+                           <ng-template #elseDelete>
+                            <td (click)="onGotoItemDetail(item.id)">Đã xóa</td>
+                           </ng-template>                           
+                         </ng-template>                       
+                          
                         </tr>
                       </tbody>
                     </table>
