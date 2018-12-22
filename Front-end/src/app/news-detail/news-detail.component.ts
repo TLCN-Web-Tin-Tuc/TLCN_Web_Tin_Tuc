@@ -8,6 +8,8 @@ import { User } from '../_entity/user';
 import { UserService } from '../_service/user_service/user.service';
 import { Cat } from '../_entity/cat';
 import * as $ from 'jquery';
+import { NuServiceService } from '../_service/nu_service/nu-service.service';
+import { CatItem } from '../_entity/catitem';
 
 @Component({
   selector: 'app-news-detail',
@@ -39,10 +41,13 @@ export class NewsDetailComponent implements OnInit {
   isCreate: boolean = false;
   isDelete: string = "false";
   cat: Cat;
+  catOfItem : Cat[]
   catList: Cat[];
   dataTable: any;
+  catItem : CatItem[]
 
-  constructor(private modService: ModServiceService, private activatedRoute: ActivatedRoute, private route: Router, private userService: UserService, private chRef: ChangeDetectorRef) {
+  constructor(private modService: ModServiceService, private activatedRoute: ActivatedRoute,
+     private route: Router, private userService: UserService, private chRef: ChangeDetectorRef, private nuService : NuServiceService) {
     this.item = new Item();
   }
 
@@ -83,16 +88,33 @@ export class NewsDetailComponent implements OnInit {
                 if (res.success == "true") {
 
                   this.catList = res.data;
-
+                  
                   this.chRef.detectChanges();
-
+                  
                   // // Now you can use jQuery DataTables :
                   // const table: any = $('table');
                   // this.dataTable = table.DataTable();
+                  this.nuService.getCatItem(this.id)
+                  .subscribe(res => {
+                    if(res.success == "true"){
 
-                  for (let cat of this.catList) {
-                    cat.isOfItem = false;
-                  }
+                      for (let cat of this.catList) {
+                        cat.isOfItem = false;
+                      }
+                      this.catItem = res.data
+                      if (this.catList) {
+                        for (let cat of this.catList) {            
+                          if (this.catItem.find(x => x.cat.name == cat.name)) {
+                            cat.isOfItem = true;
+                          }
+                        }
+                      }
+
+                    }
+                  },err =>{
+
+                  })
+                  
 
                 }
               }, err => {

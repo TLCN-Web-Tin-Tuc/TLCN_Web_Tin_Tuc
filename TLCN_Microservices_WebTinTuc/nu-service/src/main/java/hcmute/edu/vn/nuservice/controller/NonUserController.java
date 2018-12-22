@@ -1,6 +1,7 @@
 package hcmute.edu.vn.nuservice.controller;
 
 
+import hcmute.edu.vn.nuservice.api.v1.data.DataReturnList;
 import hcmute.edu.vn.nuservice.api.v1.data.DataReturnOne;
 import hcmute.edu.vn.nuservice.api.v1.dto.CatDto;
 import hcmute.edu.vn.nuservice.api.v1.dto.ItemDto;
@@ -9,15 +10,14 @@ import hcmute.edu.vn.nuservice.api.v1.mapper.CatMapper;
 import hcmute.edu.vn.nuservice.api.v1.mapper.ItemMapper;
 import hcmute.edu.vn.nuservice.api.v1.mapper.UserMapper;
 import hcmute.edu.vn.nuservice.exception.NotFoundException;
+import hcmute.edu.vn.nuservice.model.Cat_Item;
 import hcmute.edu.vn.nuservice.model.Report;
 import hcmute.edu.vn.nuservice.model.User;
-import hcmute.edu.vn.nuservice.service.CatService;
-import hcmute.edu.vn.nuservice.service.ItemService;
-import hcmute.edu.vn.nuservice.service.ReportService;
-import hcmute.edu.vn.nuservice.service.UserService;
+import hcmute.edu.vn.nuservice.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -36,6 +36,9 @@ public class NonUserController {
 
     @Autowired
     private CatService catService;
+
+    @Autowired
+    private CatItemService catItemService;
 
     @Autowired
     private ItemMapper itemMapper;
@@ -110,10 +113,28 @@ public class NonUserController {
         }
         return dataReturnOne;
     }
+    @GetMapping("/getcatofitem/{itemid}")
+    public DataReturnList<Cat_Item> getAllCatOfItem(@PathVariable Long itemid)
+    {
+        DataReturnList<Cat_Item> dataReturnList = new DataReturnList<>();
+        List<Cat_Item> cat_items = new ArrayList<Cat_Item>();
+        try {
+            cat_items = catItemService.retrieveAllCartProduct(itemid);
+            dataReturnList.setMessage("Đã tìm thấy thành công");
+            dataReturnList.setData(cat_items);
+        }
+        catch (NotFoundException ex) {
+            dataReturnList.setSuccess("false");
+            dataReturnList.setMessage("Không tồn tại");
+
+        }
+        return dataReturnList;
+    }
+
     @GetMapping("/get-all-cat")
     public List<CatDto> getAllCat()
     {
-                return catMapper.listcatTolistCatDto(catService.getRepo().findAll());
+        return catMapper.listcatTolistCatDto(catService.getRepo().findAll());
     }
 
     @GetMapping("/get-all-item")

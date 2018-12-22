@@ -26,4 +26,7 @@ export class NuServiceService {
     return this.http.post(`${this.context}/api/v1/nuser/login/${guest.email}/${guest.password}`,{observe:`response`});
   }
 
+  getCatItem(itemid : string) :Observable<any> {
+    return this.http.get(`${this.context}/api/v1/nuser/check-user/${itemid}`,{observe:`response`});
+  }
 }
