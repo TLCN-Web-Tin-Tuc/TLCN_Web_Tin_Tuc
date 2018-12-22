@@ -55,8 +55,14 @@ export class ProfileComponent implements OnInit {
       .subscribe(res => {
         if(res.success == "true")
         {
-          this.user = res.data;   
-          this.selectedImg = this.user.avatar    
+          this.user = res.data;
+          if(this.user.avatar == null){                   
+            this.selectedImg = "/assets/robust-admin/profile.png"
+          } else 
+          {
+            this.selectedImg = this.user.avatar
+          }   
+    
           this.admin = "true" 
           this.rolesOfUser = this.user.roles    
 
@@ -107,7 +113,14 @@ export class ProfileComponent implements OnInit {
         if(res.success == "true")
         {
           this.user = res.data;
-          this.selectedImg = this.user.avatar
+
+          if(this.user.avatar == null){                   
+            this.selectedImg = "/assets/robust-admin/profile.png"
+          } else 
+          {
+            this.selectedImg = this.user.avatar
+          }
+          
           localStorage.setItem("lastName",this.user.lastName.toString());
           this.admin = "false"
           this.rolesOfUser = res.data.roles
@@ -230,10 +243,10 @@ export class ProfileComponent implements OnInit {
     .subscribe(res => {
       if(res.success == "true")
       {
-        alert("update thành công")
+        alert("Update thành công !!!")
       }
       else{
-        alert("update không thành công")
+        alert("Update không thành công !!!")
       }
     }, err => {
       console.log(err);

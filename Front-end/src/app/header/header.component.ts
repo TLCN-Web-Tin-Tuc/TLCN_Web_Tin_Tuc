@@ -40,7 +40,6 @@ export class HeaderComponent implements OnInit {
           if(this.avatar == null){                   
             this.avatar = "/assets/robust-admin/profile.png"
           }
-          
         }
         else
         {

@@ -2,6 +2,8 @@ package hcmute.edu.vn.modservice.controller;
 
 import hcmute.edu.vn.modservice.api.v1.data.DataReturnList;
 import hcmute.edu.vn.modservice.api.v1.data.DataReturnOne;
+import hcmute.edu.vn.modservice.api.v1.dto.CatDto;
+import hcmute.edu.vn.modservice.api.v1.mapper.CatMapper;
 import hcmute.edu.vn.modservice.model.Cat;
 import hcmute.edu.vn.modservice.model.Cat_Item;
 import hcmute.edu.vn.modservice.model.Items;
@@ -25,6 +27,9 @@ public class ModController {
     @Autowired
     ItemService itemService;
 
+    @Autowired
+    CatMapper catMapper;
+
     @GetMapping("/cat")
     public DataReturnList<Cat> Category(){
 
@@ -34,6 +39,16 @@ public class ModController {
         dataReturnList.setSuccess("true");
         dataReturnList.setMessage("success");
         return dataReturnList;
+    }
+
+    @GetMapping("/cat/checked")
+    public DataReturnList<CatDto> CategoryChecked(){
+        List<Cat> categoriesChecked = catService.retrieveAllCatChecked();
+        DataReturnList<CatDto> dtrList = new DataReturnList<>();
+        dtrList.setData(catMapper.listcatTolistCatDto(categoriesChecked));
+        dtrList.setSuccess("true");
+        dtrList.setMessage("success");
+        return dtrList;
     }
 
     @GetMapping("/cat/{categoryid}")

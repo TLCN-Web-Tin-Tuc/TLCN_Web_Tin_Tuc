@@ -8,6 +8,7 @@ import java.util.List;
 public interface CatService {
     CrudRepository<Cat,Long> getRepo();
     List<Cat> retrieveAllCat();
+    List<Cat> retrieveAllCatChecked();
     Cat retrieveCatById(long id);
    // List<Cat> retrieveAllByParent_id(long id);
 //    List<Cat> retrieveAllByParent_idIsNull();

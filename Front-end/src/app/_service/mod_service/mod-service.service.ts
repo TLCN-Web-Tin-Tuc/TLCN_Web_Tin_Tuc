@@ -47,4 +47,8 @@ export class ModServiceService {
   deleteItem(id, userUpdate) : Observable<any>{
     return this.http.get(`${this.context}/api/v1/mod/items/delete/${id}/${userUpdate}`);
   }
+
+  getAllCatChecked() :Observable<any>{
+    return this.http.get(`${this.context}/api/v1/mod/cat/checked`);
+  }
 }
