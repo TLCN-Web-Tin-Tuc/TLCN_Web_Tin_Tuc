@@ -47,7 +47,7 @@ export class ProfileComponent implements OnInit {
 
     retrieveUserById(id) {
       
-    if(this.id)
+    if(this.id!=-1)
     {
       this.checkEmail()
       this.adminService.findUserById(this.id)
@@ -107,6 +107,7 @@ export class ProfileComponent implements OnInit {
     }
     else{
       this.email = localStorage.getItem("email")
+      this.checkUserAndPassWord();
       this.userService.getProfile(this.email)
       .pipe(first())
       .subscribe(res => {
