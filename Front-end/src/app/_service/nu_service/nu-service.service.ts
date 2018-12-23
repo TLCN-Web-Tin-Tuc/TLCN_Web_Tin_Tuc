@@ -33,4 +33,8 @@ export class NuServiceService {
   getItemDescDay() :Observable<any> {
     return this.http.get(`${this.context}/api/v1/nuser/get-item-desc-day`);
   }
+
+  getItemDescLike() :Observable<any> {
+    return this.http.get(`${this.context}/api/v1/nuser/get-item-desc-like`);
+  }
 }
