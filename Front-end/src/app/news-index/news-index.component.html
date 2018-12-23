@@ -48,7 +48,8 @@
                       </div>
                       <div class="owl-item" style="width: 750px;">
                         <div class="item">
-                          <article class="featured" (click)="onGotoNewDetail(itemHot.id)">
+                          <a href="/newsdetail/{{itemHot.id}}">
+                          <article class="featured" >
                             <div class="overlay"></div>
                             <figure  style="background-image: url(&quot;/assets/magz-master/images/news/img13.jpg&quot;); background-size: cover; background-repeat: no-repeat; background-position: center center;">
                               <img [src]="itemHot.image" alt="Sample Article">
@@ -57,10 +58,11 @@
                               <div class="category" *ngFor="let catItem of catItemchinh">
                                 <a >{{catItem.catName}}</a>
                               </div>
-                              <h1><a (click)="onGotoNewDetail(itemHot.id)">{{itemHot.title}}</a></h1>
+                              <h1><a href="/newsdetail/{{itemHot.id}}">{{itemHot.title}}</a></h1>
                               <div class="time">{{itemHot.dateUpdated | date : "dd/MM/yyyy"}}</div>
                             </div>
                           </article>
+                        </a>
                         </div>
                       </div>
                      
@@ -81,7 +83,7 @@
                       <article class="article col-md-12">
                         <div class="inner">
                           <figure>
-                            <a (click)="onGotoNewDetail(itemLast1.id)">
+                            <a href="/newsdetail/{{itemLast1.id}}">
                               <img [src]="itemLast1.image" alt="Sample Article">
                             </a>
                           </figure>
@@ -95,7 +97,7 @@
                               <a href="#" class="love"><i class="ion-android-favorite-outline"></i>
                                 <div>1263</div>
                               </a>
-                              <a class="btn btn-primary more" (click)="onGotoNewDetail(itemLast1.id)">
+                              <a class="btn btn-primary more" href="/newsdetail/{{itemLast1.id}}">
                                 <div>More</div>
                                 <div><i class="ion-ios-arrow-thin-right"></i></div>
                               </a>
@@ -106,7 +108,7 @@
                       <article class="article col-md-12">
                         <div class="inner">
                           <figure>
-                            <a (click)="onGotoNewDetail(itemLast2.id)">
+                            <a href="/newsdetail/{{itemLast2.id}}">
                               <img [src]="itemLast2.image" alt="Sample Article">
                             </a>
                           </figure>
@@ -114,13 +116,13 @@
                             <div class="detail">
                               <div class="time">{{itemLast2.dateUpdated | date : "dd/MM/yyyy"}}</div>                              
                             </div>
-                            <h2><a (click)="onGotoNewDetail(itemLast2.id)">{{itemLast2.title}}</a></h2>
+                            <h2><a href="/newsdetail/{{itemLast2.id}}">{{itemLast2.title}}</a></h2>
                             <p>{{itemLast2.shortDesc}}</p>
                             <footer>
                               <a href="#" class="love"><i class="ion-android-favorite-outline"></i>
                                 <div>327</div>
                               </a>
-                              <a class="btn btn-primary more" (click)="onGotoNewDetail(itemLast2.id)">
+                              <a class="btn btn-primary more" href="/newsdetail/{{itemLast2.id}}">
                                 <div>More</div>
                                 <div><i class="ion-ios-arrow-thin-right"></i></div>
                               </a>
@@ -135,7 +137,7 @@
                       <article class="article col-md-12">
                         <div class="inner">
                           <figure>
-                            <a (click)="onGotoNewDetail(itemLast3.id)">
+                            <a href="/newsdetail/{{itemLast3.id}}">
                               <img [src]="itemLast3.image" alt="Sample Article">
                             </a>
                           </figure>
@@ -144,13 +146,13 @@
                               <div class="time">{{itemLast3.dateUpdated | date : "dd/MM/yyyy"}}</div>
                              
                             </div>
-                            <h2><a (click)="onGotoNewDetail(itemLast3.id)">{{itemLast3.title}}</a></h2>
+                            <h2><a href="/newsdetail/{{itemLast3.id}}">{{itemLast3.title}}</a></h2>
                             <p>{{itemLast3.shortDesc}}</p>
                             <footer>
                               <a href="#" class="love"><i class="ion-android-favorite-outline"></i>
                                 <div>1083</div>
                               </a>
-                              <a class="btn btn-primary more" (click)="onGotoNewDetail(itemLast3.id)">
+                              <a class="btn btn-primary more" href="/newsdetail/{{itemLast3.id}}">
                                 <div>More</div>
                                 <div><i class="ion-ios-arrow-thin-right"></i></div>
                               </a>
@@ -161,7 +163,7 @@
                       <article class="article col-md-12">
                         <div class="inner">
                           <figure>
-                            <a (click)="onGotoNewDetail(itemLast4.id)">
+                            <a href="/newsdetail/{{itemLast4.id}}">
                               <img [src]="itemLast4.image" alt="Sample Article">
                             </a>
                           </figure>
@@ -170,13 +172,13 @@
                               <div class="time">{{itemLast4.dateUpdated | date : "dd/MM/yyyy"}}</div>
                               
                             </div>
-                            <h2><a (click)="onGotoNewDetail(itemLast4.id)">{{itemLast4.title}}</a></h2>
+                            <h2><a href="/newsdetail/{{itemLast4.id}}">{{itemLast4.title}}</a></h2>
                             <p>{{itemLast4.shortDesc}}</p>
                             <footer>
                               <a href="#" class="love"><i class="ion-android-favorite-outline"></i>
                                 <div>980</div>
                               </a>
-                              <a class="btn btn-primary more" (click)="onGotoNewDetail(itemLast4.id)">
+                              <a class="btn btn-primary more" href="/newsdetail/{{itemLast4.id}}">
                                 <div>More</div>
                                 <div><i class="ion-ios-arrow-thin-right"></i></div>
                               </a>
@@ -460,12 +462,12 @@
                     <article class="article-mini">
                       <div class="inner">
                         <figure>
-                          <a (click)="onGotoNewDetail(item.id)">
+                          <a href="/newsdetail/{{item.id}}">
                             <img [src]="item.image" alt="Sample Article">
                           </a>
                         </figure>
                         <div class="padding">
-                          <h1><a (click)="onGotoNewDetail(item.id)">{{item.title}}</a></h1>
+                          <h1><a href="/newsdetail/{{item.id}}">{{item.title}}</a></h1>
                         </div>
                       </div>
                     </article>

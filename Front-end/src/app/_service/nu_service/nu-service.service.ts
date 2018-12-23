@@ -41,4 +41,8 @@ export class NuServiceService {
   getAllCatChecked() :Observable<any>{
     return this.http.get(`${this.context}/api/v1/nuser/cat/checked`);
   }
+
+  getItemDescLike() :Observable<any> {
+    return this.http.get(`${this.context}/api/v1/nuser/get-item-desc-like`);
+  }
 }
