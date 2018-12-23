@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'recoverypassword', component: ResetpasswordComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'profile/:id', component: ProfileComponent },
   { path: 'editprofile', component: ProfileEditComponent },
   { path: 'editpassword', component: PasswordEditComponent },
   { path: 'newsmanagement', component: NewsManagementComponent },
@@ -37,7 +37,7 @@ const routes: Routes = [
   { path: 'rolesmanagement', component: RoleManagementComponent },
   { path: 'catcreate', component: CatCreateComponent },
   { path: 'catmanagement', component: CatManagementComponent },
-  { path: 'editrole', component: RoleEditComponent }
+  { path: 'editrole/:id', component: RoleEditComponent }
 ];
 
 @NgModule({

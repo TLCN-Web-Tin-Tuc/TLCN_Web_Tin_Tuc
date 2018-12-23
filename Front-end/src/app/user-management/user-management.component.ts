@@ -64,7 +64,8 @@ ngOnInit(){
     this.email = localStorage.getItem("email")
     if(this.email == null)
     {
-      this.router.navigate(["/"])
+      // this.router.navigate(["/"])
+      window.location.href = "/"; 
     }
     this.userService.getProfile(this.email)
     .pipe(first())
@@ -82,7 +83,8 @@ ngOnInit(){
         }
         if(this.isAdmin == false){
           alert("Bạn không được truy cập vào trang này")
-          this.router.navigate(["/"])
+          // this.router.navigate(["/"])
+          window.location.href = "/"; 
         } 
       }
       else
@@ -104,7 +106,8 @@ ngOnInit(){
       if(res.success == "false")
       {            
         localStorage.clear()
-        this.router.navigate(["/"]);
+        // this.router.navigate(["/"]);
+        window.location.href = "/"; 
       }
       
     }, err => {
@@ -114,6 +117,7 @@ ngOnInit(){
 
   onGotoUserDetail(id) {
     this.router.navigate(["/profile"], { queryParams: { id: id } });
+    window.location.href = "/profile/" + id; 
   }
 
 }

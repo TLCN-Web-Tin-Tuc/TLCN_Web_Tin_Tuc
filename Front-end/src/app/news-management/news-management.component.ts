@@ -62,7 +62,8 @@ export class NewsManagementComponent implements OnInit {
 
   onGotoItemDetail(id) {
 
-    this.router.navigate(["/newsdetail/" + id]);
+    // this.router.navigate(["/newsdetail/" + id]);
+    window.location.href = "/newsdetail/" + id;
   }
 
   async checkEmail(){
@@ -70,7 +71,8 @@ export class NewsManagementComponent implements OnInit {
     this.email = localStorage.getItem("email")
     if(this.email == null)
     {
-      this.router.navigate(["/"])
+      // this.router.navigate(["/"])
+      window.location.href = "/"; 
     }
     this.userService.getProfile(this.email)
     .pipe(first())
@@ -91,7 +93,8 @@ export class NewsManagementComponent implements OnInit {
         }
         if(this.isMod == false){
           alert("Bạn không được truy cập vào trang này")
-          this.router.navigate(["/"])
+          // this.router.navigate(["/"])
+          window.location.href = "/"; 
         } 
       }
       else
@@ -113,7 +116,8 @@ export class NewsManagementComponent implements OnInit {
       if(res.success == "false")
       {            
         localStorage.clear()
-        this.router.navigate(["/"]);
+        // this.router.navigate(["/"]);
+        window.location.href = "/"; 
       }
       
     }, err => {

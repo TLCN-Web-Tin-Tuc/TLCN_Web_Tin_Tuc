@@ -37,7 +37,8 @@ export class RoleCreateComponent implements OnInit {
       this.adminService.createRole(this.role, this.email).pipe(first()).subscribe(res => {       
         if(res.success == "true"){
           alert("Tạo quyền thành công !!");         
-          this.router.navigate(["/rolesmanagement"]);         
+          // this.router.navigate(["/rolesmanagement"]);    
+          window.location.href = "/rolesmanagement";     
           this.error = "";
         }
         else{
@@ -56,7 +57,8 @@ export class RoleCreateComponent implements OnInit {
     this.email = localStorage.getItem("email")
     if(this.email == null)
     {
-      this.router.navigate(["/"])
+      // this.router.navigate(["/"])
+      window.location.href = "/";  
     }
     this.userService.getProfile(this.email)
     .pipe(first())
@@ -74,7 +76,8 @@ export class RoleCreateComponent implements OnInit {
         }
         if(this.isAdmin == false){
           alert("Bạn không được truy cập vào trang này")
-          this.router.navigate(["/"])
+          // this.router.navigate(["/"])
+          window.location.href = "/";  
         } 
       }
       else
@@ -98,7 +101,8 @@ export class RoleCreateComponent implements OnInit {
       if(res.success == "false")
       {            
         localStorage.clear()
-        this.router.navigate(["/"]);
+        // this.router.navigate(["/"]);
+        window.location.href = "/";  
       }
       
     }, err => {

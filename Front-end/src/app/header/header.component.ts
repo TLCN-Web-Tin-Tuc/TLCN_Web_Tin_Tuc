@@ -54,7 +54,8 @@ export class HeaderComponent implements OnInit {
   }
   onLogout(){
     localStorage.clear()
-    this.route.navigate(["/login"]);
+    // this.route.navigate(["/login"]);
+    window.location.href = "/login";
   }
 
 }

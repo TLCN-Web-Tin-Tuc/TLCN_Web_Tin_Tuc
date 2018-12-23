@@ -13,7 +13,7 @@ import { first } from 'rxjs/operators';
 export class RoleEditComponent implements OnInit {
 
   role : Role
-  id : string
+  id : number;
   ischeck : boolean
   email : string
   rolesofUser : Role[]
@@ -25,7 +25,7 @@ export class RoleEditComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.queryParamMap.subscribe(queryParams => {
-      this.id = queryParams.get("id");      
+      this.id = +this.activatedRoute.snapshot.paramMap.get('id');      
     });
     this.retrieveRoleById(this.id)
   }
@@ -60,7 +60,8 @@ export class RoleEditComponent implements OnInit {
           .subscribe(res => {
             if(res.success == "true"){
               alert("Update thành công")
-              this.route.navigate(["/rolesmanagement"])
+              // this.route.navigate(["/rolesmanagement"])
+              window.location.href = "/rolesmanagement";  
             }
             else{
               alert("Update thất bại")
@@ -76,7 +77,8 @@ export class RoleEditComponent implements OnInit {
     this.email = localStorage.getItem("email")
     if(this.email == null)
     {
-      this.route.navigate(["/"])
+      // this.route.navigate(["/"])
+      window.location.href = "/";  
     }
     this.userService.getProfile(this.email)
     .pipe(first())
@@ -94,7 +96,8 @@ export class RoleEditComponent implements OnInit {
         }
         if(this.isAdmin == false){
           alert("Bạn không được truy cập vào trang này")
-          this.route.navigate(["/"])
+          // this.route.navigate(["/"])
+          window.location.href = "/";  
         } 
       }
       else

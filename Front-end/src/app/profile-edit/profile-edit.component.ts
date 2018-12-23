@@ -65,7 +65,8 @@ export class ProfileEditComponent implements OnInit {
       if(res.success == "false")
       {            
         localStorage.clear()
-        this.route.navigate(["/"]);
+        // this.route.navigate(["/"]);
+        window.location.href = "/";
       }
       
     }, err => {

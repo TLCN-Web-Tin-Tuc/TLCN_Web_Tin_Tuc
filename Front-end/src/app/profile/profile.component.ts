@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit {
   error : string
   email : string
   pass : string
-  id : string
+  id : number
   selectedImg : string = ""
   admin : string = "false"
   kichhoat : string
@@ -36,7 +36,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.checkUserAndPassWord()
     this.activatedRoute.queryParamMap.subscribe(queryParams => {
-      this.id = queryParams.get("id");      
+      this.id = +this.activatedRoute.snapshot.paramMap.get('id');         
     });
     this.retrieveUserById(this.id);
     //this.getAllRoles(this.id);
@@ -146,7 +146,8 @@ export class ProfileComponent implements OnInit {
       if(res.success == "false")
       {            
         localStorage.clear()
-        this.route.navigate(["/"]);
+        // this.route.navigate(["/"]);
+        window.location.href = "/";
       }
       
     }, err => {
@@ -158,7 +159,8 @@ export class ProfileComponent implements OnInit {
     this.email = localStorage.getItem("email")
     if(this.email == null)
     {
-      this.route.navigate(["/"])
+      // this.route.navigate(["/"])
+      window.location.href = "/";
     }
     this.userService.getProfile(this.email)
     .pipe(first())
@@ -171,11 +173,12 @@ export class ProfileComponent implements OnInit {
           if(role.rname == "ROLE_ADMIN" && role.status == 1)
           {
             this.isAdmin = true;
-            return  
+            return
           }           
         }
         if(this.isAdmin == false){         
-          this.route.navigate(["/"])
+          // this.route.navigate(["/"])
+          window.location.href = "/";
         } 
       }
       else

@@ -179,7 +179,8 @@ export class NewsDetailComponent implements OnInit {
     this.modService.deleteItem(this.id, this.email)
       .pipe(first())
       .subscribe(res => {
-        this.route.navigate(["/newsmanagement"])
+        // this.route.navigate(["/newsmanagement"])
+        window.location.href = "/newsmanagement";
       }, err => {
         console.log(err)
       })  

@@ -21,7 +21,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     if(localStorage.email){
-      this.route.navigate(["/"]);
+      // this.route.navigate(["/"]);
+      window.location.href = "/";
     }
 
   }
@@ -35,7 +36,8 @@ export class LoginComponent implements OnInit {
           localStorage.setItem("email", res.data.email)
           localStorage.setItem("lastName", res.data.lastName)       
           localStorage.setItem("password", res.data.password)       
-          this.route.navigate(["/"]);
+          // this.route.navigate(["/"]);
+          window.location.href = "/";
         }
         else
         {

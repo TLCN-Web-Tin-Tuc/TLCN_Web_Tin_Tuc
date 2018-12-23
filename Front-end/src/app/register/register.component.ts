@@ -32,7 +32,8 @@ export class RegisterComponent implements OnInit {
           alert("Tạo tài khoản thành công !!");
           localStorage.setItem("email", res.data.email)
           localStorage.setItem("lastName", res.data.lastName)
-          this.router.navigate(["/"]);         
+          // this.router.navigate(["/"]);    
+          window.location.href = "/";     
           this.error = "";
         }
         else{

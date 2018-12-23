@@ -72,7 +72,8 @@ export class RoleManagementComponent implements OnInit {
       this.email = localStorage.getItem("email")
       if(this.email == null)
       {
-        this.router.navigate(["/"])
+        // this.router.navigate(["/"])
+        window.location.href = "/"; 
       }
       this.userService.getProfile(this.email)
       .pipe(first())
@@ -90,7 +91,8 @@ export class RoleManagementComponent implements OnInit {
           }
           if(this.isAdmin == false){
             alert("Bạn không được truy cập vào trang này")
-            this.router.navigate(["/"])
+            // this.router.navigate(["/"])
+            window.location.href = "/"; 
           } 
         }
         else
@@ -112,7 +114,8 @@ export class RoleManagementComponent implements OnInit {
         if(res.success == "false")
         {            
           localStorage.clear()
-          this.router.navigate(["/"]);
+          // this.router.navigate(["/"]);
+          window.location.href = "/"; 
         }
         
       }, err => {
@@ -121,7 +124,8 @@ export class RoleManagementComponent implements OnInit {
     }
 
     onGotoRoleEdit(id) {
-      this.router.navigate(["/editrole"], { queryParams: { id: id } });
+      // this.router.navigate(["/editrole"], { queryParams: { id: id } });
+      window.location.href = "/editrole/" + id;
     }
 
     toggleRoleCreate(e){

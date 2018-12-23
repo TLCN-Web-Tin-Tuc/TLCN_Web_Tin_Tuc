@@ -91,7 +91,8 @@ export class CatCreateComponent implements OnInit {
   checkEmail() {
     this.email = localStorage.getItem("email")
     if (this.email == null) {
-      this.router.navigate(["/"])
+      // this.router.navigate(["/"])
+      window.location.href = "/";
     }
     this.userService.getProfile(this.email)
       .pipe(first())
@@ -108,7 +109,8 @@ export class CatCreateComponent implements OnInit {
           }
           if (this.isMod == false) {
             alert("Bạn không được truy cập vào trang này")
-            this.router.navigate(["/"])
+            // this.router.navigate(["/"])
+            window.location.href = "/";
           }
         }
         else {

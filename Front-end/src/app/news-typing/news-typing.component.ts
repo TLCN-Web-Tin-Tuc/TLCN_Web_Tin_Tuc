@@ -118,7 +118,8 @@ export class NewsTypingComponent implements OnInit {
       if(res.success == "false")
       {            
         localStorage.clear()
-        this.router.navigate(["/"]);
+        // this.router.navigate(["/"]);
+        window.location.href = "/";
       }
       
     }, err => {
