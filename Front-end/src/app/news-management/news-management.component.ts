@@ -61,7 +61,8 @@ export class NewsManagementComponent implements OnInit {
   }
 
   onGotoItemDetail(id) {
-    this.router.navigate(["/newsdetail"], { queryParams: { id: id } });
+
+    this.router.navigate(["/newsdetail/" + id]);
   }
 
   async checkEmail(){

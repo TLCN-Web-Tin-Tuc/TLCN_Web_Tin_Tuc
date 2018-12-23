@@ -44,7 +44,7 @@ export class NewsIndexComponent implements OnInit {
           this.title = this.itemHot.title
           this.selectedImg = this.itemHot.image
           console.log(this.itemHot)
-          this.nuService.getCatItem(this.itemHot.id.toString())
+          this.nuService.getCatItem(this.itemHot.id)
           .pipe(first())
           .subscribe(res => {
              if (res.success == "true") {

@@ -6,10 +6,15 @@ import hcmute.edu.vn.nuservice.repository.CatItemRepository;
 import hcmute.edu.vn.nuservice.service.CatItemService;
 import hcmute.edu.vn.nuservice.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class CatItemServiceImpl implements CatItemService {
 
@@ -46,5 +51,14 @@ public class CatItemServiceImpl implements CatItemService {
         if(cat_items.isEmpty())
             throw new NotFoundException("Not Found Product in Your Cart");
         return cat_items;
+    }
+
+    @Override
+    public Page<Cat_Item> findItemByCatIddddd(Optional<Long> catId, Optional<Integer> page, Optional<Integer> size){
+        Page<Cat_Item>  catItemPage = null;
+        catItemPage = catItemRepository.findItemByCatIddddd(catId.get(), new PageRequest(page.orElse(0),size.orElse(8), Sort.Direction.ASC,"id"));
+        if(catItemPage.getContent().isEmpty())
+            throw new NotFoundException("Not found any items !!!");
+        return catItemPage;
     }
 }

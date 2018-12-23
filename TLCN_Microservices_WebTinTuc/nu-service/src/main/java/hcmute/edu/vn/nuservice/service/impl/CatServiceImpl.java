@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CatServiceImpl implements CatService {
 
@@ -18,5 +20,10 @@ public class CatServiceImpl implements CatService {
         return catRepository;
     }
 
+    @Override
+    public List<Cat> retrieveAllCatChecked() {
+        int value = 1;
+        return catRepository.findCatByCheckCat(value);
+    }
 
 }

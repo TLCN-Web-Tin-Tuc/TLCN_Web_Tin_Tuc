@@ -12,16 +12,19 @@ import hcmute.edu.vn.nuservice.api.v1.mapper.CatOfItemMapper;
 import hcmute.edu.vn.nuservice.api.v1.mapper.ItemMapper;
 import hcmute.edu.vn.nuservice.api.v1.mapper.UserMapper;
 import hcmute.edu.vn.nuservice.exception.NotFoundException;
+import hcmute.edu.vn.nuservice.model.Cat;
 import hcmute.edu.vn.nuservice.model.Cat_Item;
 import hcmute.edu.vn.nuservice.model.Report;
 import hcmute.edu.vn.nuservice.model.User;
 import hcmute.edu.vn.nuservice.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -197,4 +200,34 @@ public class NonUserController {
     }
 
 
+    @GetMapping("/cat/checked")
+    public DataReturnList<CatDto> CategoryChecked(){
+        List<Cat> categoriesChecked = catService.retrieveAllCatChecked();
+        DataReturnList<CatDto> dtrList = new DataReturnList<>();
+        dtrList.setData(catService.retrieveAllCatChecked().stream().map(catMapper::catToCatDto)
+                .collect(Collectors.toList()));
+        dtrList.setSuccess("true");
+        dtrList.setMessage("success");
+        return dtrList;
+    }
+
+    @GetMapping("/itemsbycat")
+    public DataReturnList<CatOfItemDto> getAllItemPaging(@RequestParam Optional<Long> id, @RequestParam Optional<Integer> page
+            , @RequestParam Optional<Integer> size){
+        DataReturnList<CatOfItemDto> dataReturnList = new DataReturnList<>();
+        Page<Cat_Item> itemPage = null;
+
+        try {
+            itemPage = catItemService.findItemByCatIddddd(id , page, size);
+            dataReturnList.setPageNumber(itemPage.getTotalPages());
+            dataReturnList.setData(itemPage.getContent().stream().map(catOfItemMapper::listcatitemTolistCatItemDto)
+                                                                                        .collect(Collectors.toList()));
+            dataReturnList.setMessage("Co " + dataReturnList.getPageNumber() + " trang item.");
+        }catch (Exception e){
+            dataReturnList.setSuccess("false");
+            dataReturnList.setMessage("Khong the lay item !!!");
+        }
+
+        return dataReturnList;
+    }
 }

@@ -5,6 +5,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 
 import java.util.List;
 
@@ -16,6 +19,11 @@ public interface CatItemRepository extends JpaRepository<Cat_Item,Long> {
             "WHERE p.id.cat.id = :catid AND p.id.item.status = 1 " +
             "ORDER BY p.id.item.dateUpdated DESC")
     List<Cat_Item> findItemByCatId(@Param("catid") Long catid);
+
+    @Query("SELECT p FROM ne_cat_item p  " +
+            "WHERE p.id.cat.id = :catid AND p.id.item.status = 1 " +
+            "ORDER BY p.id.item.dateUpdated DESC")
+    Page<Cat_Item> findItemByCatIddddd(@Param("catid") Long catid, Pageable pageable);
 
     @Query("SELECT p FROM ne_cat_item p  " +
             "WHERE  p.id.item.status = 1 " +

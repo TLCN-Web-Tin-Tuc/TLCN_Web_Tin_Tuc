@@ -30,7 +30,7 @@ export class NewsDetailComponent implements OnInit {
   item: Item
   error: string
   email: string
-  id: string
+  id: number
   selectedImg: string = ""
   mod: string = "false"
   kichhoat: string
@@ -56,10 +56,9 @@ export class NewsDetailComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.queryParamMap.subscribe(queryParams => {
-      this.id = queryParams.get("id");
+      this.id = +this.activatedRoute.snapshot.paramMap.get('id');
     });
     this.retrieveItemById(this.id);
-    console.log(this.id)
   }
 
   retrieveItemById(id) {

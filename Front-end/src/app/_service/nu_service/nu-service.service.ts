@@ -26,11 +26,19 @@ export class NuServiceService {
     return this.http.post(`${this.context}/api/v1/nuser/login/${guest.email}/${guest.password}`,{observe:`response`});
   }
 
-  getCatItem(itemid : string) :Observable<any> {
+  getCatItem(itemid : number) :Observable<any> {
     return this.http.get(`${this.context}/api/v1/nuser/getcatofitem/${itemid}`);
   }
 
   getItemDescDay() :Observable<any> {
     return this.http.get(`${this.context}/api/v1/nuser/get-item-desc-day`);
+  }
+
+  getAllItemsPage(id: number, page: number, size: number): Observable<any>{
+    return this.http.get(`${this.context}/api/v1/nuser/itemsbycat?&page=${page}&size=${size}&id=${id}`);
+  }
+
+  getAllCatChecked() :Observable<any>{
+    return this.http.get(`${this.context}/api/v1/nuser/cat/checked`);
   }
 }

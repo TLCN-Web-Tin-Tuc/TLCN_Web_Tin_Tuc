@@ -49,17 +49,6 @@ public class ModController {
         return dataReturnList;
     }
 
-    @GetMapping("/cat/checked")
-    public DataReturnList<CatDto> CategoryChecked(){
-        List<Cat> categoriesChecked = catService.retrieveAllCatChecked();
-        DataReturnList<CatDto> dtrList = new DataReturnList<>();
-        dtrList.setData(catService.retrieveAllCatChecked().stream().map(catMapper::catToCatDto)
-                                                                    .collect(Collectors.toList()));
-        dtrList.setSuccess("true");
-        dtrList.setMessage("success");
-        return dtrList;
-    }
-
     @GetMapping("/cat/{categoryid}")
     public DataReturnOne<Cat> findCategory(@PathVariable("categoryid") long id){
         Cat categories = catService.retrieveCatById(id);

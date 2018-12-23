@@ -12,5 +12,7 @@ public interface CatMapper {
 
     CatMapper INSTANCE = Mappers.getMapper(CatMapper.class);
 
+    CatDto catToCatDto(Cat listcat);
+
     List<CatDto> listcatTolistCatDto(Iterable<Cat> listcat);
 }

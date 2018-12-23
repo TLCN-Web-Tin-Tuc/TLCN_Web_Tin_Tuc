@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../_service/user_service/user.service';
+import { NuServiceService } from '../_service/nu_service/nu-service.service';
 import { ModServiceService } from '../_service/mod_service/mod-service.service';
 import { User } from '../_entity/user';
 import { first } from 'rxjs/operators';
@@ -22,7 +23,7 @@ export class MenuComponent implements OnInit {
   isMod: boolean = false
   isCreate: boolean = false
   roles: Role[]
-  constructor(private router: Router, private modService: ModServiceService, private userService: UserService) {
+  constructor(private router: Router, private modService: ModServiceService, private userService: UserService, private nuService: NuServiceService) {
     this.user = new User()
   }
 
@@ -61,7 +62,7 @@ export class MenuComponent implements OnInit {
   }
 
   getCatList() {
-    this.modService.getAllCatChecked()
+    this.nuService.getAllCatChecked()
       .subscribe(res => {
         this.catList = res.data;
         if (res.success == "true") {
@@ -71,5 +72,4 @@ export class MenuComponent implements OnInit {
         console.log(err.message)
       });
   }
-
 }

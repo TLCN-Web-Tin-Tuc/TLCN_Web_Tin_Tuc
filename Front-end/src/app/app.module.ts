@@ -31,6 +31,7 @@ import { HeaderService } from './_service/header/header.service';
 import { RoleEditComponent } from './role-edit/role-edit.component';
 import { CatCreateComponent } from './cat-create/cat-create.component';
 import { CatManagementComponent } from './cat-management/cat-management.component';
+import { NewsCategoryComponent } from './news-category/news-category.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { CatManagementComponent } from './cat-management/cat-management.componen
     RoleManagementComponent,
     RoleEditComponent,
     CatCreateComponent,
-    CatManagementComponent
+    CatManagementComponent,
+    NewsCategoryComponent
   ],
   imports: [
     BrowserModule,

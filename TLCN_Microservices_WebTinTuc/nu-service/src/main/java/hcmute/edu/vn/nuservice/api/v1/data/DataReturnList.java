@@ -9,4 +9,5 @@ public class DataReturnList<T> {
     private String message;
     private String success="true";
     private List<T> data;
+    private int pageNumber;
 }

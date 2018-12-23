@@ -17,6 +17,7 @@ import { RoleManagementComponent } from './role-management/role-management.compo
 import { RoleEditComponent } from './role-edit/role-edit.component';
 import { CatCreateComponent } from './cat-create/cat-create.component';
 import { CatManagementComponent } from './cat-management/cat-management.component';
+import { NewsCategoryComponent } from './news-category/news-category.component';
 
 const routes: Routes = [
   { path: '', component: FramesComponent },
@@ -28,7 +29,8 @@ const routes: Routes = [
   { path: 'editpassword', component: PasswordEditComponent },
   { path: 'newsmanagement', component: NewsManagementComponent },
   { path: 'newstyping', component: NewsTypingComponent },
-  { path: 'newsdetail', component: NewsDetailComponent },
+  { path: 'newsdetail/:id', component: NewsDetailComponent },
+  { path: 'newscategory/:id', component: NewsCategoryComponent },  
   { path: 'news', component: NewsIndexComponent },
   { path: 'usersmanagement', component: UserManagementComponent },
   { path: 'rolecreate', component: RoleCreateComponent },
