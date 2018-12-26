@@ -58,4 +58,7 @@ public class Items {
     @OneToMany(mappedBy = "item")
     private Set<ItemAccess> itemAccesses;
 
+    @OneToMany(mappedBy = "itemscm")
+    private Set<Comments> commentsSet;
+
 }

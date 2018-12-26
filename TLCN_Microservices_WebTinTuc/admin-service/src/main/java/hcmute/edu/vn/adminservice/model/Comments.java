@@ -21,6 +21,9 @@ public class Comments {
     @ManyToOne(fetch = FetchType.LAZY)
     private User user_cm;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Items itemscm;
+
     private String Content;
 
     private Date dateCreated;
