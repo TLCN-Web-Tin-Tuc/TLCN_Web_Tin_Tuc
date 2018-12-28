@@ -1,23 +1,12 @@
-package hcmute.edu.vn.dbservice.model;
+package hcmute.edu.vn.adminservice.api.v1.dto;
 
-
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import java.util.Date;
 
-@Entity(name = "ne_roles")
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
-
-public class Role {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long Id;
+public class RoleDto {
+    private long id;
 
     private String rname;
 
@@ -41,8 +30,7 @@ public class Role {
 
     private String userUpdated;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Cat catRole;
+    private long catId;
 
+    private String catName;
 }
-

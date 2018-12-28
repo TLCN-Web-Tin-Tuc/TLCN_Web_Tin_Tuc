@@ -1,4 +1,4 @@
-package hcmute.edu.vn.modservice.model;
+package hcmute.edu.vn.dbservice.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,17 +11,17 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Response_Comments {
+public class ResponseComment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private User user_rcm;
+    private User userRcm;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Comments comments;
+    private Comment comments;
 
     private String Content;
 

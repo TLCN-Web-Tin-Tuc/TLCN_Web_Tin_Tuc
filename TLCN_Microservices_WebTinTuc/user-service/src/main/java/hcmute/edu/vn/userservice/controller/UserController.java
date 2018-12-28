@@ -4,8 +4,8 @@ import hcmute.edu.vn.userservice.api.v1.data.DataReturnOne;
 import hcmute.edu.vn.userservice.api.v1.dto.UserDto;
 import hcmute.edu.vn.userservice.api.v1.mapper.UserMapper;
 import hcmute.edu.vn.userservice.exception.NotFoundException;
+import hcmute.edu.vn.userservice.model.Item;
 import hcmute.edu.vn.userservice.model.ItemAccess;
-import hcmute.edu.vn.userservice.model.Items;
 import hcmute.edu.vn.userservice.model.User;
 import hcmute.edu.vn.userservice.service.ItemAccessService;
 import hcmute.edu.vn.userservice.service.ItemService;
@@ -33,10 +33,10 @@ public class UserController {
     UserMapper userMapper;
 
     @GetMapping("/items/detail/{itemid}")
-    public DataReturnOne<Items> Detail(@PathVariable("itemid") long itemid){
+    public DataReturnOne<Item> Detail(@PathVariable("itemid") long itemid){
 
-        Items items1 = itemService.itemDetail(itemid);
-        DataReturnOne<Items> dataReturnOne = new DataReturnOne<>();
+        Item items1 = itemService.itemDetail(itemid);
+        DataReturnOne<Item> dataReturnOne = new DataReturnOne<>();
         if(items1!=null){
             dataReturnOne.setData(items1);
             dataReturnOne.setMessage("View Item success");
@@ -49,11 +49,11 @@ public class UserController {
     }
 
     @PostMapping("/items/like/{itemid}/{email}")
-    public DataReturnOne<Items> LikeItem(@PathVariable("itemid") long itemid,@PathVariable("email") String email){
+    public DataReturnOne<Item> LikeItem(@PathVariable("itemid") long itemid,@PathVariable("email") String email){
 
-        Items items1 = itemService.likeItem(itemid);
+        Item items1 = itemService.likeItem(itemid);
         ItemAccess item_access = itemAccessService.userLike(itemid,email);
-        DataReturnOne<Items> dataReturnOne = new DataReturnOne<>();
+        DataReturnOne<Item> dataReturnOne = new DataReturnOne<>();
         if(items1!=null && item_access !=null){
 
             dataReturnOne.setMessage("Like Item success");
@@ -66,11 +66,11 @@ public class UserController {
     }
 
     @PostMapping("/items/dislike/{itemid}/{email}")
-    public DataReturnOne<Items> DisLikeItem(@PathVariable("itemid") long itemid,@PathVariable("email") String email){
+    public DataReturnOne<Item> DisLikeItem(@PathVariable("itemid") long itemid,@PathVariable("email") String email){
 
-        Items items1 = itemService.unlikeItem(itemid);
+        Item items1 = itemService.unlikeItem(itemid);
         itemAccessService.userDisLike(itemid,email);
-        DataReturnOne<Items> dataReturnOne = new DataReturnOne<>();
+        DataReturnOne<Item> dataReturnOne = new DataReturnOne<>();
         if(items1!=null){
             dataReturnOne.setMessage("DisLike Item success");
         }else{

@@ -50,11 +50,11 @@ public class User {
 
     private String userUpdated;
 
-    @OneToMany(mappedBy = "user_cm")
-    private Set<Comments> comments;
+    @OneToMany(mappedBy = "userCm")
+    private Set<Comment> comments;
 
-    @OneToMany(mappedBy = "user_rcm")
-    private Set<Response_Comments> response_comments;
+    @OneToMany(mappedBy = "userRcm")
+    private Set<ResponseComment> response_comments;
 
     @OneToMany(mappedBy = "user")
     private Set<ItemAccess> itemAccesses;

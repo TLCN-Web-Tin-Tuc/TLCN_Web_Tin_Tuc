@@ -1,8 +1,8 @@
 package hcmute.edu.vn.userservice.service.impl;
 
 import hcmute.edu.vn.userservice.exception.NotFoundException;
+import hcmute.edu.vn.userservice.model.Item;
 import hcmute.edu.vn.userservice.model.ItemAccess;
-import hcmute.edu.vn.userservice.model.Items;
 import hcmute.edu.vn.userservice.model.User;
 import hcmute.edu.vn.userservice.repository.ItemAccessRepository;
 import hcmute.edu.vn.userservice.repository.ItemRepository;
@@ -34,7 +34,7 @@ public class ItemAccessServiceImpl implements ItemAccessService {
     @Override
     public ItemAccess userLike(long itemid, String email) {
         ItemAccess item_access = new ItemAccess();
-        Items items = itemRepository.findById(itemid).get();
+        Item items = itemRepository.findById(itemid).get();
         Optional<User> user = userRepository.findByEmail(email);
         if(!user.isPresent())
             throw new NotFoundException("User Not Found!!!");
@@ -49,7 +49,7 @@ public class ItemAccessServiceImpl implements ItemAccessService {
         Optional<User> user = userRepository.findByEmail(email);
         if(!user.isPresent())
             throw new NotFoundException("User Not Found!!!");
-        Optional<Items> items = itemRepository.findById(itemid);
+        Optional<Item> items = itemRepository.findById(itemid);
         if(!items.isPresent())
             throw new NotFoundException("Item Not Found!!!");
         ItemAccess item_access = itemAccessRepository.findByItemAndUser(items.get(),user.get()).get();

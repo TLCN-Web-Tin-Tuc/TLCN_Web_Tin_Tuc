@@ -8,7 +8,7 @@ import hcmute.edu.vn.modservice.api.v1.mapper.CatMapper;
 import hcmute.edu.vn.modservice.api.v1.mapper.ItemMapper;
 import hcmute.edu.vn.modservice.model.Cat;
 import hcmute.edu.vn.modservice.model.Cat_Item;
-import hcmute.edu.vn.modservice.model.Items;
+import hcmute.edu.vn.modservice.model.Item;
 import hcmute.edu.vn.modservice.service.CatService;
 import hcmute.edu.vn.modservice.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -131,11 +131,11 @@ public class ModController {
     }
 
     @GetMapping("/items/{categoryid}")
-    public DataReturnList<Items> Items(@PathVariable("categoryid") long id){
+    public DataReturnList<Item> Items(@PathVariable("categoryid") long id){
         Cat cat  = catService.retrieveCatById(id);
-        List<Items> items = new ArrayList<>();
+        List<Item> items = new ArrayList<>();
        // items.addAll(cat.getItems());
-        DataReturnList<Items> dataReturnList = new DataReturnList<>();
+        DataReturnList<Item> dataReturnList = new DataReturnList<>();
         dataReturnList.setData(items);
         dataReturnList.setMessage("Get list item success");
         return dataReturnList;
@@ -153,7 +153,7 @@ public class ModController {
     @GetMapping("/items")
     public DataReturnList<ItemDto> retrieveAllItems(){
         DataReturnList<ItemDto> dataReturnList = new DataReturnList<>();
-        List<Items> items = new ArrayList<Items>();
+        List<Item> items = new ArrayList<Item>();
         items = itemService.retrieveAllItems();
         dataReturnList.setData(itemService.retrieveAllItems().stream()
                                             .map(itemMapper::itemToItemDto)
@@ -163,12 +163,12 @@ public class ModController {
     }
 
     @PostMapping("/items/create")
-    public DataReturnOne<ItemDto> CreateItem(@RequestBody Items items ){
+    public DataReturnOne<ItemDto> CreateItem(@RequestBody Item items ){
         items.setDownload((long) 0);
         items.setComment((long) 0);
         items.setLikes((long) 0);
         items.setViews((long) 0);
-        Items items1 = itemService.getRepo().save(items);
+        Item items1 = itemService.getRepo().save(items);
         DataReturnOne<ItemDto> dataReturnOne = new DataReturnOne<>();
         if(items1 != null){
             dataReturnOne.setData(itemMapper.itemToItemDto(items1));
@@ -198,9 +198,9 @@ public class ModController {
     }
 
     @PostMapping("/items/deleteCatOnItem/{itemid}/{categoryid}")
-    public DataReturnOne<Items> deleteCatOnItem(@PathVariable("itemid") long itemid, @PathVariable("categoryid") long categoryid){
+    public DataReturnOne<Item> deleteCatOnItem(@PathVariable("itemid") long itemid, @PathVariable("categoryid") long categoryid){
         boolean flag = itemService.removeCatOnItem(itemid, categoryid);
-        DataReturnOne<Items> dataReturnOne = new DataReturnOne<>();
+        DataReturnOne<Item> dataReturnOne = new DataReturnOne<>();
         if(flag==true){
             dataReturnOne.setData(null);
             dataReturnOne.setMessage("Delete cat on item success");
@@ -214,7 +214,7 @@ public class ModController {
 
     @GetMapping("/items/update/{id}/{userUpdate}")
     public DataReturnOne<ItemDto> UpdateItems(@PathVariable long id, @PathVariable String userUpdate){
-        Items items1 = itemService.updateItemStatus(id, userUpdate);
+        Item items1 = itemService.updateItemStatus(id, userUpdate);
         DataReturnOne<ItemDto> dataReturnOne = new DataReturnOne<>();
         if(items1!=null){
             dataReturnOne.setData(itemMapper.itemToItemDto(items1));
@@ -230,7 +230,7 @@ public class ModController {
 
     @GetMapping("/items/delete/{id}/{userUpdate}")
     public DataReturnOne<ItemDto> DeleteItems(@PathVariable long id, @PathVariable String userUpdate){
-        Items items2 = itemService.deleteItemStatus(id, userUpdate);
+        Item items2 = itemService.deleteItemStatus(id, userUpdate);
         DataReturnOne<ItemDto> dataReturnOne = new DataReturnOne<>();
         if(items2 != null){
             dataReturnOne.setData(itemMapper.itemToItemDto(items2));

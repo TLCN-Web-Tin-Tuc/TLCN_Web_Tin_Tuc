@@ -1,6 +1,6 @@
 package hcmute.edu.vn.nuservice.repository;
 
-import hcmute.edu.vn.nuservice.model.Items;
+import hcmute.edu.vn.nuservice.model.Item;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -9,18 +9,18 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface ItemRepository extends JpaRepository<Items,Long> {
-    Optional<Items> findById(long id);
+public interface ItemRepository extends JpaRepository<Item,Long> {
+    Optional<Item> findById(long id);
 
     @Query(value = "SELECT p FROM ne_items p\n" +
             "WHERE p.status = 1 \n" +
             "ORDER BY p.dateUpdated DESC")
-    List<Items> findAllItemsNew();
+    List<Item> findAllItemsNew();
 
     @Query(value = "SELECT p FROM ne_items p\n" +
             "WHERE p.status = 1 \n" +
             "ORDER BY p.likes DESC")
-    List<Items> findAllItemsNewDescLike();
+    List<Item> findAllItemsNewDescLike();
 
 //    @Query(value = "SELECT p FROM ne_items p, ne_cat_item q \n" +
 //            "WHERE p.status = 1 AND p.id = q.id.item.id \n" +

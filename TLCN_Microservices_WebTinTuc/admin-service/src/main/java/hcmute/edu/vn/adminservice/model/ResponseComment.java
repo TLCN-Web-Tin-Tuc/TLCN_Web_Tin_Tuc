@@ -1,4 +1,4 @@
-package hcmute.edu.vn.dbservice.model;
+package hcmute.edu.vn.adminservice.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -6,20 +6,22 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.Set;
 
-@Entity(name = "ne_comments")
+@Entity(name = "ne_response_comments")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Comments {
+public class ResponseComment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private User user_cm;
+    private User userRcm;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Comment comments;
 
     private String Content;
 
@@ -30,7 +32,4 @@ public class Comments {
     private Date dateUpdated;
 
     private String userUpdated;
-
-    @OneToMany(mappedBy = "comments")
-    private Set<Response_Comments> response_comments;
 }

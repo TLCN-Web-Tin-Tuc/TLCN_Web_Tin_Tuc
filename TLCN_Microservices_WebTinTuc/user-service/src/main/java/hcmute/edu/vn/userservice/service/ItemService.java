@@ -1,13 +1,13 @@
 package hcmute.edu.vn.userservice.service;
 
-import hcmute.edu.vn.userservice.model.Items;
+import hcmute.edu.vn.userservice.model.Item;
 import org.springframework.data.repository.CrudRepository;
 
 public interface ItemService {
 
-    CrudRepository<Items,Long> getRepo();
-    Items itemDetail(long id);
-    Items likeItem(long id);
-    Items unlikeItem(long id);
+    CrudRepository<Item,Long> getRepo();
+    Item itemDetail(long id);
+    Item likeItem(long id);
+    Item unlikeItem(long id);
 
 }

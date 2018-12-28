@@ -1,7 +1,7 @@
 package hcmute.edu.vn.nuservice.service.impl;
 
 import hcmute.edu.vn.nuservice.exception.NotFoundException;
-import hcmute.edu.vn.nuservice.model.Items;
+import hcmute.edu.vn.nuservice.model.Item;
 import hcmute.edu.vn.nuservice.repository.ItemRepository;
 import hcmute.edu.vn.nuservice.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,25 +18,25 @@ public class ItemServiceImpl implements ItemService {
     ItemRepository itemRepository;
 
     @Override
-    public CrudRepository<Items, Long> getRepo() {
+    public CrudRepository<Item, Long> getRepo() {
         return itemRepository;
     }
 
     @Override
-    public Items retrieveItemsById(long id) {
-        Optional<Items> itemOptional = itemRepository.findById(id);
+    public Item retrieveItemsById(long id) {
+        Optional<Item> itemOptional = itemRepository.findById(id);
         if(!itemOptional.isPresent())
             throw new NotFoundException("Item not found.");
         return itemOptional.get();
     }
 
     @Override
-    public List<Items> retrieveItemsDescDay() {
+    public List<Item> retrieveItemsDescDay() {
         return itemRepository.findAllItemsNew();
     }
 
     @Override
-    public List<Items> retrieveItemsDescLike() {
+    public List<Item> retrieveItemsDescLike() {
         return itemRepository.findAllItemsNewDescLike();
     }
 

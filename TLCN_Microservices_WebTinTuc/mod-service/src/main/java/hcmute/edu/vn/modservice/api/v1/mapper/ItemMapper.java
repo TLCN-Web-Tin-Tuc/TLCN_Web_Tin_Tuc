@@ -1,7 +1,7 @@
 package hcmute.edu.vn.modservice.api.v1.mapper;
 
 import hcmute.edu.vn.modservice.api.v1.dto.ItemDto;
-import hcmute.edu.vn.modservice.model.Items;
+import hcmute.edu.vn.modservice.model.Item;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -11,5 +11,5 @@ public interface ItemMapper {
 
    // List<ItemDto> listitemTolistItemDto(Iterable<Items> listItem);
 
-    ItemDto itemToItemDto(Items items);
+    ItemDto itemToItemDto(Item items);
 }

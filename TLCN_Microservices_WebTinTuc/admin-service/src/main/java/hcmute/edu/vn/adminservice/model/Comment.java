@@ -1,4 +1,4 @@
-package hcmute.edu.vn.nuservice.model;
+package hcmute.edu.vn.adminservice.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,14 +12,17 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Comments {
+public class Comment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private User user_cm;
+    private User userCm;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Item itemCm;
 
     private String Content;
 
@@ -32,5 +35,5 @@ public class Comments {
     private String userUpdated;
 
     @OneToMany(mappedBy = "comments")
-    private Set<Response_Comments> response_comments;
+    private Set<ResponseComment> responseComments;
 }
