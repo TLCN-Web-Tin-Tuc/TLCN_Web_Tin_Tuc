@@ -1,11 +1,12 @@
-<nav class="header-navbar navbar-expand-md navbar navbar-with-menu fixed-top navbar-dark bg-primary navbar-shadow navbar-brand-center">
+<nav class="header-navbar navbar-expand-md navbar navbar-with-menu fixed-top navbar-dark bg-primary navbar-shadow navbar-brand-center"
+style="height: 43px;">
   <div class="navbar-wrapper">
     <div class="navbar-header">
       <ul class="nav navbar-nav flex-row">
-        <li class="nav-item mobile-menu d-md-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i
+        <li class="nav-item mobile-menu d-md-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs"><i
               class="ft-menu font-large-1"></i></a></li>
         <li class="nav-item">
-          <a class="navbar-brand" href="index.html">
+          <a class="navbar-brand">
             <img class="brand-logo" alt="the news logo" src="/assets/robust-admin/app-assets/images/logo/logo-light-sm.png">
             <h3 class="brand-text">The News</h3>
           </a>
@@ -18,18 +19,18 @@
     <div class="navbar-container content">
       <div class="collapse navbar-collapse" id="navbar-mobile">
         <ul class="nav navbar-nav mr-auto float-left">
-          <li class="nav-item d-none d-md-block"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i
-                class="ft-menu"> </i></a></li>
+          <!-- <li class="nav-item d-none d-md-block"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i
+                class="ft-menu"> </i></a></li> -->
         </ul>
         <ul class="nav navbar-nav float-right">
           <ng-container *ngIf="username; else nullName">
             <li class="dropdown dropdown-user nav-item">
-              <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
+              <a class="dropdown-toggle nav-link dropdown-user-link" data-toggle="dropdown">
                 <span class="avatar avatar-online">
                   <img [src]="avatar" alt="avatar"><i></i></span>
                 <span class="user-name"> {{username}}</span>
               </a>
-              <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" routerLink="/editprofile"><i class="ft-user"></i>
+              <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="/editprofile"><i class="ft-user"></i>
                   Edit Profile</a>
                 <a class="dropdown-item" href="#"><i class="ft-mail"></i> My Inbox</a>
                 <a class="dropdown-item" href="#"><i class="ft-check-square"></i> Task</a><a class="dropdown-item" href="#"><i

@@ -32,6 +32,7 @@ import { RoleEditComponent } from './role-edit/role-edit.component';
 import { CatCreateComponent } from './cat-create/cat-create.component';
 import { CatManagementComponent } from './cat-management/cat-management.component';
 import { NewsCategoryComponent } from './news-category/news-category.component';
+import { CatMenuComponent } from './cat-menu/cat-menu.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { NewsCategoryComponent } from './news-category/news-category.component';
     RoleEditComponent,
     CatCreateComponent,
     CatManagementComponent,
-    NewsCategoryComponent
+    NewsCategoryComponent,
+    CatMenuComponent
   ],
   imports: [
     BrowserModule,

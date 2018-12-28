@@ -1,6 +1,6 @@
 <div class="bodyy">
   <app-header></app-header>
-  <app-menu></app-menu>
+  <app-cat-menu></app-cat-menu>
   <div class="app-content content">
     <div class="content-wrapper">
       <div class="content-header row">
@@ -27,7 +27,7 @@
                   <article class="col-md-12 article-list">
                     <div class="inner">
                       <figure>
-                        <a href="/newsdetail/{{item.id}}">
+                        <a href="/newsdetail/{{item.itemId}}">
                           <img [src]="item.image">
                         </a>
                       </figure>
@@ -38,13 +38,13 @@
                           </div>
                           <div class="time">{{item.dateUpdated}}</div>
                         </div>
-                        <h1><a href="/newsdetail/{{item.id}}">{{item.title}}</a></h1>
+                        <h1><a href="/newsdetail/{{item.itemId}}">{{item.title}}</a></h1>
                         <p>{{item.shortDesc}}</p>
                         <footer>
                           <a href="" class="love"><i class="ion-android-favorite-outline"></i>
                             <div>237</div>
                           </a>
-                          <a class="btn btn-primary more" href="/newsdetail/{{item.id}}">
+                          <a class="btn btn-primary more" href="/newsdetail/{{item.itemId}}">
                             <div>More</div>
                             <div><i class="ion-ios-arrow-thin-right"></i></div>
                           </a>

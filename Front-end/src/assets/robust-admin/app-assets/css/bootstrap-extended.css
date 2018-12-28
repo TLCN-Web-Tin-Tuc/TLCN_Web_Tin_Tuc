@@ -693,7 +693,7 @@ select.form-control {
 
 .header-navbar {
   padding: 0px;
-  min-height: 4.57rem;
+  min-height: 2.57rem;
   font-family: "Muli", Georgia, "Times New Roman", Times, serif;
   transition: 300ms ease all;
   /* For sm screen*/ }

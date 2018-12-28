@@ -7,6 +7,8 @@
                                                 <li><a class="menu-item" href="/profile/-1" data-i18n="nav.dash.project">Thông
                                                                 tin cá nhân</a>
                                                 </li>
+                                                <li><a class="menu-item" href="/editpassword" data-i18n="nav.dash.project">Thay đổi mật khẩu</a>
+                                                </li>
                                         </div>
                                         <div *ngIf="isAdmin == true">
                                                 <li><a class="menu-item" href="/usersmanagement" data-i18n="nav.dash.project">Quản
@@ -15,8 +17,16 @@
                                                 <li><a class="menu-item" href="/rolesmanagement" data-i18n="nav.dash.ecommerce">Quản
                                                                 lý quyền</a>
                                                 </li>
+                                                <li><a class="menu-item" href="/rolecreate" data-i18n="nav.dash.ecommerce">Tạo quyền</a>
+                                                </li>
                                         </div>
                                         <div *ngIf="isMod == true">
+                                                <li><a class="menu-item" href="/catmanagement" data-i18n="nav.dash.ecommerce">Quản
+                                                                lý danh mục</a>
+                                                </li>
+                                                <li><a class="menu-item" href="/catcreate" data-i18n="nav.dash.ecommerce">Tạo
+                                                                danh mục</a>
+                                                </li>
                                                 <li><a class="menu-item" href="/newsmanagement" data-i18n="nav.dash.ecommerce">Quản
                                                                 lý tin tức</a>
                                                 </li>

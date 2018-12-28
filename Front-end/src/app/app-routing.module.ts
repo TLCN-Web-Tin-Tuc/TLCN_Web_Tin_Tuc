@@ -31,7 +31,6 @@ const routes: Routes = [
   { path: 'newstyping', component: NewsTypingComponent },
   { path: 'newsdetail/:id', component: NewsDetailComponent },
   { path: 'newscategory/:id', component: NewsCategoryComponent },  
-  { path: 'news', component: NewsIndexComponent },
   { path: 'usersmanagement', component: UserManagementComponent },
   { path: 'rolecreate', component: RoleCreateComponent },
   { path: 'rolesmanagement', component: RoleManagementComponent },
