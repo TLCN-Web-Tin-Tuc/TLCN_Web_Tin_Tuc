@@ -58,4 +58,8 @@ export class HeaderComponent implements OnInit {
     window.location.href = "/login";
   }
 
+  gotoProfile(){
+    window.location.href = "/profile/-1";
+  }
+
 }

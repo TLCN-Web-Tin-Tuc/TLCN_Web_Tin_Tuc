@@ -1,7 +1,7 @@
 export class Cat {
     id: number
     name : string
-    parent_id : number
+    parentId : number
     checkCat : number
     dateCreated : Date
     userCreated : string
