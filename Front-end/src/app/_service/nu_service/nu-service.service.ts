@@ -42,7 +42,15 @@ export class NuServiceService {
     return this.http.get(`${this.context}/api/v1/nuser/cat/checked`);
   }
 
+  getAllParentCatChecked() :Observable<any>{
+    return this.http.get(`${this.context}/api/v1/nuser/cat/parentcatchecked`);
+  }
+
   getItemDescLike() :Observable<any> {
     return this.http.get(`${this.context}/api/v1/nuser/get-item-desc-like`);
+  }
+
+  getChildCat(id: number) :Observable<any>{
+    return this.http.get(`${this.context}/api/v1/nuser/cat/childcat/${id}`);
   }
 }

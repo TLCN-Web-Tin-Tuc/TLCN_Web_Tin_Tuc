@@ -20,7 +20,8 @@ import { CatManagementComponent } from './cat-management/cat-management.componen
 import { NewsCategoryComponent } from './news-category/news-category.component';
 
 const routes: Routes = [
-  { path: '', component: FramesComponent },
+  { path: 'test', component: FramesComponent },
+  { path: '', component: NewsIndexComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'recoverypassword', component: ResetpasswordComponent },

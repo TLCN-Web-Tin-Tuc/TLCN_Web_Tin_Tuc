@@ -38,7 +38,7 @@ export class CatCreateComponent implements OnInit {
 
   createSCat() {
     this.sCat.name = this.sCatname;
-    this.sCat.parent_id = this.selectedOption;
+    this.sCat.parentId = this.selectedOption;
     this.sCat.dateCreated = new Date();
     this.sCat.userCreated = localStorage.getItem("email");
     this.email = localStorage.getItem("email")

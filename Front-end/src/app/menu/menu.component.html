@@ -38,12 +38,14 @@
                                         </div>
                                 </ul>
                         </li>
-                        <li class="nav-item"><a><i class="icon-folder"></i><span class="menu-title" data-i18n="nav.category.main">Danh
-                                                Mục</span></a>
-                                <ul class="menu-content" *ngFor="let cat of catList">
-                                        <li><a class="menu-item" href="/newscategory/{{cat.id}}" data-i18n="nav.dash.project">{{cat.name}}</a>
-                                        </li>
-                                </ul>
+                        <li class="nav-item"><a><i class="icon-folder"></i>
+                             <span class="menu-title" data-i18n="nav.category.main">Danh
+                                Mục</span></a>
+                             <ul class="menu-content" *ngFor="let cat of catList">
+                                <li><a class="menu-item" href="/newscategory/{{cat.id}}"
+                                        data-i18n="nav.dash.project">{{cat.name}}</a>
+                                </li>
+                             </ul>
                         </li>
                 </ul>
         </div>
