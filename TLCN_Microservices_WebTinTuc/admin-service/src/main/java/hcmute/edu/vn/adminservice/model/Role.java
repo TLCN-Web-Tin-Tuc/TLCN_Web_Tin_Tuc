@@ -5,7 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Date;
 
 @Entity(name = "ne_roles")
@@ -17,7 +20,7 @@ public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private long Id;
 
     private String rname;
 
@@ -41,8 +44,7 @@ public class Role {
 
     private String userUpdated;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Cat catRole;
+    private long CatId;
 
 }
 

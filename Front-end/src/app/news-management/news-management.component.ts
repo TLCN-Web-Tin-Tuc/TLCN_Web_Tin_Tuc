@@ -12,6 +12,8 @@ import { Role } from '../_entity/role';
 import { first } from 'rxjs/operators';
 import { UserService } from '../_service/user_service/user.service';
 import { NuServiceService } from '../_service/nu_service/nu-service.service';
+import { Cat } from '../_entity/cat';
+import { CatItem } from '../_entity/catitem';
 
 @Component({
   selector: 'app-news-management',
@@ -23,10 +25,14 @@ export class NewsManagementComponent implements OnInit {
     // Our array of clients
     items: Item[];
     dataTable: any;
-
+    //catOfUser : Cat[]
     email : string
     isMod : boolean = false
     rolesofUser : Role[]
+    cats : Cat[]
+    catItems : CatItem[]
+    select : number
+    catId : number
     pass : string
     error : string
 
@@ -34,17 +40,31 @@ export class NewsManagementComponent implements OnInit {
     private userService : UserService, private nuService : NuServiceService) { }
 
   ngOnInit(){
+   
     this.getListItem()
   }
 
   async getListItem(){
-    await this.checkEmail()
-    this.modService.getListItem()
+    await  this.getCatOfUser()
+    await this.checkEmail()        
+  }
+  getCatOfUser(){
+    this.email = localStorage.getItem("email")
+    this.modService.getAllCatofUser(this.email)
     .subscribe(res => {
       if(res.success == "true")
       {
         
-        this.items = res.data;
+        this.cats = res.data;
+        this.catId = this.cats[0].id
+        
+      }
+      this.modService.getItemByCatId(this.catId)
+    .subscribe(res => {
+      if(res.success == "true")
+      {
+        
+        this.catItems = res.data;
         
       }
 
@@ -58,13 +78,35 @@ export class NewsManagementComponent implements OnInit {
        }, err => {
         console.log(err.message)
     });
+      
+       }, err => {
+        console.log(err.message)
+    });
   }
-
   onGotoItemDetail(id) {
 
     // this.router.navigate(["/newsdetail/" + id]);
     window.location.href = "/newsdetail/" + id;
   }
+
+  onChangeCatSelect(e){
+    this.modService.getItemByCatId(this.select)
+    .subscribe(res => {
+      
+      
+      if(res.success == "true")
+      {
+        
+        this.catItems = res.data;
+        
+      }
+     
+  
+       }, err => {
+        console.log(err.message)
+    });
+  }
+
 
   async checkEmail(){
     await this.checkUserAndPassWord()
@@ -79,10 +121,11 @@ export class NewsManagementComponent implements OnInit {
     .subscribe(res => {
       if(res.success == "true")
       {                     
-        this.rolesofUser = res.data.roles
+        this.rolesofUser = res.data
+        console.log(this.rolesofUser)
         for(let role of this.rolesofUser)
         {
-          if(role.p_delete == true || role.p_update == true || role.p_approve == true )
+          if(role.p_delete == true || role.p_update == true || role.p_approve == true || role.p_admin == true)
           {
             if(role.status == 1){
               this.isMod = true;
@@ -92,9 +135,9 @@ export class NewsManagementComponent implements OnInit {
           }           
         }
         if(this.isMod == false){
-          alert("Bạn không được truy cập vào trang này")
+          //alert("Bạn không được truy cập vào trang này")
           // this.router.navigate(["/"])
-          window.location.href = "/"; 
+          //window.location.href = "/"; 
         } 
       }
       else

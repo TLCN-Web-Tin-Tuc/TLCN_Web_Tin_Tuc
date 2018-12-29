@@ -3,14 +3,16 @@ package hcmute.edu.vn.modservice.controller;
 import hcmute.edu.vn.modservice.api.v1.data.DataReturnList;
 import hcmute.edu.vn.modservice.api.v1.data.DataReturnOne;
 import hcmute.edu.vn.modservice.api.v1.dto.CatDto;
+import hcmute.edu.vn.modservice.api.v1.dto.CatOfItemDto;
 import hcmute.edu.vn.modservice.api.v1.dto.ItemDto;
 import hcmute.edu.vn.modservice.api.v1.mapper.CatMapper;
+import hcmute.edu.vn.modservice.api.v1.mapper.CatOfItemMapper;
 import hcmute.edu.vn.modservice.api.v1.mapper.ItemMapper;
-import hcmute.edu.vn.modservice.model.Cat;
-import hcmute.edu.vn.modservice.model.Cat_Item;
-import hcmute.edu.vn.modservice.model.Item;
+import hcmute.edu.vn.modservice.model.*;
+import hcmute.edu.vn.modservice.service.CatItemService;
 import hcmute.edu.vn.modservice.service.CatService;
 import hcmute.edu.vn.modservice.service.ItemService;
+import hcmute.edu.vn.modservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +30,16 @@ public class ModController {
     CatService catService;
 
     @Autowired
+    UserService userService;
+
+    @Autowired
     ItemService itemService;
+
+    @Autowired
+    CatItemService catItemService;
+
+    @Autowired
+    CatOfItemMapper catOfItemMapper;
 
     @Autowired
     ItemMapper itemMapper;
@@ -54,6 +65,29 @@ public class ModController {
         Cat categories = catService.retrieveCatById(id);
         DataReturnOne<Cat> dataReturnOne = new DataReturnOne<>();
         dataReturnOne.setData(categories);
+        dataReturnOne.setMessage("Get list categry success");
+        return dataReturnOne;
+    }
+
+    @GetMapping("/cat/catofuser/{email}")
+    public DataReturnList<CatDto> findCategoryOfUser(@PathVariable("email") String email){
+        List<Cat> categories = catService.retrieveAllCatChecked();
+        User user = userService.findByEmail(email);
+
+        List<Cat> catOfUser = new ArrayList<>();
+
+        for (Role role:user.getRoles()
+             ) {
+            for (Cat cat:categories
+                 ) {
+                if(role.getCatId() == cat.getId() && !catOfUser.contains(cat))
+                {
+                    catOfUser.add(cat);
+                }
+            }
+        }
+        DataReturnList<CatDto> dataReturnOne = new DataReturnList<>();
+        dataReturnOne.setData(catOfUser.stream().map(catMapper::catToCatDto).collect(Collectors.toList()));
         dataReturnOne.setMessage("Get list categry success");
         return dataReturnOne;
     }
@@ -148,6 +182,15 @@ public class ModController {
         dataReturnOne.setMessage("success");
         dataReturnOne.setData(itemMapper.itemToItemDto(itemService.retrieveItemsById(id)));
         return dataReturnOne;
+    }
+
+    @GetMapping("/items/itemofcatid/{catId}")
+    public DataReturnList<CatOfItemDto> retrieveItemsByCatId(@PathVariable("catId") long id){
+        DataReturnList<CatOfItemDto> dataReturnList = new DataReturnList<>();
+        dataReturnList.setSuccess("true");
+        dataReturnList.setMessage("success");
+        dataReturnList.setData(catItemService.retrieveAllByCatId(id).stream().map(catOfItemMapper::listcatitemTolistCatItemDto).collect(Collectors.toList()));
+        return dataReturnList;
     }
 
     @GetMapping("/items")

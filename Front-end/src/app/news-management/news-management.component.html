@@ -24,6 +24,17 @@
                 <div class="card-header">
                   <h4 class="card-title">Quản lý tin tức</h4>
                   <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+                  <div class="col-md-6 col-sm-12">
+                    <label for="gender">Loại tin tức</label>
+                    <div class="position-relative has-icon-left" style="height: 39.800px;">
+                      <select name="gender" class="form-control" [(ngModel)]="select" (change)="onChangeCatSelect($event)" id="gender" style="height: 39px;" >
+                        <option  *ngFor="let cat of cats" value="{{cat.id}}">{{cat.name}}</option>                              
+                      </select>                           
+                      <div class="form-control-position" style="margin-top: -3px;">
+                        <i class="fa fa-th-list"></i>
+                      </div>
+                    </div>
+                  </div>       
                 </div>
                 <div class="card-content collapse show">
                   <div class="card-body card-dashboard">
@@ -37,19 +48,19 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let item of items">
-                          <td (click)="onGotoItemDetail(item.id)">{{item.userCreated}}</td>
-                          <td (click)="onGotoItemDetail(item.id)">{{item.title}}</td>
-                          <td (click)="onGotoItemDetail(item.id)">{{item.shortDesc}}</td>    
-                         <ng-container *ngIf="item.status == 0 ; else itemApprove">
-                          <td (click)="onGotoItemDetail(item.id)">Chưa được duyệt</td>
+                        <tr *ngFor="let catItem of catItems">
+                          <td (click)="onGotoItemDetail(catItem.itemId)">{{catItem.userCreated}}</td>
+                          <td (click)="onGotoItemDetail(catItem.itemId)">{{catItem.title}}</td>
+                          <td (click)="onGotoItemDetail(catItem.itemId)">{{catItem.shortDesc}}</td>    
+                         <ng-container *ngIf="catItem.status == 0 ; else itemApprove">
+                          <td (click)="onGotoItemDetail(catItem.itemId)">Chưa được duyệt</td>
                          </ng-container>
                          <ng-template #itemApprove>
-                           <ng-container *ngIf="item.status == 1; else elseDelete">
-                            <td (click)="onGotoItemDetail(item.id)">Đang sử dụng</td>
+                           <ng-container *ngIf="catItem.status == 1; else elseDelete">
+                            <td (click)="onGotoItemDetail(catItem.itemId)">Đang sử dụng</td>
                            </ng-container>
                            <ng-template #elseDelete>
-                            <td (click)="onGotoItemDetail(item.id)">Đã xóa</td>
+                            <td (click)="onGotoItemDetail(catItem.itemId)">Đã xóa</td>
                            </ng-template>                           
                          </ng-template>                       
                           

@@ -38,6 +38,12 @@
                         <div class="col-md-6 col-sm-12">
                           <fieldset>
                             <div class="custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input" name="customCheck5" [(ngModel)]="role.p_admin" id="customCheck5">
+                              <label class="custom-control-label" for="customCheck5">Quyền Admin</label>
+                            </div>
+                          </fieldset>
+                          <fieldset>
+                            <div class="custom-control custom-checkbox">
                               <input type="checkbox" class="custom-control-input" name="customCheck1" [(ngModel)]="role.p_create" id="customCheck1">
                               <label class="custom-control-label" for="customCheck1">Quyền tạo bài viết</label>
                             </div>
@@ -60,6 +66,17 @@
                               <label class="custom-control-label" for="customCheck4">Quyền duyệt bài viết</label>
                             </div>
                           </fieldset>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                          <label for="gender">Loại tin tức</label>
+                          <div class="position-relative has-icon-left" style="height: 39.800px;">
+                            <select name="gender" class="form-control" id="gender" style="height: 39px;" [(ngModel)]="role.catId">
+                              <option  *ngFor="let cat of cats" value="{{cat.id}}">{{cat.name}}</option>                              
+                            </select>                           
+                            <div class="form-control-position" style="margin-top: -3px;">
+                              <i class="fa fa-th-list"></i>
+                            </div>
+                          </div>
                         </div>                      
                     </div>                    
                     <div class="form-actions top" style="float: right;">

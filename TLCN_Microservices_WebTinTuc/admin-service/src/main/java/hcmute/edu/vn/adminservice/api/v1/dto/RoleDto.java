@@ -30,7 +30,4 @@ public class RoleDto {
 
     private String userUpdated;
 
-    private long catId;
-
-    private String catName;
 }

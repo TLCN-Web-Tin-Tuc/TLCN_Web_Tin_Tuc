@@ -12,6 +12,7 @@ import { Role } from '../_entity/role';
 import { UserService } from '../_service/user_service/user.service';
 import { first } from 'rxjs/operators';
 import { NuServiceService } from '../_service/nu_service/nu-service.service';
+import { Cat } from '../_entity/cat';
 
 @Component({
   selector: 'app-role-management',
@@ -22,6 +23,7 @@ export class RoleManagementComponent implements OnInit {
 
   roles : Role[];
   rolesofUser : Role[]
+  cats : Cat[]
   dataTable: any;
   email : string
   error : string;
@@ -34,7 +36,7 @@ export class RoleManagementComponent implements OnInit {
     this.getAllRole()
     }
     async getAllRole(){
-      await this.checkEmail()
+      await this.getAllCat()
       this.adminService.getAllRole()
       .subscribe(res => {
         if(res.success == "true")
@@ -48,6 +50,11 @@ export class RoleManagementComponent implements OnInit {
             }
             else{
               role.isCheck = false
+            }
+            for(let cat of this.cats){
+              if(cat.id == role.catId){
+                role.catName = cat.name                
+              }
             }
 
           }
@@ -67,6 +74,25 @@ export class RoleManagementComponent implements OnInit {
         console.log(err.message)
     });
     }
+
+    async getAllCat(){
+      await this.checkEmail()
+      this.adminService.getAllCat()
+    .pipe(first())
+    .subscribe(res => {
+      if(res.success == "true")
+      {            
+        this.cats = res.data
+        console.log(this.cats)
+      }else{
+        console.log(res.message)
+      }
+      
+    }, err => {
+      console.log(err)
+    })      
+    }
+
     async checkEmail(){
       await this.checkUserAndPassWord()
       this.email = localStorage.getItem("email")

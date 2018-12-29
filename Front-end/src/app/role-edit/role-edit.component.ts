@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Role } from '../_entity/role';
 import { UserService } from '../_service/user_service/user.service';
 import { first } from 'rxjs/operators';
+import { Cat } from '../_entity/cat';
 
 @Component({
   selector: 'app-role-edit',
@@ -17,6 +18,7 @@ export class RoleEditComponent implements OnInit {
   ischeck : boolean
   email : string
   rolesofUser : Role[]
+  cats : Cat[]  
   error : string
   isAdmin : boolean = false
   constructor( private activatedRoute: ActivatedRoute, private route : Router, private adminService : AdminService, private userService : UserService) { 
@@ -31,7 +33,7 @@ export class RoleEditComponent implements OnInit {
   }
 
   async retrieveRoleById(id){
-    await this.checkEmail()
+    await this.getAllCat()
     this.adminService.findRoleById(this.id)    
           .subscribe(res => {
             this.role = res.data;             
@@ -56,7 +58,7 @@ export class RoleEditComponent implements OnInit {
       this.role.status = 1
     }
     this.email = localStorage.getItem("email")
-    this.adminService.updateRole(this.role, this.email)    
+    this.adminService.updateRole(this.role,this.email)    
           .subscribe(res => {
             if(res.success == "true"){
               alert("Update thành công")
@@ -73,6 +75,26 @@ export class RoleEditComponent implements OnInit {
             console.log(err);
           });
   }
+
+  async getAllCat(){
+    await this.checkEmail()
+    this.adminService.getAllCat()
+    .pipe(first())
+    .subscribe(res => {
+      if(res.success == "true")
+      {            
+        this.cats = res.data
+        console.log(this.cats)
+      }else{
+        console.log(res.message)
+      }
+      
+    }, err => {
+      console.log(err)
+    })      
+    
+  }
+
   checkEmail(){
     this.email = localStorage.getItem("email")
     if(this.email == null)
@@ -88,7 +110,7 @@ export class RoleEditComponent implements OnInit {
         this.rolesofUser = res.data.roles
         for(let role of this.rolesofUser)
         {
-          if(role.rname == "ROLE_ADMIN" && role.status == 1)
+          if(role.p_admin == true && role.status == 1)
           {
             this.isAdmin = true;
             return

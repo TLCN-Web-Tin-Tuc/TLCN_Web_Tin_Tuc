@@ -24,6 +24,10 @@ export class ModServiceService {
     return this.http.get(`${this.context}/api/v1/mod/items/search?id=${id}`);
   }
 
+  getItemByCatId(id) : Observable<any>{
+    return this.http.get(`${this.context}/api/v1/mod/items/itemofcatid/${id}`);
+  }
+
   createCat(cat : Cat): Observable<any>{    
     return this.http.post(`${this.context}/api/v1/mod/cat/createcat`, cat);
   }
@@ -34,6 +38,10 @@ export class ModServiceService {
 
   getAllCat() :Observable<any>{
     return this.http.get(`${this.context}/api/v1/mod/cat`);
+  }
+
+  getAllCatofUser(email) :Observable<any>{
+    return this.http.get(`${this.context}/api/v1/mod/cat/catofuser/${email}`);
   }
 
   updateStatusCat(id, userUpdate): Observable<any>{    

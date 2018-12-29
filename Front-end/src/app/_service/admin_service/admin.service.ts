@@ -67,4 +67,7 @@ export class AdminService {
     return this.http.put(`${this.context}/api/v1/admin/roles/updateroleadmin/${rid}/${userUpdate}`,"");
   }
 
+  getAllCat() :Observable<any>{
+    return this.http.get(`${this.context}/api/v1/admin/cat`);
+  }
 }

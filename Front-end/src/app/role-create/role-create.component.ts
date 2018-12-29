@@ -8,6 +8,7 @@ import * as moment from 'moment';
 import { Role } from '../_entity/role';
 import { AdminService } from '../_service/admin_service/admin.service';
 import { NuServiceService } from '../_service/nu_service/nu-service.service';
+import { Cat } from '../_entity/cat';
 
 @Component({
   selector: 'app-role-create',
@@ -18,8 +19,10 @@ export class RoleCreateComponent implements OnInit {
    user: User;
   error: string;
   email: string;   
+  selectCat : number = 0;
   pass : string
   role : Role;
+  cats : Cat[]
   rolesofUser : Role[]
   isAdmin : boolean = false
 
@@ -29,7 +32,7 @@ export class RoleCreateComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.checkEmail()
+    this.getAllCat()
   }
   createRole(){   
       this.role.status = 1
@@ -52,6 +55,25 @@ export class RoleCreateComponent implements OnInit {
     })
   }
 
+  async getAllCat(){
+    await this.checkEmail()
+    this.adminService.getAllCat()
+    .pipe(first())
+    .subscribe(res => {
+      if(res.success == "true")
+      {            
+        this.cats = res.data
+        console.log(this.cats)
+      }else{
+        console.log(res.message)
+      }
+      
+    }, err => {
+      console.log(err)
+    })      
+    
+  }
+
   async checkEmail(){
     await this.checkUserAndPassWord()
     this.email = localStorage.getItem("email")
@@ -68,7 +90,7 @@ export class RoleCreateComponent implements OnInit {
         this.rolesofUser = res.data.roles
         for(let role of this.rolesofUser)
         {
-          if(role.rname == "ROLE_ADMIN" && role.status == 1)
+          if(role.p_admin == true && role.status == 1)
           {
             this.isAdmin = true;
             return

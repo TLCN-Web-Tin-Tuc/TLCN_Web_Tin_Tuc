@@ -2,12 +2,18 @@ package hcmute.edu.vn.adminservice.controller;
 
 import hcmute.edu.vn.adminservice.api.v1.data.DataReturnList;
 import hcmute.edu.vn.adminservice.api.v1.data.DataReturnOne;
-import hcmute.edu.vn.adminservice.api.v1.dto.RoleDto;
+import hcmute.edu.vn.adminservice.api.v1.dto.CatDto;
+import hcmute.edu.vn.adminservice.api.v1.mapper.CatMapper;
 import hcmute.edu.vn.adminservice.api.v1.mapper.RoleMapper;
 import hcmute.edu.vn.adminservice.api.v1.mapper.UserMapper;
 import hcmute.edu.vn.adminservice.exception.NotFoundException;
-import hcmute.edu.vn.adminservice.model.*;
-import hcmute.edu.vn.adminservice.service.*;
+import hcmute.edu.vn.adminservice.model.Report;
+import hcmute.edu.vn.adminservice.model.Role;
+import hcmute.edu.vn.adminservice.model.User;
+import hcmute.edu.vn.adminservice.service.CatService;
+import hcmute.edu.vn.adminservice.service.ReportService;
+import hcmute.edu.vn.adminservice.service.RoleService;
+import hcmute.edu.vn.adminservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,6 +41,12 @@ public class AdminController {
 
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private CatService catService;
+
+    @Autowired
+    private CatMapper catMapper;
 
     // retrieve user by id //
     @GetMapping("/users/search")
@@ -108,13 +120,22 @@ public class AdminController {
     }
 
     @GetMapping("/roles")
-    public DataReturnList<RoleDto> retrieveAllRole()
+    public DataReturnList<Role> retrieveAllRole()
     {
-        DataReturnList<RoleDto> dataReturnList = new DataReturnList<>();
+        DataReturnList<Role> dataReturnList = new DataReturnList<>();
         dataReturnList.setSuccess("true");
         dataReturnList.setMessage("success");
-        dataReturnList.setData(roleService.retrieveAllRole()
-                                .stream().map(roleMapper::roleToRoleDto)
+        dataReturnList.setData(roleService.retrieveAllRole());
+        return dataReturnList;
+    }
+
+    @GetMapping("/cat")
+    public DataReturnList<CatDto> retrieveAllCat()
+    {
+        DataReturnList<CatDto> dataReturnList = new DataReturnList<>();
+        dataReturnList.setSuccess("true");
+        dataReturnList.setMessage("success");
+        dataReturnList.setData(catService.retrieveAllCatChecked().stream().map(catMapper::listcatTolistCatDto)
                                 .collect(Collectors.toList()));
         return dataReturnList;
     }
