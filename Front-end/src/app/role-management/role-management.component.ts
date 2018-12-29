@@ -83,7 +83,7 @@ export class RoleManagementComponent implements OnInit {
           this.rolesofUser = res.data.roles
           for(let role of this.rolesofUser)
           {
-            if(role.rname == "ROLE_ADMIN" && role.status == 1)
+            if(role.p_admin == true && role.status == 1)
             {
               this.isAdmin = true;
               return
@@ -143,6 +143,24 @@ export class RoleManagementComponent implements OnInit {
       console.log(err);
     });
     }
+
+    toggleRoleAdmin(e){
+      this.email = localStorage.getItem("email")
+      this.adminService.updateRoleAdmin(e.target.value, this.email)
+      .subscribe(res => {
+      if(res.success == "true")
+      {
+        console.log("update thành công")
+      }
+      else{
+        console.log("update không thành công")
+      }
+    }, err => {
+      console.log(err);
+    });
+    }
+
+
 
     toggleRoleUpdate(e){
       this.email = localStorage.getItem("email")

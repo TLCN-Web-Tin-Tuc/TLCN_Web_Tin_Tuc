@@ -31,21 +31,25 @@
                       <thead>
                         <tr>
                           <th>Tên Role</th>
+                          <th>Quyền Admin</th>
                           <th>Tạo</th>
                           <th>Cập nhật</th>    
                           <th>Xóa </th>
                           <th>Duyệt</th>        
-                          <th>Trạng thái</th>                 
+                          <th>Trạng thái</th>  
+                          <th>Loại tin tức</th>      
                         </tr>
                       </thead>
                       <tbody>
                         <tr *ngFor="let role of roles">
                           <td (click)="onGotoRoleEdit(role.id)">{{role.rname}}</td>
+                          <td><input  type="checkbox" [(ngModel)]="role.p_admin" [ngModelOptions]="{standalone: true}" class="checkboxes" value={{role.id}} (change)="toggleRoleAdmin($event)" /></td>
                           <td><input  type="checkbox" [(ngModel)]="role.p_create" [ngModelOptions]="{standalone: true}" class="checkboxes" value={{role.id}} (change)="toggleRoleCreate($event)" /></td>
                           <td><input  type="checkbox" [(ngModel)]="role.p_update" [ngModelOptions]="{standalone: true}" class="checkboxes" value={{role.id}} (change)="toggleRoleUpdate($event)" /></td>  
                           <td><input  type="checkbox" [(ngModel)]="role.p_delete" [ngModelOptions]="{standalone: true}" class="checkboxes" value={{role.id}} (change)="toggleRoleDelete($event)" /></td>
                           <td><input  type="checkbox" [(ngModel)]="role.p_approve" [ngModelOptions]="{standalone: true}" class="checkboxes" value={{role.id}} (change)="toggleRoleApprove($event)" /></td>  
-                          <td><input  type="checkbox" [(ngModel)]="role.isCheck" [ngModelOptions]="{standalone: true}" class="checkboxes" value={{role.id}} (change)="toggleRoleStatus($event)" /></td>                      
+                          <td><input  type="checkbox" [(ngModel)]="role.isCheck" [ngModelOptions]="{standalone: true}" class="checkboxes" value={{role.id}} (change)="toggleRoleStatus($event)" /></td> 
+                          <td (click)="onGotoRoleEdit(role.id)">{{role.catName}}</td>                     
                         </tr>
                       </tbody>
                     </table>

@@ -2,6 +2,8 @@ package hcmute.edu.vn.adminservice.controller;
 
 import hcmute.edu.vn.adminservice.api.v1.data.DataReturnList;
 import hcmute.edu.vn.adminservice.api.v1.data.DataReturnOne;
+import hcmute.edu.vn.adminservice.api.v1.dto.RoleDto;
+import hcmute.edu.vn.adminservice.api.v1.mapper.RoleMapper;
 import hcmute.edu.vn.adminservice.api.v1.mapper.UserMapper;
 import hcmute.edu.vn.adminservice.exception.NotFoundException;
 import hcmute.edu.vn.adminservice.model.*;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("api/v1/admin/")
@@ -27,7 +30,8 @@ public class AdminController {
     @Autowired
     private RoleService roleService;
 
-
+    @Autowired
+    private RoleMapper roleMapper;
 
     @Autowired
     private UserMapper userMapper;
@@ -104,12 +108,14 @@ public class AdminController {
     }
 
     @GetMapping("/roles")
-    public DataReturnList<Role> retrieveAllRole()
+    public DataReturnList<RoleDto> retrieveAllRole()
     {
-        DataReturnList<Role> dataReturnList = new DataReturnList<>();
+        DataReturnList<RoleDto> dataReturnList = new DataReturnList<>();
         dataReturnList.setSuccess("true");
         dataReturnList.setMessage("success");
-        dataReturnList.setData(roleService.retrieveAllRole());
+        dataReturnList.setData(roleService.retrieveAllRole()
+                                .stream().map(roleMapper::roleToRoleDto)
+                                .collect(Collectors.toList()));
         return dataReturnList;
     }
 
@@ -298,6 +304,33 @@ public class AdminController {
             dataReturnOne.setSuccess("false");
             dataReturnOne.setData(null);
             dataReturnOne.setMessage("Set delete for Role Fail");
+        }
+        return dataReturnOne;
+    }
+
+    @PutMapping("/roles/updateroleadmin/{rid}/{userUpdate}")
+    public DataReturnOne<Role> UpdateRoleAdmin(@PathVariable long rid, @PathVariable String userUpdate)
+    {
+        Role role1 = roleService.retrieveRoleByRId(rid);
+        DataReturnOne<Role> dataReturnOne = new DataReturnOne<>();
+        if(role1!=null){
+            if(role1.getP_admin() == true)
+            {
+                role1.setP_admin(false);
+            }
+            else
+            {
+                role1.setP_admin(true);
+            }
+            role1.setDateUpdated(new Date());
+            role1.setUserUpdated(userUpdate);
+            dataReturnOne.setData(roleService.getRepo().save(role1));
+            dataReturnOne.setSuccess("true");
+            dataReturnOne.setMessage("Set admin for Role success");
+        }else{
+            dataReturnOne.setSuccess("false");
+            dataReturnOne.setData(null);
+            dataReturnOne.setMessage("Set admin for Role Fail");
         }
         return dataReturnOne;
     }

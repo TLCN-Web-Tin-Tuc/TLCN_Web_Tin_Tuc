@@ -37,7 +37,7 @@ export class MenuComponent implements OnInit {
           this.user = res.data;
           this.roles = this.user.roles
           for (let role of this.roles) {
-            if (role.rname == "ROLE_ADMIN" && role.status == 1) {
+            if (role.p_admin == true && role.status == 1) {
               this.isAdmin = true;
             }
             if (role.p_delete == true || role.p_update == true || role.p_approve == true) {

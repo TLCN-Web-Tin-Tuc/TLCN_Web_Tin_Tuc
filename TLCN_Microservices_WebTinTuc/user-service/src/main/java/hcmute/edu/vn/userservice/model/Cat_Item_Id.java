@@ -20,5 +20,5 @@ public class Cat_Item_Id implements Serializable {
     private Cat cat;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Items item;
+    private Item item;
 }

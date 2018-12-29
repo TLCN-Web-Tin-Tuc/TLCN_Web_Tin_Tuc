@@ -63,4 +63,8 @@ export class AdminService {
     return this.http.put(`${this.context}/api/v1/admin/roles/updateroleapprove/${rid}/${userUpdate}`,"");
   }
 
+  updateRoleAdmin(rid, userUpdate) :Observable<any>{
+    return this.http.put(`${this.context}/api/v1/admin/roles/updateroleadmin/${rid}/${userUpdate}`,"");
+  }
+
 }

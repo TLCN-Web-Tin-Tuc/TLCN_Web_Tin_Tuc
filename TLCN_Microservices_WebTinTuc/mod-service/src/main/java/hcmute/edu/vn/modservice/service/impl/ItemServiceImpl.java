@@ -5,7 +5,7 @@ import hcmute.edu.vn.modservice.exception.NotFoundException;
 import hcmute.edu.vn.modservice.model.Cat;
 import hcmute.edu.vn.modservice.model.Cat_Item;
 import hcmute.edu.vn.modservice.model.Cat_Item_Id;
-import hcmute.edu.vn.modservice.model.Items;
+import hcmute.edu.vn.modservice.model.Item;
 import hcmute.edu.vn.modservice.repository.CatItemRepository;
 import hcmute.edu.vn.modservice.repository.CatRepository;
 import hcmute.edu.vn.modservice.repository.ItemRepository;
@@ -31,13 +31,13 @@ public class ItemServiceImpl implements ItemService {
     CatItemRepository catItemRepository;
 
     @Override
-    public CrudRepository<Items, Long> getRepo() {
+    public CrudRepository<Item, Long> getRepo() {
         return itemRepository;
     }
 
     @Override
-    public Items getItemById(long id) {
-        Optional<Items> items = itemRepository.findById(id);
+    public Item getItemById(long id) {
+        Optional<Item> items = itemRepository.findById(id);
         if(!items.isPresent()){
             throw new Error404("Product Not Found");
         }
@@ -45,27 +45,27 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public List<Items> retrieveAllItems() {
-        List<Items> items = itemRepository.findAll();
+    public List<Item> retrieveAllItems() {
+        List<Item> items = itemRepository.findAll();
         if(items.isEmpty())
             throw new NotFoundException("item not found");
         return items;
     }
 
     @Override
-    public Items retrieveItemsById(long id){
-        Optional<Items> itemOptional = itemRepository.findById(id);
+    public Item retrieveItemsById(long id){
+        Optional<Item> itemOptional = itemRepository.findById(id);
         if(!itemOptional.isPresent())
             throw new NotFoundException("Item not found.");
         return itemOptional.get();
     }
 
     @Override
-    public Items updateItemStatus(long id, String userUpdate){
-        Optional<Items> itemOptional = itemRepository.findById(id);
+    public Item updateItemStatus(long id, String userUpdate){
+        Optional<Item> itemOptional = itemRepository.findById(id);
         if(!itemOptional.isPresent())
             throw new NotFoundException("Item not found. Could not update status for this item");
-        Items item = itemOptional.get();
+        Item item = itemOptional.get();
         if(item.getStatus() == 0)
             item.setStatus(1);
         else item.setStatus(0);
@@ -75,11 +75,11 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public Items deleteItemStatus(long id, String userUpdate){
-        Optional<Items> itemOptional = itemRepository.findById(id);
+    public Item deleteItemStatus(long id, String userUpdate){
+        Optional<Item> itemOptional = itemRepository.findById(id);
         if(!itemOptional.isPresent())
             throw new NotFoundException("Item not found. Could not delete this item");
-        Items item = itemOptional.get();
+        Item item = itemOptional.get();
             item.setStatus(2);
         item.setUserUpdated(userUpdate);
         item.setDateUpdated(new Date());
@@ -87,8 +87,8 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public Items InsertItem(Items items, long catid) {
-        Items itemsCreate = itemRepository.save(items);
+    public Item InsertItem(Item items, long catid) {
+        Item itemsCreate = itemRepository.save(items);
         Cat cat = catRepository.findById(catid).get();
         Cat_Item cat_item = new Cat_Item();
         Cat_Item_Id cat_item_id = new Cat_Item_Id();
@@ -101,7 +101,7 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public Cat_Item addCatOnItem(long itemid, long catid) {
-       Items items = itemRepository.findById(itemid).get();
+       Item items = itemRepository.findById(itemid).get();
        Cat cat = catRepository.findById(catid).get();
         Cat_Item cat_item = new Cat_Item();
         Cat_Item_Id cat_item_id = new Cat_Item_Id();
@@ -120,9 +120,9 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public void DeleteItem(long id) {
-        Optional<Items> itemsOptional = itemRepository.findById(id);
+        Optional<Item> itemsOptional = itemRepository.findById(id);
         if(itemsOptional.isPresent()){
-            Items items = itemsOptional.get();
+            Item items = itemsOptional.get();
             items.setStatus(2);
             itemRepository.save(items);
         }

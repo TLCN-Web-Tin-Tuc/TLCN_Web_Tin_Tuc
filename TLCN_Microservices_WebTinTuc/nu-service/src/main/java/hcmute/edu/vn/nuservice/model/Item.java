@@ -1,4 +1,4 @@
-package hcmute.edu.vn.adminservice.model;
+package hcmute.edu.vn.nuservice.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,7 +13,7 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Items {
+public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -58,7 +58,7 @@ public class Items {
     @OneToMany(mappedBy = "item")
     private Set<ItemAccess> itemAccesses;
 
-    @OneToMany(mappedBy = "itemscm")
-    private Set<Comments> commentsSet;
+    @OneToMany(mappedBy = "itemCm")
+    private Set<Comment> comments;
 
 }

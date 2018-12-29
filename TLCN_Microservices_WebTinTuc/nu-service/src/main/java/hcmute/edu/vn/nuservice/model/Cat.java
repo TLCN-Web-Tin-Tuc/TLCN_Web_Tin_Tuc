@@ -34,5 +34,6 @@ public class Cat {
     @OneToMany(mappedBy = "id.cat")
     private Set<Cat_Item> cat_items;
 
-    
+    @OneToMany(mappedBy = "catRole")
+    private Set<Role> roles;
 }
