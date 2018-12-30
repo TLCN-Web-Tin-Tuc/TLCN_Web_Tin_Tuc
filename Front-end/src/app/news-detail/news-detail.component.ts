@@ -45,7 +45,7 @@ export class NewsDetailComponent implements OnInit {
   
   cat: Cat;
   catOfItem : Cat[]
-  catList: Cat[];
+  catListItem: Cat[];
   dataTable: any;
   catItem : CatItem[]
 
@@ -73,27 +73,27 @@ export class NewsDetailComponent implements OnInit {
             this.selectedImg = this.item.image;
 
             if (this.item.status == 1) {
-              this.kichhoat = "Bỏ duyệt bài";
-            }
-            else {
               this.kichhoat = "Duyệt bài";
             }
+            if (this.item.status == 2) {
+              this.kichhoat = "Bỏ duyệt bài";
+            }
 
-            if (this.item.status != 2) {
+            if (this.item.status != 3) {
               this.isDelete = true;
             }
 
             
-            if (this.item.status == 2) {
+            if (this.item.status == 3) {
               this.isDelete = false;
             }
 
             this.modService.getAllCat()
               .subscribe(res => {
-                this.catList = res.data;
+                this.catListItem = res.data;
                 if (res.success == "true") {
 
-                  this.catList = res.data;                  
+                  this.catListItem = res.data;                  
                   this.chRef.detectChanges();
                   
                   // // Now you can use jQuery DataTables :
@@ -102,21 +102,21 @@ export class NewsDetailComponent implements OnInit {
                   this.nuService.getCatItem(this.id)
                   .subscribe(res => {
                     if(res.success == "true"){                      
-                      for (let cat of this.catList) {
+                      for (let cat of this.catListItem) {
                         cat.isOfItem = false;
                       }
                       this.catItem = res.data                     
-                      if (this.catList) {
-                        for (let cat of this.catList) {            
+                      if (this.catListItem) {
+                        for (let cat of this.catListItem) {            
                           if (this.catItem.find(x => x.catName  == cat.name)) {
                             cat.isOfItem = true;
                           }
                         }
                       }
-
+                      console.log(this.catListItem)
                     }
                   },err =>{
-                      console.log("Loi cmnr")
+                      console.log("Loi ")
                   })
                   
 
@@ -142,13 +142,7 @@ export class NewsDetailComponent implements OnInit {
       .subscribe(res => {
         if (res.success == "true") {
           this.rolesofUser = res.data.roles
-          for (let role of this.rolesofUser) {
-            if ((role.p_delete == true) && (role.status == 1)) {
-              this.isModDelete = true
-            }
-            if (role.p_approve == true && (role.status == 1)) {
-              this.isApprove = true              
-            }
+          for (let role of this.rolesofUser) {           
             if (role.p_update == true && (role.status == 1)) {
               this.isUpdate = true              
             }
@@ -159,7 +153,34 @@ export class NewsDetailComponent implements OnInit {
         }
       }, err => {
         console.log(err)
-      })
+      });
+      this.nuService.getCatItem(this.id)
+          .pipe(first())
+          .subscribe(res => {
+             if (res.success == "true") {
+                this.catOfItem = res.data
+                console.log(this.catOfItem)
+                console.log(this.rolesofUser)
+                for (let role of this.rolesofUser) {           
+                  for (let cat of this.catOfItem) {           
+                    if (role.catId == cat.id && (role.status == 1) && role.p_approve == true) {
+                      this.isApprove = true       
+                      console.log(this.isApprove)       
+                    }
+                    if (role.catId == cat.id && (role.status == 1) && role.p_delete == true) {
+                      this.isModDelete = true    
+                      console.log(this.isModDelete)          
+                    }
+                  } 
+                }    
+              }
+             else {
+          
+             }
+           }, err => {
+             console.log(err)
+          });
+         
   }
 
   onSetStatus(){

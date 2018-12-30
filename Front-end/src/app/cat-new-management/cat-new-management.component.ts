@@ -31,7 +31,7 @@ export class CatNewManagementComponent implements OnInit {
     cats : Cat[]
     catItems : CatItem[]
     select : number
-    catId : number
+    catId : number    
     pass : string
     error : string
 
@@ -44,29 +44,20 @@ export class CatNewManagementComponent implements OnInit {
   }
 
   async getListItem(){
-    await  this.getCatOfUser()
+    await  this.getAllItem()
     await this.checkEmail()        
   }
-  getCatOfUser(){
-    this.email = localStorage.getItem("email")
-    this.modService.getAllCatofUser(this.email)
+  getAllItem(){
+    
+    this.nuService.getItemDescDay()
     .subscribe(res => {
       if(res.success == "true")
       {
         
-        this.cats = res.data;
-        this.catId = this.cats[0].id
+        this.items = res.data;        
         
-      }
-      this.select = this.catId
-      this.modService.getItemByCatId(this.catId)
-    .subscribe(res => {
-      if(res.success == "true")
-      {
-        
-        this.catItems = res.data;
-        
-      }
+      }      
+     
 
       // You'll have to wait that changeDetection occurs and projects data into 
       // the HTML template, you can ask Angular to that for you ;-)
@@ -77,11 +68,8 @@ export class CatNewManagementComponent implements OnInit {
       this.dataTable = table.DataTable();
        }, err => {
         console.log(err.message)
-    });
-      
-       }, err => {
-        console.log(err.message)
-    });
+    });      
+     
   }
   onGotoItemDetail(id) {
 
@@ -89,28 +77,6 @@ export class CatNewManagementComponent implements OnInit {
     window.location.href = "/newsdetail/" + id;
   }
 
-  onChangeCatSelect(e){
-    this.modService.getItemByCatId(this.select)
-    .subscribe(res => {
-      
-      
-      if(res.success == "true")
-      {
-
-
-        $('table').dataTable().fnDestroy();
-        
-        this.catItems = res.data;
-        
-      }
-      this.chRef.detectChanges();
-      const table: any = $('table');
-      this.dataTable = table.DataTable();
-  
-       }, err => {
-        console.log(err.message)
-    });
-  }
 
 
   async checkEmail(){

@@ -3,6 +3,7 @@ package hcmute.edu.vn.adminservice.controller;
 import hcmute.edu.vn.adminservice.api.v1.data.DataReturnList;
 import hcmute.edu.vn.adminservice.api.v1.data.DataReturnOne;
 import hcmute.edu.vn.adminservice.api.v1.dto.CatDto;
+import hcmute.edu.vn.adminservice.api.v1.dto.UserDto;
 import hcmute.edu.vn.adminservice.api.v1.mapper.CatMapper;
 import hcmute.edu.vn.adminservice.api.v1.mapper.RoleMapper;
 import hcmute.edu.vn.adminservice.api.v1.mapper.UserMapper;
@@ -50,34 +51,34 @@ public class AdminController {
 
     // retrieve user by id //
     @GetMapping("/users/search")
-    public DataReturnOne<User> retrieveUserByIdOrEmail(@RequestParam(required = false) long id, @RequestParam(required = false) String email){
-        DataReturnOne<User> dataReturnOne=new DataReturnOne<>();
+    public DataReturnOne<UserDto> retrieveUserByIdOrEmail(@RequestParam(required = false) long id, @RequestParam(required = false) String email){
+        DataReturnOne<UserDto> dataReturnOne=new DataReturnOne<>();
         dataReturnOne.setSuccess("true");
         dataReturnOne.setMessage("success");
-        dataReturnOne.setData(userService.retrieveUserByIdOrEmail(id,email));
+        dataReturnOne.setData(userMapper.userToUserDto(userService.retrieveUserByIdOrEmail(id,email)));
         return dataReturnOne;
     }
 
     // retrieve all users
     @GetMapping("/users")
-    public DataReturnList<User> retrieveAllUsers(){
-        DataReturnList<User> dataReturnList = new DataReturnList<>();
+    public DataReturnList<UserDto> retrieveAllUsers(){
+        DataReturnList<UserDto> dataReturnList = new DataReturnList<>();
         List<User> users = new ArrayList<User>();
         users = userService.retrieveAllUsers();
         if(users.isEmpty()){
             throw new NotFoundException("User not found!");
         }
         dataReturnList.setMessage("success !");
-        dataReturnList.setData(users);
+        dataReturnList.setData(users.stream().map(userMapper::userToUserDto).collect(Collectors.toList()));
         return dataReturnList;
     }
     // update role for user
     @PutMapping("/users/role/{uid}/{rid}")
-    public DataReturnOne<User> updateUserRole(@PathVariable long uid, @PathVariable long rid){
-        DataReturnOne<User> dataReturnOne=new DataReturnOne<>();
+    public DataReturnOne<UserDto> updateUserRole(@PathVariable long uid, @PathVariable long rid){
+        DataReturnOne<UserDto> dataReturnOne=new DataReturnOne<>();
         dataReturnOne.setMessage("success");
         dataReturnOne.setSuccess("true");
-        dataReturnOne.setData(userService.updateRoleForUser(uid,rid));
+        dataReturnOne.setData(userMapper.userToUserDto(userService.updateRoleForUser(uid,rid)));
         return dataReturnOne;
     }
 

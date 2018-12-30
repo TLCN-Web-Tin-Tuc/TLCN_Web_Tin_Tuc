@@ -254,15 +254,15 @@
                 <table class="table table-striped table-bordered table-hover" id="sample_1">
                   <thead>
                     <tr>
-                      <th *ngFor="let cat of catList"> {{cat.name}}
+                      <th *ngFor="let catt of catListItem"> {{catt.name}}
                       </th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr class="odd gradeX">
-                      <td *ngFor="let cat of catList">
-                        <input type="checkbox" [(ngModel)]="cat.isOfItem" ng-init="checked = cat.isOfItem" class="checkboxes"
-                          value={{cat.id}} (change)="togglecat($event)" />
+                      <td *ngFor="let catt of catListItem">
+                        <input type="checkbox" [(ngModel)]="catt.isOfItem" ng-init="checked = catt.isOfItem" class="checkboxes"
+                          value={{catt.id}} (change)="togglecat($event)" />
                       </td>
                     </tr>
                   </tbody>
