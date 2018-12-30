@@ -160,6 +160,16 @@ public class NonUserController {
         return catOfItemDtoDataReturnList;
     }
 
+    @GetMapping("/get-item-desc")
+    public DataReturnList<ItemDto> getAllItemDesc()
+    {
+        DataReturnList<ItemDto> catOfItemDtoDataReturnList = new DataReturnList<>();
+        catOfItemDtoDataReturnList.setMessage("Lấy dữ liệu thành công");
+        catOfItemDtoDataReturnList.setData(itemService.retrieveItemsDesc().stream().map(itemMapper::listitemTolistItemDto)
+                .collect(Collectors.toList()));
+        return catOfItemDtoDataReturnList;
+    }
+
     @GetMapping("/get-item-desc-like")
     public DataReturnList<ItemDto> getAllItemDescLike()
     {

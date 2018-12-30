@@ -10,5 +10,6 @@ public interface ItemService {
     CrudRepository<Item,Long> getRepo();
     Item retrieveItemsById(long id);
     List<Item> retrieveItemsDescDay();
+    List<Item> retrieveItemsDesc();
     List<Item> retrieveItemsDescLike();
 }

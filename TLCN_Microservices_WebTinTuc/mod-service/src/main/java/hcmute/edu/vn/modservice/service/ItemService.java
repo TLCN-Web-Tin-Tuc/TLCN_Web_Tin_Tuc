@@ -11,7 +11,8 @@ public interface ItemService {
     Item getItemById(long id);
     List<Item> retrieveAllItems();
     Item retrieveItemsById(long id);
-    Item updateItemStatus(long id, String userUpdate);
+    Item updateItemStatusApprove(long id, String userUpdate);
+    Item updateItemStatusCat(long id, String userUpdate);
     Item deleteItemStatus(long id, String userUpdate);
     Item InsertItem(Item items, long catid);
     Cat_Item addCatOnItem(long itemid, long catid);

@@ -227,9 +227,11 @@ public class ModController {
         return dataReturnOne;
     }
 
-    @PostMapping("/items/addCatOnItem/{itemid}/{categoryid}")
-    public DataReturnOne<Cat_Item> addCatOnItem(@PathVariable("itemid") long itemid, @PathVariable("categoryid") long categoryid){
+    @PostMapping("/items/addCatOnItem/{itemid}/{categoryid}/{userUpdate}")
+    public DataReturnOne<Cat_Item> addCatOnItem(@PathVariable("itemid") long itemid, @PathVariable("categoryid") long categoryid,
+    @PathVariable("userUpdate") String userUpdate){
         Cat_Item cat_item = itemService.addCatOnItem(itemid, categoryid);
+        Item item = itemService.updateItemStatusCat(itemid,userUpdate);
         DataReturnOne<Cat_Item> dataReturnOne = new DataReturnOne<>();
         if(cat_item!=null){
             dataReturnOne.setData(null);
@@ -259,7 +261,7 @@ public class ModController {
 
     @GetMapping("/items/update/{id}/{userUpdate}")
     public DataReturnOne<ItemDto> UpdateItems(@PathVariable long id, @PathVariable String userUpdate){
-        Item items1 = itemService.updateItemStatus(id, userUpdate);
+        Item items1 = itemService.updateItemStatusApprove(id, userUpdate);
         DataReturnOne<ItemDto> dataReturnOne = new DataReturnOne<>();
         if(items1!=null){
             dataReturnOne.setData(itemMapper.itemToItemDto(items1));

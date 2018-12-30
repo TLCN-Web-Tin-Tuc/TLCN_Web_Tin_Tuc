@@ -56,8 +56,8 @@ export class ModServiceService {
     return this.http.get(`${this.context}/api/v1/mod/items/delete/${id}/${userUpdate}`);
   }
 
-  addCatOnItem(itemId, catId):Observable<any>{
-    return this.http.post(`${this.context}/api/v1/mod/items/addCatOnItem/${itemId}/${catId}`,"");
+  addCatOnItem(itemId, catId,userUpdate):Observable<any>{
+    return this.http.post(`${this.context}/api/v1/mod/items/addCatOnItem/${itemId}/${catId}/${userUpdate}`,"");
   }
 
   DeleteCatOnItem(itemId, catId):Observable<any>{

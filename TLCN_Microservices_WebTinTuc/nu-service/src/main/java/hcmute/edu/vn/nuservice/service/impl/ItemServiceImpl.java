@@ -36,6 +36,11 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
+    public List<Item> retrieveItemsDesc() {
+        return itemRepository.findAllItemsNewDESC();
+    }
+
+    @Override
     public List<Item> retrieveItemsDescLike() {
         return itemRepository.findAllItemsNewDescLike();
     }

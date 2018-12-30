@@ -71,7 +71,7 @@ export class NewsDetailComponent implements OnInit {
 
             this.item = res.data;            
             this.selectedImg = this.item.image;
-
+            console.log(this.item.status)
             if (this.item.status == 1) {
               this.kichhoat = "Duyệt bài";
             }
@@ -137,7 +137,7 @@ export class NewsDetailComponent implements OnInit {
   checkEmail() {
     this.email = localStorage.getItem("email");
     
-    this.userService.getProfile(this.email)
+     this.userService.getProfile(this.email)
       .pipe(first())
       .subscribe(res => {
         if (res.success == "true") {
@@ -146,30 +146,23 @@ export class NewsDetailComponent implements OnInit {
             if (role.p_update == true && (role.status == 1)) {
               this.isUpdate = true              
             }
-          }         
-        }
-        else {
-          this.error = res.message
-        }
-      }, err => {
-        console.log(err)
-      });
-      this.nuService.getCatItem(this.id)
+          }    
+          this.nuService.getCatItem(this.id)
           .pipe(first())
           .subscribe(res => {
              if (res.success == "true") {
-                this.catOfItem = res.data
-                console.log(this.catOfItem)
+                this.catItem = res.data
+                console.log(this.catItem)
                 console.log(this.rolesofUser)
                 for (let role of this.rolesofUser) {           
-                  for (let cat of this.catOfItem) {           
-                    if (role.catId == cat.id && (role.status == 1) && role.p_approve == true) {
+                  for (let cat of this.catItem) {           
+                    if (role.catId == cat.catId && (role.status == 1) && role.p_approve == true) {
                       this.isApprove = true       
                       console.log(this.isApprove)       
                     }
-                    if (role.catId == cat.id && (role.status == 1) && role.p_delete == true) {
+                    if (role.catId == cat.catId && (role.status == 1) && role.p_delete == true) {
                       this.isModDelete = true    
-                      console.log(this.isModDelete)          
+                      console.log(this.isApprove)          
                     }
                   } 
                 }    
@@ -179,7 +172,15 @@ export class NewsDetailComponent implements OnInit {
              }
            }, err => {
              console.log(err)
-          });
+          });     
+        }
+        else {
+          this.error = res.message
+        }
+      }, err => {
+        console.log(err)
+      });
+     
          
   }
 
@@ -208,8 +209,10 @@ export class NewsDetailComponent implements OnInit {
   }
 
   togglecat(e){
+    this.email = localStorage.getItem("email")
+    console.log(this.email)
     if(e.target.checked == true){
-      this.modService.addCatOnItem(this.id, e.target.value)
+      this.modService.addCatOnItem(this.id, e.target.value,this.email)
       .pipe(first())
       .subscribe(res => {
         if(res.success == "true"){

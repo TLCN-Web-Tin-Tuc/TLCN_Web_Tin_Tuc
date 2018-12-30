@@ -18,6 +18,10 @@ public interface ItemRepository extends JpaRepository<Item,Long> {
     List<Item> findAllItemsNew();
 
     @Query(value = "SELECT p FROM ne_items p\n" +
+            "ORDER BY p.dateUpdated DESC")
+    List<Item> findAllItemsNewDESC();
+
+    @Query(value = "SELECT p FROM ne_items p\n" +
             "WHERE p.status = 1 \n" +
             "ORDER BY p.likes DESC")
     List<Item> findAllItemsNewDescLike();

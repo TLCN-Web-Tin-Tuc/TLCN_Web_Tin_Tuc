@@ -49,7 +49,7 @@ export class CatNewManagementComponent implements OnInit {
   }
   getAllItem(){
     
-    this.nuService.getItemDescDay()
+    this.nuService.getItemDescDayAll()
     .subscribe(res => {
       if(res.success == "true")
       {

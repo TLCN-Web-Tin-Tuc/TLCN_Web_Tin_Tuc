@@ -61,14 +61,27 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public Item updateItemStatus(long id, String userUpdate){
+    public Item updateItemStatusApprove(long id, String userUpdate){
+        Optional<Item> itemOptional = itemRepository.findById(id);
+        if(!itemOptional.isPresent())
+            throw new NotFoundException("Item not found. Could not update status for this item");
+        Item item = itemOptional.get();
+        if(item.getStatus() == 1)
+            item.setStatus(2);
+        else item.setStatus(1);
+        item.setUserUpdated(userUpdate);
+        item.setDateUpdated(new Date());
+        return itemRepository.save(item);
+    }
+
+    @Override
+    public Item updateItemStatusCat(long id, String userUpdate) {
         Optional<Item> itemOptional = itemRepository.findById(id);
         if(!itemOptional.isPresent())
             throw new NotFoundException("Item not found. Could not update status for this item");
         Item item = itemOptional.get();
         if(item.getStatus() == 0)
             item.setStatus(1);
-        else item.setStatus(0);
         item.setUserUpdated(userUpdate);
         item.setDateUpdated(new Date());
         return itemRepository.save(item);
@@ -80,7 +93,7 @@ public class ItemServiceImpl implements ItemService {
         if(!itemOptional.isPresent())
             throw new NotFoundException("Item not found. Could not delete this item");
         Item item = itemOptional.get();
-            item.setStatus(2);
+            item.setStatus(3);
         item.setUserUpdated(userUpdate);
         item.setDateUpdated(new Date());
         return itemRepository.save(item);
@@ -123,7 +136,7 @@ public class ItemServiceImpl implements ItemService {
         Optional<Item> itemsOptional = itemRepository.findById(id);
         if(itemsOptional.isPresent()){
             Item items = itemsOptional.get();
-            items.setStatus(2);
+            items.setStatus(3);
             itemRepository.save(items);
         }
     }
