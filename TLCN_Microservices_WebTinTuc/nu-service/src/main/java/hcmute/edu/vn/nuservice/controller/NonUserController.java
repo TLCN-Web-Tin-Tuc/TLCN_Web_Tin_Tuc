@@ -211,6 +211,26 @@ public class NonUserController {
         return dtrList;
     }
 
+    @GetMapping("/cat/parentcatchecked")
+    public DataReturnList<CatDto> ParentCategoryChecked(){
+        DataReturnList<CatDto> dtrList = new DataReturnList<>();
+        dtrList.setData(catService.retrieveAllParentCatChecked().stream().map(catMapper::catToCatDto)
+                .collect(Collectors.toList()));
+        dtrList.setSuccess("true");
+        dtrList.setMessage("success");
+        return dtrList;
+    }
+
+    @GetMapping("/cat/childcat/{id}")
+    public DataReturnList<CatDto> ParentCategoryChecked(@PathVariable int id){
+        DataReturnList<CatDto> dtrList = new DataReturnList<>();
+        dtrList.setData(catService.retrieveAllChildCatChecked(id).stream().map(catMapper::catToCatDto)
+                .collect(Collectors.toList()));
+        dtrList.setSuccess("true");
+        dtrList.setMessage("success");
+        return dtrList;
+    }
+
     @GetMapping("/itemsbycat")
     public DataReturnList<CatOfItemDto> getAllItemPaging(@RequestParam Optional<Long> id, @RequestParam Optional<Integer> page
             , @RequestParam Optional<Integer> size){

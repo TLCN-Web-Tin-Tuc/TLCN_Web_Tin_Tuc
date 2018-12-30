@@ -26,4 +26,16 @@ public class CatServiceImpl implements CatService {
         return catRepository.findCatByCheckCat(value);
     }
 
+    @Override
+    public List<Cat> retrieveAllParentCatChecked() {
+        int value = 1;
+        return catRepository.findCatByCheckCatAndParentId(value, Long.valueOf(0));
+    }
+
+    @Override
+    public List<Cat> retrieveAllChildCatChecked(int parentid) {
+        int value = 1;
+        return catRepository.findCatByCheckCatAndParentId(value, Long.valueOf(parentid));
+    }
+
 }

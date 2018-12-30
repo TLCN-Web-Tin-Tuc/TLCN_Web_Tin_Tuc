@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface CatRepository extends JpaRepository<Cat,Long> {
     List<Cat> findCatByCheckCat(int id);
+    List<Cat> findCatByCheckCatAndParentId(int id, long paid);
 }
