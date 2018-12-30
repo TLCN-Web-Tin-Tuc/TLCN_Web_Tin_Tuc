@@ -6,6 +6,6 @@ import lombok.Data;
 public class CatDto {
     private Long id;
     private String name;
-    private Long parent_id;
+    private Long parentId;
     private String checkCat;
 }

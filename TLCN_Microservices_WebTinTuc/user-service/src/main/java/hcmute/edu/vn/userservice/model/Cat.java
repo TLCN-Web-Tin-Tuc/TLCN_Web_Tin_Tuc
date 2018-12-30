@@ -19,7 +19,7 @@ public class Cat {
 
     private String name;
 
-    private Long parent_id;
+    private Long parentId;
 
     private int checkCat;
 
