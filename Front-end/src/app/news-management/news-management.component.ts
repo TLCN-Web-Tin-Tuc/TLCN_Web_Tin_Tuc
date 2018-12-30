@@ -35,54 +35,25 @@ export class NewsManagementComponent implements OnInit {
     catId : number
     pass : string
     error : string
+    isAdmin : boolean = false
 
   constructor(private router : Router,private modService: ModServiceService, private chRef: ChangeDetectorRef,
     private userService : UserService, private nuService : NuServiceService) { }
 
   ngOnInit(){
    
-    this.getListItem()
+    this.checkEmail()
   }
 
   async getListItem(){
     await  this.getCatOfUser()
-    await this.checkEmail()        
+          
   }
-  getCatOfUser(){
-    this.email = localStorage.getItem("email")
-    this.modService.getAllCatofUser(this.email)
-    .subscribe(res => {
-      if(res.success == "true")
-      {
-        
-        this.cats = res.data;
-        this.catId = this.cats[0].id
-        
-      }
-      this.select = this.catId
-      this.modService.getItemByCatId(this.catId)
-    .subscribe(res => {
-      if(res.success == "true")
-      {
-        
-        this.catItems = res.data;
-        
-      }
-
-      // You'll have to wait that changeDetection occurs and projects data into 
-      // the HTML template, you can ask Angular to that for you ;-)
-      this.chRef.detectChanges();
-
-      // Now you can use jQuery DataTables :
-      const table: any = $('table');
-      this.dataTable = table.DataTable();
-       }, err => {
-        console.log(err.message)
-    });
-      
-       }, err => {
-        console.log(err.message)
-    });
+  async getCatOfUser(){
+    await this.checkEmail() 
+    console.log(this.isAdmin)
+   
+   
   }
   onGotoItemDetail(id) {
 
@@ -98,10 +69,11 @@ export class NewsManagementComponent implements OnInit {
       if(res.success == "true")
       {
 
-
+      
         $('table').dataTable().fnDestroy();
         
         this.catItems = res.data;
+       
         
       }
       this.chRef.detectChanges();
@@ -109,7 +81,8 @@ export class NewsManagementComponent implements OnInit {
       this.dataTable = table.DataTable();
   
        }, err => {
-        console.log(err.message)
+        console.log("err.message")
+        $('table').dataTable().fnClearTable();
     });
   }
 
@@ -127,24 +100,105 @@ export class NewsManagementComponent implements OnInit {
     .subscribe(res => {
       if(res.success == "true")
       {                     
-        this.rolesofUser = res.data
+        this.rolesofUser = res.data.roles
         console.log(this.rolesofUser)
         for(let role of this.rolesofUser)
         {
-          if(role.p_delete == true || role.p_update == true || role.p_approve == true || role.p_admin == true)
+          if(role.p_admin == true && role.status == 1){
+            this.isAdmin = true           
+          }
+          if(role.p_delete == true || role.p_approve == true )
           {
             if(role.status == 1){
-              this.isMod = true;
-              return
+              this.isMod = true;             
             }
             
           }           
         }
-        if(this.isMod == false){
-          //alert("Bạn không được truy cập vào trang này")
-          // this.router.navigate(["/"])
-          //window.location.href = "/"; 
-        } 
+        if(this.isAdmin == false && this.isMod == false){
+         
+            alert("Bạn không được truy cập vào trang này")
+            // this.router.navigate(["/"])
+            window.location.href = "/"; 
+         
+        }else{
+
+          if(this.isAdmin == true){ 
+            this.modService.getAllCat()
+            .subscribe(res => {
+              if(res.success == "true")
+              {
+                
+                this.cats = res.data;
+                this.catId = this.cats[0].id
+                
+              }
+              this.select = this.catId
+              this.modService.getItemByCatId(this.catId)
+            .subscribe(res => {
+              if(res.success == "true")
+              {
+                
+                this.catItems = res.data;
+                
+              }
+        
+              // You'll have to wait that changeDetection occurs and projects data into 
+              // the HTML template, you can ask Angular to that for you ;-)
+              this.chRef.detectChanges();
+        
+              // Now you can use jQuery DataTables :
+              const table: any = $('table');
+              this.dataTable = table.DataTable();
+               }, err => {
+                console.log(err.message)
+            });
+              
+               }, err => {
+                console.log(err.message)
+            });
+      
+          } else{
+            this.email = localStorage.getItem("email")
+            this.modService.getAllCatofUser(this.email)
+            .subscribe(res => {
+              if(res.success == "true")
+              {
+                
+                this.cats = res.data;
+                this.catId = this.cats[0].id
+                
+              }
+              this.select = this.catId
+              this.modService.getItemByCatId(this.catId)
+            .subscribe(res => {
+              if(res.success == "true")
+              {
+                
+                this.catItems = res.data;
+                
+              }
+        
+              // You'll have to wait that changeDetection occurs and projects data into 
+              // the HTML template, you can ask Angular to that for you ;-)
+              this.chRef.detectChanges();
+        
+              // Now you can use jQuery DataTables :
+              const table: any = $('table');
+              this.dataTable = table.DataTable();
+               }, err => {
+                console.log(err.message)
+            });
+              
+               }, err => {
+                console.log(err.message)
+            });
+          }
+
+
+        }
+
+       
       }
       else
       {
