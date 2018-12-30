@@ -8,4 +8,5 @@ public interface ItemAccessService {
     CrudRepository<ItemAccess,Long> getRepo();
     ItemAccess userLike(long itemid, String email);
     void userDisLike(long itemid, String email);
+    ItemAccess findUserAndItem(long itemid, String email);
 }

@@ -134,7 +134,7 @@
                         <div class="media-body">
                           <div class="col-sm-10 text-right pull-right">
                             <ul class="list-inline">
-                              <li class="pr-1"><a href="#" class=""><span class="fa fa-eye"></span> Views <span class="badge badge-pill badge-info float-right"
+                              <li class="pr-1"><a class=""><span class="fa fa-eye"></span> Views <span class="badge badge-pill badge-info float-right"
                                     text="">{{item.views}}</span></a></li>
                               <li class="pr-1"><a href="#" class=""><span class="fa fa-thumbs-up"></span> Likes <span
                                     class="badge badge-pill badge-info float-right" text="">{{item.likes}}</span></a></li>
@@ -156,9 +156,17 @@
 
                     <div class="col-lg-3">
                       <div class="row">
-                        <div class="col-lg-6">
-                          <a href="#" class="btn btn-outline-info text-uppercase" style="width: 100%; margin-bottom: 20px;">
-                            <span class="fa fa-thumbs-up"></span> Like</a>
+                        <div class="col-lg-6" *ngIf="noneUser != true">
+                          <ng-container *ngIf="isLike == false; else disLike">
+                              <a (click)="likeItem()" class="btn btn-outline-info text-uppercase" style="width: 100%; margin-bottom: 20px;">
+                                  <span class="fa fa-thumbs-up"></span>Thích</a>
+                          </ng-container>
+                          <ng-template #disLike>
+                              <a (click)="disLikeItem()" class="btn btn-outline-info text-uppercase" style="width: 100%; margin-bottom: 20px;">
+                                  <span class="fa fa-thumbs-down"></span>Bỏ thích</a>
+                          </ng-template>
+                          
+                         
                         </div>
                         <!-- <div class="col-lg-6">
                           <a href="#" class="btn btn-outline-info text-uppercase" style="width: 100%; margin-bottom: 20px;">

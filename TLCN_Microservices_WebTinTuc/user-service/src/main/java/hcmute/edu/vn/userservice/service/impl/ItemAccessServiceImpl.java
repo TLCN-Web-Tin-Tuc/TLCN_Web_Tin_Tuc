@@ -56,4 +56,18 @@ public class ItemAccessServiceImpl implements ItemAccessService {
         itemAccessRepository.delete(item_access);
     }
 
+    @Override
+    public ItemAccess findUserAndItem(long itemid, String email) {
+        Optional<User> user = userRepository.findByEmail(email);
+        if(!user.isPresent())
+            throw new NotFoundException("User Not Found!!!");
+        Optional<Item> items = itemRepository.findById(itemid);
+        if(!items.isPresent())
+            throw new NotFoundException("Item Not Found!!!");
+        Optional<ItemAccess>  item_access = itemAccessRepository.findByItemAndUser(items.get(),user.get());
+        if(!item_access.isPresent())
+            throw new NotFoundException("Item Not Found!!!");
+        return item_access.get();
+    }
+
 }

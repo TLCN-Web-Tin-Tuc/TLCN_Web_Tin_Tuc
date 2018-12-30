@@ -26,4 +26,17 @@ export class UserService {
   changeAvatar(user: User): Observable<any>{
     return this.http.post(`${this.context}/api/v1/user/doiavatar`, user);
   }
+  checkLikeItem(itemId,email): Observable<any>{
+    return this.http.get(`${this.context}/api/v1/user/items/checklike/${itemId}/${email}`);
+  }
+
+  likeItem(itemId,email): Observable<any>{
+    return this.http.post(`${this.context}/api/v1/user/items/like/${itemId}/${email}`,"");
+  }
+
+  disLikeItem(itemId,email): Observable<any>{
+    return this.http.post(`${this.context}/api/v1/user/items/dislike/${itemId}/${email}`,"");
+  }
+
+ 
 }

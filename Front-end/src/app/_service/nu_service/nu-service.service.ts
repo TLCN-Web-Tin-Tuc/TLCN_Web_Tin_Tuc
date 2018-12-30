@@ -57,4 +57,8 @@ export class NuServiceService {
   getChildCat(id: number) :Observable<any>{
     return this.http.get(`${this.context}/api/v1/nuser/cat/childcat/${id}`);
   }
+
+  updateViewItem(itemId): Observable<any>{
+    return this.http.get(`${this.context}/api/v1/nuser/item/updateview/${itemId}`);
+  }
 }

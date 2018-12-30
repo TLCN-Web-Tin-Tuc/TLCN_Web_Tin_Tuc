@@ -12,4 +12,5 @@ public interface ItemService {
     List<Item> retrieveItemsDescDay();
     List<Item> retrieveItemsDesc();
     List<Item> retrieveItemsDescLike();
+    Item updateView(long id);
 }

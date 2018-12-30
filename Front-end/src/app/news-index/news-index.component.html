@@ -94,8 +94,8 @@
                             <h2><a (click)="onGotoNewDetail(itemLast1.id)">{{itemLast1.title}}</a></h2>
                             <p>{{itemLast1.shortDesc}}</p>
                             <footer>
-                              <a href="#" class="love"><i class="ion-android-favorite-outline"></i>
-                                <div>1263</div>
+                              <a  class="love"><i class="ion-android-favorite-outline"></i>
+                                <div>{{itemLast1.likes}}</div>
                               </a>
                               <a class="btn btn-primary more" href="/newsdetail/{{itemLast1.id}}">
                                 <div>More</div>
@@ -119,8 +119,8 @@
                             <h2><a href="/newsdetail/{{itemLast2.id}}">{{itemLast2.title}}</a></h2>
                             <p>{{itemLast2.shortDesc}}</p>
                             <footer>
-                              <a href="#" class="love"><i class="ion-android-favorite-outline"></i>
-                                <div>327</div>
+                              <a  class="love"><i class="ion-android-favorite-outline"></i>
+                                <div>{{itemLast2.likes}}</div>
                               </a>
                               <a class="btn btn-primary more" href="/newsdetail/{{itemLast2.id}}">
                                 <div>More</div>
@@ -149,8 +149,8 @@
                             <h2><a href="/newsdetail/{{itemLast3.id}}">{{itemLast3.title}}</a></h2>
                             <p>{{itemLast3.shortDesc}}</p>
                             <footer>
-                              <a href="#" class="love"><i class="ion-android-favorite-outline"></i>
-                                <div>1083</div>
+                              <a class="love"><i class="ion-android-favorite-outline"></i>
+                                <div>{{itemLast3.likes}}</div>
                               </a>
                               <a class="btn btn-primary more" href="/newsdetail/{{itemLast3.id}}">
                                 <div>More</div>
@@ -175,8 +175,8 @@
                             <h2><a href="/newsdetail/{{itemLast4.id}}">{{itemLast4.title}}</a></h2>
                             <p>{{itemLast4.shortDesc}}</p>
                             <footer>
-                              <a href="#" class="love"><i class="ion-android-favorite-outline"></i>
-                                <div>980</div>
+                              <a class="love"><i class="ion-android-favorite-outline"></i>
+                                <div>{{itemLast4.likes}}</div>
                               </a>
                               <a class="btn btn-primary more" href="/newsdetail/{{itemLast4.id}}">
                                 <div>More</div>
@@ -336,10 +336,10 @@
                         <div class="detail">                          
                             <div class="time">{{itemLast1.dateUpdated | date : "dd/MM/yyyy"}}</div> 
                         </div>
-                        <h1><a (click)="onGotoNewDetail(itemLast1.id)">{{itemLast1.title}}</a></h1>
+                        <h1><a href="/newsdetail/{{itemLast1.id}}">{{itemLast1.title}}</a></h1>
                         <p>{{itemLast1.shortDesc}}</p>
                         <footer>
-                          <a href="#" class="love"><i class="ion-android-favorite-outline"></i>
+                          <a  class="love"><i class="ion-android-favorite-outline"></i>
                             <div>{{itemLast1.likes}}</div>
                           </a>
                           <a class="btn btn-primary more" href="/newsdetail/{{itemLast1.id}}">
@@ -364,7 +364,7 @@
                           <h1><a (click)="onGotoNewDetail(itemLast2.id)">{{itemLast2.title}}</a></h1>
                           <p>{{itemLast2.shortDesc}}</p>
                           <footer>
-                            <a href="#" class="love"><i class="ion-android-favorite-outline"></i>
+                            <a  class="love"><i class="ion-android-favorite-outline"></i>
                               <div>{{itemLast2.likes}}</div>
                             </a>
                             <a class="btn btn-primary more" href="/newsdetail/{{itemLast2.id}}">
@@ -389,7 +389,7 @@
                             <h1><a (click)="onGotoNewDetail(itemLast3.id)">{{itemLast3.title}}</a></h1>
                             <p>{{itemLast3.shortDesc}}</p>
                             <footer>
-                              <a href="#" class="love"><i class="ion-android-favorite-outline"></i>
+                              <a class="love"><i class="ion-android-favorite-outline"></i>
                                 <div>{{itemLast3.likes}}</div>
                               </a>
                               <a class="btn btn-primary more" href="/newsdetail/{{itemLast3.id}}">
@@ -414,7 +414,7 @@
                               <h1><a (click)="onGotoNewDetail(itemLast4.id)">{{itemLast4.title}}</a></h1>
                               <p>{{itemLast4.shortDesc}}</p>
                               <footer>
-                                <a href="#" class="love"><i class="ion-android-favorite-outline"></i>
+                                <a class="love"><i class="ion-android-favorite-outline"></i>
                                   <div>{{itemLast4.likes}}</div>
                                 </a>
                                 <a class="btn btn-primary more" href="/newsdetail/{{itemLast4.id}}">

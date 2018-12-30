@@ -12,10 +12,7 @@ import hcmute.edu.vn.nuservice.api.v1.mapper.CatOfItemMapper;
 import hcmute.edu.vn.nuservice.api.v1.mapper.ItemMapper;
 import hcmute.edu.vn.nuservice.api.v1.mapper.UserMapper;
 import hcmute.edu.vn.nuservice.exception.NotFoundException;
-import hcmute.edu.vn.nuservice.model.Cat;
-import hcmute.edu.vn.nuservice.model.Cat_Item;
-import hcmute.edu.vn.nuservice.model.Report;
-import hcmute.edu.vn.nuservice.model.User;
+import hcmute.edu.vn.nuservice.model.*;
 import hcmute.edu.vn.nuservice.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -142,6 +139,23 @@ public class NonUserController {
 
         }
         return dataReturnList;
+    }
+
+    @GetMapping("/item/updateview/{itemid}")
+    public DataReturnOne<Item> updateViewItem(@PathVariable Long itemid)
+    {
+        DataReturnOne<Item> dataReturnOne = new DataReturnOne<>();
+        Item item = itemService.updateView(itemid);
+        if(item!=null){
+            dataReturnOne.setData(null);
+            dataReturnOne.setMessage("Update view success");
+            dataReturnOne.setSuccess("true");
+        } else{
+            dataReturnOne.setData(null);
+            dataReturnOne.setMessage("Update view fail");
+            dataReturnOne.setSuccess("false");
+        }
+        return dataReturnOne;
     }
 
     @GetMapping("/get-all-cat")

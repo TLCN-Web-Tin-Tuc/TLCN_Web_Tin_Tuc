@@ -48,6 +48,8 @@ public class UserController {
         return dataReturnOne;
     }
 
+
+
     @PostMapping("/items/like/{itemid}/{email}")
     public DataReturnOne<Item> LikeItem(@PathVariable("itemid") long itemid,@PathVariable("email") String email){
 
@@ -64,6 +66,35 @@ public class UserController {
         }
         return dataReturnOne;
     }
+
+
+    @GetMapping("/items/checklike/{itemid}/{email}")
+    public DataReturnOne<ItemAccess> checkLike(@PathVariable("itemid") long itemid,@PathVariable("email") String email){
+        DataReturnOne<ItemAccess> dataReturnOne = new DataReturnOne<>();
+        try{
+            ItemAccess itemAccess = itemAccessService.findUserAndItem(itemid,email);
+
+
+
+            if(itemAccess!=null && itemAccess.getAction() == 1){
+
+                dataReturnOne.setMessage(" Item  is Like ");
+                dataReturnOne.setSuccess("true");
+                dataReturnOne.setData(null);
+            }else{
+                dataReturnOne.setSuccess("false");
+                dataReturnOne.setData(null);
+                dataReturnOne.setMessage("Item  isn't Like");
+            }
+        }catch (NotFoundException e){
+            dataReturnOne.setSuccess("false");
+            dataReturnOne.setData(null);
+            dataReturnOne.setMessage("Item  isn't Like");
+        }
+
+        return dataReturnOne;
+    }
+
 
     @PostMapping("/items/dislike/{itemid}/{email}")
     public DataReturnOne<Item> DisLikeItem(@PathVariable("itemid") long itemid,@PathVariable("email") String email){

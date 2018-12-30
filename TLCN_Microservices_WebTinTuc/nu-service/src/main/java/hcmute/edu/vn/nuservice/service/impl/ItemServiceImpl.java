@@ -45,5 +45,15 @@ public class ItemServiceImpl implements ItemService {
         return itemRepository.findAllItemsNewDescLike();
     }
 
+    @Override
+    public Item updateView(long id) {
+        Optional<Item> itemOptional = itemRepository.findById(id);
+        if(!itemOptional.isPresent())
+            throw new NotFoundException("Item not found.");
+        Item item = itemOptional.get();
+        item.setViews(item.getViews() + 1);
+        return itemRepository.save(item);
+    }
+
 
 }

@@ -35,6 +35,7 @@ export class NewsDetailComponent implements OnInit {
   mod: string = "false"
   kichhoat: string
   isChecked: boolean = false;
+  isLike : boolean = false;
   role: Role;
   rolesofUser: Role[];
   isMod: boolean = false;
@@ -52,6 +53,7 @@ export class NewsDetailComponent implements OnInit {
   catListItem: Cat[];
   dataTable: any;
   catItem : CatItem[]
+  noneUser : boolean = false;
 
   constructor(private modService: ModServiceService, private activatedRoute: ActivatedRoute,
      private route: Router, private userService: UserService, private chRef: ChangeDetectorRef, private nuService : NuServiceService) {
@@ -65,9 +67,36 @@ export class NewsDetailComponent implements OnInit {
     this.retrieveItemById(this.id);
     this.loadItemChinh();
   }
-
-  loadItemChinh(){
-    this.nuService.getItemDescDay()
+  checkLike(id){
+    this.email = localStorage.getItem("email");
+    if(this.email == null){
+      this.noneUser = true
+    }else{
+      this.userService.checkLikeItem(id,this.email)
+      .pipe(first())
+      .subscribe(res => {
+        if (res.success == "true") {
+          this.isLike = true
+        }
+       
+      }, err => {
+        console.log(err)
+      })
+    }
+    this.nuService.updateViewItem(id)
+    .pipe(first())
+    .subscribe(res => {
+      if (res.success == "true") {
+        console.log("Update view thành công")
+      }
+     
+    }, err => {
+      console.log(err)
+    })
+   
+  }
+ loadItemChinh(){  
+  this.nuService.getItemDescDay()
       .pipe(first())
       .subscribe(res => {
         if (res.success == "true") {
@@ -88,10 +117,43 @@ export class NewsDetailComponent implements OnInit {
 
   }
 
+  likeItem(){
+    this.userService.likeItem(this.id, this.email)
+      .pipe(first())
+      .subscribe(res => {
+        if (res.success == "true") {
+         console.log("Like Item thành công")
+         this.isLike = true
+         this.item.likes = this.item.likes + 1
+        }
+        else {
+          console.log("Like Item thất bại")
+        }
+      }, err => {
+        console.log(err)
+      })
 
+  }
+  disLikeItem(){
+    this.userService.disLikeItem(this.id, this.email)
+    .pipe(first())
+    .subscribe(res => {
+      if (res.success == "true") {
+       console.log("DisLike Item thành công")
+       this.isLike = false
+       this.item.likes = this.item.likes - 1
+      }
+      else {
+        console.log("DisLike Item thất bại")
+      }
+    }, err => {
+      console.log(err)
+    })
 
-  retrieveItemById(id) {
-   
+  }
+
+  async retrieveItemById(id) {
+    await this.checkLike(id)
     if (this.id) {
        this.checkEmail();
       this.modService.findItemById(this.id)
