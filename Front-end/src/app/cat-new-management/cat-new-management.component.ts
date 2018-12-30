@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 
 
@@ -13,14 +12,14 @@ import { first } from 'rxjs/operators';
 import { UserService } from '../_service/user_service/user.service';
 import { NuServiceService } from '../_service/nu_service/nu-service.service';
 import { Cat } from '../_entity/cat';
-import { CatItem } from '../_entity/catitem';
+import { CatItem } from '../_entity/catitem'
 
 @Component({
-  selector: 'app-news-management',
-  templateUrl: './news-management.component.html',
-  styleUrls: ['./news-management.component.css']
+  selector: 'app-cat-new-management',
+  templateUrl: './cat-new-management.component.html',
+  styleUrls: ['./cat-new-management.component.css']
 })
-export class NewsManagementComponent implements OnInit {
+export class CatNewManagementComponent implements OnInit {
 
     // Our array of clients
     items: Item[];

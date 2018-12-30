@@ -18,6 +18,7 @@ import { RoleEditComponent } from './role-edit/role-edit.component';
 import { CatCreateComponent } from './cat-create/cat-create.component';
 import { CatManagementComponent } from './cat-management/cat-management.component';
 import { NewsCategoryComponent } from './news-category/news-category.component';
+import { CatNewManagementComponent } from './cat-new-management/cat-new-management.component';
 
 const routes: Routes = [
   { path: 'test', component: FramesComponent },
@@ -37,7 +38,8 @@ const routes: Routes = [
   { path: 'rolesmanagement', component: RoleManagementComponent },
   { path: 'catcreate', component: CatCreateComponent },
   { path: 'catmanagement', component: CatManagementComponent },
-  { path: 'editrole/:id', component: RoleEditComponent }
+  { path: 'editrole/:id', component: RoleEditComponent },
+  { path: 'catnewmanagement', component: CatNewManagementComponent }
 ];
 
 @NgModule({
