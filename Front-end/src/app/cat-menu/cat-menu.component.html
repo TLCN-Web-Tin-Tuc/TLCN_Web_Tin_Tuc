@@ -43,7 +43,7 @@
       <div *ngFor="let cat of catList">
         <li class="dropdown nav-item"><a class="dropdown nav-link" href="/newscategory/{{cat.id}}">
             <span>{{cat.name}}</span></a>
-            <ul *ngIf="cat.childCat.length != 0" class="dropdown-menu"> 
+            <ul *ngIf="cat.isNullChildCat != 0" class="dropdown-menu"> 
               <div *ngFor="let c of cat.childCat"> 
                   <li data-menu=""><a class="dropdown-item" href="/newscategory/{{c.id}}" data-toggle="dropdown">{{c.name}}</a>
                   </li>

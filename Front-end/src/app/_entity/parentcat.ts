@@ -4,4 +4,5 @@ export class parentCat {
     id: number
     name: string
     childCat: Cat[];
+    isNullChildCat: number;
 }
