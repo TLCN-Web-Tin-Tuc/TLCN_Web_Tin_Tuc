@@ -8,4 +8,6 @@ import java.util.List;
 public interface CatService {
     CrudRepository<Cat,Long> getRepo();
     List<Cat> retrieveAllCatChecked();
+    List<Cat> retrieveAllParentCatChecked();
+    List<Cat> retrieveAllChildCatChecked(int parentid);
 }
