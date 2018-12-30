@@ -24,6 +24,7 @@ export class CatMenuComponent implements OnInit {
   isAdmin: boolean = false
   isMod: boolean = false
   isCreate: boolean = false
+  isUpdate : boolean = false
   roles: Role[]
   constructor(private router: Router, private modService: ModServiceService, private userService: UserService, private nuService: NuServiceService) {
     this.user = new User()
@@ -39,19 +40,28 @@ export class CatMenuComponent implements OnInit {
           this.user = res.data;
           this.roles = this.user.roles
           for (let role of this.roles) {
-            if (role.rname == "ROLE_ADMIN" && role.status == 1) {
+            if (role.p_admin == true && role.status == 1) {
               this.isAdmin = true;
+              this.isMod = true;
+              this.isCreate = true;
+              this.isUpdate = true;
             }
-            if (role.p_delete == true || role.p_update == true || role.p_approve == true) {
+            if (role.p_delete == true || role.p_approve == true) {
               if (role.status == 1) {
                 this.isMod = true;
+              }
+
+            }
+            if (role.p_update == true) {
+              if (role.status == 1) {
+                this.isUpdate = true;
               }
 
             }
             if (role.p_create == true && role.status == 1) {
               this.isCreate = true;
             }
-            if (this.isAdmin == true || this.isMod == true || this.isCreate == true) {
+            if (this.isAdmin == true || this.isMod == true || this.isCreate == true || this.isUpdate == true) {
               this.isDashboard = true;
             }
           }

@@ -29,11 +29,16 @@
                   lý tin tức</a>
               </li>
             </div>
+            <div *ngIf="isUpdate == true">
+                <li data-menu=""><a class="dropdown-item" href="/catnewmanagement" data-toggle="dropdown">Phân loại
+                tin tức</a>
+                </li>
+              </div>
             <div *ngIf="isCreate == true">
               <li data-menu=""><a class="dropdown-item" href="/newstyping" data-toggle="dropdown">Tạo
                   tin tức</a>
               </li>
-            </div>
+            </div>            
           </ul>
         </li>
       </div>

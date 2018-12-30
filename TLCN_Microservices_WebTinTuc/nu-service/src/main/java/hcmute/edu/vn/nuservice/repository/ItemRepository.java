@@ -13,7 +13,7 @@ public interface ItemRepository extends JpaRepository<Item,Long> {
     Optional<Item> findById(long id);
 
     @Query(value = "SELECT p FROM ne_items p\n" +
-            "WHERE p.status = 1 \n" +
+            "WHERE p.status = 2 \n" +
             "ORDER BY p.dateUpdated DESC")
     List<Item> findAllItemsNew();
 
@@ -22,7 +22,7 @@ public interface ItemRepository extends JpaRepository<Item,Long> {
     List<Item> findAllItemsNewDESC();
 
     @Query(value = "SELECT p FROM ne_items p\n" +
-            "WHERE p.status = 1 \n" +
+            "WHERE p.status = 2 \n" +
             "ORDER BY p.likes DESC")
     List<Item> findAllItemsNewDescLike();
 

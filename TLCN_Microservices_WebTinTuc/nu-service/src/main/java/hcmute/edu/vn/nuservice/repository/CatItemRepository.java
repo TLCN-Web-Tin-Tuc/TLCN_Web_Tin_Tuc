@@ -16,17 +16,17 @@ public interface CatItemRepository extends JpaRepository<Cat_Item,Long> {
     List<Cat_Item> findCat_ItemById_Item_Id(Long id);
 
     @Query("SELECT p FROM ne_cat_item p  " +
-            "WHERE p.id.cat.id = :catid AND p.id.item.status = 1 " +
+            "WHERE p.id.cat.id = :catid AND p.id.item.status = 2 " +
             "ORDER BY p.id.item.dateUpdated DESC")
     List<Cat_Item> findItemByCatId(@Param("catid") Long catid);
 
     @Query("SELECT p FROM ne_cat_item p  " +
-            "WHERE p.id.cat.id = :catid AND p.id.item.status = 1 " +
+            "WHERE p.id.cat.id = :catid AND p.id.item.status = 2 " +
             "ORDER BY p.id.item.dateUpdated DESC")
     Page<Cat_Item> findItemByCatIddddd(@Param("catid") Long catid, Pageable pageable);
 
     @Query("SELECT p FROM ne_cat_item p  " +
-            "WHERE  p.id.item.status = 1 " +
+            "WHERE  p.id.item.status = 2 " +
             "ORDER BY p.id.item.dateUpdated DESC")
     List<Cat_Item> findItemDescDay();
 }

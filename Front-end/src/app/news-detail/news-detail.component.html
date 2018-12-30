@@ -17,27 +17,25 @@
                       <figcaption>Advertisement</figcaption>
                     </figure>
                   </div>
-                </aside>
+                </aside>                
+               
               </div>
               <aside>
-                <h1 class="aside-title">Recent Post</h1>
+                <h1 class="aside-title">Tin thường xem</h1>
                 <div class="aside-body">
                   <article class="article-fw">
                     <div class="inner">
-                      <figure>
-                        <a href="">
-                          <img src="/assets/magz-master/images/news/img16.jpg">
-                        </a>
-                      </figure>
+                        <figure>
+                            <a href="/newsdetail/{{itemLast1.id}}">
+                              <img [src]="itemLast1.image" alt="Sample Article">
+                            </a>
+                          </figure>
+                     
                       <div class="details">
-                        <h1><a href="">Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit</a></h1>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                          tempor incididunt ut labore et dolore magna aliqua.
-                        </p>
+                        <h1><a  href="/newsdetail/{{itemLast1.id}}">{{itemLast1.title}}</a></h1>
+                        <p>{{itemLast1.shortDesc}}</p>
                         <div class="detail">
-                          <div class="time">December 26, 2016</div>
-                          <div class="category"><a href="">Lifestyle</a></div>
+                            <div class="time">{{itemLast1.dateUpdated | date : "dd/MM/yyyy"}}</div> 
                         </div>
                       </div>
                     </div>
@@ -45,55 +43,54 @@
                   <div class="line"></div>
                   <article class="article-mini">
                     <div class="inner">
-                      <figure>
-                        <a href="">
-                          <img src="/assets/magz-master/images/news/img05.jpg">
-                        </a>
-                      </figure>
+                        <figure>
+                            <a href="/newsdetail/{{itemLast2.id}}">
+                              <img [src]="itemLast2.image" alt="Sample Article">
+                            </a>
+                          </figure>
                       <div class="padding">
-                        <h1><a href="">Duis aute irure dolor in reprehenderit in voluptate velit</a></h1>
-                        <div class="detail">
-                          <div class="category"><a href="">Lifestyle</a></div>
-                          <div class="time">December 22, 2016</div>
+                        <h1><a href="/newsdetail/{{itemLast2.id}}">{{itemLast2.title}}</a></h1>
+                        <div class="detail">                          
+                          <div class="time">{{itemLast2.dateUpdated | date : "dd/MM/yyyy"}}</div>
                         </div>
                       </div>
                     </div>
                   </article>
                   <article class="article-mini">
                     <div class="inner">
-                      <figure>
-                        <a href="">
-                          <img src="/assets/magz-master/images/news/img02.jpg">
-                        </a>
-                      </figure>
+                     
+                          <figure>
+                              <a href="/newsdetail/{{itemLast3.id}}">
+                                <img [src]="itemLast3.image" alt="Sample Article">
+                              </a>
+                            </figure>
+                      
                       <div class="padding">
-                        <h1><a href="">Fusce ullamcorper elit at felis cursus suscipit</a></h1>
+                        <h1><a href="/newsdetail/{{itemLast3.id}}">{{itemLast3.title}}</a></h1>
                         <div class="detail">
-                          <div class="category"><a href="">Travel</a></div>
-                          <div class="time">December 21, 2016</div>
+                            <div class="time">{{itemLast3.dateUpdated | date : "dd/MM/yyyy"}}</div> 
                         </div>
                       </div>
                     </div>
                   </article>
                   <article class="article-mini">
                     <div class="inner">
-                      <figure>
-                        <a href="">
-                          <img src="/assets/magz-master/images/news/img13.jpg">
-                        </a>
-                      </figure>
+                        <figure>
+                            <a href="/newsdetail/{{itemLast4.id}}">
+                              <img [src]="itemLast4.image" alt="Sample Article">
+                            </a>
+                          </figure>
                       <div class="padding">
-                        <h1><a href="">Duis aute irure dolor in reprehenderit in voluptate velit</a></h1>
+                        <h1><a href="/newsdetail/{{itemLast4.id}}">{{itemLast4.title}}</a></h1>
                         <div class="detail">
-                          <div class="category"><a href="category.html">International</a></div>
-                          <div class="time">December 20, 2016</div>
+                            <div class="time">{{itemLast4.dateUpdated | date : "dd/MM/yyyy"}}</div>
                         </div>
                       </div>
                     </div>
                   </article>
                 </div>
               </aside>
-              <aside>
+              <!-- <aside>
                 <div class="aside-body">
                   <form class="newsletter">
                     <div class="icon">
@@ -109,7 +106,7 @@
                     <p>By subscribing you will receive new articles in your email.</p>
                   </form>
                 </div>
-              </aside>
+              </aside> -->
             </div>
           </div>
           <div class="col-md-9">
@@ -141,8 +138,8 @@
                                     text="">{{item.views}}</span></a></li>
                               <li class="pr-1"><a href="#" class=""><span class="fa fa-thumbs-up"></span> Likes <span
                                     class="badge badge-pill badge-info float-right" text="">{{item.likes}}</span></a></li>
-                              <li class="pr-1"><a href="#" class=""><span class="far fa-comment-dots"></span> Comments
-                                  <span class="badge badge-pill badge-info float-right" text="">{{item.comment}}</span></a></li>
+                              <!-- <li class="pr-1"><a href="#" class=""><span class="far fa-comment-dots"></span> Comments
+                                  <span class="badge badge-pill badge-info float-right" text="">{{item.comment}}</span></a></li> -->
                             </ul>
                            
                           </div>
@@ -163,13 +160,13 @@
                           <a href="#" class="btn btn-outline-info text-uppercase" style="width: 100%; margin-bottom: 20px;">
                             <span class="fa fa-thumbs-up"></span> Like</a>
                         </div>
-                        <div class="col-lg-6">
+                        <!-- <div class="col-lg-6">
                           <a href="#" class="btn btn-outline-info text-uppercase" style="width: 100%; margin-bottom: 20px;">
                             <span class="ft-share"></span> Share</a>
-                        </div>
+                        </div> -->
                       </div>
                     </div>
-                    <div class="card-footer px-0 py-0">
+                    <!-- <div class="card-footer px-0 py-0">
                       <div class="card-body">
                         <div class="media">
                           <div class="media-left mr-1">
@@ -214,7 +211,7 @@
                           </div>
                         </fieldset>
                       </div>
-                    </div>
+                    </div> -->
                   </div>
                 </section>
               </div>

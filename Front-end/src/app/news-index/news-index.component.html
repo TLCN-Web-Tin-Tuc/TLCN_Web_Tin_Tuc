@@ -75,7 +75,7 @@
                   <div class="owl-dots disabled"></div>
                 </div>
                 <div class="line">
-                  <div>Latest News</div>
+                  <div>Tin tuần trước</div>
                 </div>
                 <div class="row">
                   <div class="col-md-6 col-sm-6 col-xs-12">
@@ -192,25 +192,24 @@
                 <div class="line transparent little"></div>
                 <div class="row">
                   <div class="col-md-6 col-sm-6 trending-tags">
-                    <h1 class="title-col">Trending Tags</h1>
+                    <h1 class="title-col">Xu hướng</h1>
                     <div class="body-col">
                       <ol class="tags-list">
-                        <li><a href="#">HTML5</a></li>
-                        <li><a href="#">CSS3</a></li>
-                        <li><a href="#">JavaScript</a></li>
-                        <li><a href="#">jQuery</a></li>
-                        <li><a href="#">Bootstrap</a></li>
-                        <li><a href="#">Responsive</a></li>
-                        <li><a href="#">AuteIrure</a></li>
-                        <li><a href="#">Voluptate</a></li>
-                        <li><a href="#">Veit</a></li>
-                        <li><a href="#">Reprehenderit</a></li>
+                        <li><a >Champion League</a></li>
+                        <li><a >Thời sự</a></li>
+                        <li><a >Giải trí</a></li>
+                        <li><a >Pháp luật</a></li>
+                        <li><a >Giáo dục</a></li>
+                        <li><a >Sức khỏe</a></li>
+                        <li><a >Du lịch</a></li>
+                        <li><a >Khoa học</a></li>
+                        <li><a >Thể Thao</a></li>                       
                       </ol>
                     </div>
                   </div>
                   <div class="col-md-6 col-sm-6">
                     <h1 class="title-col">
-                      Hot News
+                     Tin nổi bật
                       <div class="carousel-nav" id="hot-news-nav">
                         <div class="prev">
                           <i class="ion-ios-arrow-left"></i>
@@ -221,23 +220,25 @@
                       </div>
                     </h1>
                     <div class="body-col vertical-slider" data-max="4" data-nav="#hot-news-nav" data-item="article">
-                      <article class="article-mini">
-                        <div class="inner">
-                          <figure>
-                            <a href="single.html">
-                              <img src="/assets/magz-master/images/news/img09.jpg" alt="Sample Article">
-                            </a>
-                          </figure>
-                          <div class="padding">
-                            <h1><a href="single.html">Duis aute irure dolor in reprehenderit in voluptate velit</a></h1>
-                            <div class="detail">
-                              <div class="category"><a href="category.html">Lifestyle</a></div>
-                              <div class="time">December 22, 2016</div>
-                            </div>
-                          </div>
-                        </div>
-                      </article>
-                      <article class="article-mini">
+                      <div *ngFor="let item of itemLike">
+                          <article class="article-mini">
+                              <div class="inner">
+                                <figure>
+                                    <a href="/newsdetail/{{item.id}}">
+                                      <img [src]="item.image" alt="Sample Article">
+                                    </a>
+                                </figure>
+                                <div class="padding">
+                                  <h1><a href="/newsdetail/{{item.id}}">{{item.title}}</a></h1>
+                                  <div class="detail">                                    
+                                    <div class="time">{{item.dateUpdated | date : "dd/MM/yyyy"}}</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </article>
+                      </div>
+                      
+                      <!-- <article class="article-mini">
                         <div class="inner">
                           <figure>
                             <a href="single.html">
@@ -316,38 +317,32 @@
                             </div>
                           </div>
                         </div>
-                      </article>
+                      </article> -->
                     </div>
                   </div>
                 </div>
                 <div class="line top">
-                  <div>Just Another News</div>
+                  <div>Một số tin khác</div>
                 </div>
                 <div class="row" >
                   <article class="col-md-12 article-list">
                     <div class="inner">
-                      <figure>
-                        <a href="single.html">
-                          <img src="/assets/magz-master/images/news/img11.jpg" alt="Sample Article">
-                        </a>
-                      </figure>
+                        <figure>
+                            <a href="/newsdetail/{{itemLast1.id}}">
+                              <img [src]="itemLast1.image" alt="Sample Article">
+                            </a>
+                          </figure>
                       <div class="details">
-                        <div class="detail">
-                          <div class="category">
-                            <a href="#">Film</a>
-                          </div>
-                          <div class="time">December 19, 2016</div>
+                        <div class="detail">                          
+                            <div class="time">{{itemLast1.dateUpdated | date : "dd/MM/yyyy"}}</div> 
                         </div>
-                        <h1><a href="single.html">Donec consequat arcu at ultrices sodales quam erat aliquet diam</a></h1>
-                        <p>
-                          Donec consequat, arcu at ultrices sodales, quam erat aliquet diam, sit amet interdum libero
-                          nunc accumsan nisi.
-                        </p>
+                        <h1><a (click)="onGotoNewDetail(itemLast1.id)">{{itemLast1.title}}</a></h1>
+                        <p>{{itemLast1.shortDesc}}</p>
                         <footer>
                           <a href="#" class="love"><i class="ion-android-favorite-outline"></i>
-                            <div>273</div>
+                            <div>{{itemLast1.likes}}</div>
                           </a>
-                          <a class="btn btn-primary more" href="single.html">
+                          <a class="btn btn-primary more" href="/newsdetail/{{itemLast1.id}}">
                             <div>More</div>
                             <div><i class="ion-ios-arrow-thin-right"></i></div>
                           </a>
@@ -356,108 +351,86 @@
                     </div>
                   </article>
                   <article class="col-md-12 article-list">
-                    <div class="inner">
-                      <div class="badge">
-                        Sponsored
-                      </div>
-                      <figure>
-                        <a href="single.html">
-                          <img src="/assets/magz-master/images/news/img02.jpg" alt="Sample Article">
-                        </a>
-                      </figure>
-                      <div class="details">
-                        <div class="detail">
-                          <div class="category">
-                            <a href="#">Travel</a>
+                      <div class="inner">
+                          <figure>
+                              <a href="/newsdetail/{{itemLast2.id}}">
+                                <img [src]="itemLast2.image" alt="Sample Article">
+                              </a>
+                            </figure>
+                        <div class="details">
+                          <div class="detail">                          
+                              <div class="time">{{itemLast2.dateUpdated | date : "dd/MM/yyyy"}}</div> 
                           </div>
-                          <div class="time">December 18, 2016</div>
+                          <h1><a (click)="onGotoNewDetail(itemLast2.id)">{{itemLast2.title}}</a></h1>
+                          <p>{{itemLast2.shortDesc}}</p>
+                          <footer>
+                            <a href="#" class="love"><i class="ion-android-favorite-outline"></i>
+                              <div>{{itemLast2.likes}}</div>
+                            </a>
+                            <a class="btn btn-primary more" href="/newsdetail/{{itemLast2.id}}">
+                              <div>More</div>
+                              <div><i class="ion-ios-arrow-thin-right"></i></div>
+                            </a>
+                          </footer>
                         </div>
-                        <h1><a href="single.html">Maecenas accumsan tortor ut velit pharetra mollis</a></h1>
-                        <p>
-                          Maecenas accumsan tortor ut velit pharetra mollis. Proin eu nisl et arcu iaculis placerat
-                          sollicitudin ut est. In fringilla dui.
-                        </p>
-                        <footer>
-                          <a href="#" class="love"><i class="ion-android-favorite-outline"></i>
-                            <div>4209</div>
-                          </a>
-                          <a class="btn btn-primary more" href="single.html">
-                            <div>More</div>
-                            <div><i class="ion-ios-arrow-thin-right"></i></div>
-                          </a>
-                        </footer>
                       </div>
-                    </div>
-                  </article>
-                  <article class="col-md-12 article-list">
-                    <div class="inner">
-                      <figure>
-                        <a href="single.html">
-                          <img src="/assets/magz-master/images/news/img03.jpg" alt="Sample Article">
-                        </a>
-                      </figure>
-                      <div class="details">
-                        <div class="detail">
-                          <div class="category">
-                            <a href="#">Travel</a>
+                    </article>
+                    <article class="col-md-12 article-list">
+                        <div class="inner">
+                            <figure>
+                                <a href="/newsdetail/{{itemLast3.id}}">
+                                  <img [src]="itemLast3.image" alt="Sample Article">
+                                </a>
+                              </figure>
+                          <div class="details">
+                            <div class="detail">                          
+                                <div class="time">{{itemLast3.dateUpdated | date : "dd/MM/yyyy"}}</div> 
+                            </div>
+                            <h1><a (click)="onGotoNewDetail(itemLast3.id)">{{itemLast3.title}}</a></h1>
+                            <p>{{itemLast3.shortDesc}}</p>
+                            <footer>
+                              <a href="#" class="love"><i class="ion-android-favorite-outline"></i>
+                                <div>{{itemLast3.likes}}</div>
+                              </a>
+                              <a class="btn btn-primary more" href="/newsdetail/{{itemLast3.id}}">
+                                <div>More</div>
+                                <div><i class="ion-ios-arrow-thin-right"></i></div>
+                              </a>
+                            </footer>
                           </div>
-                          <div class="time">December 16, 2016</div>
                         </div>
-                        <h1><a href="single.html">Nulla facilisis odio quis gravida vestibulum Proin venenatis
-                            pellentesque arcu</a></h1>
-                        <p>
-                          Nulla facilisis odio quis gravida vestibulum. Proin venenatis pellentesque arcu, ut mattis
-                          nulla placerat et.
-                        </p>
-                        <footer>
-                          <a href="#" class="love active"><i class="ion-android-favorite"></i>
-                            <div>302</div>
-                          </a>
-                          <a class="btn btn-primary more" href="single.html">
-                            <div>More</div>
-                            <div><i class="ion-ios-arrow-thin-right"></i></div>
-                          </a>
-                        </footer>
-                      </div>
-                    </div>
-                  </article>
-                  <article class="col-md-12 article-list">
-                    <div class="inner">
-                      <figure>
-                        <a href="single.html">
-                          <img src="/assets/magz-master/images/news/img09.jpg" alt="Sample Article">
-                        </a>
-                      </figure>
-                      <div class="details">
-                        <div class="detail">
-                          <div class="category">
-                            <a href="#">Healthy</a>
+                      </article>
+                      <article class="col-md-12 article-list">
+                          <div class="inner">
+                              <figure>
+                                  <a href="/newsdetail/{{itemLast4.id}}">
+                                    <img [src]="itemLast4.image" alt="Sample Article">
+                                  </a>
+                                </figure>
+                            <div class="details">
+                              <div class="detail">                          
+                                  <div class="time">{{itemLast4.dateUpdated | date : "dd/MM/yyyy"}}</div> 
+                              </div>
+                              <h1><a (click)="onGotoNewDetail(itemLast4.id)">{{itemLast4.title}}</a></h1>
+                              <p>{{itemLast4.shortDesc}}</p>
+                              <footer>
+                                <a href="#" class="love"><i class="ion-android-favorite-outline"></i>
+                                  <div>{{itemLast4.likes}}</div>
+                                </a>
+                                <a class="btn btn-primary more" href="/newsdetail/{{itemLast4.id}}">
+                                  <div>More</div>
+                                  <div><i class="ion-ios-arrow-thin-right"></i></div>
+                                </a>
+                              </footer>
+                            </div>
                           </div>
-                          <div class="time">December 16, 2016</div>
-                        </div>
-                        <h1><a href="single.html">Maecenas blandit ultricies lorem id tempor enim pulvinar at</a></h1>
-                        <p>
-                          Maecenas blandit ultricies lorem, id tempor enim pulvinar at. Curabitur sit amet tortor eu
-                          ipsum lacinia malesuada.
-                        </p>
-                        <footer>
-                          <a href="#" class="love"><i class="ion-android-favorite-outline"></i>
-                            <div>783</div>
-                          </a>
-                          <a class="btn btn-primary more" href="single.html">
-                            <div>More</div>
-                            <div><i class="ion-ios-arrow-thin-right"></i></div>
-                          </a>
-                        </footer>
-                      </div>
-                    </div>
-                  </article>
+                        </article>
                 </div>
               </div>
               <div class="col-xs-6 col-md-4 sidebar" id="sidebar">
                 <div class="sidebar-title for-tablet">Sidebar</div>
                 <aside>
-                  <h1 class="aside-title">Popular <a href="#" class="all">See All <i class="ion-ios-arrow-right"></i></a></h1>
+                  <h1 class="aside-title">Phổ biến <a class="all"> </a></h1>
                   <div class="aside-body" *ngFor="let item of itemLike">
                     <article class="article-mini">
                       <div class="inner">
@@ -474,7 +447,7 @@
                    
                   </div>
                 </aside>
-                <aside>
+                <!-- <aside>
                   <div class="aside-body">
                     <form class="newsletter">
                       <div class="icon">
@@ -532,152 +505,12 @@
                       </li>
                     </ul>
                   </div>
-                </aside>
+                </aside> -->
               </div>
             </div>
           </div>
         </section>
 
-        <section class="best-of-the-week">
-          <div class="container">
-            <h1>
-              <div class="text">Best Of The Week</div>
-              <div class="carousel-nav" id="best-of-the-week-nav">
-                <div class="prev">
-                  <i class="ion-ios-arrow-left"></i>
-                </div>
-                <div class="next">
-                  <i class="ion-ios-arrow-right"></i>
-                </div>
-              </div>
-            </h1>
-            <div class="owl-carousel owl-theme carousel-1 owl-loaded owl-drag">
-              <div class="owl-stage-outer">
-                <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 1740px;">
-                  <article class="owl-item active" style="width: 270px; margin-right: 20px;">
-                    <article class="article">
-                      <div class="inner">
-                        <figure>
-                          <a href="single.html">
-                            <img src="/assets/magz-master/images/news/img03.jpg" alt="Sample Article">
-                          </a>
-                        </figure>
-                        <div class="padding">
-                          <div class="detail">
-                            <div class="time">December 11, 2016</div>
-                            <div class="category"><a href="category.html">Travel</a></div>
-                          </div>
-                          <h2><a href="single.html">tempor interdum Praesent tincidunt</a></h2>
-                          <p>Praesent tincidunt, leo vitae congue molestie.</p>
-                        </div>
-                      </div>
-                    </article>
-                  </article>
-                  <article class="owl-item active" style="width: 270px; margin-right: 20px;">
-                    <article class="article">
-                      <div class="inner">
-                        <figure>
-                          <a href="single.html">
-                            <img src="/assets/magz-master/images/news/img16.jpg" alt="Sample Article">
-                          </a>
-                        </figure>
-                        <div class="padding">
-                          <div class="detail">
-                            <div class="time">December 09, 2016</div>
-                            <div class="category"><a href="category.html">Sport</a></div>
-                          </div>
-                          <h2><a href="single.html">Maecenas porttitor sit amet turpis a semper</a></h2>
-                          <p> Proin vulputate, urna id porttitor luctus, dui augue facilisis lacus.</p>
-                        </div>
-                      </div>
-                    </article>
-                  </article>
-                  <article class="owl-item active" style="width: 270px; margin-right: 20px;">
-                    <article class="article">
-                      <div class="inner">
-                        <figure>
-                          <a href="single.html">
-                            <img src="/assets/magz-master/images/news/img15.jpg" alt="Sample Article">
-                          </a>
-                        </figure>
-                        <div class="padding">
-                          <div class="detail">
-                            <div class="time">December 26, 2016</div>
-                            <div class="category"><a href="category.html">Lifestyle</a></div>
-                          </div>
-                          <h2><a href="single.html">Fusce ac odio eu ex volutpat pellentesque</a></h2>
-                          <p>Vestibulum ante ipsum primis in faucibus orci luctus</p>
-                        </div>
-                      </div>
-                    </article>
-                  </article>
-                  <article class="owl-item active" style="width: 270px; margin-right: 20px;">
-                    <article class="article">
-                      <div class="inner">
-                        <figure>
-                          <a href="single.html">
-                            <img src="/assets/magz-master/images/news/img14.jpg" alt="Sample Article">
-                          </a>
-                        </figure>
-                        <div class="padding">
-                          <div class="detail">
-                            <div class="time">December 26, 2016</div>
-                            <div class="category"><a href="category.html">Travel</a></div>
-                          </div>
-                          <h2><a href="single.html">Nulla facilisis odio quis gravida vestibulum</a></h2>
-                          <p>Proin venenatis pellentesque arcu, ut mattis nulla placerat et.</p>
-                        </div>
-                      </div>
-                    </article>
-                  </article>
-                  <article class="owl-item" style="width: 270px; margin-right: 20px;">
-                    <article class="article">
-                      <div class="inner">
-                        <figure>
-                          <a href="single.html">
-                            <img src="/assets/magz-master/images/news/img01.jpg" alt="Sample Article">
-                          </a>
-                        </figure>
-                        <div class="padding">
-                          <div class="detail">
-                            <div class="time">December 26, 2016</div>
-                            <div class="category"><a href="category.html">Travel</a></div>
-                          </div>
-                          <h2><a href="single.html">Fusce Ullamcorper Elit At Felis Cursus Suscipit</a></h2>
-                          <p>Proin venenatis pellentesque arcu, ut mattis nulla placerat et.</p>
-                        </div>
-                      </div>
-                    </article>
-                  </article>
-                  <article class="owl-item" style="width: 270px; margin-right: 20px;">
-                    <article class="article">
-                      <div class="inner">
-                        <figure>
-                          <a href="single.html">
-                            <img src="/assets/magz-master/images/news/img11.jpg" alt="Sample Article">
-                          </a>
-                        </figure>
-                        <div class="padding">
-                          <div class="detail">
-                            <div class="time">December 26, 2016</div>
-                            <div class="category"><a href="category.html">Travel</a></div>
-                          </div>
-                          <h2><a href="single.html">Donec consequat arcu at ultrices sodales</a></h2>
-                          <p>Proin venenatis pellentesque arcu, ut mattis nulla placerat et.</p>
-                        </div>
-                      </div>
-                    </article>
-                  </article>
-                </div>
-              </div>
-              <div class="owl-nav disabled">
-                <div class="owl-prev">prev</div>
-                <div class="owl-next">next</div>
-              </div>
-              <div class="owl-dots disabled"></div>
-            </div>
-          </div>
-        </section>
       </div>
     </div>
   </div>

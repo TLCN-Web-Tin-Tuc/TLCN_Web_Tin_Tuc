@@ -42,7 +42,11 @@ export class NewsDetailComponent implements OnInit {
   isDelete: boolean = false;
   isModDelete : boolean = false
   isApprove : boolean = false
-  
+  itemLast1 : Item
+  itemLast2 : Item 
+  itemLast3 : Item
+  itemLast4 : Item
+  itemDescDay : Item[]
   cat: Cat;
   catOfItem : Cat[]
   catListItem: Cat[];
@@ -59,9 +63,35 @@ export class NewsDetailComponent implements OnInit {
       this.id = +this.activatedRoute.snapshot.paramMap.get('id');
     });
     this.retrieveItemById(this.id);
+    this.loadItemChinh();
   }
 
+  loadItemChinh(){
+    this.nuService.getItemDescDay()
+      .pipe(first())
+      .subscribe(res => {
+        if (res.success == "true") {
+          this.itemDescDay = res.data              
+          
+          this.itemLast1 = this.itemDescDay[1] 
+          console.log(this.itemLast1)
+          this.itemLast2 = this.itemDescDay[2] 
+          this.itemLast3 = this.itemDescDay[3] 
+          this.itemLast4 = this.itemDescDay[4] 
+        }
+        else {
+          
+        }
+      }, err => {
+        console.log(err)
+      })
+
+  }
+
+
+
   retrieveItemById(id) {
+   
     if (this.id) {
        this.checkEmail();
       this.modService.findItemById(this.id)

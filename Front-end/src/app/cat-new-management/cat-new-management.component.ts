@@ -96,7 +96,7 @@ export class CatNewManagementComponent implements OnInit {
         console.log(this.rolesofUser)
         for(let role of this.rolesofUser)
         {
-          if(role.p_delete == true || role.p_update == true || role.p_approve == true || role.p_admin == true)
+          if(role.p_update == true || role.p_admin == true)
           {
             if(role.status == 1){
               this.isMod = true;
@@ -106,9 +106,9 @@ export class CatNewManagementComponent implements OnInit {
           }           
         }
         if(this.isMod == false){
-          //alert("Bạn không được truy cập vào trang này")
+          alert("Bạn không được truy cập vào trang này")
           // this.router.navigate(["/"])
-          //window.location.href = "/"; 
+          window.location.href = "/"; 
         } 
       }
       else
