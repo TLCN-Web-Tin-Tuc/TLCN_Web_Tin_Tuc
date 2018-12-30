@@ -72,18 +72,18 @@ export class CatMenuComponent implements OnInit {
         if (res.success == "true") {
           this.catList = res.data;
 
-          for (let i=0; i<this.catList.length; i++) {
+          for (let i = 0; i < this.catList.length; i++) {
             this.nuService.getChildCat(this.catList[i].id)
               .subscribe(res => {
 
                 if (res.success == "true") {
                   this.catList[i].childCat = res.data;
+                  this.catList[i].isNullChildCat = this.catList[i].childCat.length;
                 }
               }, err => {
                 console.log(err.message)
               });
           }
-          console.log(this.catList);
         }
       }, err => {
         console.log(err.message)
