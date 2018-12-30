@@ -96,11 +96,16 @@ export class NewsManagementComponent implements OnInit {
       
       if(res.success == "true")
       {
+
+
+        $('table').dataTable().fnDestroy();
         
         this.catItems = res.data;
         
       }
-     
+      this.chRef.detectChanges();
+      const table: any = $('table');
+      this.dataTable = table.DataTable();
   
        }, err => {
         console.log(err.message)
