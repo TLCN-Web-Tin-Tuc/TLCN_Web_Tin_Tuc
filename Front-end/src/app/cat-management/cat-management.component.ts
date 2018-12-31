@@ -122,6 +122,10 @@ export class CatManagementComponent implements OnInit {
             if (role.p_create == true && (role.status == 1)) {
               this.isCreate = true
             }
+
+            if (role.p_admin == true && (role.status == 1)) {
+              this.isMod = true
+            }
           }
           if (this.isMod == false) {
             alert("Bạn không được truy cập vào trang này")

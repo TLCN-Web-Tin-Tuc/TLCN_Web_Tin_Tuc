@@ -95,6 +95,7 @@ public class ModController {
     @PostMapping("/cat/createcat")
     public DataReturnOne<Cat> CreateCategory(@RequestBody Cat cat){
         DataReturnOne<Cat> dataReturnOne = new DataReturnOne<>();
+        cat.setParentId(Long.valueOf(0));
         Cat cat1 = catService.getRepo().save(cat);
         if(cat != null){
             dataReturnOne.setMessage("Insert Category Success");

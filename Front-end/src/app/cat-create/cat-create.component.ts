@@ -106,8 +106,11 @@ export class CatCreateComponent implements OnInit {
             if (role.p_create == true && (role.status == 1)) {
               this.isCreate = true
             }
+            if (role.p_admin == true && (role.status == 1)) {
+              this.isCreate = true
+            }
           }
-          if (this.isMod == false) {
+          if (this.isCreate == false) {
             alert("Bạn không được truy cập vào trang này")
             // this.router.navigate(["/"])
             window.location.href = "/";

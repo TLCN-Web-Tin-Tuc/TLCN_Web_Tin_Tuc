@@ -238,6 +238,11 @@ export class NewsDetailComponent implements OnInit {
             if (role.p_update == true && (role.status == 1)) {
               this.isUpdate = true              
             }
+            if (role.p_admin == true && (role.status == 1)) {
+              this.isUpdate = true              
+              this.isModDelete = true
+              this.isApprove = true
+            }
           }    
           this.nuService.getCatItem(this.id)
           .pipe(first())
