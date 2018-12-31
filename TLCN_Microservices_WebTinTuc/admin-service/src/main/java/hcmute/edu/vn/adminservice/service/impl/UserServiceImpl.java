@@ -93,6 +93,13 @@ public class UserServiceImpl implements UserService {
         return userOptional.get();
     }
 
+    @Override
+    public User retrieveUserById(long uid) {
+        Optional<User> userOptional=userRepository.findById(uid);
+        if(!userOptional.isPresent())
+            throw new NotFoundException("User not found. Could not update role for this user");
+        return userOptional.get();
+    }
 
 
 }

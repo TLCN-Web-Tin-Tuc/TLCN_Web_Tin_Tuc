@@ -163,7 +163,7 @@ export class RoleManagementComponent implements OnInit {
         console.log("update thành công")
       }
       else{
-        console.log("update không thành công")
+        alert(res.message)
       }
     }, err => {
       console.log(err);
@@ -179,7 +179,7 @@ export class RoleManagementComponent implements OnInit {
         console.log("update thành công")
       }
       else{
-        console.log("update không thành công")
+        alert(res.message)
       }
     }, err => {
       console.log(err);
@@ -197,7 +197,8 @@ export class RoleManagementComponent implements OnInit {
         console.log("update thành công")
       }
       else{
-        console.log("update không thành công")
+        alert(res.message)
+        
       }
     }, err => {
       console.log(err);
@@ -213,7 +214,7 @@ export class RoleManagementComponent implements OnInit {
         console.log("update thành công")
       }
       else{
-        console.log("update không thành công")
+        alert(res.message)
       }
     }, err => {
       console.log(err);
@@ -229,7 +230,7 @@ export class RoleManagementComponent implements OnInit {
         console.log("update thành công")
       }
       else{
-        console.log("update không thành công")
+        alert(res.message)
       }
     }, err => {
       console.log(err);
@@ -244,7 +245,7 @@ export class RoleManagementComponent implements OnInit {
         console.log("update thành công")
       }
       else{
-        console.log("update không thành công")
+        alert(res.message)
       }
     }, err => {
       console.log(err);

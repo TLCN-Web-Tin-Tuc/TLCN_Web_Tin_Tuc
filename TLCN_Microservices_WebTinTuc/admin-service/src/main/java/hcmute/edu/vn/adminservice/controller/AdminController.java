@@ -76,19 +76,35 @@ public class AdminController {
     @PutMapping("/users/role/{uid}/{rid}")
     public DataReturnOne<UserDto> updateUserRole(@PathVariable long uid, @PathVariable long rid){
         DataReturnOne<UserDto> dataReturnOne=new DataReturnOne<>();
-        dataReturnOne.setMessage("success");
-        dataReturnOne.setSuccess("true");
-        dataReturnOne.setData(userMapper.userToUserDto(userService.updateRoleForUser(uid,rid)));
+        User user = userService.retrieveUserById(uid);
+        if(user.getEmail() == "admin"){
+            dataReturnOne.setMessage("Không được thay đổi tài khoản admin");
+            dataReturnOne.setSuccess("false");
+            dataReturnOne.setData(null);
+        }else{
+            dataReturnOne.setMessage("success");
+            dataReturnOne.setSuccess("true");
+            dataReturnOne.setData(userMapper.userToUserDto(userService.updateRoleForUser(uid,rid)));
+        }
+
         return dataReturnOne;
     }
 
     // update status for user
     @GetMapping("/users/status/{uid}/{userUpdate}")
-    public DataReturnOne<User> updateUserStatus(@PathVariable long uid, @PathVariable String userUpdate){
-        DataReturnOne<User> dataReturnOne=new DataReturnOne<>();
-        dataReturnOne.setSuccess("true");
-        dataReturnOne.setMessage("success");
-        dataReturnOne.setData(userService.updateUserStatus(uid, userUpdate));
+    public DataReturnOne<UserDto> updateUserStatus(@PathVariable long uid, @PathVariable String userUpdate){
+        DataReturnOne<UserDto> dataReturnOne=new DataReturnOne<>();
+        User user = userService.retrieveUserById(uid);
+        if(user.getEmail() == "admin"){
+            dataReturnOne.setMessage("Không được thay đổi tài khoản admin");
+            dataReturnOne.setSuccess("false");
+            dataReturnOne.setData(null);
+        }else{
+            dataReturnOne.setMessage("success");
+            dataReturnOne.setSuccess("true");
+            dataReturnOne.setData(userMapper.userToUserDto(userService.updateUserStatus(uid, userUpdate)));
+        }
+
         return dataReturnOne;
     }
 
@@ -165,17 +181,24 @@ public class AdminController {
     {
         role.setUserUpdated(userUpdate);
         role.setDateUpdated(new Date());
-        Role role1 = roleService.getRepo().save(role);
         DataReturnOne<Role> dataReturnOne = new DataReturnOne<>();
-        if(role1!=null){
-            dataReturnOne.setData(role1);
-            dataReturnOne.setSuccess("true");
-            dataReturnOne.setMessage("Update Role success");
-        }else{
+        if(role.getRname().equals("ROLE_ADMIN") == true  || role.getRname().equals("ROLE_USER") == true){
             dataReturnOne.setSuccess("false");
             dataReturnOne.setData(null);
-            dataReturnOne.setMessage("Update Role Fail");
+            dataReturnOne.setMessage("Quyền User và quyền Admin không được thay đổi");
+        } else {
+            Role role1 = roleService.getRepo().save(role);
+            if(role1!=null){
+                dataReturnOne.setData(role1);
+                dataReturnOne.setSuccess("true");
+                dataReturnOne.setMessage("Update Role success");
+            }else{
+                dataReturnOne.setSuccess("false");
+                dataReturnOne.setData(null);
+                dataReturnOne.setMessage("Update Role Fail");
+            }
         }
+
         return dataReturnOne;
     }
 
@@ -195,52 +218,63 @@ public class AdminController {
         return roleDataReturnOne;
     }
 
-//    @PutMapping("/roles/updatestatus/{rid}/{userUpdate}")
-//    public DataReturnOne<Role> UpdateStatusRole(@PathVariable long rid, @PathVariable String userUpdate)
-//    {
-//        Role role1 = roleService.retrieveRoleByRId(rid);
-//        DataReturnOne<Role> dataReturnOne = new DataReturnOne<>();
-//        if(role1!=null){
-//            if(role1.getStatus() == 1)
-//            {
-//                role1.setStatus(0);
-//            }
-//            else
-//            {
-//                role1.setStatus(1);
-//            }
-//            role1.setDateUpdated(new Date());
-//            role1.setUserUpdated(userUpdate);
-//            dataReturnOne.setData(roleService.getRepo().save(role1));
-//            dataReturnOne.setSuccess("true");
-//            dataReturnOne.setMessage("Set status Role Success");
-//        }else{
-//            dataReturnOne.setSuccess("false");
-//            dataReturnOne.setData(null);
-//            dataReturnOne.setMessage("Set status Role Fail");
-//        }
-//        return dataReturnOne;
-//    }
+    @PutMapping("/roles/updatestatus/{rid}/{userUpdate}")
+    public DataReturnOne<Role> UpdateStatusRole(@PathVariable long rid, @PathVariable String userUpdate)
+    {
+        Role role1 = roleService.retrieveRoleByRId(rid);
+        DataReturnOne<Role> dataReturnOne = new DataReturnOne<>();
+        if(role1!=null){
+            if(role1.getRname().equals("ROLE_ADMIN") == true  || role1.getRname().equals("ROLE_USER") == true){
+                dataReturnOne.setSuccess("false");
+                dataReturnOne.setData(null);
+                dataReturnOne.setMessage("Quyền User và quyền Admin không được thay đổi");
+            } else {
+
+                if (role1.getStatus() == 1) {
+                    role1.setStatus(0);
+                } else {
+                    role1.setStatus(1);
+                }
+                role1.setDateUpdated(new Date());
+                role1.setUserUpdated(userUpdate);
+                dataReturnOne.setData(roleService.getRepo().save(role1));
+                dataReturnOne.setSuccess("true");
+                dataReturnOne.setMessage("Set status Role Success");
+            }
+        }else{
+            dataReturnOne.setSuccess("false");
+            dataReturnOne.setData(null);
+            dataReturnOne.setMessage("Set status Role Fail");
+        }
+        return dataReturnOne;
+    }
 
     @PutMapping("/roles/updaterolecreate/{rid}/{userUpdate}")
     public DataReturnOne<Role> UpdateRoleCreate(@PathVariable long rid, @PathVariable String userUpdate)
     {
         Role role1 = roleService.retrieveRoleByRId(rid);
+
         DataReturnOne<Role> dataReturnOne = new DataReturnOne<>();
         if(role1!=null){
-            if(role1.getP_create() == true)
-            {
-                role1.setP_create(false);
+
+            if(role1.getRname().equals("ROLE_ADMIN") == true  || role1.getRname().equals("ROLE_USER") == true){
+                dataReturnOne.setSuccess("false");
+                dataReturnOne.setData(null);
+                dataReturnOne.setMessage("Quyền User và quyền Admin không được thay đổi");
+            } else {
+                if(role1.getP_create() == true)
+                {
+                    role1.setP_create(false);
+                }
+                else {
+                    role1.setP_create(true);
+                }
+                role1.setDateUpdated(new Date());
+                role1.setUserUpdated(userUpdate);
+                dataReturnOne.setData(roleService.getRepo().save(role1));
+                dataReturnOne.setSuccess("true");
+                dataReturnOne.setMessage("Set create for Role success");
             }
-            else
-            {
-                role1.setP_create(true);
-            }
-            role1.setDateUpdated(new Date());
-            role1.setUserUpdated(userUpdate);
-            dataReturnOne.setData(roleService.getRepo().save(role1));
-            dataReturnOne.setSuccess("true");
-            dataReturnOne.setMessage("Set create for Role success");
         }else{
             dataReturnOne.setSuccess("false");
             dataReturnOne.setData(null);
@@ -255,19 +289,25 @@ public class AdminController {
         Role role1 = roleService.retrieveRoleByRId(rid);
         DataReturnOne<Role> dataReturnOne = new DataReturnOne<>();
         if(role1!=null){
-            if(role1.getP_approve() == true)
-            {
-                role1.setP_approve(false);
+
+            if(role1.getRname().equals("ROLE_ADMIN") == true  || role1.getRname().equals("ROLE_USER") == true){
+                dataReturnOne.setSuccess("false");
+                dataReturnOne.setData(null);
+                dataReturnOne.setMessage("Quyền User và quyền Admin không được thay đổi");
+            } else {
+                if(role1.getP_approve() == true)
+                {
+                    role1.setP_approve(false);
+                }
+                else {
+                    role1.setP_approve(true);
+                }
+                role1.setDateUpdated(new Date());
+                role1.setUserUpdated(userUpdate);
+                dataReturnOne.setData(roleService.getRepo().save(role1));
+                dataReturnOne.setSuccess("true");
+                dataReturnOne.setMessage("Set approve for Role success");
             }
-            else
-            {
-                role1.setP_approve(true);
-            }
-            role1.setDateUpdated(new Date());
-            role1.setUserUpdated(userUpdate);
-            dataReturnOne.setData(roleService.getRepo().save(role1));
-            dataReturnOne.setSuccess("true");
-            dataReturnOne.setMessage("Set approve for Role success");
         }else{
             dataReturnOne.setSuccess("false");
             dataReturnOne.setData(null);
@@ -282,19 +322,25 @@ public class AdminController {
         Role role1 = roleService.retrieveRoleByRId(rid);
         DataReturnOne<Role> dataReturnOne = new DataReturnOne<>();
         if(role1!=null){
-            if(role1.getP_update() == true)
-            {
-                role1.setP_update(false);
+
+            if(role1.getRname().equals("ROLE_ADMIN") == true  || role1.getRname().equals("ROLE_USER") == true){
+                dataReturnOne.setSuccess("false");
+                dataReturnOne.setData(null);
+                dataReturnOne.setMessage("Quyền User và quyền Admin không được thay đổi");
+            } else {
+                if(role1.getP_update() == true)
+                {
+                    role1.setP_update(false);
+                }
+                else {
+                    role1.setP_update(true);
+                }
+                role1.setDateUpdated(new Date());
+                role1.setUserUpdated(userUpdate);
+                dataReturnOne.setData(roleService.getRepo().save(role1));
+                dataReturnOne.setSuccess("true");
+                dataReturnOne.setMessage("Set update for Role success");
             }
-            else
-            {
-                role1.setP_update(true);
-            }
-            role1.setDateUpdated(new Date());
-            role1.setUserUpdated(userUpdate);
-            dataReturnOne.setData(roleService.getRepo().save(role1));
-            dataReturnOne.setSuccess("true");
-            dataReturnOne.setMessage("Set update for Role success");
         }else{
             dataReturnOne.setSuccess("false");
             dataReturnOne.setData(null);
@@ -309,19 +355,25 @@ public class AdminController {
         Role role1 = roleService.retrieveRoleByRId(rid);
         DataReturnOne<Role> dataReturnOne = new DataReturnOne<>();
         if(role1!=null){
-            if(role1.getP_delete() == true)
-            {
-                role1.setP_delete(false);
+
+            if(role1.getRname().equals("ROLE_ADMIN") == true  || role1.getRname().equals("ROLE_USER") == true){
+                dataReturnOne.setSuccess("false");
+                dataReturnOne.setData(null);
+                dataReturnOne.setMessage("Quyền User và quyền Admin không được thay đổi");
+            } else {
+                if(role1.getP_delete() == true)
+                {
+                    role1.setP_delete(false);
+                }
+                else {
+                    role1.setP_delete(true);
+                }
+                role1.setDateUpdated(new Date());
+                role1.setUserUpdated(userUpdate);
+                dataReturnOne.setData(roleService.getRepo().save(role1));
+                dataReturnOne.setSuccess("true");
+                dataReturnOne.setMessage("Set delete for Role success");
             }
-            else
-            {
-                role1.setP_delete(true);
-            }
-            role1.setDateUpdated(new Date());
-            role1.setUserUpdated(userUpdate);
-            dataReturnOne.setData(roleService.getRepo().save(role1));
-            dataReturnOne.setSuccess("true");
-            dataReturnOne.setMessage("Set delete for Role success");
         }else{
             dataReturnOne.setSuccess("false");
             dataReturnOne.setData(null);
@@ -336,19 +388,25 @@ public class AdminController {
         Role role1 = roleService.retrieveRoleByRId(rid);
         DataReturnOne<Role> dataReturnOne = new DataReturnOne<>();
         if(role1!=null){
-            if(role1.getP_admin() == true)
-            {
-                role1.setP_admin(false);
+
+            if(role1.getRname().equals("ROLE_ADMIN") == true  || role1.getRname().equals("ROLE_USER") == true){
+                dataReturnOne.setSuccess("false");
+                dataReturnOne.setData(null);
+                dataReturnOne.setMessage("Quyền User và quyền Admin không được thay đổi");
+            } else {
+                if(role1.getP_admin() == true)
+                {
+                    role1.setP_admin(false);
+                }
+                else {
+                    role1.setP_admin(true);
+                }
+                role1.setDateUpdated(new Date());
+                role1.setUserUpdated(userUpdate);
+                dataReturnOne.setData(roleService.getRepo().save(role1));
+                dataReturnOne.setSuccess("true");
+                dataReturnOne.setMessage("Set admin for Role success");
             }
-            else
-            {
-                role1.setP_admin(true);
-            }
-            role1.setDateUpdated(new Date());
-            role1.setUserUpdated(userUpdate);
-            dataReturnOne.setData(roleService.getRepo().save(role1));
-            dataReturnOne.setSuccess("true");
-            dataReturnOne.setMessage("Set admin for Role success");
         }else{
             dataReturnOne.setSuccess("false");
             dataReturnOne.setData(null);

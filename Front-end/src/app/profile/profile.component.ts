@@ -212,7 +212,7 @@ export class ProfileComponent implements OnInit {
         }
         else
         {
-            this.error = res.message
+            alert(res.message)
         }
       }, err => {
         console.log(err)

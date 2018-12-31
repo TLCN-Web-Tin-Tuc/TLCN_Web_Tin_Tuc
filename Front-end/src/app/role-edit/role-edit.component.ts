@@ -66,7 +66,7 @@ export class RoleEditComponent implements OnInit {
               window.location.href = "/rolesmanagement";  
             }
             else{
-              alert("Update thất bại")
+              alert(res.message)
             }
                           
            // console.log(this.rolesOfUser);    

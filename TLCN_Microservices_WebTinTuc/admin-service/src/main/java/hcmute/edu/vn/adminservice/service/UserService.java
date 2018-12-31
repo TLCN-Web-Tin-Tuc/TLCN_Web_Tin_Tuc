@@ -13,4 +13,5 @@ public interface UserService {
     User updateUserStatus(long id, String userUpdate);
     User retrieveUserByEmail(String email);
     User retrieveUserByIdOrEmail(long id, String email);
+    User retrieveUserById(long uid);
 }

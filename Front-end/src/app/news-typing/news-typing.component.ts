@@ -92,7 +92,12 @@ export class NewsTypingComponent implements OnInit {
           {            
             this.isCreate = true;
             return
-          }           
+          }       
+          if(role.p_admin == true && role.status == 1)
+          {            
+            this.isCreate = true;
+            return
+          }       
         }
         if(this.isCreate == false){
           alert("Bạn không được truy cập vào trang này")
