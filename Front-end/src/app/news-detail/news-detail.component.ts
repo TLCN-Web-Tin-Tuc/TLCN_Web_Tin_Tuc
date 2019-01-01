@@ -46,6 +46,7 @@ export class NewsDetailComponent implements OnInit {
   itemLast1 : Item
   itemLast2 : Item 
   itemLast3 : Item
+  isItemNull : boolean = false
   itemLast4 : Item
   itemDescDay : Item[]
   cat: Cat;
@@ -58,6 +59,10 @@ export class NewsDetailComponent implements OnInit {
   constructor(private modService: ModServiceService, private activatedRoute: ActivatedRoute,
      private route: Router, private userService: UserService, private chRef: ChangeDetectorRef, private nuService : NuServiceService) {
     this.item = new Item();
+    this.itemLast1  = new Item();
+    this.itemLast2  = new Item();
+    this.itemLast3  = new Item();
+    this.itemLast4  = new Item();
   }
 
   ngOnInit() {
@@ -101,12 +106,14 @@ export class NewsDetailComponent implements OnInit {
       .subscribe(res => {
         if (res.success == "true") {
           this.itemDescDay = res.data              
-          
-          this.itemLast1 = this.itemDescDay[1] 
-          console.log(this.itemLast1)
-          this.itemLast2 = this.itemDescDay[2] 
-          this.itemLast3 = this.itemDescDay[3] 
+          if(this.itemDescDay.length < 4){
+            this.isItemNull = true
+          }
+          this.itemLast1 = this.itemDescDay[1]                             
+          this.itemLast2 = this.itemDescDay[2]          
+          this.itemLast3 = this.itemDescDay[3]         
           this.itemLast4 = this.itemDescDay[4] 
+          
         }
         else {
           

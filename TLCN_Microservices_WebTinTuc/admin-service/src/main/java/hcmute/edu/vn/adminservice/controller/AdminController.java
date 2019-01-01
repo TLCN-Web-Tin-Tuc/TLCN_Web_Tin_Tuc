@@ -105,7 +105,7 @@ public class AdminController {
             dataReturnOne.setData(userMapper.userToUserDto(userService.updateUserStatus(uid, userUpdate)));
         }
 
-        return dataReturnOne;
+    return dataReturnOne;
     }
 
 

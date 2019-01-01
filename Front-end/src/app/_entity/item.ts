@@ -16,4 +16,5 @@ export class Item {
     userCreated : string
     dateUpdated : Date
     userUpdated : string
+    isNull : boolean = false
 }

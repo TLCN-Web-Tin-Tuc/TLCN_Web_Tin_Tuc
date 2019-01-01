@@ -47,7 +47,7 @@
                         </div>
                       </div>
                       <div class="owl-item" style="width: 750px;">
-                        <div class="item">
+                        <div class="item" *ngIf="itemHot.isNull != true">
                           <a href="/newsdetail/{{itemHot.id}}">
                           <article class="featured" >
                             <div class="overlay"></div>
@@ -58,7 +58,7 @@
                               <div class="category" *ngFor="let catItem of catItemchinh">
                                 <a >{{catItem.catName}}</a>
                               </div>
-                              <h1><a href="/newsdetail/{{itemHot.id}}">{{itemHot.title}}</a></h1>
+                              <h1 ><a href="/newsdetail/{{itemHot.id}}">{{itemHot.title}}</a></h1>
                               <div class="time">{{itemHot.dateUpdated | date : "dd/MM/yyyy"}}</div>
                             </div>
                           </article>
@@ -81,7 +81,7 @@
                   <div class="col-md-6 col-sm-6 col-xs-12">
                     <div class="row">
                       <article class="article col-md-12">
-                        <div class="inner">
+                        <div class="inner" *ngIf="itemLast1.isNull == false">
                           <figure>
                             <a href="/newsdetail/{{itemLast1.id}}">
                               <img [src]="itemLast1.image" alt="Sample Article">
@@ -106,7 +106,7 @@
                         </div>
                       </article>
                       <article class="article col-md-12">
-                        <div class="inner">
+                        <div class="inner" *ngIf="itemLast2.isNull == false">
                           <figure>
                             <a href="/newsdetail/{{itemLast2.id}}">
                               <img [src]="itemLast2.image" alt="Sample Article">
@@ -135,7 +135,7 @@
                   <div class="col-md-6 col-sm-6 col-xs-12">
                     <div class="row">
                       <article class="article col-md-12">
-                        <div class="inner">
+                        <div class="inner" *ngIf="itemLast3.isNull == false">
                           <figure>
                             <a href="/newsdetail/{{itemLast3.id}}">
                               <img [src]="itemLast3.image" alt="Sample Article">
@@ -161,7 +161,7 @@
                         </div>
                       </article>
                       <article class="article col-md-12">
-                        <div class="inner">
+                        <div class="inner" *ngIf="itemLast4.isNull == false">
                           <figure>
                             <a href="/newsdetail/{{itemLast4.id}}">
                               <img [src]="itemLast4.image" alt="Sample Article">
@@ -210,14 +210,7 @@
                   <div class="col-md-6 col-sm-6">
                     <h1 class="title-col">
                      Tin nổi bật
-                      <div class="carousel-nav" id="hot-news-nav">
-                        <div class="prev">
-                          <i class="ion-ios-arrow-left"></i>
-                        </div>
-                        <div class="next">
-                          <i class="ion-ios-arrow-right"></i>
-                        </div>
-                      </div>
+                      
                     </h1>
                     <div class="body-col vertical-slider" data-max="4" data-nav="#hot-news-nav" data-item="article">
                       <div *ngFor="let item of itemLike">
@@ -326,7 +319,7 @@
                 </div>
                 <div class="row" >
                   <article class="col-md-12 article-list">
-                    <div class="inner">
+                    <div class="inner" *ngIf="itemLast1.isNull == false">
                         <figure>
                             <a href="/newsdetail/{{itemLast1.id}}">
                               <img [src]="itemLast1.image" alt="Sample Article">
@@ -351,7 +344,7 @@
                     </div>
                   </article>
                   <article class="col-md-12 article-list">
-                      <div class="inner">
+                      <div class="inner" *ngIf="itemLast2.isNull == false">
                           <figure>
                               <a href="/newsdetail/{{itemLast2.id}}">
                                 <img [src]="itemLast2.image" alt="Sample Article">
@@ -376,7 +369,7 @@
                       </div>
                     </article>
                     <article class="col-md-12 article-list">
-                        <div class="inner">
+                        <div class="inner" *ngIf="itemLast3.isNull == false">
                             <figure>
                                 <a href="/newsdetail/{{itemLast3.id}}">
                                   <img [src]="itemLast3.image" alt="Sample Article">
@@ -401,7 +394,7 @@
                         </div>
                       </article>
                       <article class="col-md-12 article-list">
-                          <div class="inner">
+                          <div class="inner" *ngIf="itemLast4.isNull == false">
                               <figure>
                                   <a href="/newsdetail/{{itemLast4.id}}">
                                     <img [src]="itemLast4.image" alt="Sample Article">

@@ -5,6 +5,7 @@ import { first } from 'rxjs/operators';
 import { CatItem } from '../_entity/catitem';
 import { Observable } from 'rxjs';
 import { Cat } from '../_entity/cat';
+import { Item } from '../_entity/item';
 
 @Component({
   selector: 'app-news-category',
@@ -33,7 +34,12 @@ export class NewsCategoryComponent implements OnInit {
   pageArray: Array<number> = [];
   size: number;
   current: number;
-
+  itemLast1 : Item
+  itemLast2 : Item 
+  itemDescDay : Item[]
+  itemLast3 : Item
+  isItemNull : boolean = false
+  itemLast4 : Item
   itemCate:number = 0;
 
   constructor(private activatedRoute: ActivatedRoute, private nuService : NuServiceService) {
@@ -52,8 +58,34 @@ export class NewsCategoryComponent implements OnInit {
     this.getAllItemsPage(this.id, this.page, this.size);
   }
 
-  getAllItemsPage(id: number, page: number, size: number){
-    this.nuService.getAllItemsPage(id, page, size)
+
+  loadItemChinh(){  
+    this.nuService.getItemDescDay()
+        .pipe(first())
+        .subscribe(res => {
+          if (res.success == "true") {
+            this.itemDescDay = res.data              
+            if(this.itemDescDay.length < 4){
+              this.isItemNull = true
+            }
+            this.itemLast1 = this.itemDescDay[1]                             
+            this.itemLast2 = this.itemDescDay[2]          
+            this.itemLast3 = this.itemDescDay[3]         
+            this.itemLast4 = this.itemDescDay[4] 
+            
+          }
+          else {
+            
+          }
+        }, err => {
+          console.log(err)
+        })
+  
+    }
+
+ async getAllItemsPage(id: number, page: number, size: number){
+  await this.loadItemChinh()  
+  this.nuService.getAllItemsPage(id, page, size)
     .pipe(first()).subscribe(res=>{
       if(res.success == "true"){
         this.items = res.data;

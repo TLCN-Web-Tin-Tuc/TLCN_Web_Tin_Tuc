@@ -41,8 +41,8 @@
                         <h1><a href="/newsdetail/{{item.itemId}}">{{item.title}}</a></h1>
                         <p>{{item.shortDesc}}</p>
                         <footer>
-                          <a href="" class="love"><i class="ion-android-favorite-outline"></i>
-                            <div>237</div>
+                          <a class="love"><i class="ion-android-favorite-outline"></i>
+                            <div>{{item.likes}}</div>
                           </a>
                           <a class="btn btn-primary more" href="/newsdetail/{{item.itemId}}">
                             <div>More</div>
@@ -58,7 +58,7 @@
                       <ul class="pagination justify-content-center pagination-separate pagination-curved">
                         <li class="page-item" [className]="current==0?'disabled':'enable'">
                           <a class="page-link" href="#" aria-label="Previous" (click)="onPrePage()">
-                            <span aria-hidden="true">Prev</span>
+                            <span aria-hidden="true">Trở lại</span>
                           </a>
                         </li>
                         <li class="page-item" [className]="ite === current ? 'active' : 'inactive'" *ngFor="let ite of pageArray">
@@ -66,7 +66,7 @@
                         </li>
                         <li class="page-item" [className]="current==pageNumber-1?'disabled':'enable'">
                           <a class="page-link" href="#" aria-label="Next" (click)="onNextPage()">
-                            <span aria-hidden="true">Next</span>
+                            <span aria-hidden="true">Tiếp theo</span>
                           </a>
                         </li>
                       </ul>
@@ -78,104 +78,82 @@
                 <aside>
                   <div class="aside-body">
                     <figure class="ads">
-                      <a href="single.html">
-                        <img src="/assets/magz-master/images/ad.png">
-                      </a>
+                      <img src="/assets/magz-master/images/news/ad.jpg">
                       <figcaption>Advertisement</figcaption>
                     </figure>
                   </div>
-                </aside>
+                </aside>  
                 <aside>
-                  <h1 class="aside-title">Recent Post</h1>
-                  <div class="aside-body">
-                    <article class="article-fw">
+                  <h1 class="aside-title">Tin thường xem</h1>
+                  <div class="aside-body" *ngIf="isItemNull != true">
+                    <article class="article-fw" >
                       <div class="inner">
-                        <figure>
-                          <a href="single.html">
-                            <img src="/assets/magz-master/images/news/img12.jpg">
-                          </a>
-                        </figure>
+                          <figure>
+                              <a href="/newsdetail/{{itemLast1.id}}">
+                                <img [src]="itemLast1.image" alt="Sample Article">
+                              </a>
+                            </figure>
+                       
                         <div class="details">
-                          <h1><a href="single.html">Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit</a></h1>
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua.
-                          </p>
+                          <h1><a  href="/newsdetail/{{itemLast1.id}}">{{itemLast1.title}}</a></h1>
+                          <p>{{itemLast1.shortDesc}}</p>
                           <div class="detail">
-                            <div class="time">December 26, 2016</div>
-                            <div class="category"><a href="category.html">Lifestyle</a></div>
+                              <div class="time">{{itemLast1.dateUpdated | date : "dd/MM/yyyy"}}</div> 
                           </div>
                         </div>
                       </div>
                     </article>
                     <div class="line"></div>
-                    <article class="article-mini">
+                    <article class="article-mini" *ngIf="itemLast2.id" >
                       <div class="inner">
-                        <figure>
-                          <a href="single.html">
-                            <img src="/assets/magz-master/images/news/img05.jpg">
-                          </a>
-                        </figure>
+                          <figure>
+                              <a href="/newsdetail/{{itemLast2.id}}">
+                                <img [src]="itemLast2.image" alt="Sample Article">
+                              </a>
+                            </figure>
                         <div class="padding">
-                          <h1><a href="single.html">Duis aute irure dolor in reprehenderit in voluptate velit</a></h1>
-                          <div class="detail">
-                            <div class="category"><a href="category.html">Lifestyle</a></div>
-                            <div class="time">December 22, 2016</div>
+                          <h1><a href="/newsdetail/{{itemLast2.id}}">{{itemLast2.title}}</a></h1>
+                          <div class="detail">                          
+                            <div class="time">{{itemLast2.dateUpdated | date : "dd/MM/yyyy"}}</div>
                           </div>
                         </div>
                       </div>
                     </article>
-                    <article class="article-mini">
+                    <article class="article-mini" *ngIf="itemLast3.id">
                       <div class="inner">
-                        <figure>
-                          <a href="single.html">
-                            <img src="/assets/magz-master/images/news/img02.jpg">
-                          </a>
-                        </figure>
+                       
+                            <figure>
+                                <a href="/newsdetail/{{itemLast3.id}}">
+                                  <img [src]="itemLast3.image" alt="Sample Article">
+                                </a>
+                              </figure>
+                        
                         <div class="padding">
-                          <h1><a href="single.html">Fusce ullamcorper elit at felis cursus suscipit</a></h1>
+                          <h1><a href="/newsdetail/{{itemLast3.id}}">{{itemLast3.title}}</a></h1>
                           <div class="detail">
-                            <div class="category"><a href="category.html">Travel</a></div>
-                            <div class="time">December 21, 2016</div>
+                              <div class="time">{{itemLast3.dateUpdated | date : "dd/MM/yyyy"}}</div> 
                           </div>
                         </div>
                       </div>
                     </article>
-                    <article class="article-mini">
+                    <article class="article-mini" *ngIf="itemLast4.id">
                       <div class="inner">
-                        <figure>
-                          <a href="single.html">
-                            <img src="/assets/magz-master/images/news/img13.jpg">
-                          </a>
-                        </figure>
+                          <figure>
+                              <a href="/newsdetail/{{itemLast4.id}}">
+                                <img [src]="itemLast4.image" alt="Sample Article">
+                              </a>
+                            </figure>
                         <div class="padding">
-                          <h1><a href="single.html">Duis aute irure dolor in reprehenderit in voluptate velit</a></h1>
+                          <h1><a href="/newsdetail/{{itemLast4.id}}">{{itemLast4.title}}</a></h1>
                           <div class="detail">
-                            <div class="category"><a href="category.html">International</a></div>
-                            <div class="time">December 20, 2016</div>
+                              <div class="time">{{itemLast4.dateUpdated | date : "dd/MM/yyyy"}}</div>
                           </div>
                         </div>
                       </div>
                     </article>
                   </div>
                 </aside>
-                <aside>
-                  <div class="aside-body">
-                    <form class="newsletter">
-                      <div class="icon">
-                        <i class="ion-ios-email-outline"></i>
-                        <h1>Newsletter</h1>
-                      </div>
-                      <div class="input-group">
-                        <input type="email" class="form-control email" placeholder="Your mail">
-                        <div class="input-group-btn">
-                          <button class="btn btn-primary"><i class="ion-paper-airplane"></i></button>
-                        </div>
-                      </div>
-                      <p>By subscribing you will receive new articles in your email.</p>
-                    </form>
-                  </div>
-                </aside>
+                
               </div>
             </div>
           </div>

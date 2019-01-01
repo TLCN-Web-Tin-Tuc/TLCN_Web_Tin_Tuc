@@ -17,13 +17,13 @@
                       <figcaption>Advertisement</figcaption>
                     </figure>
                   </div>
-                </aside>                
+                </aside>               
                
               </div>
               <aside>
                 <h1 class="aside-title">Tin thường xem</h1>
-                <div class="aside-body">
-                  <article class="article-fw">
+                <div class="aside-body" *ngIf="isItemNull != true">
+                  <article class="article-fw" >
                     <div class="inner">
                         <figure>
                             <a href="/newsdetail/{{itemLast1.id}}">
@@ -41,7 +41,7 @@
                     </div>
                   </article>
                   <div class="line"></div>
-                  <article class="article-mini">
+                  <article class="article-mini" *ngIf="itemLast2.id" >
                     <div class="inner">
                         <figure>
                             <a href="/newsdetail/{{itemLast2.id}}">
@@ -56,7 +56,7 @@
                       </div>
                     </div>
                   </article>
-                  <article class="article-mini">
+                  <article class="article-mini" *ngIf="itemLast3.id">
                     <div class="inner">
                      
                           <figure>
@@ -73,7 +73,7 @@
                       </div>
                     </div>
                   </article>
-                  <article class="article-mini">
+                  <article class="article-mini" *ngIf="itemLast4.id">
                     <div class="inner">
                         <figure>
                             <a href="/newsdetail/{{itemLast4.id}}">
@@ -136,7 +136,7 @@
                             <ul class="list-inline">
                               <li class="pr-1"><a class=""><span class="fa fa-eye"></span> Views <span class="badge badge-pill badge-info float-right"
                                     text="">{{item.views}}</span></a></li>
-                              <li class="pr-1"><a href="#" class=""><span class="fa fa-thumbs-up"></span> Likes <span
+                              <li class="pr-1"><a  class=""><span class="fa fa-thumbs-up"></span> Likes <span
                                     class="badge badge-pill badge-info float-right" text="">{{item.likes}}</span></a></li>
                               <!-- <li class="pr-1"><a href="#" class=""><span class="far fa-comment-dots"></span> Comments
                                   <span class="badge badge-pill badge-info float-right" text="">{{item.comment}}</span></a></li> -->
@@ -228,7 +228,7 @@
                   <div class="card-content">
                     <div>
                       <ng-container *ngIf="isApprove == true; else isnotmod">
-                        <button class="btn btn-outline-primary pull-left" (click)="onSetStatus()" href="" style="margin-right: 10px;">{{kichhoat}}</button>
+                        <button *ngIf="item.status == 1 || item.status == 2 " class="btn btn-outline-primary pull-left" (click)="onSetStatus()" href="" style="margin-right: 10px;">{{kichhoat}}</button>
                       </ng-container>
                       <ng-template #isnotmod>
 
