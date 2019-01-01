@@ -1,3 +1,8 @@
 .bodyy {
     background-color: #ffffff;
 }
+
+.article-list figure {
+    width: 300px !important;
+    height: 180px !important;
+}
