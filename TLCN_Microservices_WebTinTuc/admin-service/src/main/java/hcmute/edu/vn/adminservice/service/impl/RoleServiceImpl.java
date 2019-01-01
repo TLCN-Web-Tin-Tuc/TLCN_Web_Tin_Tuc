@@ -1,5 +1,6 @@
 package hcmute.edu.vn.adminservice.service.impl;
 
+import hcmute.edu.vn.adminservice.exception.NotFoundException;
 import hcmute.edu.vn.adminservice.model.Role;
 import hcmute.edu.vn.adminservice.repository.RoleRepository;
 import hcmute.edu.vn.adminservice.service.RoleService;
@@ -25,6 +26,9 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public Role retrieveRoleByRName(String rname) {
         Optional<Role> role = roleRepository.findByRname(rname);
+        if(!role.isPresent()){
+            throw new NotFoundException("Không tìm thấy quyền");
+        }
         return role.get();
     }
 
