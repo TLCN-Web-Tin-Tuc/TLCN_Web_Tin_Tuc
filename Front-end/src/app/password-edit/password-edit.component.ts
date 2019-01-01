@@ -19,11 +19,14 @@ export class PasswordEditComponent implements OnInit {
   pass : string = ""
   selectedImg : string = ""
   user : User
-
+  
   error : string = ""
-  constructor(private userService : UserService, private nuService : NuServiceService, private route :Router) { }
+  constructor(private userService : UserService, private nuService : NuServiceService, private route :Router) {
+    this.user = new User()
+   }
 
   ngOnInit() {
+    
     this.getProfile()
   }
 
@@ -36,7 +39,12 @@ export class PasswordEditComponent implements OnInit {
       if(res.success == "true")
       {
         this.user = res.data;
-        this.selectedImg = this.user.avatar                    
+        if(this.user.avatar == null){                   
+          this.selectedImg = "/assets/robust-admin/profile.png"
+        } else 
+        {
+          this.selectedImg = this.user.avatar
+        }   
       }
       else
       {

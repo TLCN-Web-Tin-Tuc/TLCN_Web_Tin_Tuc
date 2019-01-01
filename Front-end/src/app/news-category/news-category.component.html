@@ -36,7 +36,7 @@
                           <div class="category">
                             <a href="/newscategory/{{id}}">{{catName}}</a>
                           </div>
-                          <div class="time">{{item.dateUpdated}}</div>
+                          <div class="time">{{item.dateUpdated | date : "dd/MM/yyyy"}}</div>
                         </div>
                         <h1><a href="/newsdetail/{{item.itemId}}">{{item.title}}</a></h1>
                         <p>{{item.shortDesc}}</p>
@@ -57,7 +57,7 @@
                     <nav aria-label="Page navigation">
                       <ul class="pagination justify-content-center pagination-separate pagination-curved">
                         <li class="page-item" [className]="current==0?'disabled':'enable'">
-                          <a class="page-link" href="#" aria-label="Previous" (click)="onPrePage()">
+                          <a class="page-link"  aria-label="Previous" (click)="onPrePage()">
                             <span aria-hidden="true"> << </span>
                           </a>
                         </li>
@@ -65,7 +65,7 @@
                           <a class="page-link" (click)="onGotoPage(ite)">{{ite + 1}}</a>
                         </li>
                         <li class="page-item" [className]="current==pageNumber-1?'disabled':'enable'">
-                          <a class="page-link" href="#" aria-label="Next" (click)="onNextPage()">
+                          <a class="page-link"  aria-label="Next" (click)="onNextPage()">
                             <span aria-hidden="true"> >> </span>
                           </a>
                         </li>

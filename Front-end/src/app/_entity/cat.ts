@@ -9,4 +9,5 @@ export class Cat {
     userUpdated : string
     isCheck : boolean = false
     isOfItem: boolean = false;
+    parentName : string = ""
 }

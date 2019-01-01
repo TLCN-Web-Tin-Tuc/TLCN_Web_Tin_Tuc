@@ -95,7 +95,6 @@ public class ModController {
     @PostMapping("/cat/createcat")
     public DataReturnOne<Cat> CreateCategory(@RequestBody Cat cat){
         DataReturnOne<Cat> dataReturnOne = new DataReturnOne<>();
-        cat.setParentId(Long.valueOf(0));
         Cat cat1 = catService.getRepo().save(cat);
         if(cat != null){
             dataReturnOne.setMessage("Insert Category Success");
@@ -208,12 +207,16 @@ public class ModController {
         return dataReturnList;
     }
 
-    @PostMapping("/items/create")
-    public DataReturnOne<ItemDto> CreateItem(@RequestBody Item items ){
+    @PostMapping("/items/create/{email}")
+    public DataReturnOne<ItemDto> CreateItem(@RequestBody Item items, @PathVariable("email") String email ){
         items.setDownload((long) 0);
         items.setComment((long) 0);
         items.setLikes((long) 0);
         items.setViews((long) 0);
+        User user = userService.findByEmail(email);
+        items.setAuthor(user.getLastName());
+        items.setDateCreated(new Date());
+        items.setUserCreated(email);
         Item items1 = itemService.getRepo().save(items);
         DataReturnOne<ItemDto> dataReturnOne = new DataReturnOne<>();
         if(items1 != null){

@@ -28,7 +28,7 @@ export class RoleCreateComponent implements OnInit {
 
   constructor(private adminService : AdminService, private fb: FormBuilder,private router : Router, private userService : UserService, private nuService :NuServiceService) {
     this.role = new Role();
-   
+    this.user = new User()
    }
 
   ngOnInit() {

@@ -29,6 +29,7 @@ export class CatCreateComponent implements OnInit {
   constructor(private fb: FormBuilder, private router: Router, private modService: ModServiceService, private userService: UserService) {
     this.cat = new Cat();
     this.sCat = new Cat();
+    this.role = new Role();
   }
 
   ngOnInit() {
@@ -60,6 +61,7 @@ export class CatCreateComponent implements OnInit {
 
   createCat() {
     this.email = localStorage.getItem("email")
+    this.cat.parentId = 0
     this.cat.dateCreated = new Date();
     this.cat.userCreated = localStorage.getItem("email");
     this.modService.createCat(this.cat).pipe(first()).subscribe(res => {
@@ -125,6 +127,6 @@ export class CatCreateComponent implements OnInit {
   }
 
   changeSelected(){
-    alert(this.selectedOption)
+    //alert(this.selectedOption)
   }
 }

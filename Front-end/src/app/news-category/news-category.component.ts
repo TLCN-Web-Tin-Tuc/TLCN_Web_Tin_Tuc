@@ -46,6 +46,10 @@ export class NewsCategoryComponent implements OnInit {
     this.page = 0;
     this.size = 8;
     this.current = 0;
+    this.itemLast1 = new Item()
+    this.itemLast2 = new Item()
+    this.itemLast3 = new Item()
+    this.itemLast4 = new Item()
    }
 
   ngOnInit() {

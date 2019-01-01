@@ -59,6 +59,8 @@ export class NewsDetailComponent implements OnInit {
   constructor(private modService: ModServiceService, private activatedRoute: ActivatedRoute,
      private route: Router, private userService: UserService, private chRef: ChangeDetectorRef, private nuService : NuServiceService) {
     this.item = new Item();
+    this.role = new Role()
+    this.cat = new Cat()
     this.itemLast1  = new Item();
     this.itemLast2  = new Item();
     this.itemLast3  = new Item();
@@ -168,7 +170,8 @@ export class NewsDetailComponent implements OnInit {
         .subscribe(res => {
           if (res.success == "true") {
 
-            this.item = res.data;            
+            this.item = res.data;  
+            console.log(this.item)          
             this.selectedImg = this.item.image;
             console.log(this.item.status)
             if (this.item.status == 1) {

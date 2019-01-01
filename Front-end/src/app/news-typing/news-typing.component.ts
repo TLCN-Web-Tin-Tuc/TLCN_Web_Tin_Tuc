@@ -59,8 +59,9 @@ export class NewsTypingComponent implements OnInit {
   
   onSaveImage(){
     this.imageUploaded = this.formImage.get('avatar').value.value;
+    this.email = localStorage.getItem("email")
     this.item.image = this.imageUploaded;
-    this.modService.createItem(this.item).pipe(first())
+    this.modService.createItem(this.item, this.email).pipe(first())
     .subscribe(res=>{
       if(res.success == "true")
         alert("Thêm bài viết thành công !!!");

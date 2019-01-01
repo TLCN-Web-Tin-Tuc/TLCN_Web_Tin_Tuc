@@ -31,7 +31,7 @@ export class CatManagementComponent implements OnInit {
   dataTable: any;
 
   constructor(private fb: FormBuilder, private router: Router, private modService: ModServiceService, private userService: UserService, private chRef: ChangeDetectorRef) {
-
+    this.cat = new Cat()
   }
 
   ngOnInit() {
@@ -60,7 +60,15 @@ export class CatManagementComponent implements OnInit {
             else {
               cat.isCheck = false
             }
+            for(let cat1 of this.catList)
+            {
+              if(cat.parentId == cat1.id)
+              {
+                cat.parentName = cat1.name                
+              }
+            }
           }
+
 
         }
       }, err => {

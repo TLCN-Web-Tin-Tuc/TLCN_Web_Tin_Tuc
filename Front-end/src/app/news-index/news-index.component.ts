@@ -55,39 +55,43 @@ export class NewsIndexComponent implements OnInit {
       .subscribe(res => {
         if (res.success == "true") {
           this.itemDescDay = res.data
+          
           if(this.itemDescDay.length < 1){
             this.itemHot.isNull = true
           }else{
             this.itemHot = this.itemDescDay[0]          
             this.selectedImg = this.itemHot.image
+            this.itemHot.isNull = false
           }
+          console.log(this.itemHot)
           if(this.itemDescDay.length < 2){            
             this.itemLast1.isNull = true
           }else{           
             this.itemLast1 = this.itemDescDay[1]
+            this.itemLast1.isNull = false
           }
-
+          
           if(this.itemDescDay.length < 3){            
             this.itemLast2.isNull = true
           }else{           
             this.itemLast2 = this.itemDescDay[2] 
+            this.itemLast2.isNull = false
           }
 
           if(this.itemDescDay.length < 4){            
             this.itemLast3.isNull = true
           }else{           
             this.itemLast3 = this.itemDescDay[3]  
+            this.itemLast3.isNull = false
           }
           
           if(this.itemDescDay.length < 5){            
             this.itemLast4.isNull = true
           }else{           
             this.itemLast4 = this.itemDescDay[4] 
+            this.itemLast4.isNull = false
           }
         
-          
-          
-
 
           this.nuService.getCatItem(this.itemHot.id)
           .pipe(first())

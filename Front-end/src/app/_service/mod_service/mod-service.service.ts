@@ -12,8 +12,8 @@ export class ModServiceService {
   context = environment.base_mod_url
   constructor(private http: HttpClient) { }
 
-  createItem(item: Item): Observable<any>{
-    return this.http.post(`${this.context}/api/v1/mod/items/create`, item);
+  createItem(item: Item, email : string): Observable<any>{
+    return this.http.post(`${this.context}/api/v1/mod/items/create/${email}`, item);
   }
 
   getListItem() : Observable<any>{

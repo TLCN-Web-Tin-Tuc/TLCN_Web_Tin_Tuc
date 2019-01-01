@@ -40,7 +40,7 @@
                         <tr *ngFor="let cat of catList">
                           <td (click)="onGotoCatEdit(cat.id)">{{cat.id}}</td>
                           <td (click)="onGotoCatEdit(cat.id)">{{cat.name}}</td>
-                          <td (click)="onGotoCatEdit(cat.id)">{{cat.parent_id}}</td>
+                          <td (click)="onGotoCatEdit(cat.id)">{{cat.parentName}}</td>                                                
                           <td><input type="checkbox" [(ngModel)]="cat.isCheck" [ngModelOptions]="{standalone: true}"
                               class="checkboxes" value={{cat.id}} (change)="toggleCatStatus($event)" /></td>
                         </tr>

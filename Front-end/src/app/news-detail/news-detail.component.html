@@ -122,13 +122,14 @@
                       </div>
                       <div class="media">
                         <div class="media-left mr-1">
-                          <a href="#"> <span class="avatar avatar-md avatar-busy"><img src="assets/robust-admin/app-assets/images/portrait/small/avatar-s-18.png"
-                                alt="avatar"><a href="" text=""> {{item.userCreated}}</a></span><i></i></a>
+                          <a > <span class="avatar avatar-md avatar-busy"><img src="assets/robust-admin/app-assets/images/portrait/small/avatar-s-18.png"
+                                alt="avatar"><a text=""> {{item.author}}</a></span><i></i></a>
                         </div>
                         <div class="media-body">
                           <div class="detail">
                             <div class="time">Ngày đăng: {{item.dateCreated | date : "dd/MM/yyyy"}}</div>
-                            <div class="category"><a href="">Danh Mục</a></div>
+                            <div class="category" ><a >Danh Mục: | </a> <a *ngFor="let cati of catItem" href="/newscategory/{{cati.catId}}" >{{cati.catName}} | </a></div>
+                            
                           </div>
                         </div>
                         <div class="media-body">
