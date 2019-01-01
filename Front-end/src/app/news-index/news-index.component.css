@@ -1,3 +1,18 @@
 .bodyy {
     background-color: #ffffff;
 }
+
+.article-list figure {
+    width: 300px !important;
+    height: 180px !important;
+}
+
+.article .inner figure {
+    height: 210px !important;
+    width: 100% !important;
+}
+
+.article-mini figure img {
+    width: 80px !important;
+    height: 52px !important;
+}

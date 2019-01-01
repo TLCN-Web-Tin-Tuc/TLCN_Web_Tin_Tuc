@@ -127,7 +127,7 @@
                         </div>
                         <div class="media-body">
                           <div class="detail">
-                            <div class="time">Ngày đăng: {{item.dateCreated | date : "dd/MM/yyyy"}}</div>
+                            <div class="time">Ngày đăng: {{item.dateUpdated | date : "dd/MM/yyyy"}}</div>
                             <div class="category" ><a >Danh Mục: | </a> <a *ngFor="let cati of catItem" href="/newscategory/{{cati.catId}}" >{{cati.catName}} | </a></div>
                             
                           </div>
