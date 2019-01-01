@@ -62,4 +62,8 @@ export class HeaderComponent implements OnInit {
     window.location.href = "/profile/-1";
   }
 
+  gotoChangePassword(){
+    window.location.href = "/editpassword";
+  }
+
 }
