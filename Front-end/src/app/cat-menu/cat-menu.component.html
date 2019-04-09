@@ -18,13 +18,7 @@
               <li data-menu=""><a class="dropdown-item" href="/rolecreate" data-toggle="dropdown">Tạo quyền</a>
               </li>
             </div>
-            <div *ngIf="isMod == true">
-              <li data-menu=""><a class="dropdown-item" href="/catmanagement" data-toggle="dropdown">Quản
-                  lý danh mục</a>
-              </li>
-              <li data-menu=""><a class="dropdown-item" href="/catcreate" data-toggle="dropdown">Tạo
-                  danh mục</a>
-              </li>
+            <div *ngIf="isMod == true">             
               <li data-menu=""><a class="dropdown-item" href="/newsmanagement" data-toggle="dropdown">Quản
                   lý tin tức</a>
               </li>
@@ -33,6 +27,12 @@
                 <li data-menu=""><a class="dropdown-item" href="/catnewmanagement" data-toggle="dropdown">Phân loại
                 tin tức</a>
                 </li>
+                <li data-menu=""><a class="dropdown-item" href="/catmanagement" data-toggle="dropdown">Quản
+                  lý danh mục</a>
+              </li>
+              <li data-menu=""><a class="dropdown-item" href="/catcreate" data-toggle="dropdown">Tạo
+                  danh mục</a>
+              </li>
               </div>
             <div *ngIf="isCreate == true">
               <li data-menu=""><a class="dropdown-item" href="/newstyping" data-toggle="dropdown">Tạo

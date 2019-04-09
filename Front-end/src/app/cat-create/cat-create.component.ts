@@ -102,10 +102,10 @@ export class CatCreateComponent implements OnInit {
         if (res.success == "true") {
           this.rolesofUser = res.data.roles
           for (let role of this.rolesofUser) {
-            if ((role.p_delete == true || role.p_update == true || role.p_approve == true) && (role.status == 1)) {
+            if ((role.p_delete == true || role.p_approve == true) && (role.status == 1)) {
               this.isMod = true
             }
-            if (role.p_create == true && (role.status == 1)) {
+            if (role.p_update == true && (role.status == 1)) {
               this.isCreate = true
             }
             if (role.p_admin == true && (role.status == 1)) {
