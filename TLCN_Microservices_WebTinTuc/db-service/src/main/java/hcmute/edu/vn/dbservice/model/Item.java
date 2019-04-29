@@ -29,10 +29,14 @@ public class Item {
 
     private int status;
 
+    @Size(max=2000000)
     private String shortDesc;
 
     @Size(max=2000000)
     private String fullDesc;
+
+    @Size(max=2000000)
+    private String decription;
 
     private String author;
 
@@ -47,6 +51,10 @@ public class Item {
     private Date dateCreated;
 
     private String userCreated;
+
+    private String linkOrigin;
+
+    private String originName;
 
     private Date dateUpdated;
 

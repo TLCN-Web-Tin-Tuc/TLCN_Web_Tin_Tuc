@@ -1,4 +1,4 @@
-package hcmute.edu.vn.nuservice.model;
+package com.example.demo.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,7 +9,7 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.Set;
 
-@Entity(name = "ne_items")
+@Entity(name = "items")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -35,31 +35,27 @@ public class Item {
     @Size(max=2000000)
     private String fullDesc;
 
+    @Size(max=2000000)
+    private String decription;
+
     private String author;
 
-    private Long views;
+    private String linkOrigin;
 
-    private Long likes;
+    private String originName;
 
-    private Long download;
+    private Date dateCreate;
 
-    private Long comment;
 
-    private Date dateCreated;
+    @OneToMany(mappedBy = "cIId.item")
+    private Set<CatItem> catItems;
 
-    private String userCreated;
 
-    private Date dateUpdated;
 
-    private String userUpdated;
 
-    @OneToMany(mappedBy = "id.item")
-    private Set<Cat_Item> cat_items;
 
-    @OneToMany(mappedBy = "item")
-    private Set<ItemAccess> itemAccesses;
 
-    @OneToMany(mappedBy = "itemCm")
-    private Set<Comment> comments;
+
+
 
 }

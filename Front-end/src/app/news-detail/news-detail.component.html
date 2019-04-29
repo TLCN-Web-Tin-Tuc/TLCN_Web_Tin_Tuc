@@ -148,8 +148,9 @@
                       </div>
                     </div>
                     <div class="card-body" text="">
-                      <h5 class="text-uppercase" text="">{{item.shortDesc}}</h5>
-                      <figure class="image"> <img [src]="selectedImg" style="width: 65%;height: 65%;margin-left: 140px;"></figure>
+                        <div [innerHTML]="item.shortDesc"></div>
+                      <!-- <h5 class="text-uppercase" text="">{{item.shortDesc}}</h5> -->
+                      <!-- <figure class="image"> <img [src]="selectedImg" style="width: 65%;height: 65%;margin-left: 140px;"></figure> -->
                     </div>
                     <div class="card-body">
                       <div [innerHTML]="item.fullDesc"></div>

@@ -1,4 +1,4 @@
-package hcmute.edu.vn.nuservice.model;
+package hcmute.edu.vn.cwservice.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -35,6 +35,9 @@ public class Item {
     @Size(max=2000000)
     private String fullDesc;
 
+    @Size(max=2000000)
+    private String decription;
+
     private String author;
 
     private Long views;
@@ -45,21 +48,21 @@ public class Item {
 
     private Long comment;
 
-    private Date dateCreated;
+    private String linkOrigin;
 
-    private String userCreated;
+    private String originName;
 
     private Date dateUpdated;
 
-    private String userUpdated;
+    @OneToMany(mappedBy = "cIId.item")
+    private Set<CatItem> catItems;
 
-    @OneToMany(mappedBy = "id.item")
-    private Set<Cat_Item> cat_items;
 
-    @OneToMany(mappedBy = "item")
-    private Set<ItemAccess> itemAccesses;
 
-    @OneToMany(mappedBy = "itemCm")
-    private Set<Comment> comments;
+
+
+
+
+
 
 }
