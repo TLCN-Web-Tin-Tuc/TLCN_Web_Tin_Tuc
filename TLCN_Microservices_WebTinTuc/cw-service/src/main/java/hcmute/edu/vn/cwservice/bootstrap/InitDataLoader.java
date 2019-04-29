@@ -9,6 +9,7 @@ import hcmute.edu.vn.cwservice.entity.Cat;
 import hcmute.edu.vn.cwservice.entity.CatWeb;
 import hcmute.edu.vn.cwservice.entity.Item;
 import hcmute.edu.vn.cwservice.entity.Web;
+import hcmute.edu.vn.cwservice.exception.NotFoundException;
 import hcmute.edu.vn.cwservice.service.CatService;
 import hcmute.edu.vn.cwservice.service.CatWebService;
 import hcmute.edu.vn.cwservice.service.ItemService;
@@ -52,7 +53,33 @@ public class InitDataLoader implements ApplicationListener<ContextRefreshedEvent
 //        } catch (FeedException e) {
 //            e.printStackTrace();
 //        }
+        Web web1 = createWebIfNotFound("Vn Express");
+        Web web2 = createWebIfNotFound("Thanh niên");
     }
+
+    @Transactional
+    Web createWebIfNotFound(String webtitle) {
+        Web webb;
+        try {
+            webb = webService.retrieveWebByTitle(webtitle);
+        } catch (NotFoundException ex) {
+            Web newWeb = new Web();
+            if(webtitle == "Vn Express") {
+                newWeb.setClassContent("content_detail");
+                newWeb.setUrl("https://vnexpress.net");
+                newWeb.setTitle("Vn Express");
+            }
+
+            if(webtitle == "Thanh niên") {
+                newWeb.setClassContent("pswp_content");
+                newWeb.setUrl("https://thanhnien.vn");
+                newWeb.setTitle("Thanh niên");
+            }
+            return webService.getRepo().save(newWeb);
+        }
+        return webb;
+    }
+
 
     @Transactional
     Boolean crawlerWeb() throws IOException, FeedException {
