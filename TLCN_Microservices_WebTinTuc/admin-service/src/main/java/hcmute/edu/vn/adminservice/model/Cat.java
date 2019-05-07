@@ -14,7 +14,7 @@ import java.util.Set;
 @AllArgsConstructor
 public class Cat {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
@@ -34,5 +34,7 @@ public class Cat {
     @OneToMany(mappedBy = "id.cat")
     private Set<Cat_Item> cat_items;
 
+    @OneToMany(mappedBy = "id.cat")
+    private Set<CatWeb> catWeb;
     
 }

@@ -1,3 +1,5 @@
 .bodyy {
     background-color: #ffffff;
 }
+
+div.pswp-content__image figure span {display: none;}

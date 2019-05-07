@@ -18,4 +18,9 @@ public class CatWebServiceImpl implements CatWebService {
     public List<CatWeb> retrieveAll() {
         return catWebRepository.findAll();
     }
+
+    @Override
+    public CatWeb createCatWeb(CatWeb catWeb) {
+        return catWebRepository.save(catWeb);
+    }
 }

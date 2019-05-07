@@ -45,13 +45,13 @@ public class InitDataLoader implements ApplicationListener<ContextRefreshedEvent
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
-        try {
-            crawlerWeb();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (FeedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            crawlerWeb();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } catch (FeedException e) {
+//            e.printStackTrace();
+//        }
     }
 
     @Transactional

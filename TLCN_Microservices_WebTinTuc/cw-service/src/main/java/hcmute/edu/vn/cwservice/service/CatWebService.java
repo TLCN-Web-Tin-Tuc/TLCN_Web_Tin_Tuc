@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface CatWebService {
     List<CatWeb> retrieveAll();
+    CatWeb createCatWeb(CatWeb catWeb);
 
 }

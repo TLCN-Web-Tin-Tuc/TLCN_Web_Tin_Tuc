@@ -15,7 +15,7 @@ import java.util.Set;
 @AllArgsConstructor
 public class Item {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String fileName;
@@ -48,13 +48,13 @@ public class Item {
 
     private Long comment;
 
-    private String linkOrigin;
-
-    private String originName;
-
     private Date dateCreated;
 
     private String userCreated;
+
+    private String linkOrigin;
+
+    private String originName;
 
     private Date dateUpdated;
 

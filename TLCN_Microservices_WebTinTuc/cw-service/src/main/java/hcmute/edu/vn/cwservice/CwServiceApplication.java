@@ -10,6 +10,7 @@ public class CwServiceApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(CwServiceApplication.class, args);
+
     }
 
 }
