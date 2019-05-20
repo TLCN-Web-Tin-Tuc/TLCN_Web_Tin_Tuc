@@ -25,7 +25,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("api/v1/nuser/")
+@RequestMapping("nuser")
 @CrossOrigin(origins = "http://localhost:4200")
 public class NonUserController {
     @Autowired

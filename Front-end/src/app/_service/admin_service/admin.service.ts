@@ -8,7 +8,7 @@ import { Role } from 'src/app/_entity/role';
   providedIn: 'root'
 })
 export class AdminService {
-  context = environment.base_admin_url;
+  context = environment.base_url;
   constructor(private http: HttpClient) { }
 
   getListUser() : Observable<any>{

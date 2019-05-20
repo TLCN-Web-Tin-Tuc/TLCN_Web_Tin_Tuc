@@ -66,6 +66,7 @@ public class MyJob  {
                         item.setTitle(entry.getTitle());
                         item.setStatus(2);
                         item.setOriginName(web.getTitle());
+                        item.setAuthor(web.getTitle());
                         item.setDateUpdated(entry.getPublishedDate());
                         Document doc = Jsoup.connect(entry.getLink()).get();
                         if(web.getTitle()== "Thanh niên" && cat.getName() == "Thể Thao") {
@@ -81,7 +82,7 @@ public class MyJob  {
                             }
                         }
                         for (Element h : content) {
-                            h.select("div.details__author , div.details__meta , div.details__morenews , article.story, video").remove();
+                            h.select("div.details__author , div.details__meta , div.details__morenews , article.story, video, table.video").remove();
                             fullDesc = h.toString();
                             linkImages = h.select("img[src^=http]:first-child").attr("abs:src");
                         }

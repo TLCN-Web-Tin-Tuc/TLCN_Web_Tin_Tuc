@@ -8,7 +8,7 @@ import { Guest } from 'src/app/_entity/guest';
   providedIn: 'root'
 })
 export class NuServiceService {
-  context = environment.base_url
+  context = environment.base_url;
   constructor(private http: HttpClient) { }
 
   register(user: User) : Observable<any>{    

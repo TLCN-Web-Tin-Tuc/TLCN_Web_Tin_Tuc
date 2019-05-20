@@ -9,7 +9,7 @@ import { Cat } from 'src/app/_entity/cat';
   providedIn: 'root'
 })
 export class ModServiceService {
-  context = environment.base_mod_url
+  context = environment.base_url;
   constructor(private http: HttpClient) { }
 
   createItem(item: Item, email : string): Observable<any>{

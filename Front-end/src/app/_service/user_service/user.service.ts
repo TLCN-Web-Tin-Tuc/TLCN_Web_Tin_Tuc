@@ -8,7 +8,7 @@ import { User } from 'src/app/_entity/user';
   providedIn: 'root'
 })
 export class UserService {
-  context = environment.base_user_url;
+  context = environment.base_url;
   constructor(private http: HttpClient) { }
 
   doiMatKhau(email:string, oldPassword:string, newPassword:string) : Observable<any>{

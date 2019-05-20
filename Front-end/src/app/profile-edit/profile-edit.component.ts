@@ -21,7 +21,7 @@ export class ProfileEditComponent implements OnInit {
   email: string;
   formImage: FormGroup;
   image: string = "";
-  pass : string
+  pass : string;
   imageUploaded: string = "";
 
   constructor(private userService : UserService, private fb: FormBuilder, private nuService :NuServiceService, private route : Router) {
